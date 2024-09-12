@@ -14,7 +14,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"nombre\": \"Cesar Alejandro\",\r\n    \"apellido\": \"Robles Matos\",\r\n    \"email\": \"moquetez671@gmail.com\",\r\n    \"password\": \"Carlos2527@\",\r\n    \"role\": \"66d77649d458301a4aba678c\",\r\n    \"especializacion\": \"Ingeniero de Software\",\r\n    \"responsabilidades\": [\"Desarrollar de APIs\", \"Probar EndPoints\"]\r\n}",
+					"raw": "{\r\n    \"nombre\": \"Cesar Alejandro\",\r\n    \"apellido\": \"Robles Matos\",\r\n    \"email\": \"moquetez671@gmail.com\",\r\n    \"password\": \"Investiga123@\",\r\n    \"role\": \"66d77649d458301a4aba678c\",\r\n    \"especializacion\": \"Ingeniero de Software\",\r\n    \"responsabilidades\": [\"Desarrollar de APIs\", \"Probar EndPoints\"]\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -175,7 +175,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"currentPassword\": \"Carlos2527@\",\r\n    \"newPassword\": \"Investiga123@\"\r\n}",
+					"raw": "{\r\n    \"currentPassword\": \"Investiga123@\",\r\n    \"newPassword\": \"Investiga123@\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
