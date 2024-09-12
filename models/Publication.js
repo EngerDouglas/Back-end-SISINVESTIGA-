@@ -10,11 +10,11 @@ const publicationSchema = mongoose.Schema({
     type: Date,
     required: true
   },
-  autores: {
+  autores: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User', // Referencia al modelo que tenemos de User
     required: true
-  },
+  }],
   // proyecto: [{ Esta parte esta comentada ya que otro companero trabaja este modelo.
   //   type: mongoose.Schema.Types.ObjectId, 
   //   ref: 'Proyecto',
@@ -43,10 +43,10 @@ const publicationSchema = mongoose.Schema({
     enum: ['Borrador', 'Revisado', 'Publicado'],
     default: 'Borrador'
   },
-  anexos: {  // URL o ruta de archivos de nuestras publicaciones
+  anexos: [{
     type: String,
     trim: true
-  },
+  }],
   idioma: {
     type: String,
     required: true,
