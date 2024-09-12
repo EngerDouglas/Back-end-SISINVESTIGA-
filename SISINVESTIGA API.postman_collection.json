@@ -355,7 +355,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"resumen\": \"Probaremos el verbo PUT en la API\"\r\n}",
+					"raw": "{\r\n  \"anexos\": [\"http://example.com/publicacion.pdf\", \"http://example2.com/publicacion.img\"]\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -363,7 +363,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3005/api/publications/66d9c308aab9b5db033457d1",
+					"raw": "http://localhost:3005/api/publications/66d9f71976c4141cb4812abe",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -372,7 +372,7 @@
 					"path": [
 						"api",
 						"publications",
-						"66d9c308aab9b5db033457d1"
+						"66d9f71976c4141cb4812abe"
 					]
 				},
 				"description": "Actualizar una publicacion.\n\nRequerimientos: Ser Investigador y estar logeado en el sistema, ser el dueño de esa publicacion."
