@@ -17,6 +17,7 @@ const port = process.env.PORT
 
 // Habilitar Lectura y Cookie Parser mas Middlewares
 app.use( corsMiddleware())
+// app.use(cors({ credentials: true, origin: 'http://localhost:3000' }))
 app.use(express.json())
 app.use(cookieParser())
 app.use(bodyParser.urlencoded({ extended:true }))
