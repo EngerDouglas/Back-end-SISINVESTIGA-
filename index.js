@@ -3,7 +3,7 @@ import bodyParser from 'body-parser'
 import cookieParser from 'cookie-parser'
 import dotenv from 'dotenv'
 import helmet from 'helmet'
-import cors from 'cors'
+import { corsMiddleware } from './middlewares/cors.js'
 import RolesRouter from './routes/roleRoute.js'
 import UsersRouter from './routes/userRoute.js'
 import PublicationsRouter from './routes/publicationRoute.js'
@@ -16,12 +16,12 @@ const app = express()
 const port = process.env.PORT
 
 // Habilitar Lectura y Cookie Parser mas Middlewares
+app.use( corsMiddleware())
 app.use(express.json())
 app.use(cookieParser())
 app.use(bodyParser.urlencoded({ extended:true }))
 app.use(bodyParser.json())
 app.use(helmet())
-app.use(cors({ credentials: true, origin: 'http://localhost:3000' }))
 
 app.use('/api/roles', RolesRouter)
 app.use('/api/users', UsersRouter)
