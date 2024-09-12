@@ -32,7 +32,7 @@ export const createPublication = async (req, res) => {
 
     const newPublication = new Publication({
       ...req.body,
-      autores: autor 
+      autores: [autor] 
     })
 
     await newPublication.save()
@@ -54,8 +54,8 @@ export const updatePublication = async (req, res) => {
 
   try {
     // revisemos si la publicacion existe
-    const publicaton = await Publication.findById(id)
-    if(!publicaton){
+    const publication = await Publication.findById(id)
+    if(!publication){
       return res.status(404).json({ error: 'Publicacion no encontrada' })
     }
 
@@ -74,21 +74,35 @@ export const updatePublication = async (req, res) => {
       'tipoPublicacion',
       'estado',
       'anexos',
-      'idioma'
+      'idioma',
+      'autores'
     ]
 
-    const  updateKeys = Object.keys(updates)
-
-    // ahora los actualizamos
-    updateKeys.forEach((key => {
-      if (allowedUpdates.includes(key)) {
-        publicaton[key] = updates[key]
+    // Actualizar campos permitidos
+    allowedUpdates.forEach((field) => {
+      if (updates[field] !== undefined) {
+        // Manejo especial para arrays de 'autores' y 'anexos'
+        if (Array.isArray(publication[field])) {
+          if (field === 'autores') {
+            // Validar y agregar solo autores únicos
+            const existingAuthors = new Set(publication[field].map(String)); // Convertir a string para evitar problemas de comparación con ObjectId
+            updates[field].forEach((authorId) => {
+              if (!existingAuthors.has(String(authorId))) {
+                publication[field].push(authorId); // Agregar autor solo si no existe
+              }
+            });
+          } else {
+            publication[field] = updates[field]; // Reemplazar 'anexos' o cualquier otro array completamente
+          }
+        } else {
+          publication[field] = updates[field]; // Actualizar campos normales
+        }
       }
-    }))
+    });
 
     // Guardamos la publicacion actualizada
-    await publicaton.save()
-    res.status(201).json({ message: 'La publicacion fue actualizada correctamente' })
+    await publication.save()
+    res.status(201).json({ message: 'La publicacion fue actualizada correctamente', publication })
   } catch (error) {
     res.status(500).json({ error: 'Ha ocurrido un error al actualizar la publiacion', error: error.message })
   }
@@ -113,8 +127,8 @@ export const deletePublication = async (req, res) => {
     }
 
     // Verificamos si el usuario es el autor de la publicacion a eliminar
-    if (currentUser.role !== 'Administrador' && !pub.autores.equals(currentUser._id)) {
-      return res.status(403).json({ error: 'No tienes permisos para eliminar esta publicacion' })
+    if (currentUser.role !== 'Administrador' && !pub.autores.some(autor => autor.equals(currentUser._id))) {
+      return res.status(403).json({ error: 'No tienes permisos para eliminar esta publicación' });
     }
 
     // Verificamos si nuestro usuario tiene publicaciones, en caso de tener no puede eliminarse
