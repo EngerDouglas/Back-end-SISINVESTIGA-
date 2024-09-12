@@ -1,0 +1,40 @@
+[{
+  "_id": {
+    "$oid": "66d77649d458301a4aba678c"
+  },
+  "roleName": "Investigador",
+  "createdAt": {
+    "$date": "2024-09-03T20:49:13.892Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66d7768cd458301a4aba678e"
+  },
+  "roleName": "Colaborador",
+  "createdAt": {
+    "$date": "2024-09-03T20:50:20.724Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66d77691d458301a4aba6790"
+  },
+  "roleName": "Asistente",
+  "createdAt": {
+    "$date": "2024-09-03T20:50:25.276Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66d86b15c58859de09db964a"
+  },
+  "roleName": "Administrador",
+  "createdAt": {
+    "$date": "2024-09-04T14:13:41.812Z"
+  },
+  "__v": 0
+}]

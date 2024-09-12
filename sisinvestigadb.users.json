@@ -1,0 +1,73 @@
+[{
+  "_id": {
+    "$oid": "66d7d4bca6f6b3707d261b33"
+  },
+  "nombre": "Carlos Alberto",
+  "apellido": "Castillo Garcia",
+  "email": "castillox671@gmail.com",
+  "password": "$2a$08$a40gjThXJR6OSni0TVFbLuH8whxQXmzIizfsTxUS4F/LMr0MHpD7K",
+  "especializacion": "Desarrollador de Software",
+  "responsabilidades": [
+    "Desarrollador Backend",
+    "CoLider de Proyecto"
+  ],
+  "role": {
+    "$oid": "66d86b15c58859de09db964a"
+  },
+  "createdAt": {
+    "$date": "2024-09-04T03:32:12.107Z"
+  },
+  "tokens": [],
+  "__v": 32
+},
+{
+  "_id": {
+    "$oid": "66d9a3d28811e44aea8b1dd6"
+  },
+  "nombre": "Carlos Alberto",
+  "apellido": "Castillo Garcia",
+  "email": "castilloz671@gmail.com",
+  "password": "$2a$08$/UPEQU1.r3RVjlBQkTcat.sFSdkw2Z1nCBurlgJ9c7rBl7F2I1Fe2",
+  "especializacion": "Ingeniero Quimico",
+  "responsabilidades": [
+    "Desarrollar Materiales",
+    "Probar Productos"
+  ],
+  "role": {
+    "$oid": "66d77649d458301a4aba678c"
+  },
+  "createdAt": {
+    "$date": "2024-09-05T12:28:02.312Z"
+  },
+  "tokens": [
+    {
+      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ5YTNkMjg4MTFlNDRhZWE4YjFkZDYiLCJpYXQiOjE3MjU2MzQ3NDksImV4cCI6MTcyNTcyMTE0OX0.sVO_-t5dmdGS7WoYECtnp5fcb8QLT8x1fdW06P6ef9o",
+      "_id": {
+        "$oid": "66db18bd475cb19b3a1428c3"
+      }
+    }
+  ],
+  "__v": 9
+},
+{
+  "_id": {
+    "$oid": "66db13d669069f5a5b76ff44"
+  },
+  "nombre": "Cesar Alejandro",
+  "apellido": "Robles Matos",
+  "email": "moquetez671@gmail.com",
+  "password": "$2a$08$QZyUiXvdHfFLLWWcQwNXN..e75/6w9XVzZs4qnjjoDbOQ8h8/FTWy",
+  "especializacion": "Ingeniero de Software",
+  "responsabilidades": [
+    "Desarrollar de APIs",
+    "Probar EndPoints"
+  ],
+  "role": {
+    "$oid": "66d77649d458301a4aba678c"
+  },
+  "createdAt": {
+    "$date": "2024-09-06T14:38:14.221Z"
+  },
+  "tokens": [],
+  "__v": 2
+}]
