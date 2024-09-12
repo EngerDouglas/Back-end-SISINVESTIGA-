@@ -1,0 +1,494 @@
+{
+	"info": {
+		"_postman_id": "38676116-ec48-4d3c-85f0-709a1e52c1d2",
+		"name": "SISINVESTIGA API",
+		"description": "API para la gestion de publicaciones academicas, usuarios, roles y publicaciones en SISINVESTIGA.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "35172422"
+	},
+	"item": [
+		{
+			"name": "Crear Usuarios",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\": \"Cesar Alejandro\",\r\n    \"apellido\": \"Robles Matos\",\r\n    \"email\": \"moquetez671@gmail.com\",\r\n    \"password\": \"Carlos2527@\",\r\n    \"role\": \"66d77649d458301a4aba678c\",\r\n    \"especializacion\": \"Ingeniero de Software\",\r\n    \"responsabilidades\": [\"Desarrollar de APIs\", \"Probar EndPoints\"]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3005/api/users/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"api",
+						"users",
+						"register"
+					]
+				},
+				"description": "Crear un nuevo usuario en el sistema."
+			},
+			"response": []
+		},
+		{
+			"name": "Iniciar Sesion",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"castillox671@gmail.com\",\r\n    \"password\": \"Investiga123@\" \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3005/api/users/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"api",
+						"users",
+						"login"
+					]
+				},
+				"description": "Inicia sesion en el sistema."
+			},
+			"response": []
+		},
+		{
+			"name": "Cerrar Sesion",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3005/api/users/logout",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"api",
+						"users",
+						"logout"
+					]
+				},
+				"description": "Cierra la sesion de un usuario en el sistema.\n\nRequerimiento: Estar logeado en el sistema."
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener Roles",
+			"protocolProfileBehavior": {
+				"followOriginalHttpMethod": false,
+				"followAuthorizationHeader": false
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3005/api/roles",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"api",
+						"roles"
+					]
+				},
+				"description": "Obtenemos todos los roles que existen en la base de datos del Sistema.\n\nRequerimiento: Ser Administrador, Requerimiento: Estar logeado en el sistema."
+			},
+			"response": []
+		},
+		{
+			"name": "Crear Roles",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"roleName\": \"Admin\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3005/api/roles",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"api",
+						"roles"
+					]
+				},
+				"description": "Crea los roles del sistema.\n\nRequerimiento: Ser Administrador, Requerimiento: Estar logeado en el sistema.."
+			},
+			"response": []
+		},
+		{
+			"name": "Cerrar Sesiones",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3005/api/users/logout-all",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"api",
+						"users",
+						"logout-all"
+					]
+				},
+				"description": "Cierra la sesion de todos los dispositivos del usuario en el sistema.\n\nRequerimiento: Estar logeado en el sistema."
+			},
+			"response": []
+		},
+		{
+			"name": "Actualizar Usuario",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"currentPassword\": \"Carlos2527@\",\r\n    \"newPassword\": \"Investiga123@\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3005/api/users/66d7d4bca6f6b3707d261b33",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"api",
+						"users",
+						"66d7d4bca6f6b3707d261b33"
+					]
+				},
+				"description": "Actualiza los usuarios del sistema.\n\nRequerimiento: Estar logeado en el sistema.\n\nSe pueden actualizar campos especificos."
+			},
+			"response": []
+		},
+		{
+			"name": "Actualizar Roles",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"roleName\": \"Administrador\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3005/api/roles/66d86b15c58859de09db964a",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"api",
+						"roles",
+						"66d86b15c58859de09db964a"
+					]
+				},
+				"description": "Actualiza los roles del sistema.\n\nRequerimiento: Estar logeado en el sistema Y ser Administrador."
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener Usuarios Todos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3005/api/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"api",
+						"users"
+					]
+				},
+				"description": "Obtiene todos los usuarios registrados en el sistema.\n\nRequerimiento: Estar logeado en el sistema Y ser Administrador."
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener Usuario por ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3005/api/users/getuser/66d7d4bca6f6b3707d261b33",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"api",
+						"users",
+						"getuser",
+						"66d7d4bca6f6b3707d261b33"
+					]
+				},
+				"description": "Obtiene todos los usuarios registrados en el sistema por ID.\n\nRequerimiento: Estar logeado en el sistema Y ser Administrador."
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener tu propio Usuaro",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3005/api/users/me",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"api",
+						"users",
+						"me"
+					]
+				},
+				"description": "Obtener tu propio usuario para ver tu informacion.\n\nRequerimiento: Estar logeado en el sistema."
+			},
+			"response": []
+		},
+		{
+			"name": "Eiminar Roles",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3005/api/roles/66d8a81c2f7d28c4b133913f",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"api",
+						"roles",
+						"66d8a81c2f7d28c4b133913f"
+					]
+				},
+				"description": "Elimina un rol creado en el sistema.\n\nRequerimiento: Estar logeado en el sistema Y ser Administrador."
+			},
+			"response": []
+		},
+		{
+			"name": "Crear Publicacion",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"titulo\": \"Prueba de Delete 2\",\r\n  \"fecha\": \"2024-09-06\",\r\n  \"revista\": \"Revista Académica de APIs\",\r\n  \"resumen\": \"Estamos probando la API para ver su funcionalidad.\",\r\n  \"palabrasClave\": \"Software, Sistemas, Talendig\",\r\n  \"tipoPublicacion\": \"Articulo\",\r\n  \"anexos\": \"http://example.com/publicacion.pdf\",\r\n  \"idioma\": \"Español\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3005/api/publications",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"api",
+						"publications"
+					]
+				},
+				"description": "Crear una nueva publicacion.  \n  \nRequerimientos: Ser Investigador y estar logeado en el sistema."
+			},
+			"response": []
+		},
+		{
+			"name": "Actualizar Publicacion",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"resumen\": \"Probaremos el verbo PUT en la API\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3005/api/publications/66d9c308aab9b5db033457d1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"api",
+						"publications",
+						"66d9c308aab9b5db033457d1"
+					]
+				},
+				"description": "Actualizar una publicacion.\n\nRequerimientos: Ser Investigador y estar logeado en el sistema, ser el dueño de esa publicacion."
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener Todas las Publicaciones.",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3005/api/publications",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"api",
+						"publications"
+					]
+				},
+				"description": "Traer todas las publiaciones.  \n  \nNo se necesita estar logeado en el sistema, ni tener un rol en especifico."
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener Publicacion por ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3005/api/publications/getpublication/66d9c308aab9b5db033457d1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"api",
+						"publications",
+						"getpublication",
+						"66d9c308aab9b5db033457d1"
+					]
+				},
+				"description": "Traer una publiacion por ID.\n\nNo se necesita estar logeado en el sistema, ni tener un rol en especifico."
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener Publicaciones por Titulo",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3005/api/publications/titulo/SISINVESTIGA",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"api",
+						"publications",
+						"titulo",
+						"SISINVESTIGA"
+					]
+				},
+				"description": "Traer una publicacion por su titulo\n\nNo se necesita estar logeado en el sistema, ni tener un rol en especifico."
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar Publicacion",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3005/api/publications/66db1877732c34e9ba1c67c3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"api",
+						"publications",
+						"66db1877732c34e9ba1c67c3"
+					]
+				},
+				"description": "Eliminar una publicacion registrada.\n\nRequerimientos: la publicacion debe de existir, debe estar logeado en el sistema y se el owner de la publicacion o ser administrador."
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener Publicaciones Propias",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3005/api/publications/me",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"api",
+						"publications",
+						"me"
+					]
+				},
+				"description": "Consultamos nuestras publicaciones.\n\nRequerimientos: Estar logeado, ser el owner de la publicacion, tener publicaciones creadas."
+			},
+			"response": []
+		}
+	]
+}
