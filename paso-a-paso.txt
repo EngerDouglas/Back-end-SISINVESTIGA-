@@ -6,3 +6,24 @@
 
 - Instalar Postman.
   * Importar el archivo "SISINVESTIGA API.postman_collection", Esto tiene toda la documentacion de como usar nuestra api.
+
+  Usuarios y Claves
+
+  Administrator
+
+  {
+    "email": "castillox671@gmail.com",
+    "password": "Investiga123@" 
+}
+
+  Investigadores
+
+{
+    "email": "castilloz671@gmail.com",
+    "password": "Investiga123@" 
+}
+
+{
+    "email": "moquetez671@gmail.com",
+    "password": "Investiga123@" 
+}
