@@ -489,6 +489,132 @@
 				"description": "Consultamos nuestras publicaciones.\n\nRequerimientos: Estar logeado, ser el owner de la publicacion, tener publicaciones creadas."
 			},
 			"response": []
+		},
+		{
+			"name": "Crear Proyecto",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nombre\": \"Nuevo Proyecto\",\r\n  \"descripcion\": \"Descripción del nuevo proyecto\",\r\n  \"objetivos\": \"Objetivos del proyecto\",\r\n  \"presupuesto\": 10000,\r\n  \"cronograma\": {\r\n    \"fechaInicio\": \"2024-01-01T00:00:00.000Z\",\r\n    \"fechaFin\": \"2024-12-31T00:00:00.000Z\"\r\n  },\r\n  \"investigadores\": [\"64cbb0c759fe5c3503e4b8d9\"],\r\n  \"recursos\": [\"Recurso 1\", \"Recurso 2\"],\r\n  \"hitos\": [\r\n    {\r\n      \"nombre\": \"Hito 1\",\r\n      \"fecha\": \"2024-06-30T00:00:00.000Z\",\r\n      \"entregable\": \"Entregable 1\"\r\n    }\r\n  ],\r\n  \"estado\": \"Planeado\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3005/api/projects",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"api",
+						"projects"
+					]
+				},
+				"description": "Crear un nuevo proyecto."
+			},
+			"response": []
+		},
+		{
+			"name": "Actualizar Proyecto",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nombre\": \"Proyecto Actualizado\",\r\n  \"descripcion\": \"Descripción actualizada del proyecto\",\r\n  \"objetivos\": \"Objetivos actualizados\",\r\n  \"presupuesto\": 12000,\r\n  \"cronograma\": {\r\n    \"fechaInicio\": \"2024-01-01T00:00:00.000Z\",\r\n    \"fechaFin\": \"2024-12-31T00:00:00.000Z\"\r\n  },\r\n  \"investigadores\": [\"64cbb0c759fe5c3503e4b8d9\"],\r\n  \"recursos\": [\"Recurso 1\", \"Recurso 2\", \"Recurso 3\"],\r\n  \"hitos\": [\r\n    {\r\n      \"nombre\": \"Hito 1\",\r\n      \"fecha\": \"2024-06-30T00:00:00.000Z\",\r\n      \"entregable\": \"Entregable 1\"\r\n    }\r\n  ],\r\n  \"estado\": \"En Proceso\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3005/api/projects/64d9c308aab9b5db033457d1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"api",
+						"projects",
+						"64d9c308aab9b5db033457d1"
+					]
+				},
+				"description": "Actualizar un proyecto existente."
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener Todos los Proyectos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3005/api/projects",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"api",
+						"projects"
+					]
+				},
+				"description": "Obtener todos los proyectos."
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener Proyecto por ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3005/api/projects/64d9c308aab9b5db033457d1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"api",
+						"projects",
+						"64d9c308aab9b5db033457d1"
+					]
+				},
+				"description": "Obtener un proyecto por ID."
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar Proyecto",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3005/api/projects/64d9c308aab9b5db033457d1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"api",
+						"projects",
+						"64d9c308aab9b5db033457d1"
+					]
+				},
+				"description": "Eliminar un proyecto por ID."
+			},
+			"response": []
 		}
 	]
 }
