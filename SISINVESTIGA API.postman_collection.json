@@ -14,7 +14,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"nombre\": \"Cesar Alejandro\",\r\n    \"apellido\": \"Robles Matos\",\r\n    \"email\": \"moquetez671@gmail.com\",\r\n    \"password\": \"Investiga123@\",\r\n    \"role\": \"66d77649d458301a4aba678c\",\r\n    \"especializacion\": \"Ingeniero de Software\",\r\n    \"responsabilidades\": [\"Desarrollar de APIs\", \"Probar EndPoints\"]\r\n}",
+					"raw": "{\r\n    \"nombre\": \"Cesar Alejandro\",\r\n    \"apellido\": \"Robles Matos\",\r\n    \"email\": \"moquetez671@gmail.com\",\r\n    \"password\": \"Carlos2527@\",\r\n    \"role\": \"66d77649d458301a4aba678c\",\r\n    \"especializacion\": \"Ingeniero de Software\",\r\n    \"responsabilidades\": [\"Desarrollar de APIs\", \"Probar EndPoints\"]\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -45,7 +45,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"email\": \"castillox671@gmail.com\",\r\n    \"password\": \"Investiga123@\" \r\n}",
+					"raw": "{\r\n    \"email\": \"moquetez671@gmail.com\",\r\n    \"password\": \"Investiga123@\" \r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -175,7 +175,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"currentPassword\": \"Investiga123@\",\r\n    \"newPassword\": \"Investiga123@\"\r\n}",
+					"raw": "{\r\n    \"currentPassword\": \"Carlos2527@\",\r\n    \"newPassword\": \"Investiga123@\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -183,7 +183,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3005/api/users/66d7d4bca6f6b3707d261b33",
+					"raw": "http://localhost:3005/api/users/66db13d669069f5a5b76ff44",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -192,7 +192,7 @@
 					"path": [
 						"api",
 						"users",
-						"66d7d4bca6f6b3707d261b33"
+						"66db13d669069f5a5b76ff44"
 					]
 				},
 				"description": "Actualiza los usuarios del sistema.\n\nRequerimiento: Estar logeado en el sistema.\n\nSe pueden actualizar campos especificos."
@@ -325,7 +325,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"titulo\": \"Prueba de Delete 2\",\r\n  \"fecha\": \"2024-09-06\",\r\n  \"revista\": \"Revista Académica de APIs\",\r\n  \"resumen\": \"Estamos probando la API para ver su funcionalidad.\",\r\n  \"palabrasClave\": \"Software, Sistemas, Talendig\",\r\n  \"tipoPublicacion\": \"Articulo\",\r\n  \"anexos\": \"http://example.com/publicacion.pdf\",\r\n  \"idioma\": \"Español\"\r\n}",
+					"raw": "{\r\n  \"titulo\": \"Prueba de Delete 3\",\r\n  \"fecha\": \"2024-09-06\",\r\n  \"revista\": \"Revista Académica de APIs\",\r\n  \"resumen\": \"Estamos probando la API para ver su funcionalidad.\",\r\n  \"palabrasClave\": \"Software, Sistemas, Talendig\",\r\n  \"tipoPublicacion\": \"Articulo\",\r\n  \"anexos\": [\"https://example.com/file1.pdf\", \"https://example.com/file2.pdf\"],\r\n  \"idioma\": \"Español\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -355,7 +355,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"anexos\": [\"http://example.com/publicacion.pdf\", \"http://example2.com/publicacion.img\"]\r\n}",
+					"raw": "{\r\n    \"autores\": [\"66d9a3d28811e44aea8b1dd6\", \"66d7d4bca6f6b3707d261b33\"]\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -363,7 +363,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3005/api/publications/66d9f71976c4141cb4812abe",
+					"raw": "http://localhost:3005/api/publications/66e35095a8c45ab613a20231",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -372,7 +372,7 @@
 					"path": [
 						"api",
 						"publications",
-						"66d9f71976c4141cb4812abe"
+						"66e35095a8c45ab613a20231"
 					]
 				},
 				"description": "Actualizar una publicacion.\n\nRequerimientos: Ser Investigador y estar logeado en el sistema, ser el dueño de esa publicacion."
@@ -396,7 +396,7 @@
 						"publications"
 					]
 				},
-				"description": "Traer todas las publiaciones.  \n  \nNo se necesita estar logeado en el sistema, ni tener un rol en especifico."
+				"description": "Traer todas las publicaciones.\n\nNo se necesita estar logeado en el sistema, ni tener un rol en especifico."
 			},
 			"response": []
 		},
@@ -452,7 +452,7 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3005/api/publications/66db1877732c34e9ba1c67c3",
+					"raw": "http://localhost:3005/api/publications/66e34bf7fb7d9809cb3a4414",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -461,7 +461,7 @@
 					"path": [
 						"api",
 						"publications",
-						"66db1877732c34e9ba1c67c3"
+						"66e34bf7fb7d9809cb3a4414"
 					]
 				},
 				"description": "Eliminar una publicacion registrada.\n\nRequerimientos: la publicacion debe de existir, debe estar logeado en el sistema y se el owner de la publicacion o ser administrador."
@@ -491,13 +491,84 @@
 			"response": []
 		},
 		{
-			"name": "Crear Proyecto",
+			"name": "Obtener todos los Proyectos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3005/api/projects",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"api",
+						"projects"
+					]
+				},
+				"description": "Traer todas los proyectos.\n\nNo se necesita estar logeado en el sistema, ni tener un rol en especifico."
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener Proyecto por ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3005/api/projects/66d9f71976c4141cb4812abe",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"api",
+						"projects",
+						"66d9f71976c4141cb4812abe"
+					]
+				},
+				"description": "Traer un proyecto por ID.\n\nNo se necesita estar logeado en el sistema, ni tener un rol en especifico."
+			},
+			"response": []
+		},
+		{
+			"name": "Search Proyectos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3005/api/projects/search?query=investigación",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"api",
+						"projects",
+						"search"
+					],
+					"query": [
+						{
+							"key": "query",
+							"value": "investigación"
+						}
+					]
+				},
+				"description": "Traer un proyecto por parametros de busqueda.\n\nNo se necesita estar logeado en el sistema, ni tener un rol en especifico."
+			},
+			"response": []
+		},
+		{
+			"name": "Crear Proyectos",
 			"request": {
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"nombre\": \"Nuevo Proyecto\",\r\n  \"descripcion\": \"Descripción del nuevo proyecto\",\r\n  \"objetivos\": \"Objetivos del proyecto\",\r\n  \"presupuesto\": 10000,\r\n  \"cronograma\": {\r\n    \"fechaInicio\": \"2024-01-01T00:00:00.000Z\",\r\n    \"fechaFin\": \"2024-12-31T00:00:00.000Z\"\r\n  },\r\n  \"investigadores\": [\"64cbb0c759fe5c3503e4b8d9\"],\r\n  \"recursos\": [\"Recurso 1\", \"Recurso 2\"],\r\n  \"hitos\": [\r\n    {\r\n      \"nombre\": \"Hito 1\",\r\n      \"fecha\": \"2024-06-30T00:00:00.000Z\",\r\n      \"entregable\": \"Entregable 1\"\r\n    }\r\n  ],\r\n  \"estado\": \"Planeado\"\r\n}",
+					"raw": "{\r\n  \"nombre\": \"Nuevo Proyecto\",\r\n  \"descripcion\": \"Descripción del nuevo proyecto\",\r\n  \"objetivos\": \"Objetivos del proyecto\",\r\n  \"presupuesto\": 10000,\r\n  \"cronograma\": {\r\n    \"fechaInicio\": \"2024-01-01T00:00:00.000Z\",\r\n    \"fechaFin\": \"2024-12-31T00:00:00.000Z\"\r\n  },\r\n  \"investigadores\": [\"66d7d4bca6f6b3707d261b33\"],\r\n  \"recursos\": [\"Recurso 1\", \"Recurso 2\"],\r\n  \"hitos\": [\r\n    {\r\n      \"nombre\": \"Hito 1\",\r\n      \"fecha\": \"2024-06-30T00:00:00.000Z\",\r\n      \"entregable\": \"Entregable 1\"\r\n    }\r\n  ],\r\n  \"estado\": \"Planeado\"\r\n}\r\n",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -516,7 +587,7 @@
 						"projects"
 					]
 				},
-				"description": "Crear un nuevo proyecto."
+				"description": "Crear un nueva proyecto.\n\nRequerimientos: Ser Investigador y estar logeado en el sistema."
 			},
 			"response": []
 		},
@@ -547,50 +618,7 @@
 						"64d9c308aab9b5db033457d1"
 					]
 				},
-				"description": "Actualizar un proyecto existente."
-			},
-			"response": []
-		},
-		{
-			"name": "Obtener Todos los Proyectos",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:3005/api/projects",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3005",
-					"path": [
-						"api",
-						"projects"
-					]
-				},
-				"description": "Obtener todos los proyectos."
-			},
-			"response": []
-		},
-		{
-			"name": "Obtener Proyecto por ID",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:3005/api/projects/64d9c308aab9b5db033457d1",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3005",
-					"path": [
-						"api",
-						"projects",
-						"64d9c308aab9b5db033457d1"
-					]
-				},
-				"description": "Obtener un proyecto por ID."
+				"description": "Actualizar un proyecto.\n\nRequerimientos: Ser Investigador y estar logeado en el sistema."
 			},
 			"response": []
 		},
@@ -612,7 +640,7 @@
 						"64d9c308aab9b5db033457d1"
 					]
 				},
-				"description": "Eliminar un proyecto por ID."
+				"description": "Eliminar una publicacion registrada.\n\nRequerimientos: la publicacion debe de existir, debe estar logeado en el sistema y ser administrador."
 			},
 			"response": []
 		}
