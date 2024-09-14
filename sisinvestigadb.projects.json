@@ -1,153 +1,150 @@
-[
-    {
-      "_id": {
-        "$oid": "66d9f71976c4141cb4812abe"
-      },
-      "nombre": "Proyecto SISINVESTIGA",
-      "descripcion": "Sistema para la gestión integral de investigaciones en UCSD.",
-      "objetivos": "Desarrollar un sistema eficiente de gestión de investigaciones.",
-      "presupuesto": 10000,
-      "cronograma": {
-        "fechaInicio": {
-          "$date": "2024-09-01T00:00:00.000Z"
-        },
-        "fechaFin": {
-          "$date": "2024-12-31T00:00:00.000Z"
-        }
-      },
-      "investigadores": [
-        {
-          "$oid": "66d7d4bca6f6b3707d261b33"
-        }
-      ],
-      "recursos": [
-        "Servidor de base de datos",
-        "Herramientas de desarrollo"
-      ],
-      "hitos": [
-        {
-          "nombre": "Análisis de requerimientos",
-          "fecha": {
-            "$date": "2024-09-15T00:00:00.000Z"
-          },
-          "entregable": "Documento de requerimientos"
-        },
-        {
-          "nombre": "Desarrollo de prototipo",
-          "fecha": {
-            "$date": "2024-10-15T00:00:00.000Z"
-          },
-          "entregable": "Prototipo funcional"
-        }
-      ],
-      "estado": "En Proceso",
-      "createdAt": {
-        "$date": "2024-09-05T18:23:21.340Z"
-      },
-      "updatedAt": {
-        "$date": "2024-09-05T18:23:21.340Z"
-      },
-      "__v": 1
+[{
+  "_id": {
+    "$oid": "66d9f71976c4141cb4812abe"
+  },
+  "nombre": "Proyecto SISINVESTIGA",
+  "descripcion": "Sistema para la gestión integral de investigaciones en UCSD.",
+  "objetivos": "Desarrollar un sistema eficiente de gestión de investigaciones.",
+  "presupuesto": 10000,
+  "cronograma": {
+    "fechaInicio": {
+      "$date": "2024-09-01T00:00:00.000Z"
     },
-    {
-      "_id": {
-        "$oid": "66db143269069f5a5b76ff4f"
-      },
-      "nombre": "Investigación sobre APIs",
-      "descripcion": "Un estudio detallado sobre las mejores prácticas en el diseño de APIs.",
-      "objetivos": "Desarrollar un marco de trabajo para construir APIs eficientes.",
-      "presupuesto": 15000,
-      "cronograma": {
-        "fechaInicio": {
-          "$date": "2024-09-10T00:00:00.000Z"
-        },
-        "fechaFin": {
-          "$date": "2024-11-30T00:00:00.000Z"
-        }
-      },
-      "investigadores": [
-        {
-          "$oid": "66db13d669069f5a5b76ff44"
-        }
-      ],
-      "recursos": [
-        "Software de pruebas",
-        "Biblioteca de APIs"
-      ],
-      "hitos": [
-        {
-          "nombre": "Definición de arquitectura",
-          "fecha": {
-            "$date": "2024-09-20T00:00:00.000Z"
-          },
-          "entregable": "Documento de arquitectura"
-        },
-        {
-          "nombre": "Pruebas iniciales",
-          "fecha": {
-            "$date": "2024-10-20T00:00:00.000Z"
-          },
-          "entregable": "Informe de pruebas"
-        }
-      ],
-      "estado": "Planeado",
-      "createdAt": {
-        "$date": "2024-09-06T14:39:46.608Z"
-      },
-      "updatedAt": {
-        "$date": "2024-09-06T14:39:46.608Z"
-      },
-      "__v": 1
-    },
-    {
-      "_id": {
-        "$oid": "66db19d7ac4e6e65b64c921d"
-      },
-      "nombre": "Investigación sobre Software",
-      "descripcion": "Un estudio sobre metodologías ágiles en desarrollo de software.",
-      "objetivos": "Implementar metodologías ágiles en proyectos de gran escala.",
-      "presupuesto": 20000,
-      "cronograma": {
-        "fechaInicio": {
-          "$date": "2024-09-05T00:00:00.000Z"
-        },
-        "fechaFin": {
-          "$date": "2025-01-15T00:00:00.000Z"
-        }
-      },
-      "investigadores": [
-        {
-          "$oid": "66d9a3d28811e44aea8b1dd6"
-        }
-      ],
-      "recursos": [
-        "Software de gestión de proyectos",
-        "Equipo de pruebas"
-      ],
-      "hitos": [
-        {
-          "nombre": "Capacitación del equipo",
-          "fecha": {
-            "$date": "2024-09-15T00:00:00.000Z"
-          },
-          "entregable": "Certificación de capacitación"
-        },
-        {
-          "nombre": "Primera entrega",
-          "fecha": {
-            "$date": "2024-11-01T00:00:00.000Z"
-          },
-          "entregable": "Módulo funcional"
-        }
-      ],
-      "estado": "En Proceso",
-      "createdAt": {
-        "$date": "2024-09-06T15:03:51.604Z"
-      },
-      "updatedAt": {
-        "$date": "2024-09-06T15:03:51.604Z"
-      },
-      "__v": 1
+    "fechaFin": {
+      "$date": "2024-12-31T00:00:00.000Z"
     }
-  ]
-  
+  },
+  "investigadores": [
+    {
+      "$oid": "66d7d4bca6f6b3707d261b33"
+    }
+  ],
+  "recursos": [
+    "Servidor de base de datos",
+    "Herramientas de desarrollo"
+  ],
+  "hitos": [
+    {
+      "nombre": "Análisis de requerimientos",
+      "fecha": {
+        "$date": "2024-09-15T00:00:00.000Z"
+      },
+      "entregable": "Documento de requerimientos"
+    },
+    {
+      "nombre": "Desarrollo de prototipo",
+      "fecha": {
+        "$date": "2024-10-15T00:00:00.000Z"
+      },
+      "entregable": "Prototipo funcional"
+    }
+  ],
+  "estado": "En Proceso",
+  "createdAt": {
+    "$date": "2024-09-05T18:23:21.340Z"
+  },
+  "updatedAt": {
+    "$date": "2024-09-05T18:23:21.340Z"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "66db143269069f5a5b76ff4f"
+  },
+  "nombre": "Investigación sobre APIs",
+  "descripcion": "Un estudio detallado sobre las mejores prácticas en el diseño de APIs.",
+  "objetivos": "Desarrollar un marco de trabajo para construir APIs eficientes.",
+  "presupuesto": 15000,
+  "cronograma": {
+    "fechaInicio": {
+      "$date": "2024-09-10T00:00:00.000Z"
+    },
+    "fechaFin": {
+      "$date": "2024-11-30T00:00:00.000Z"
+    }
+  },
+  "investigadores": [
+    {
+      "$oid": "66db13d669069f5a5b76ff44"
+    }
+  ],
+  "recursos": [
+    "Software de pruebas",
+    "Biblioteca de APIs"
+  ],
+  "hitos": [
+    {
+      "nombre": "Definición de arquitectura",
+      "fecha": {
+        "$date": "2024-09-20T00:00:00.000Z"
+      },
+      "entregable": "Documento de arquitectura"
+    },
+    {
+      "nombre": "Pruebas iniciales",
+      "fecha": {
+        "$date": "2024-10-20T00:00:00.000Z"
+      },
+      "entregable": "Informe de pruebas"
+    }
+  ],
+  "estado": "Planeado",
+  "createdAt": {
+    "$date": "2024-09-06T14:39:46.608Z"
+  },
+  "updatedAt": {
+    "$date": "2024-09-06T14:39:46.608Z"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "66db19d7ac4e6e65b64c921d"
+  },
+  "nombre": "Investigación sobre Software",
+  "descripcion": "Un estudio sobre metodologías ágiles en desarrollo de software.",
+  "objetivos": "Implementar metodologías ágiles en proyectos de gran escala.",
+  "presupuesto": 20000,
+  "cronograma": {
+    "fechaInicio": {
+      "$date": "2024-09-05T00:00:00.000Z"
+    },
+    "fechaFin": {
+      "$date": "2025-01-15T00:00:00.000Z"
+    }
+  },
+  "investigadores": [
+    {
+      "$oid": "66d9a3d28811e44aea8b1dd6"
+    }
+  ],
+  "recursos": [
+    "Software de gestión de proyectos",
+    "Equipo de pruebas"
+  ],
+  "hitos": [
+    {
+      "nombre": "Capacitación del equipo",
+      "fecha": {
+        "$date": "2024-09-15T00:00:00.000Z"
+      },
+      "entregable": "Certificación de capacitación"
+    },
+    {
+      "nombre": "Primera entrega",
+      "fecha": {
+        "$date": "2024-11-01T00:00:00.000Z"
+      },
+      "entregable": "Módulo funcional"
+    }
+  ],
+  "estado": "En Proceso",
+  "createdAt": {
+    "$date": "2024-09-06T15:03:51.604Z"
+  },
+  "updatedAt": {
+    "$date": "2024-09-06T15:03:51.604Z"
+  },
+  "__v": 1
+}]

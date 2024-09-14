@@ -1,67 +1,5 @@
 [{
   "_id": {
-    "$oid": "66d9f71976c4141cb4812abe"
-  },
-  "titulo": "SISINVESTIGA",
-  "fecha": {
-    "$date": "2024-09-04T00:00:00.000Z"
-  },
-  "autores": [
-    {
-      "$oid": "66d7d4bca6f6b3707d261b33"
-    }
-  ],
-  "revista": "Revista Académica de Investigación",
-  "resumen": "Estamos probando la API para ver su funcionalidad.",
-  "palabrasClave": "Investigación, Ciencia, Universidad",
-  "tipoPublicacion": "Articulo",
-  "estado": "Borrador",
-  "anexos": [
-    "http://example.com/publicacion.pdf",
-    "http://example2.com/publicacion.img"
-  ],
-  "idioma": "Español",
-  "createdAt": {
-    "$date": "2024-09-05T18:23:21.340Z"
-  },
-  "updatedAt": {
-    "$date": "2024-09-05T18:23:21.340Z"
-  },
-  "__v": 1
-},
-{
-  "_id": {
-    "$oid": "66db143269069f5a5b76ff4f"
-  },
-  "titulo": "Prueba de Delete",
-  "fecha": {
-    "$date": "2024-09-06T00:00:00.000Z"
-  },
-  "autores": [
-    {
-      "$oid": "66db13d669069f5a5b76ff44"
-    }
-  ],
-  "revista": "Revista Académica de APIs",
-  "resumen": "Estamos probando la API para ver su funcionalidad.",
-  "palabrasClave": "Software, Sistemas, Talendig",
-  "tipoPublicacion": "Articulo",
-  "estado": "Borrador",
-  "anexos": [
-    "http://example.com/publicacion.pdf",
-    "http://example2.com/publicacion.img"
-  ],
-  "idioma": "Español",
-  "createdAt": {
-    "$date": "2024-09-06T14:39:46.608Z"
-  },
-  "updatedAt": {
-    "$date": "2024-09-06T14:39:46.608Z"
-  },
-  "__v": 1
-},
-{
-  "_id": {
     "$oid": "66db1877732c34e9ba1c67c3"
   },
   "titulo": "Prueba de Delete",
@@ -93,15 +31,21 @@
 },
 {
   "_id": {
-    "$oid": "66db19d7ac4e6e65b64c921d"
+    "$oid": "66e35095a8c45ab613a20231"
   },
-  "titulo": "Prueba de Delete 2",
+  "titulo": "Prueba de Delete 3",
   "fecha": {
     "$date": "2024-09-06T00:00:00.000Z"
   },
   "autores": [
     {
+      "$oid": "66db13d669069f5a5b76ff44"
+    },
+    {
       "$oid": "66d9a3d28811e44aea8b1dd6"
+    },
+    {
+      "$oid": "66d7d4bca6f6b3707d261b33"
     }
   ],
   "revista": "Revista Académica de APIs",
@@ -110,15 +54,54 @@
   "tipoPublicacion": "Articulo",
   "estado": "Borrador",
   "anexos": [
-    "http://example.com/publicacion.pdf",
-    "http://example2.com/publicacion.img"
+    "https://example.com/file1.pdf",
+    "https://example.com/file2.pdf"
   ],
   "idioma": "Español",
   "createdAt": {
-    "$date": "2024-09-06T15:03:51.604Z"
+    "$date": "2024-09-12T20:35:33.147Z"
   },
   "updatedAt": {
-    "$date": "2024-09-06T15:03:51.604Z"
+    "$date": "2024-09-12T20:35:33.147Z"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "66e59c936ccc55df8408d5f3"
+  },
+  "titulo": "Prueba De Proyecto",
+  "fecha": {
+    "$date": "2024-09-14T00:00:00.000Z"
+  },
+  "autores": [
+    {
+      "$oid": "66db13d669069f5a5b76ff44"
+    }
+  ],
+  "proyecto": [
+    {
+      "$oid": "66db19d7ac4e6e65b64c921d"
+    },
+    {
+      "$oid": "66db143269069f5a5b76ff4f"
+    }
+  ],
+  "revista": "Revista Académica de APIs",
+  "resumen": "Estamos probando la API para ver su funcionalidad.",
+  "palabrasClave": "Software, Sistemas, Talendig",
+  "tipoPublicacion": "Articulo",
+  "estado": "Borrador",
+  "anexos": [
+    "https://example.com/file1.pdf",
+    "https://example.com/file2.pdf"
+  ],
+  "idioma": "Español",
+  "createdAt": {
+    "$date": "2024-09-14T14:24:19.137Z"
+  },
+  "updatedAt": {
+    "$date": "2024-09-14T14:24:19.137Z"
   },
   "__v": 1
 }]
