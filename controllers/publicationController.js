@@ -8,7 +8,7 @@ export const createPublication = async (req, res) => {
     const {
       titulo,
       fecha,
-      // proyecto,
+      proyecto,
       revista,
       resumen,
       palabrasClave,
@@ -19,7 +19,7 @@ export const createPublication = async (req, res) => {
     } = req.body
 
     // Validaciones que deben hacerse
-    if (!titulo || !fecha ||!revista || !tipoPublicacion || !idioma) {
+    if (!titulo || !fecha ||!proyecto ||!revista || !tipoPublicacion || !idioma) {
       return res.status(400).json({ error: 'Todos los campos proporcionados deben ser proporcionados' })
     }
 
@@ -68,6 +68,7 @@ export const updatePublication = async (req, res) => {
     const allowedUpdates = [
       'titulo',
       'fecha',
+      'proyecto',
       'revista',
       'resumen',
       'palabrasClave',
@@ -161,6 +162,10 @@ export const getAllPublications = async (req, res) => {
       }
     })
     .select('-_id -__v')
+    .populate({
+      path: 'proyecto',
+      select: '-_id',
+    })
     res.status(200).json(publications)
   } catch (error) {
     res.status(500).json({ message: 'Error en la consulta de las Publiaciones', error: error.message })
@@ -186,7 +191,11 @@ export const getUserPublications = async (req, res) => {
           select: '-_id -__v',
         },
       })
-      .select('-_id -__v');
+      .select('-_id -__v')
+      .populate({
+        path: 'proyecto',
+        select: '-_id',
+      })
 
     // Verificamos si nuestro usuario tiene publicaciones, en caso de tener no puede eliminarse
     if (!userPublications || userPublications.length === 0) {
@@ -219,6 +228,10 @@ export const getPubById = async (req, res) => {
       }
     })
     .select('-_id -__v')
+    .populate({
+      path: 'proyecto',
+      select: '-_id',
+    })
 
     if (!publication) {
       return res.status(404).json({ error: 'Publicacion no encontrada' })
@@ -249,6 +262,10 @@ export const getPubByTitle = async (req, res) => {
       }
     })
     .select('-_id -__v')
+    .populate({
+      path: 'proyecto',
+      select: '-_id',
+    })
 
     if (publication.length === 0) {
       return res.status(404).json({ error: 'Publicacion no encontrada con el titulo suministrado' })

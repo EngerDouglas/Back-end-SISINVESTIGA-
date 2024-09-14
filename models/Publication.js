@@ -15,11 +15,11 @@ const publicationSchema = mongoose.Schema({
     ref: 'User', // Referencia al modelo que tenemos de User
     required: true
   }],
-  // proyecto: [{ Esta parte esta comentada ya que otro companero trabaja este modelo.
-  //   type: mongoose.Schema.Types.ObjectId, 
-  //   ref: 'Project',
-  //   required: true
-  // }],
+  proyecto: [{ 
+    type: mongoose.Schema.Types.ObjectId, 
+    ref: 'Project',
+    required: true
+  }],
   revista: {
     type: String,
     required: true,

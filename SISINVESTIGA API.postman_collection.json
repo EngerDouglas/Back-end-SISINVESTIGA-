@@ -325,7 +325,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"titulo\": \"Prueba de Delete 3\",\r\n  \"fecha\": \"2024-09-06\",\r\n  \"revista\": \"Revista Académica de APIs\",\r\n  \"resumen\": \"Estamos probando la API para ver su funcionalidad.\",\r\n  \"palabrasClave\": \"Software, Sistemas, Talendig\",\r\n  \"tipoPublicacion\": \"Articulo\",\r\n  \"anexos\": [\"https://example.com/file1.pdf\", \"https://example.com/file2.pdf\"],\r\n  \"idioma\": \"Español\"\r\n}",
+					"raw": "{\r\n  \"titulo\": \"Prueba De Proyecto\",\r\n  \"fecha\": \"2024-09-14\",\r\n  \"proyecto\" : [\"66d9f71976c4141cb4812abe\"],\r\n  \"revista\": \"Revista Académica de APIs\",\r\n  \"resumen\": \"Estamos probando la API para ver su funcionalidad.\",\r\n  \"palabrasClave\": \"Software, Sistemas, Talendig\",\r\n  \"tipoPublicacion\": \"Articulo\",\r\n  \"anexos\": [\"https://example.com/file1.pdf\", \"https://example.com/file2.pdf\"],\r\n  \"idioma\": \"Español\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -355,7 +355,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"autores\": [\"66d9a3d28811e44aea8b1dd6\", \"66d7d4bca6f6b3707d261b33\"]\r\n}",
+					"raw": "{\r\n    \"proyecto\": [\"66db19d7ac4e6e65b64c921d\", \"66db143269069f5a5b76ff4f\" ]\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -363,7 +363,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3005/api/publications/66e35095a8c45ab613a20231",
+					"raw": "http://localhost:3005/api/publications/66e59c936ccc55df8408d5f3",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -372,7 +372,7 @@
 					"path": [
 						"api",
 						"publications",
-						"66e35095a8c45ab613a20231"
+						"66e59c936ccc55df8408d5f3"
 					]
 				},
 				"description": "Actualizar una publicacion.\n\nRequerimientos: Ser Investigador y estar logeado en el sistema, ser el dueño de esa publicacion."
@@ -406,7 +406,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3005/api/publications/getpublication/66d9c308aab9b5db033457d1",
+					"raw": "http://localhost:3005/api/publications/getpublication/66e59c936ccc55df8408d5f3",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -416,7 +416,7 @@
 						"api",
 						"publications",
 						"getpublication",
-						"66d9c308aab9b5db033457d1"
+						"66e59c936ccc55df8408d5f3"
 					]
 				},
 				"description": "Traer una publiacion por ID.\n\nNo se necesita estar logeado en el sistema, ni tener un rol en especifico."
