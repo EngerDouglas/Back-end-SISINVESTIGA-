@@ -4,12 +4,14 @@ const projectSchema = mongoose.Schema({
   nombre: {
     type: String,
     required: true,
-    trim: true
+    trim: true,
+    text: true,  // Añadir índice de texto
   },
   descripcion: {
     type: String,
     required: true,
-    trim: true
+    trim: true,
+    text: true,  // Añadir índice de texto
   },
   objetivos: {
     type: String,

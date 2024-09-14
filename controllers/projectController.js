@@ -1,4 +1,5 @@
-import Proyecto from '../models/Proyecto.js';  // Asumiendo que ya tienes un modelo Proyecto
+import mongoose from 'mongoose';
+import Project from '../models/Project.js';  // Asumiendo que ya tienes un modelo Proyecto
 import { validationResult } from 'express-validator';
 
 // **************************** Crear Proyecto ************************************************* //
@@ -26,7 +27,7 @@ export const createProyecto = async (req, res, next) => {
       return res.status(403).json({ error: 'No tienes permisos para crear proyectos' });
     }
 
-    const newProyecto = new Proyecto({
+    const newProyecto = new Project({
       titulo,
       descripcion,
       fechaInicio,
@@ -63,7 +64,7 @@ export const updateProyecto = async (req, res, next) => {
     }
 
     // Revisar si el proyecto existe
-    const proyecto = await Proyecto.findById(id);
+    const proyecto = await Project.findById(id);
     if (!proyecto) {
       return res.status(404).json({ error: 'Proyecto no encontrado' });
     }
@@ -116,7 +117,7 @@ export const deleteProyecto = async (req, res, next) => {
 
   try {
     // Verificar si el proyecto existe
-    const proyecto = await Proyecto.findById(id);
+    const proyecto = await Project.findById(id);
     if (!proyecto) {
       return res.status(404).json({ error: 'Proyecto no encontrado' });
     }
@@ -141,22 +142,22 @@ export const deleteProyecto = async (req, res, next) => {
 // **************************** Obtener todos los Proyectos con Paginación y Filtrado ************************************************* //
 export const getAllProyectos = async (req, res, next) => {
   try {
-    const { page = 1, limit = 10, estado, titulo } = req.query;
+    const { page = 1, limit = 10, estado, nombre } = req.query;
 
     // Filtros básicos
-    const filter = { isDeleted: false };
+    const filter = {};
     if (estado) filter.estado = estado;
-    if (titulo) filter.titulo = new RegExp(titulo, 'i'); // Búsqueda por texto
+    if (nombre) filter.nombre = new RegExp(nombre, 'i'); // Búsqueda por texto en 'nombre'
 
     // Paginación
-    const proyectos = await Proyecto.find(filter)
+    const proyectos = await Project.find(filter)
       .skip((page - 1) * limit)
       .limit(Number(limit))
       .populate('investigadores', 'nombre apellido');
 
     res.status(200).json(proyectos);
   } catch (error) {
-    next(error);
+    res.status(500).json({ message: 'Error al obtener los proyectos', error: error.message });
   }
 };
 // **************************** END ************************************************ //
@@ -167,7 +168,7 @@ export const getProyectoById = async (req, res, next) => {
   const { id } = req.params;
 
   try {
-    const proyecto = await Proyecto.findById(id).populate('investigadores', 'nombre apellido');
+    const proyecto = await Project.findById(id).populate('investigadores', 'nombre apellido');
     if (!proyecto || proyecto.isDeleted) {
       return res.status(404).json({ error: 'Proyecto no encontrado' });
     }
@@ -185,10 +186,9 @@ export const searchProyectos = async (req, res, next) => {
   const { query } = req.query;
 
   try {
-    // Búsqueda por texto completo (titulo y descripción)
-    const proyectos = await Proyecto.find({
-      $text: { $search: query },
-      isDeleted: false
+    // Búsqueda por texto completo (nombre y descripción)
+    const proyectos = await Project.find({
+      $text: { $search: query }
     }).populate('investigadores', 'nombre apellido');
 
     if (proyectos.length === 0) {

@@ -6,7 +6,7 @@ import helmet from 'helmet'
 import { corsMiddleware } from './middlewares/cors.js'
 import RolesRouter from './routes/roleRoute.js'
 import UsersRouter from './routes/userRoute.js'
-import ProyectosRouter from './routes/proyectosRouter.js'
+import ProjectRouter from './routes/projectRouter.js'
 import PublicationsRouter from './routes/publicationRoute.js'
 import './config/db.js'
 
@@ -27,7 +27,7 @@ app.use(helmet())
 
 app.use('/api/roles', RolesRouter)
 app.use('/api/users', UsersRouter)
-app.use('/api/projects', ProyectosRouter)
+app.use('/api/projects', ProjectRouter)
 app.use('/api/publications', PublicationsRouter)
 
 

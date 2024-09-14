@@ -17,7 +17,7 @@ const publicationSchema = mongoose.Schema({
   }],
   // proyecto: [{ Esta parte esta comentada ya que otro companero trabaja este modelo.
   //   type: mongoose.Schema.Types.ObjectId, 
-  //   ref: 'Proyecto',
+  //   ref: 'Project',
   //   required: true
   // }],
   revista: {
