@@ -1,7 +1,7 @@
 - Instalar mongo compass.
   * crear una Conexion debe de llamarse SISINVESTIGA.
   * Dentro de la Conexion, crear una base de datos debe de llamarse "sisinvestigadb" para que no haya errores con la Base de Datos.
-  * Crear tres colecciones, "roles, publications, users".
+  * Crear tres colecciones, "roles, publications, users, proyecto".
   * Importar cada uno de los json que estan en este proyecto en su respectiva coleccion si desean tener los mismos datos en caso contrario registrarse y empezar desde cero con postman.
 
 - Instalar Postman.
