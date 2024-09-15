@@ -5,7 +5,7 @@ import validator from 'validator'
 
 // *********************** Creando el Usuario ******************* //
 export const createUser = async (req, res) => {
-  const { nombre, apellido, email, password, role, especializacion, responsabilidades } = req.body
+  const { nombre, apellido, email, password, roleName, especializacion, responsabilidades } = req.body
 
   try {
     // Verifiquemos si hay un usuario registrado
@@ -14,11 +14,20 @@ export const createUser = async (req, res) => {
       return res.status(409).json({ error: 'El usuario ya existe' })
     }
 
-    //Validemos si el rol proporcionado existe en la base de datos
-    const existRole = await Role.findById(role)
-    if (!existRole) {
+    // //Validemos si el rol proporcionado existe en la base de datos
+    // const existRole = await Role.findById(role)
+    // if (!existRole) {
+    //   return res.status(400).json({ error: 'Rol no valido' })
+    // }
+
+    // Buscaremos el rol por el nombre
+    const roleDocument = await Role.findOne({roleName: roleName })
+
+    if (!roleDocument) {
       return res.status(400).json({ error: 'Rol no valido' })
     }
+
+    const roleId = roleDocument._id
 
     // Crear a nuestro usuario
     const newUser = new User({
@@ -26,7 +35,7 @@ export const createUser = async (req, res) => {
       apellido,
       email,
       password,
-      role,
+      role: roleId,
       especializacion,
       responsabilidades
     })
@@ -113,7 +122,16 @@ export const updateUser = async (req, res) => {
 // *********************** Buscar tu propio usuario ******************* //
 
 export const getUser = async (req, res) => {
-  res.send(req.user)
+  try {
+    const user = await User.findById(req.user._id)
+      .select('-password -tokens') // Excluimos campos de seguridad que no deberian verse
+      .populate('role', 'roleName -_id') 
+      .populate('proyectos');
+
+    res.status(200).json(user)
+  } catch (error) {
+    res.status(500).json({ message: 'Error al obtener el usuario', error: error.message })
+  }
 }
 
 // ****************************** END *************************** //
@@ -123,7 +141,7 @@ export const getUser = async (req, res) => {
 
 export const getAllUsers = async (req, res) => {
   try {
-    const users = await User.find().populate('role', 'roleName -_id').select('-__v')
+    const users = await User.find().populate('role', 'roleName -_id').select('-__v').populate('proyectos');
     res.status(200).json(users)
   } catch (error) {
     res.status(500).send({ message: 'Error en la consulta de usuarios', error: error.message })
@@ -138,8 +156,9 @@ export const getUserById = async (req, res) => {
   try {
     const { id } = req.params
     const user = await User.findById(id)
-      .select('-_id -__v')
+      .select('-__v')
       .populate('role', 'roleName -_id')
+      .populate('proyectos', '-_id');
 
     if (!user) {
       return res.status(404).json({ error: 'Usuario no encontrado' })

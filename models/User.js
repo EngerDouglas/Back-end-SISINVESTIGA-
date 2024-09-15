@@ -60,9 +60,9 @@ const userSchema = mongoose.Schema({
     ref: 'Role', // Referencia a nuestro modelo Role
     required: true,
   },
-  // proyectos: [{ Esta parte esta comentada ya que otro companero trabaja este modelo.
+  // proyectos: [{
   //   type: mongoose.Schema.Types.ObjectId, 
-  //   ref: 'Proyecto'
+  //   ref: 'Project'
   // }],
   createdAt: {
     type: Date,
@@ -73,8 +73,18 @@ const userSchema = mongoose.Schema({
       type: String,
       required: true
     }
-  }]
-})
+  }],
+}, {
+  toJSON: { virtuals: true },
+  toObject: { virtuals: true },
+});
+
+// Agregamos la propiedad virtual 'proyectos'
+userSchema.virtual('proyectos', {
+  ref: 'Project',
+  localField: '_id',
+  foreignField: 'investigadores',
+});
 
 // Vamos a eliminar las propiedades sensibles al convertir nuestro json
 userSchema.methods.toJSON = function () {  

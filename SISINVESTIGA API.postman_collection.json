@@ -1,10 +1,10 @@
 {
 	"info": {
-		"_postman_id": "38676116-ec48-4d3c-85f0-709a1e52c1d2",
+		"_postman_id": "7ac0ccd1-5e7a-4a2b-8edb-ec991505b181",
 		"name": "SISINVESTIGA API",
 		"description": "API para la gestion de publicaciones academicas, usuarios, roles y publicaciones en SISINVESTIGA.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "35172422"
+		"_exporter_id": "33731987"
 	},
 	"item": [
 		{
@@ -14,7 +14,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"nombre\": \"Cesar Alejandro\",\r\n    \"apellido\": \"Robles Matos\",\r\n    \"email\": \"moquetez671@gmail.com\",\r\n    \"password\": \"Carlos2527@\",\r\n    \"role\": \"66d77649d458301a4aba678c\",\r\n    \"especializacion\": \"Ingeniero de Software\",\r\n    \"responsabilidades\": [\"Desarrollar de APIs\", \"Probar EndPoints\"]\r\n}",
+					"raw": "{\r\n    \"nombre\": \"Engel\",\r\n    \"apellido\": \"Douglas\",\r\n    \"email\": \"engeldg@gmail.com\",\r\n    \"password\": \"Investiga123@\",\r\n    \"roleName\": \"Investigador\",\r\n    \"especializacion\": \"Ingeniero de Software\",\r\n    \"responsabilidades\": [\"Desarrollar de APIs\", \"Probar EndPoints\"]\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -45,7 +45,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"email\": \"moquetez671@gmail.com\",\r\n    \"password\": \"Investiga123@\" \r\n}",
+					"raw": "{\r\n    \"email\": \"engeldg@gmail.com\",\r\n    \"password\": \"Investiga123@\" \r\n}",
 					"options": {
 						"raw": {
 							"language": "json"

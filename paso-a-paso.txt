@@ -24,6 +24,18 @@
 }
 
 {
+    "email": "engeldg@gmail.com",
+    "password": "Investiga123@" 
+}
+
+{
     "email": "moquetez671@gmail.com",
     "password": "Investiga123@" 
 }
+
+*************** Roles *************************
+
+              Administrator
+              Investigador
+              Colaborador
+              Asistente

@@ -29,10 +29,10 @@ const publicationSchema = mongoose.Schema({
     type: String,
     trim: true
   },
-  palabrasClave: {
+  palabrasClave: [{
     type: String,
     trim: true
-  },
+  }],
   tipoPublicacion: {
     type: String,
     enum: ['Articulo', 'Informe', 'Tesis', 'Presentacion', 'Otro'], // Tipos de publicaciones
