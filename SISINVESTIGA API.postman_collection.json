@@ -14,7 +14,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"nombre\": \"Engel\",\r\n    \"apellido\": \"Douglas\",\r\n    \"email\": \"engeldg@gmail.com\",\r\n    \"password\": \"Investiga123@\",\r\n    \"roleName\": \"Investigador\",\r\n    \"especializacion\": \"Ingeniero de Software\",\r\n    \"responsabilidades\": [\"Desarrollar de APIs\", \"Probar EndPoints\"]\r\n}",
+					"raw": "{\r\n    \"nombre\": \"Engel\",\r\n    \"apellido\": \"Douglas\",\r\n    \"email\": \"engeldg@gmail.com\",\r\n    \"password\": \"Investiga123@\",\r\n    \"especializacion\": \"Ingeniero de Software\",\r\n    \"responsabilidades\": [\"Desarrollar de APIs\", \"Probar EndPoints\"]\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"

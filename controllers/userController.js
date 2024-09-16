@@ -5,13 +5,13 @@ import validator from 'validator'
 
 // *********************** Creando el Usuario ******************* //
 export const createUser = async (req, res) => {
-  const { nombre, apellido, email, password, roleName, especializacion, responsabilidades } = req.body
+  const { nombre, apellido, email, password, especializacion, responsabilidades } = req.body
 
   try {
     // Verifiquemos si hay un usuario registrado
     const existUser = await User.findOne({ email })
     if (existUser) {
-      return res.status(409).json({ error: 'El usuario ya existe' })
+      return res.status(409).json({ error: 'El email colocado ya existe.' })
     }
 
     // //Validemos si el rol proporcionado existe en la base de datos
@@ -21,10 +21,10 @@ export const createUser = async (req, res) => {
     // }
 
     // Buscaremos el rol por el nombre
-    const roleDocument = await Role.findOne({roleName: roleName })
+    const roleDocument = await Role.findOne({roleName: 'Investigador' })
 
     if (!roleDocument) {
-      return res.status(400).json({ error: 'Rol no valido' })
+      return res.status(400).json({ error: 'Rol no encontrado en la Base de Datos' })
     }
 
     const roleId = roleDocument._id
