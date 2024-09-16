@@ -195,7 +195,7 @@
 						"66db13d669069f5a5b76ff44"
 					]
 				},
-				"description": "Actualiza los usuarios del sistema.\n\nRequerimiento: Estar logeado en el sistema.\n\nSe pueden actualizar campos especificos."
+				"description": "Actualiza los usuarios del sistema.\n\nRequerimiento: Estar logeado en el sistema y ser administrador para hacer el cambio a cualquier usuario.\n\nSe pueden actualizar campos especificos."
 			},
 			"response": []
 		},
@@ -641,6 +641,37 @@
 					]
 				},
 				"description": "Eliminar una publicacion registrada.\n\nRequerimientos: la publicacion debe de existir, debe estar logeado en el sistema y ser administrador."
+			},
+			"response": []
+		},
+		{
+			"name": "Update Self Users",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"especializacion\": \"Desarrollador de Sistemas\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3005/api/users/me",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"api",
+						"users",
+						"me"
+					]
+				},
+				"description": "Endpoint que permite a los usuarios actualizar su propia informacion, los campos que actualizan seran limitados dependiendo el rol, si es Admin podra cambiar cualquier informacion propia que desee."
 			},
 			"response": []
 		}

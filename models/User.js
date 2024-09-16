@@ -79,11 +79,18 @@ const userSchema = mongoose.Schema({
   toObject: { virtuals: true },
 });
 
-// Agregamos la propiedad virtual 'proyectos'
+// propiedad virtual para traer los 'proyectos'
 userSchema.virtual('proyectos', {
   ref: 'Project',
   localField: '_id',
   foreignField: 'investigadores',
+});
+
+// propiedad virtual para traer lss 'publicaciones'
+userSchema.virtual('publicaciones', {
+  ref: 'Publication',
+  localField: '_id',
+  foreignField: 'autores',
 });
 
 // Vamos a eliminar las propiedades sensibles al convertir nuestro json

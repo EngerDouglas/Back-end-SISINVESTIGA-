@@ -51,7 +51,7 @@ export const createUser = async (req, res) => {
 // *********************** END ******************* //
 
 
-// *********************** Actualizar Usuarios ******************* //
+// *********************** Actualizar Usuarios por el Administrador ******************* //
 
 export const updateUser = async (req, res) => {
   const { id } = req.params
@@ -92,9 +92,20 @@ export const updateUser = async (req, res) => {
       delete updates.newPassword
     }
 
+    // Si proporciono `roleName`, buscamos el rol correspondiente
+    if (updates.roleName) {
+      const roleDocument = await Role.findOne({ roleName: updates.roleName })
+      if (!roleDocument) {
+        return res.status(400).json({ error: 'Rol no válido' })
+      }
+      user.role = roleDocument._id
+      delete updates.roleName // Eliminamos `roleName` de `updates` para que no sea procesado más adelante
+    }
+
+
 
     // aqui definiremos solo los campos que permitiremos para actualizar
-    const allowedUpdates = [ 'nombre', 'apellido', 'email', 'especializacion', 'responsabilidades', 'role']
+    const allowedUpdates = [ 'nombre', 'apellido', 'email', 'especializacion', 'responsabilidades']
     const updateKeys = Object.keys(updates)
 
     // vamos a filtrar esos campos permitido para actualizarlos
@@ -106,6 +117,9 @@ export const updateUser = async (req, res) => {
 
     // guardamos el usuario en la base de datos
     await user.save()
+
+    await user.populate('role', 'roleName -_id')
+
     return res.status(201).json({ message: 'Usuario actualizado correctamente', user })
   } catch (error) {
     return res.status(500).json({ message: 'Error al actualizar el usuario', error: error.message })
@@ -114,6 +128,65 @@ export const updateUser = async (req, res) => {
 
 // *********************** END ******************* //
 
+// ************************** Actualizar tu propio Usuario ******************************* //
+
+export const updateSelfUser = async (req, res) => {
+  const updates = req.body
+  const user = req.user
+
+  try {
+    if (updates.currentPassword && updates.newPassword) {
+      const isMatch = await bcrypt.compare(updates.currentPassword, user.password)
+      if (!isMatch) {
+        return res.status(400).json({ error: 'Contraseña incorrecta' })
+      }
+
+      if (!validator.isStrongPassword(updates.newPassword, {
+        minLength: 8,
+        minLowercase: 1,
+        minUppercase: 1,
+        minNumbers: 1,
+        minSymbols: 1,
+      })) {
+        return res.status(400).json({
+          error: '¡La contraseña debe tener un mínimo de 8 caracteres, incluyendo una letra mayúscula, una letra minúscula, un número y un símbolo!'
+        })
+      }
+
+      user.password = updates.newPassword
+
+      delete updates.currentPassword
+      delete updates.newPassword
+    }
+
+    const allowedUpdates = ['nombre', 'apellido', 'email', 'especializacion', 'responsabilidades']
+    const updateKeys = Object.keys(updates)
+
+    // Actualizar los campos permitidos
+    updateKeys.forEach((key) => {
+      if (allowedUpdates.includes(key)) {
+        user[key] = updates[key]
+      }
+    })
+
+    // Validar si el email ha sido modificado y si ya está en uso
+    if (updates.email && updates.email !== user.email) {
+      const emailExists = await User.findOne({ email: updates.email })
+      if (emailExists) {
+        return res.status(400).json({ error: 'El email proporcionado ya está en uso' })
+      }
+    }
+
+    await user.save()
+
+    await user.populate('role', 'roleName -_id')
+
+    return res.status(200).json({ message: 'Información actualizada correctamente', user })
+  } catch (error) {
+    return res.status(500).json({ message: 'Error al actualizar la información', error: error.message })
+  }
+}
+// ************************** END ******************************* //
 
 
 // ************************** Filtros y Busquedas para los Usuarios ******************************* //
@@ -125,8 +198,9 @@ export const getUser = async (req, res) => {
   try {
     const user = await User.findById(req.user._id)
       .select('-password -tokens') // Excluimos campos de seguridad que no deberian verse
-      .populate('role', 'roleName -_id') 
-      .populate('proyectos');
+      .populate('role', 'roleName') 
+      .populate('proyectos')
+      .populate('publicaciones');
 
     res.status(200).json(user)
   } catch (error) {
@@ -141,7 +215,10 @@ export const getUser = async (req, res) => {
 
 export const getAllUsers = async (req, res) => {
   try {
-    const users = await User.find().populate('role', 'roleName -_id').select('-__v').populate('proyectos');
+    const users = await User.find().populate('role', 'roleName -_id')
+    .select('-__v')
+    .populate('proyectos')
+    .populate('publicaciones');
     res.status(200).json(users)
   } catch (error) {
     res.status(500).send({ message: 'Error en la consulta de usuarios', error: error.message })
@@ -158,7 +235,8 @@ export const getUserById = async (req, res) => {
     const user = await User.findById(id)
       .select('-__v')
       .populate('role', 'roleName -_id')
-      .populate('proyectos', '-_id');
+      .populate('proyectos')
+      .populate('publicaciones');
 
     if (!user) {
       return res.status(404).json({ error: 'Usuario no encontrado' })

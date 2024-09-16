@@ -13,7 +13,7 @@ import { authRole } from '../middlewares/auth.js';
 const ProjectRouter = express.Router();
 
 // Rutas para los proyectos
-ProjectRouter.post('/', auth, authRole(['Administrador']), createProyecto); // Solo un administrador puede crear proyectos
+ProjectRouter.post('/', auth, authRole(['Administrador', 'Investigador']), createProyecto); // Solo un administrador puede crear proyectos
 ProjectRouter.put('/:id', auth, authRole(['Administrador', 'Investigador']), updateProyecto); // Administradores e Investigadores pueden actualizar
 ProjectRouter.delete('/:id', auth, authRole(['Administrador', 'Investigador']), deleteProyecto); // Administradores e Investigadores pueden hacer soft delete
 
