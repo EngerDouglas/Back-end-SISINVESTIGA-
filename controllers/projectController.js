@@ -1,10 +1,6 @@
 import mongoose from 'mongoose';
 import Project from '../models/Project.js';  // Asumiendo que ya tienes un modelo Proyecto
 import { validationResult } from 'express-validator';
-<<<<<<< HEAD
-
-=======
->>>>>>> 97bcc74 (create project fix)
 // **************************** Crear Proyecto ************************************************* //
 export const createProyecto = async (req, res, next) => {
   try {
@@ -15,34 +11,6 @@ export const createProyecto = async (req, res, next) => {
     }
 
     const {
-<<<<<<< HEAD
-      titulo,
-      descripcion,
-      fechaInicio,
-      fechaFin,
-      presupuesto,
-      investigadores,
-      hitos,
-      entregables
-    } = req.body;
-
-    // Validar que el usuario tenga permisos para crear proyectos (ej: administrador o investigador)
-    if (!req.user || req.user.role !== 'Administrador' || 'investigador') {
-      return res.status(403).json({ error: 'No tienes permisos para crear proyectos' });
-    }
-
-    const newProyecto = new Project({
-      titulo,
-      descripcion,
-      fechaInicio,
-      fechaFin,
-      presupuesto,
-      investigadores: [req.user._id], // El creador del proyecto es el investigador principal
-      hitos,
-      entregables
-    });
-
-=======
       nombre, // Cambiamos de titulo a nombre ya que eso está en el body
       descripcion,
       objetivos,
@@ -103,7 +71,6 @@ export const createProyecto = async (req, res, next) => {
     });
 
     // Guardar en la base de datos
->>>>>>> 97bcc74 (create project fix)
     await newProyecto.save();
 
     res.status(201).json({
@@ -111,18 +78,10 @@ export const createProyecto = async (req, res, next) => {
       proyecto: newProyecto
     });
   } catch (error) {
-<<<<<<< HEAD
-    next(error); // Utilizamos un middleware centralizado para manejar errores
-  }
-};
-// **************************** END ************************************************ //
-
-=======
     next(error);
   }
 };
 // **************************** END ***************************************
->>>>>>> 97bcc74 (create project fix)
 
 // **************************** Actualizar Proyecto ************************************************* //
 export const updateProyecto = async (req, res, next) => {
@@ -138,13 +97,8 @@ export const updateProyecto = async (req, res, next) => {
 
     // Revisar si el proyecto existe
     const proyecto = await Project.findById(id);
-<<<<<<< HEAD
-    if (!proyecto) {
-      return res.status(404).json({ error: 'Proyecto no encontrado' });
-=======
     if (!proyecto || proyecto.isDeleted) {
       return res.status(404).json({ error: 'Proyecto no encontrado o eliminado' });
->>>>>>> 97bcc74 (create project fix)
     }
 
     // Verificar que el usuario tenga permisos para actualizar el proyecto
@@ -172,9 +126,6 @@ export const updateProyecto = async (req, res, next) => {
     // Actualizar solo los campos permitidos
     allowedUpdates.forEach((field) => {
       if (updates[field] !== undefined) {
-<<<<<<< HEAD
-        proyecto[field] = updates[field];
-=======
         if (field === 'hitos') {
           proyecto.hitos = updates.hitos.map(hito => ({
             nombre: hito.nombre,
@@ -189,7 +140,6 @@ export const updateProyecto = async (req, res, next) => {
         } else {
           proyecto[field] = updates[field];
         }
->>>>>>> 97bcc74 (create project fix)
       }
     });
 
@@ -205,10 +155,6 @@ export const updateProyecto = async (req, res, next) => {
 };
 // **************************** END ************************************************ //
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 97bcc74 (create project fix)
 // **************************** Eliminar Proyecto (Soft Delete) ************************************************* //
 export const deleteProyecto = async (req, res, next) => {
   const { id } = req.params;
