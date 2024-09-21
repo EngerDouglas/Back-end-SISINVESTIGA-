@@ -1,7 +1,10 @@
 import mongoose from 'mongoose';
 import Project from '../models/Project.js';  // Asumiendo que ya tienes un modelo Proyecto
 import { validationResult } from 'express-validator';
+<<<<<<< HEAD
 
+=======
+>>>>>>> 97bcc74 (create project fix)
 // **************************** Crear Proyecto ************************************************* //
 export const createProyecto = async (req, res, next) => {
   try {
@@ -12,6 +15,7 @@ export const createProyecto = async (req, res, next) => {
     }
 
     const {
+<<<<<<< HEAD
       titulo,
       descripcion,
       fechaInicio,
@@ -38,6 +42,68 @@ export const createProyecto = async (req, res, next) => {
       entregables
     });
 
+=======
+      nombre, // Cambiamos de titulo a nombre ya que eso está en el body
+      descripcion,
+      objetivos,
+      presupuesto,
+      investigadores,
+      cronograma,
+      hitos,
+      recursos,
+      estado
+    } = req.body;
+
+    // Validar que `cronograma` tenga las fechas obligatorias
+    if (!cronograma || !cronograma.fechaInicio || !cronograma.fechaFin) {
+      return res.status(400).json({
+        error: 'El cronograma debe incluir fechaInicio y fechaFin',
+      });
+    }
+
+    // Validar que cada hito tenga nombre y fecha
+    if (!hitos || hitos.length === 0) {
+      return res.status(400).json({
+        error: 'Al menos un hito es obligatorio con nombre y fecha',
+      });
+    }
+
+    hitos.forEach((hito, index) => {
+      if (!hito.nombre || !hito.fecha) {
+        return res.status(400).json({
+          error: `El hito en la posición ${index + 1} debe tener un nombre y una fecha`,
+        });
+      }
+    });
+
+    // Verificar si ya existe un proyecto con el mismo nombre
+    const existingProyecto = await Project.findOne({ nombre });
+    if (existingProyecto) {
+      return res.status(400).json({ error: 'Ya existe un proyecto con ese nombre' });
+    }
+
+    // Crear nuevo proyecto
+    const newProyecto = new Project({
+      nombre,  // Usamos 'nombre' en lugar de 'titulo'
+      descripcion,
+      objetivos,
+      cronograma: {
+        fechaInicio: cronograma.fechaInicio,
+        fechaFin: cronograma.fechaFin,
+      },
+      presupuesto,
+      investigadores,
+      hitos: hitos.map(hito => ({
+        nombre: hito.nombre,
+        fecha: hito.fecha,
+        entregables: hito.entregable ? [hito.entregable] : [] // Convertir 'entregable' en un arreglo
+      })),
+      recursos,
+      estado
+    });
+
+    // Guardar en la base de datos
+>>>>>>> 97bcc74 (create project fix)
     await newProyecto.save();
 
     res.status(201).json({
@@ -45,11 +111,18 @@ export const createProyecto = async (req, res, next) => {
       proyecto: newProyecto
     });
   } catch (error) {
+<<<<<<< HEAD
     next(error); // Utilizamos un middleware centralizado para manejar errores
   }
 };
 // **************************** END ************************************************ //
 
+=======
+    next(error);
+  }
+};
+// **************************** END ***************************************
+>>>>>>> 97bcc74 (create project fix)
 
 // **************************** Actualizar Proyecto ************************************************* //
 export const updateProyecto = async (req, res, next) => {
@@ -65,8 +138,13 @@ export const updateProyecto = async (req, res, next) => {
 
     // Revisar si el proyecto existe
     const proyecto = await Project.findById(id);
+<<<<<<< HEAD
     if (!proyecto) {
       return res.status(404).json({ error: 'Proyecto no encontrado' });
+=======
+    if (!proyecto || proyecto.isDeleted) {
+      return res.status(404).json({ error: 'Proyecto no encontrado o eliminado' });
+>>>>>>> 97bcc74 (create project fix)
     }
 
     // Verificar que el usuario tenga permisos para actualizar el proyecto
@@ -94,7 +172,24 @@ export const updateProyecto = async (req, res, next) => {
     // Actualizar solo los campos permitidos
     allowedUpdates.forEach((field) => {
       if (updates[field] !== undefined) {
+<<<<<<< HEAD
         proyecto[field] = updates[field];
+=======
+        if (field === 'hitos') {
+          proyecto.hitos = updates.hitos.map(hito => ({
+            nombre: hito.nombre,
+            fecha: hito.fecha,
+            entregables: hito.entregable ? [hito.entregable] : []
+          }));
+        } else if (field === 'cronograma') {
+          proyecto.cronograma = {
+            fechaInicio: updates.cronograma.fechaInicio,
+            fechaFin: updates.cronograma.fechaFin
+          };
+        } else {
+          proyecto[field] = updates[field];
+        }
+>>>>>>> 97bcc74 (create project fix)
       }
     });
 
@@ -110,7 +205,10 @@ export const updateProyecto = async (req, res, next) => {
 };
 // **************************** END ************************************************ //
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 97bcc74 (create project fix)
 // **************************** Eliminar Proyecto (Soft Delete) ************************************************* //
 export const deleteProyecto = async (req, res, next) => {
   const { id } = req.params;
