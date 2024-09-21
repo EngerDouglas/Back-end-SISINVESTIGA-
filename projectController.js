@@ -157,7 +157,6 @@ export const updateProyecto = async (req, res, next) => {
       proyecto.isDeleted = true;
     }
 
-<<<<<<< HEAD
     // Campos permitidos para actualizar
     const allowedUpdates = [
       'titulo',
@@ -168,27 +167,6 @@ export const updateProyecto = async (req, res, next) => {
       'hitos',
       'entregables',
       'investigadores'
-=======
-    // Verificar si ya existe un proyecto con el mismo nombre (excluyendo el actual)
-    if (updates.nombre) {
-      const existingProyecto = await Project.findOne({ nombre: updates.nombre, _id: { $ne: id } });
-      if (existingProyecto) {
-        return res.status(400).json({ error: 'Ya existe un proyecto con ese nombre' });
-      }
-    }
-
-    // Campos permitidos para actualizar
-    const allowedUpdates = [
-      'nombre',
-      'descripcion',
-      'objetivos',
-      'presupuesto',
-      'cronograma',
-      'hitos',
-      'investigadores',
-      'recursos',
-      'estado'
->>>>>>> 97bcc74 (create project fix)
     ];
 
     // Actualizar solo los campos permitidos
