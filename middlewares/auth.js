@@ -4,7 +4,7 @@ import Role from '../models/Role.js'
 
 const auth = async (req, res, next) => {
   try {
-    const token = req.cookies.ucsd_session // Obtenemos de aqui el token de la cookie
+    const token = req.header('Authorization')?.replace('Bearer ', ''); // Obtenemos de aqui el token del local storage
 
     if (!token) {
       throw new Error('Token de autenticacion no encontrado')

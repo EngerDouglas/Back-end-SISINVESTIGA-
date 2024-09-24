@@ -276,21 +276,14 @@ export const logInUser = async (req, res) => {
     // Generemos nuestos json web token
     const token = await user.generateAuthToken()
 
-    // Confuguraremos la cookie para que se guarde nuestro token
-    res.cookie('ucsd_session', token, { 
-      httpOnly: true,
-      // secure: process.env.NODE_ENV === 'production', // Asegura las cookies solo en producción
-      // sameSite: 'strict', // Mismo sitio
-      maxAge: 24 * 60 * 60 *1000 // 1 dia es lo que durara.
-    })
-
     res.status(200).json({
       message: 'Inicio de sesion exitoso',
+      token,
+      role: user.role.roleName,
       user: {
         email: user.email,
         nombre: user.nombre,
-        apellido: user.apellido,
-        role: user.role.roleName
+        apellido: user.apellido
       }
     })
   } catch (error) {
@@ -308,8 +301,6 @@ export const logOutUser = async (req, res) => {
   try {
     req.user.tokens = req.user.tokens.filter((userToken) => userToken.token !== req.token)
     await req.user.save()
-
-    res.clearCookie('ucsd_session')
     res.status(200).send({ message: 'Cierre de sesion exitoso' })
   } catch (error) {
     res.status(500).json({ message: 'Error al cerrar la sesion. Contacte a Tecnologia', error: error.message })
@@ -325,8 +316,6 @@ export const logOutAllUser = async (req,res ) => {
   try {
     req.user.tokens = [] // limpiamos aqui todos los tokens del usuario
     await req.user.save()
-
-    res.clearCookie('ucsd_session')
     res.status(200).send({ message: 'Todas las sesiones han sido cerrada exitosamente.' })
   } catch (error) {
     res.status(500).json({ message: 'Error al cerrar todas las sesiones. Contacte a Tecnologia', error: error.message })
