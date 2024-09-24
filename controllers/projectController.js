@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
 import Project from '../models/Project.js';  // Asumiendo que ya tienes un modelo Proyecto
 import { validationResult } from 'express-validator';
+
 // **************************** Crear Proyecto ************************************************* //
 export const createProyecto = async (req, res, next) => {
   try {
@@ -78,10 +79,10 @@ export const createProyecto = async (req, res, next) => {
       proyecto: newProyecto
     });
   } catch (error) {
-    next(error);
+    next(error); // Utilizamos un middleware centralizado para manejar errores
   }
 };
-// **************************** END ***************************************
+// **************************** END ************************************************ //
 
 // **************************** Actualizar Proyecto ************************************************* //
 export const updateProyecto = async (req, res, next) => {
@@ -97,6 +98,7 @@ export const updateProyecto = async (req, res, next) => {
 
     // Revisar si el proyecto existe
     const proyecto = await Project.findById(id);
+
     if (!proyecto || proyecto.isDeleted) {
       return res.status(404).json({ error: 'Proyecto no encontrado o eliminado' });
     }
@@ -153,6 +155,7 @@ export const updateProyecto = async (req, res, next) => {
     next(error);
   }
 };
+
 // **************************** END ************************************************ //
 
 // **************************** Eliminar Proyecto (Soft Delete) ************************************************* //
