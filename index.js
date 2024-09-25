@@ -30,7 +30,7 @@ app.use('/api/roles', RolesRouter)
 app.use('/api/users', UsersRouter)
 app.use('/api/projects', ProjectRouter)
 app.use('/api/publications', PublicationsRouter)
-app.use('/api/request', RequestRouter)
+app.use('/api/requests', RequestRouter)
 
 
 app.get('/', (req, res) => {
