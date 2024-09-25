@@ -674,6 +674,114 @@
 				"description": "Endpoint que permite a los usuarios actualizar su propia informacion, los campos que actualizan seran limitados dependiendo el rol, si es Admin podra cambiar cualquier informacion propia que desee."
 			},
 			"response": []
+		},
+		{
+			"name": "Crear Solicitud",
+			"request": {
+			  "method": "POST",
+			  "header": [],
+			  "body": {
+				"mode": "raw",
+				"raw": "{\r\n  \"proyectoId\": \"66d9f71976c4141cb4812abe\",\r\n  \"investigadorId\": \"66d7d4bca6f6b3707d261b33\",\r\n  \"motivo\": \"Tengo experiencia en investigación y me gustaría unirme.\"\r\n}",
+				"options": {
+				  "raw": {
+					"language": "json"
+				  }
+				}
+			  },
+			  "url": {
+				"raw": "http://localhost:3005/api/solicitudes",
+				"protocol": "http",
+				"host": [
+				  "localhost"
+				],
+				"port": "3005",
+				"path": [
+				  "api",
+				  "solicitudes"
+				]
+			  },
+			  "description": "Crear una nueva solicitud para unirse a un proyecto."
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener Solicitudes",
+			"request": {
+			  "method": "GET",
+			  "header": [],
+			  "url": {
+				"raw": "http://localhost:3005/api/solicitudes",
+				"protocol": "http",
+				"host": [
+				  "localhost"
+				],
+				"port": "3005",
+				"path": [
+				  "api",
+				  "solicitudes"
+				]
+			  },
+			  "description": "Obtener todas las solicitudes de los investigadores."
+			},
+			"response": []
+		},
+		{
+			"name": "Revisar Solicitud",
+			"request": {
+			  "method": "PATCH",
+			  "header": [],
+			  "body": {
+				"mode": "raw",
+				"raw": "{\r\n  \"estado\": \"Aceptada\",\r\n  \"comentariosAdministrador\": \"La solicitud ha sido aceptada.\"\r\n}",
+				"options": {
+				  "raw": {
+					"language": "json"
+				  }
+				}
+			  },
+			  "url": {
+				"raw": "http://localhost:3005/api/solicitudes/66e1234567890abcdef12345",
+				"protocol": "http",
+				"host": [
+				  "localhost"
+				],
+				"port": "3005",
+				"path": [
+				  "api",
+				  "solicitudes",
+				  "66e1234567890abcdef12345"
+				]
+			  },
+			  "description": "Actualizar el estado de una solicitud (aceptar o rechazar)."
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar Solicitud",
+			"request": {
+			  "method": "DELETE",
+			  "header": [],
+			  "url": {
+				"raw": "http://localhost:3005/api/solicitudes/66e1234567890abcdef12345",
+				"protocol": "http",
+				"host": [
+				  "localhost"
+				],
+				"port": "3005",
+				"path": [
+				  "api",
+				  "solicitudes",
+				  "66e1234567890abcdef12345"
+				]
+			  },
+			  "description": "Eliminar una solicitud existente."
+			},
+			"response": []
 		}
+		  
+		  
+		  
+		  
 	]
 }
