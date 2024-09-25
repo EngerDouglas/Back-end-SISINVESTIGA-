@@ -8,7 +8,7 @@ const PublicationsRouter = express.Router()
 // Rutas para las publicaciones
 PublicationsRouter.post('/', auth, authRole(['Administrador' ,'Investigador']), createPublication)
 PublicationsRouter.put('/:id', auth, authRole(['Administrador', 'Investigador']), updatePublication)
-PublicationsRouter.delete('/:id', auth, authRole(['Administrador', 'Investigador']), deletePublication)
+PublicationsRouter.delete('/:id', auth, authRole(['Administrador']), deletePublication)
 
 PublicationsRouter.get('/', getAllPublications)
 PublicationsRouter.get('/me', auth, getUserPublications)

@@ -52,6 +52,10 @@ const publicationSchema = mongoose.Schema({
     required: true,
     trim: true
   },
+  isDeleted: {  // Soft delete
+    type: Boolean,
+    default: false
+  },
   createdAt: {
     type: Date,
     default: Date.now

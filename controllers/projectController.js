@@ -104,7 +104,7 @@ export const updateProyecto = async (req, res, next) => {
     }
 
     // Verificar que el usuario tenga permisos para actualizar el proyecto
-    if (req.user.role !== 'Administrador' && !proyecto.investigadores.includes(req.user._id)) {
+    if (req.userRole !== 'Administrador' && !proyecto.investigadores.includes(req.user._id)) {
       return res.status(403).json({ error: 'No tienes permisos para actualizar este proyecto' });
     }
 
@@ -170,7 +170,7 @@ export const deleteProyecto = async (req, res, next) => {
     }
 
     // Verificar permisos del usuario
-    if (req.user.role !== 'Administrador' && !proyecto.investigadores.includes(req.user._id)) {
+    if (req.userRole !== 'Administrador' && !proyecto.investigadores.includes(req.user._id)) {
       return res.status(403).json({ error: 'No tienes permisos para eliminar este proyecto' });
     }
 

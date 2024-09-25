@@ -1,4 +1,5 @@
 import Publication from '../models/Publication.js'
+import Project from '../models/Project.js'
 import validator from 'validator'
 
 // **************************** Crear Publicacion ************************************************* //
@@ -8,7 +9,7 @@ export const createPublication = async (req, res) => {
     const {
       titulo,
       fecha,
-      proyecto,
+      proyecto, 
       revista,
       resumen,
       palabrasClave,
@@ -16,32 +17,57 @@ export const createPublication = async (req, res) => {
       estado,
       anexos,
       idioma
-    } = req.body
+    } = req.body;
 
-    // Validaciones que deben hacerse
-    if (!titulo || !fecha ||!proyecto ||!revista || !tipoPublicacion || !idioma) {
-      return res.status(400).json({ error: 'Todos los campos proporcionados deben ser proporcionados' })
+    // Validaciones básicas
+    if (!titulo || !fecha || !proyecto || !revista || !tipoPublicacion || !idioma) {
+      return res.status(400).json({ error: 'Todos los campos obligatorios deben ser proporcionados' });
     }
 
     if (!validator.isDate(fecha)) {
-      return res.status(400).json({ error: 'Fecha invalida' })
+      return res.status(400).json({ error: 'Fecha inválida' });
     }
 
-    // traemos el autor que esta en le sesion creando esta publicacion
-    const autor = req.user._id
+    // Verificar si el proyecto existe
+    const project = await Project.findById(proyecto).populate('investigadores', '_id nombre apellido role');
 
+    if (!project) {
+      return res.status(404).json({ error: 'Proyecto no encontrado' });
+    }
+
+    // Validar que el usuario que crea la publicación sea investigador del proyecto
+    const currentUser = req.user._id.toString();
+    const isCurrentUserPartOfProject = project.investigadores.some(investigador => investigador._id.toString() === currentUser);
+
+    if (!isCurrentUserPartOfProject) {
+      return res.status(403).json({ error: 'No tienes permiso para crear publicaciones en este proyecto, ya que no eres parte del equipo de investigadores' });
+    }
+
+    // Asignar automáticamente los investigadores del proyecto como autores de la publicación
+    const autores = project.investigadores.map(investigador => investigador._id);
+
+    // Crear la nueva publicación
     const newPublication = new Publication({
-      ...req.body,
-      autores: [autor] 
-    })
+      titulo,
+      fecha,
+      proyecto,
+      revista,
+      resumen,
+      palabrasClave,
+      tipoPublicacion,
+      estado,
+      anexos,
+      idioma,
+      autores // Asignamos automáticamente los autores
+    });
 
-    await newPublication.save()
+    await newPublication.save();
 
-    res.status(201).json({ message: 'Publicación creada exitosamente', publication: newPublication })
+    res.status(201).json({ message: 'Publicación creada exitosamente', publication: newPublication });
   } catch (error) {
-    res.status(500).json({ message: 'Error al crear la publicación', error: error.message })
+    res.status(500).json({ message: 'Error al crear la publicación', error: error.message });
   }
-}
+};
 
 // **************************** END ************************************************ //
 
@@ -49,101 +75,94 @@ export const createPublication = async (req, res) => {
 // **************************** Actualizar Publicacion ************************************************* //
 
 export const updatePublication = async (req, res) => {
-  const { id } = req.params
-  const updates = req.body
+  const { id } = req.params;
+  const updates = req.body;
 
   try {
-    // revisemos si la publicacion existe
-    const publication = await Publication.findById(id)
-    if(!publication){
-      return res.status(404).json({ error: 'Publicacion no encontrada' })
+    const publication = await Publication.findById(id);
+    if (!publication) {
+      return res.status(404).json({ error: 'Publicación no encontrada' });
     }
 
-    // Validaciones de los campos que nos pasara el usuario
+    // Solo el autor o un administrador pueden actualizar una publicación
+    if (req.userRole !== 'Administrador' && !publication.autores.includes(req.user._id)) {
+      return res.status(403).json({ error: 'No tienes permiso para actualizar esta publicación.' });
+    }
+
+    // No se permite cambiar autores o proyectos si la publicación ya está "Revisada" o "Publicada"
+    if ((updates.autores || updates.proyecto) && ['Revisado', 'Publicado'].includes(publication.estado)) {
+      return res.status(400).json({ error: 'No puedes cambiar autores o el proyecto de una publicación ya revisada o publicada.' });
+    }
+
+    // Validaciones de fecha
     if (updates.fecha && !validator.isDate(updates.fecha)) {
-      return res.status(400).json({ error: 'Fecha invalida' })
+      return res.status(400).json({ error: 'Fecha inválida.' });
     }
 
-    // Lista de campos que permitiremos para su actualizacion
-    const allowedUpdates = [
-      'titulo',
-      'fecha',
-      'proyecto',
-      'revista',
-      'resumen',
-      'palabrasClave',
-      'tipoPublicacion',
-      'estado',
-      'anexos',
-      'idioma',
-      'autores'
-    ]
+    if (updates.proyecto) {
+      const project = await Project.findById(updates.proyecto).populate('investigadores', '_id nombre');
+      if (!project) {
+        return res.status(404).json({ error: 'El proyecto especificado no existe.' });
+      }
 
-    // Actualizar campos permitidos
+      if (updates.autores) {
+        const projectInvestigadores = project.investigadores.map(investigador => investigador._id.toString());
+        const invalidAuthors = updates.autores.filter(autorId => !projectInvestigadores.includes(autorId));
+
+        if (invalidAuthors.length > 0) {
+          return res.status(400).json({
+            error: 'Algunos autores no están asignados a este proyecto. Asigna solo investigadores del proyecto.',
+            invalidAuthors
+          });
+        }
+      }
+    }
+
+    // Actualizar los campos permitidos
+    const allowedUpdates = ['titulo', 'fecha', 'proyecto', 'revista', 'resumen', 'palabrasClave', 'tipoPublicacion', 'estado', 'anexos', 'idioma', 'autores'];
     allowedUpdates.forEach((field) => {
       if (updates[field] !== undefined) {
-        // Manejo especial para arrays de 'autores' y 'anexos'
-        if (Array.isArray(publication[field])) {
-          if (field === 'autores') {
-            // Validar y agregar solo autores únicos
-            const existingAuthors = new Set(publication[field].map(String)); // Convertir a string para evitar problemas de comparación con ObjectId
-            updates[field].forEach((authorId) => {
-              if (!existingAuthors.has(String(authorId))) {
-                publication[field].push(authorId); // Agregar autor solo si no existe
-              }
-            });
-          } else {
-            publication[field] = updates[field]; // Reemplazar 'anexos' o cualquier otro array completamente
-          }
-        } else {
-          publication[field] = updates[field]; // Actualizar campos normales
-        }
+        publication[field] = updates[field];
       }
     });
 
-    // Guardamos la publicacion actualizada
-    await publication.save()
-    res.status(201).json({ message: 'La publicacion fue actualizada correctamente', publication })
+    await publication.save();
+    res.status(201).json({ message: 'Publicación actualizada correctamente', publication });
   } catch (error) {
-    res.status(500).json({ error: 'Ha ocurrido un error al actualizar la publiacion', error: error.message })
+    res.status(500).json({ error: 'Error al actualizar la publicación', error: error.message });
   }
-}
+};
 
 // **************************** END ************************************************ //
 
 
-// ******************************** Obtener todas las publicaciones ************************************************* //
+// ******************************** Eliminar publicaciones ************************************************* //
 
 export const deletePublication = async (req, res) => {
-
-  const { id } = req.params
-  const currentUser = req.user
+  const { id } = req.params;
 
   try {
-    // validar si la publicacion existe en la DB
-    const pub = await Publication.findById(id)
-
-    if (!pub) {
-      return res.status(404).json({ error:'Publicacion no encontrada' })
+    const publication = await Publication.findById(id);
+    if (!publication) {
+      return res.status(404).json({ error: 'Publicación no encontrada' });
     }
 
-    // Verificamos si el usuario es el autor de la publicacion a eliminar
-    if (currentUser.role !== 'Administrador' && !pub.autores.some(autor => autor.equals(currentUser._id))) {
-      return res.status(403).json({ error: 'No tienes permisos para eliminar esta publicación' });
+    if (req.userRole !== 'Administrador') {
+      return res.status(403).json({ error: 'No tienes permisos para eliminar esta publicación.' });
     }
 
-    // Verificamos si nuestro usuario tiene publicaciones, en caso de tener no puede eliminarse
-    // if (pub.autores) {
-    //   return res.status(400).json({ error: 'No se puede eliminar la publicacion por que esta asignada a un investigador' })
-    // }
+    if (publication.estado === 'Publicado') {
+      return res.status(400).json({ error: 'No puedes eliminar una publicación que ya ha sido publicada.' });
+    }
 
-    // Eliminamos la investigacion de la base de datos
-    await Publication.findByIdAndDelete(id)
-    res.status(200).json({ message: 'Publicacion eliminada correctamente' })
+    publication.isDeleted = true;
+    await publication.save();
+
+    res.status(200).json({ message: 'Publicación eliminada (soft delete).' });
   } catch (error) {
-    res.status(500).json({ message: 'Error al eliminar la publicacion, error: error.message', error: error.message })
+    res.status(500).json({ message: 'Error al eliminar la publicación.', error: error.message });
   }
-}
+};
 
 // **************************** END ************************************************ //
 
@@ -155,16 +174,19 @@ export const getAllPublications = async (req, res) => {
     const publications = await Publication.find()
     .populate({
       path: 'autores',
-      select: '-_id nombre apellido especializacion responsabilidades',
+      select: 'nombre apellido especializacion responsabilidades',
       populate: {
         path: 'role',
-        select: '-_id -__v',
+        select: 'roleName',
       }
     })
-    .select('-_id -__v')
     .populate({
       path: 'proyecto',
-      select: '-_id',
+      select: 'nombre descripcion investigadores',
+      populate: {
+        path: 'investigadores',
+        select: 'nombre apellido'
+      }
     })
     res.status(200).json(publications)
   } catch (error) {
