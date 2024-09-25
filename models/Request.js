@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const SolicitudSchema = new mongoose.Schema({
+const requestSchema = new mongoose.Schema({
   solicitante: {
     type: mongoose.Schema.Types.ObjectId, 
     ref: 'Usuario', // Asumiendo que hay un modelo Usuario
@@ -47,6 +47,6 @@ const SolicitudSchema = new mongoose.Schema({
 });
 
 // Crear el modelo de Solicitud
-const Solicitud = mongoose.model('Solicitud', SolicitudSchema);
+const Request = mongoose.model('Request', requestSchema);
 
-export default Solicitud;
+export default Request;

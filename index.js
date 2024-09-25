@@ -8,7 +8,7 @@ import RolesRouter from './routes/roleRoute.js'
 import UsersRouter from './routes/userRoute.js'
 import ProjectRouter from './routes/projectRouter.js'
 import PublicationsRouter from './routes/publicationRoute.js'
-import SolicitudRouter from './routes/solicitudRouter.js'
+import RequestRouter from './routes/requestRouter.js'
 import './config/db.js'
 
 dotenv.config()
@@ -30,7 +30,7 @@ app.use('/api/roles', RolesRouter)
 app.use('/api/users', UsersRouter)
 app.use('/api/projects', ProjectRouter)
 app.use('/api/publications', PublicationsRouter)
-app.use('/api/solicitudes', SolicitudRouter)
+app.use('/api/request', RequestRouter)
 
 
 app.get('/', (req, res) => {

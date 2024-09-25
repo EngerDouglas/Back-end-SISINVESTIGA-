@@ -1,9 +1,9 @@
 // controllers/solicitudController.js
-import Solicitud from '../models/Solicitud.js'; // Asegúrate de tener un modelo Solicitud
+import Request from '../models/Request.js'; // Asegúrate de tener un modelo Solicitud
 import { validationResult } from 'express-validator';
 
 // **************************** Crear Solicitud ************************************************* //
-export const createSolicitud = async (req, res, next) => {
+export const createRequest = async (req, res, next) => {
   try {
     // Validar errores usando express-validator
     const errors = validationResult(req);
@@ -18,7 +18,7 @@ export const createSolicitud = async (req, res, next) => {
     } = req.body;
 
     // Crear nueva solicitud
-    const newSolicitud = new Solicitud({
+    const newRequest = new Request({
       proyectoId,
       investigadorId,
       motivo,
@@ -27,11 +27,11 @@ export const createSolicitud = async (req, res, next) => {
     });
 
     // Guardar en la base de datos
-    await newSolicitud.save();
+    await newRequest.save();
 
     res.status(201).json({
       message: 'Solicitud creada exitosamente',
-      solicitud: newSolicitud
+      solicitud: newRequest
     });
   } catch (error) {
     next(error); // Utilizamos un middleware centralizado para manejar errores
@@ -40,7 +40,7 @@ export const createSolicitud = async (req, res, next) => {
 // **************************** END ************************************************ //
 
 // **************************** Actualizar Solicitud ************************************************* //
-export const updateSolicitud = async (req, res, next) => {
+export const updateRequest = async (req, res, next) => {
   const { id } = req.params;
   const updates = req.body;
 
@@ -52,7 +52,7 @@ export const updateSolicitud = async (req, res, next) => {
     }
 
     // Revisar si la solicitud existe
-    const solicitud = await Solicitud.findById(id);
+    const solicitud = await Request.findById(id);
     if (!solicitud) {
       return res.status(404).json({ error: 'Solicitud no encontrada' });
     }
@@ -78,12 +78,12 @@ export const updateSolicitud = async (req, res, next) => {
 // **************************** END ************************************************ //
 
 // **************************** Eliminar Solicitud ************************************************* //
-export const deleteSolicitud = async (req, res, next) => {
+export const deleteRequest = async (req, res, next) => {
   const { id } = req.params;
 
   try {
     // Verificar si la solicitud existe
-    const solicitud = await Solicitud.findById(id);
+    const solicitud = await Request.findById(id);
     if (!solicitud) {
       return res.status(404).json({ error: 'Solicitud no encontrada' });
     }
@@ -99,7 +99,7 @@ export const deleteSolicitud = async (req, res, next) => {
 // **************************** END ************************************************ //
 
 // **************************** Obtener todas las Solicitudes con Paginación y Filtrado ************************************************* //
-export const getAllSolicitudes = async (req, res, next) => {
+export const getAllRequests = async (req, res, next) => {
   try {
     const { page = 1, limit = 10, estado } = req.query;
 
@@ -108,7 +108,7 @@ export const getAllSolicitudes = async (req, res, next) => {
     if (estado) filter.estado = estado;
 
     // Paginación
-    const solicitudes = await Solicitud.find(filter)
+    const solicitudes = await Request.find(filter)
       .skip((page - 1) * limit)
       .limit(Number(limit))
       .populate('investigadorId', 'nombre apellido') // Asegúrate de tener los campos correctos en tu modelo
@@ -122,11 +122,11 @@ export const getAllSolicitudes = async (req, res, next) => {
 // **************************** END ************************************************ //
 
 // **************************** Obtener Solicitud por ID ************************************************* //
-export const getSolicitudById = async (req, res, next) => {
+export const getRequestById = async (req, res, next) => {
   const { id } = req.params;
 
   try {
-    const solicitud = await Solicitud.findById(id)
+    const solicitud = await Request.findById(id)
       .populate('investigadorId', 'nombre apellido')
       .populate('proyectoId', 'nombre');
 
