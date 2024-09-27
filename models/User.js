@@ -60,10 +60,10 @@ const userSchema = mongoose.Schema({
     ref: 'Role', // Referencia a nuestro modelo Role
     required: true,
   },
-  // proyectos: [{
-  //   type: mongoose.Schema.Types.ObjectId, 
-  //   ref: 'Project'
-  // }],
+  isDisabled: {
+    type: Boolean,
+    default: false, // Los usuarios no están deshabilitados por defecto
+  },
   createdAt: {
     type: Date,
     default: Date.now

@@ -1,17 +1,27 @@
+import { validationResult, body } from 'express-validator';
 import User from '../models/User.js'
 import Role from '../models/Role.js'
 import bcrypt from 'bcryptjs'
-import validator from 'validator'
 
 // *********************** Creando el Usuario ******************* //
 export const createUser = async (req, res) => {
-  const { nombre, apellido, email, password, especializacion, responsabilidades } = req.body
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() });
+  }
+
+  const { nombre, apellido, email, password, especializacion, responsabilidades } = req.body;
+
+  // Verificamos si el arreglo 'responsabilidades' está vacío antes de crear el usuario
+  if (!responsabilidades || responsabilidades.length === 0) {
+    return res.status(400).json({ error: 'Debe incluir al menos una responsabilidad.' });
+  }
 
   try {
     // Verifiquemos si hay un usuario registrado
-    const existUser = await User.findOne({ email })
+    const existUser = await User.findOne({ email });
     if (existUser) {
-      return res.status(409).json({ error: 'El email colocado ya existe.' })
+      return res.status(409).json({ error: 'El email colocado ya existe.' });
     }
 
     // //Validemos si el rol proporcionado existe en la base de datos
@@ -21,13 +31,13 @@ export const createUser = async (req, res) => {
     // }
 
     // Buscaremos el rol por el nombre
-    const roleDocument = await Role.findOne({roleName: 'Investigador' })
+    const roleDocument = await Role.findOne({ roleName: 'Investigador' });
 
     if (!roleDocument) {
-      return res.status(400).json({ error: 'Rol no encontrado en la Base de Datos' })
+      return res.status(400).json({ error: 'Rol no encontrado en la Base de Datos' });
     }
 
-    const roleId = roleDocument._id
+    const roleId = roleDocument._id;
 
     // Crear a nuestro usuario
     const newUser = new User({
@@ -37,16 +47,21 @@ export const createUser = async (req, res) => {
       password,
       role: roleId,
       especializacion,
-      responsabilidades
-    })
+      responsabilidades,
+    });
 
-    await newUser.save()
-    res.status(201).json({ message: 'Usuario registrado exitosamente' })
+    await newUser.save();
+    res.status(201).json({ message: 'Usuario registrado exitosamente' });
   } catch (error) {
-    console.log(error)
-    res.status(500).json({ message: 'Ha ocurrido un error al crear el usuario', error: error.message })
+    if (error.name === 'ValidationError') {
+      // Capturamos errores de validación de Mongoose
+      const errors = Object.values(error.errors).map((err) => err.message);
+      return res.status(400).json({ errors });
+    }
+
+    res.status(500).json({ message: 'Ha ocurrido un error al crear el usuario', error: error.message });
   }
-}
+};
 
 // *********************** END ******************* //
 
@@ -267,6 +282,11 @@ export const logInUser = async (req, res) => {
       return res.status(400).json({ error: 'Credenciales incorrectas' })
     }
 
+    // Verificamos si cualquier usuario está deshabilitado para impadirle cualquier acceso
+    if (user.isDisabled) {
+      return res.status(403).json({ error: 'El usuario está deshabilitado, contacta al administrador.' });
+    }
+
     // Verifiquemos la clave del usuario
     const isPassCorrect = await bcrypt.compare(password, user.password)
     if (!isPassCorrect) {
@@ -322,4 +342,62 @@ export const logOutAllUser = async (req,res ) => {
   }
 }
 
+// *********************** END ******************* //
+
+
+
+// *********************** Disabling Users ******************* //
+
+export const disableUser = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const user = await User.findById(id);
+    if (!user) {
+      return res.status(404).json({ error: 'Usuario no encontrado' });
+    }
+
+    // Solo un administrador puede deshabilitar usuarios
+    if (req.userRole !== 'Administrador') {
+      return res.status(403).json({ error: 'No tienes permisos para deshabilitar este usuario.' });
+    }
+
+    // Deshabilitamos cualquier usuario
+    user.isDisabled = true;
+    await user.save();
+
+    return res.status(200).json({ message: 'Usuario deshabilitado exitosamente.' });
+  } catch (error) {
+    res.status(500).json({ message: 'Error al deshabilitar el usuario', error: error.message });
+  }
+};
+
+// *********************** END ******************* //
+
+
+// *********************** Enabling Users ******************* //
+
+export const enableUser = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const user = await User.findById(id);
+    if (!user) {
+      return res.status(404).json({ error: 'Usuario no encontrado' });
+    }
+
+    // Solo un administrador puede habilitar usuarios
+    if (req.userRole !== 'Administrador') {
+      return res.status(403).json({ error: 'No tienes permisos para habilitar este usuario.' });
+    }
+
+    // Habilitar el usuario
+    user.isDisabled = false;
+    await user.save();
+
+    return res.status(200).json({ message: 'Usuario habilitado exitosamente.' });
+  } catch (error) {
+    res.status(500).json({ message: 'Error al habilitar el usuario', error: error.message });
+  }
+};
 // *********************** END ******************* //
