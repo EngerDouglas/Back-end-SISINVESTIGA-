@@ -147,14 +147,20 @@ export const deletePublication = async (req, res) => {
       return res.status(404).json({ error: 'Publicación no encontrada' });
     }
 
-    if (req.userRole !== 'Administrador') {
+    // Verificar si el usuario tiene permisos para eliminar (Administrador o Autor de la publicación)
+    const isAuthor = publication.autores.some(autorId => autorId.equals(req.user._id));
+    const isAdmin = req.userRole === 'Administrador';
+
+    if (!isAuthor && !isAdmin) {
       return res.status(403).json({ error: 'No tienes permisos para eliminar esta publicación.' });
     }
 
-    if (publication.estado === 'Publicado') {
+    // Si la publicación está en estado "Publicado", solo el administrador puede eliminarla
+    if (publication.estado === 'Publicado' && !isAdmin) {
       return res.status(400).json({ error: 'No puedes eliminar una publicación que ya ha sido publicada.' });
     }
 
+    // Realizamos un soft delete (no eliminamos físicamente)
     publication.isDeleted = true;
     await publication.save();
 
@@ -166,6 +172,43 @@ export const deletePublication = async (req, res) => {
 
 // **************************** END ************************************************ //
 
+
+// **************************** Restaurar Publicación (Soft Restore) ************************************************* //
+
+export const restorePublication = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    // Buscar la publicación por su ID
+    const publication = await Publication.findById(id);
+    if (!publication) {
+      return res.status(404).json({ error: 'Publicación no encontrada' });
+    }
+
+    // Verificar si el usuario es Administrador
+    if (req.userRole !== 'Administrador') {
+      return res.status(403).json({ error: 'No tienes permisos para restaurar esta publicación.' });
+    }
+
+    // Verificar si la publicación ya está habilitada
+    if (!publication.isDeleted) {
+      return res.status(400).json({ error: 'Esta publicación no está eliminada.' });
+    }
+
+    // Restaurar la publicación (marcar isDeleted como false)
+    publication.isDeleted = false;
+    await publication.save();
+
+    res.status(200).json({ message: 'Publicación restaurada exitosamente.' });
+  } catch (error) {
+    res.status(500).json({ message: 'Error al restaurar la publicación.', error: error.message });
+  }
+};
+
+// **************************** END ************************************************* //
+
+
+// ********************************  Seccion de busqueda ************************************************* //
 
 // ******************************** Obtener todas las publicaciones ************************************************* //
 

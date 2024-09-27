@@ -3,6 +3,7 @@ import {
   createProyecto, 
   updateProyecto, 
   deleteProyecto, 
+  restoreProyecto,
   getAllProyectos, 
   getProyectoById, 
   searchProyectos 
@@ -15,7 +16,8 @@ const ProjectRouter = express.Router();
 // Rutas para los proyectos
 ProjectRouter.post('/', auth, authRole(['Administrador', 'Investigador']), createProyecto); // Solo un administrador puede crear proyectos
 ProjectRouter.put('/:id', auth, authRole(['Administrador', 'Investigador']), updateProyecto); // Administradores e Investigadores pueden actualizar
-ProjectRouter.delete('/:id', auth, authRole(['Administrador', 'Investigador']), deleteProyecto); // Administradores e Investigadores pueden hacer soft delete
+ProjectRouter.delete('/:id', auth, authRole(['Administrador', 'Investigador']), deleteProyecto); // Administradores e Investigadores pueden hacer soft
+ProjectRouter.post('/restore/:id', auth, authRole(['Administrador']), restoreProyecto); // Administradores pueden restaurar proyectos
 
 ProjectRouter.get('/', getAllProyectos); // Listar proyectos con paginación y filtro
 ProjectRouter.get('/search', searchProyectos); // Buscar proyectos por texto completo

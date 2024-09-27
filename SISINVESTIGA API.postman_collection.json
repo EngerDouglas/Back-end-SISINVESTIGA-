@@ -1,10 +1,10 @@
 {
 	"info": {
-		"_postman_id": "7ac0ccd1-5e7a-4a2b-8edb-ec991505b181",
+		"_postman_id": "70ce3deb-7fd0-4ba3-9cca-f5ff482ada74",
 		"name": "SISINVESTIGA API",
 		"description": "API para la gestion de publicaciones academicas, usuarios, roles y publicaciones en SISINVESTIGA.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "33731987"
+		"_exporter_id": "35172422"
 	},
 	"item": [
 		{
@@ -45,7 +45,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"email\": \"engeldg@gmail.com\",\r\n    \"password\": \"Investiga123@\" \r\n}",
+					"raw": "{\r\n    \"email\": \"castillox671@gmail.com\",\r\n    \"password\": \"Investiga123@\" \r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -92,63 +92,18 @@
 			"response": []
 		},
 		{
-			"name": "Obtener Roles",
-			"protocolProfileBehavior": {
-				"followOriginalHttpMethod": false,
-				"followAuthorizationHeader": false
-			},
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:3005/api/roles",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3005",
-					"path": [
-						"api",
-						"roles"
-					]
-				},
-				"description": "Obtenemos todos los roles que existen en la base de datos del Sistema.\n\nRequerimiento: Ser Administrador, Requerimiento: Estar logeado en el sistema."
-			},
-			"response": []
-		},
-		{
-			"name": "Crear Roles",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"roleName\": \"Admin\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:3005/api/roles",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3005",
-					"path": [
-						"api",
-						"roles"
-					]
-				},
-				"description": "Crea los roles del sistema.\n\nRequerimiento: Ser Administrador, Requerimiento: Estar logeado en el sistema.."
-			},
-			"response": []
-		},
-		{
 			"name": "Cerrar Sesiones",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ3ZDRiY2E2ZjZiMzcwN2QyNjFiMzMiLCJpYXQiOjE3Mjc0Mzk0NDgsImV4cCI6MTcyNzUyNTg0OH0.JYck2LrPOG5Hm9qJSpWETHkP4Zff-jG1saLrHI51_Ss",
+							"type": "string"
+						}
+					]
+				},
 				"method": "POST",
 				"header": [],
 				"url": {
@@ -165,6 +120,37 @@
 					]
 				},
 				"description": "Cierra la sesion de todos los dispositivos del usuario en el sistema.\n\nRequerimiento: Estar logeado en el sistema."
+			},
+			"response": []
+		},
+		{
+			"name": "Update Self Users",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"especializacion\": \"Desarrollador de Sistemas\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3005/api/users/me",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"api",
+						"users",
+						"me"
+					]
+				},
+				"description": "Endpoint que permite a los usuarios actualizar su propia informacion, los campos que actualizan seran limitados dependiendo el rol, si es Admin podra cambiar cualquier informacion propia que desee."
 			},
 			"response": []
 		},
@@ -200,6 +186,148 @@
 			"response": []
 		},
 		{
+			"name": "Habilitar Usuarios",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3005/api/users/66db13d669069f5a5b76ff44/enable",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"api",
+						"users",
+						"66db13d669069f5a5b76ff44",
+						"enable"
+					]
+				},
+				"description": "Endpoint quie permite la habilitacion de los usuarios que fueron deshabilitados en el sistema.\r\n\r\nRequisito: Ser Administrador."
+			},
+			"response": []
+		},
+		{
+			"name": "Deshabilitar Usuarios",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3005/api/users/66db13d669069f5a5b76ff44/disable",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"api",
+						"users",
+						"66db13d669069f5a5b76ff44",
+						"disable"
+					]
+				},
+				"description": "Endpoint que permite deshabilitar los usuarios del sistema.\r\n\r\nRequisito: Ser Administrador."
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener tu propio Usuaro",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3005/api/users/me",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"api",
+						"users",
+						"me"
+					]
+				},
+				"description": "Obtener tu propio usuario para ver tu informacion.\n\nRequerimiento: Estar logeado en el sistema."
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener Usuario por ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3005/api/users/getuser/66d7d4bca6f6b3707d261b33",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"api",
+						"users",
+						"getuser",
+						"66d7d4bca6f6b3707d261b33"
+					]
+				},
+				"description": "Obtiene todos los usuarios registrados en el sistema por ID.\n\nRequerimiento: Estar logeado en el sistema Y ser Administrador."
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener Usuarios Todos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3005/api/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"api",
+						"users"
+					]
+				},
+				"description": "Obtiene todos los usuarios registrados en el sistema.\n\nRequerimiento: Estar logeado en el sistema Y ser Administrador."
+			},
+			"response": []
+		},
+		{
+			"name": "Crear Roles",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"roleName\": \"Admin\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3005/api/roles",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"api",
+						"roles"
+					]
+				},
+				"description": "Crea los roles del sistema.\n\nRequerimiento: Ser Administrador, Requerimiento: Estar logeado en el sistema.."
+			},
+			"response": []
+		},
+		{
 			"name": "Actualizar Roles",
 			"request": {
 				"method": "PUT",
@@ -231,33 +359,26 @@
 			"response": []
 		},
 		{
-			"name": "Obtener Usuarios Todos",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:3005/api/users",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3005",
-					"path": [
-						"api",
-						"users"
-					]
-				},
-				"description": "Obtiene todos los usuarios registrados en el sistema.\n\nRequerimiento: Estar logeado en el sistema Y ser Administrador."
+			"name": "Obtener Roles",
+			"protocolProfileBehavior": {
+				"followOriginalHttpMethod": false,
+				"followAuthorizationHeader": false
 			},
-			"response": []
-		},
-		{
-			"name": "Obtener Usuario por ID",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ3ZDRiY2E2ZjZiMzcwN2QyNjFiMzMiLCJpYXQiOjE3MjcyNzQ2NTgsImV4cCI6MTcyNzM2MTA1OH0.kKQ2OXVqnWjR4IkpjVGbBX9OSG-WiuLqM_y2e56gLbw",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3005/api/users/getuser/66d7d4bca6f6b3707d261b33",
+					"raw": "http://localhost:3005/api/roles",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -265,34 +386,10 @@
 					"port": "3005",
 					"path": [
 						"api",
-						"users",
-						"getuser",
-						"66d7d4bca6f6b3707d261b33"
+						"roles"
 					]
 				},
-				"description": "Obtiene todos los usuarios registrados en el sistema por ID.\n\nRequerimiento: Estar logeado en el sistema Y ser Administrador."
-			},
-			"response": []
-		},
-		{
-			"name": "Obtener tu propio Usuaro",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:3005/api/users/me",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3005",
-					"path": [
-						"api",
-						"users",
-						"me"
-					]
-				},
-				"description": "Obtener tu propio usuario para ver tu informacion.\n\nRequerimiento: Estar logeado en el sistema."
+				"description": "Obtenemos todos los roles que existen en la base de datos del Sistema.\n\nRequerimiento: Ser Administrador, Requerimiento: Estar logeado en el sistema."
 			},
 			"response": []
 		},
@@ -321,11 +418,21 @@
 		{
 			"name": "Crear Publicacion",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ3ZDRiY2E2ZjZiMzcwN2QyNjFiMzMiLCJpYXQiOjE3MjcyNzQ2NTgsImV4cCI6MTcyNzM2MTA1OH0.kKQ2OXVqnWjR4IkpjVGbBX9OSG-WiuLqM_y2e56gLbw",
+							"type": "string"
+						}
+					]
+				},
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"titulo\": \"Prueba De Proyecto\",\r\n  \"fecha\": \"2024-09-14\",\r\n  \"proyecto\" : [\"66d9f71976c4141cb4812abe\"],\r\n  \"revista\": \"Revista Académica de APIs\",\r\n  \"resumen\": \"Estamos probando la API para ver su funcionalidad.\",\r\n  \"palabrasClave\": \"Software, Sistemas, Talendig\",\r\n  \"tipoPublicacion\": \"Articulo\",\r\n  \"anexos\": [\"https://example.com/file1.pdf\", \"https://example.com/file2.pdf\"],\r\n  \"idioma\": \"Español\"\r\n}",
+					"raw": "{\r\n  \"titulo\": \"Prueba De Proyecto\",\r\n  \"fecha\": \"2024-09-25\",\r\n  \"proyecto\" : [\"66d9f71976c4141cb4812abe\"],\r\n  \"revista\": \"Revista de Investigación Tecnológica\",\r\n  \"resumen\": \"Este artículo explora las aplicaciones emergentes de la IA en la educación.\",\r\n  \"palabrasClave\": [\"IA\", \"educación\", \"tecnología\"],\r\n  \"tipoPublicacion\": \"Articulo\",\r\n  \"anexos\": [\"archivo1.pdf\", \"imagen1.png\"],\r\n  \"idioma\": \"Español\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -345,6 +452,39 @@
 					]
 				},
 				"description": "Crear una nueva publicacion.  \n  \nRequerimientos: Ser Investigador y estar logeado en el sistema."
+			},
+			"response": []
+		},
+		{
+			"name": "Restaurar Publicaciones",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ3ZDRiY2E2ZjZiMzcwN2QyNjFiMzMiLCJpYXQiOjE3Mjc0Mzg1NDIsImV4cCI6MTcyNzUyNDk0Mn0.aeb-eFCm5ADE73pXJZpOWtPMiEDnIIW9AxaqDi2uVa8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3005/api/publications/restore/66e35095a8c45ab613a20231",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"api",
+						"publications",
+						"restore",
+						"66e35095a8c45ab613a20231"
+					]
+				},
+				"description": "Endpoint para la restauracion de Publicaciones que han sido eliminadas.\r\n\r\nRequisito: Ser Administrador."
 			},
 			"response": []
 		},
@@ -449,10 +589,20 @@
 		{
 			"name": "Eliminar Publicacion",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ5YTNkMjg4MTFlNDRhZWE4YjFkZDYiLCJpYXQiOjE3Mjc0Mzg0NjksImV4cCI6MTcyNzUyNDg2OX0.Nh7vyR1HHRDOslzZlbUwpSkN68rwjdJl6l8Qq9I70p0",
+							"type": "string"
+						}
+					]
+				},
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3005/api/publications/66e34bf7fb7d9809cb3a4414",
+					"raw": "http://localhost:3005/api/publications/66e35095a8c45ab613a20231",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -461,7 +611,7 @@
 					"path": [
 						"api",
 						"publications",
-						"66e34bf7fb7d9809cb3a4414"
+						"66e35095a8c45ab613a20231"
 					]
 				},
 				"description": "Eliminar una publicacion registrada.\n\nRequerimientos: la publicacion debe de existir, debe estar logeado en el sistema y se el owner de la publicacion o ser administrador."
@@ -592,6 +742,39 @@
 			"response": []
 		},
 		{
+			"name": "Restaurar Proyectos",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ3ZDRiY2E2ZjZiMzcwN2QyNjFiMzMiLCJpYXQiOjE3Mjc0Mzk0NDgsImV4cCI6MTcyNzUyNTg0OH0.JYck2LrPOG5Hm9qJSpWETHkP4Zff-jG1saLrHI51_Ss",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3005/api/projects/restore/66db19d7ac4e6e65b64c921d",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"api",
+						"projects",
+						"restore",
+						"66db19d7ac4e6e65b64c921d"
+					]
+				},
+				"description": "Endpoint para restaurar los proyectos que han sido eliminados.\r\n\r\nRequisito: Ser Administrador."
+			},
+			"response": []
+		},
+		{
 			"name": "Actualizar Proyecto",
 			"request": {
 				"method": "PUT",
@@ -625,10 +808,20 @@
 		{
 			"name": "Eliminar Proyecto",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ5YTNkMjg4MTFlNDRhZWE4YjFkZDYiLCJpYXQiOjE3Mjc0MzkzMzksImV4cCI6MTcyNzUyNTczOX0.x9NluvERP0rwYtzLQVxXWDmOm6h4X6NxTuddAHrNQY0",
+							"type": "string"
+						}
+					]
+				},
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3005/api/projects/64d9c308aab9b5db033457d1",
+					"raw": "http://localhost:3005/api/projects/66db19d7ac4e6e65b64c921d",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -637,151 +830,12 @@
 					"path": [
 						"api",
 						"projects",
-						"64d9c308aab9b5db033457d1"
+						"66db19d7ac4e6e65b64c921d"
 					]
 				},
 				"description": "Eliminar una publicacion registrada.\n\nRequerimientos: la publicacion debe de existir, debe estar logeado en el sistema y ser administrador."
 			},
 			"response": []
-		},
-		{
-			"name": "Update Self Users",
-			"request": {
-				"method": "PUT",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"especializacion\": \"Desarrollador de Sistemas\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:3005/api/users/me",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3005",
-					"path": [
-						"api",
-						"users",
-						"me"
-					]
-				},
-				"description": "Endpoint que permite a los usuarios actualizar su propia informacion, los campos que actualizan seran limitados dependiendo el rol, si es Admin podra cambiar cualquier informacion propia que desee."
-			},
-			"response": []
-		},
-		{
-			"name": "Crear Solicitud",
-			"request": {
-			  "method": "POST",
-			  "header": [],
-			  "body": {
-				"mode": "raw",
-				"raw": "{\r\n  \"proyectoId\": \"66d9f71976c4141cb4812abe\",\r\n  \"investigadorId\": \"66d7d4bca6f6b3707d261b33\",\r\n  \"motivo\": \"Tengo experiencia en investigación y me gustaría unirme.\"\r\n}",
-				"options": {
-				  "raw": {
-					"language": "json"
-				  }
-				}
-			  },
-			  "url": {
-				"raw": "http://localhost:3005/api/solicitudes",
-				"protocol": "http",
-				"host": [
-				  "localhost"
-				],
-				"port": "3005",
-				"path": [
-				  "api",
-				  "solicitudes"
-				]
-			  },
-			  "description": "Crear una nueva solicitud para unirse a un proyecto."
-			},
-			"response": []
-		},
-		{
-			"name": "Obtener Solicitudes",
-			"request": {
-			  "method": "GET",
-			  "header": [],
-			  "url": {
-				"raw": "http://localhost:3005/api/solicitudes",
-				"protocol": "http",
-				"host": [
-				  "localhost"
-				],
-				"port": "3005",
-				"path": [
-				  "api",
-				  "solicitudes"
-				]
-			  },
-			  "description": "Obtener todas las solicitudes de los investigadores."
-			},
-			"response": []
-		},
-		{
-			"name": "Revisar Solicitud",
-			"request": {
-			  "method": "PATCH",
-			  "header": [],
-			  "body": {
-				"mode": "raw",
-				"raw": "{\r\n  \"estado\": \"Aceptada\",\r\n  \"comentariosAdministrador\": \"La solicitud ha sido aceptada.\"\r\n}",
-				"options": {
-				  "raw": {
-					"language": "json"
-				  }
-				}
-			  },
-			  "url": {
-				"raw": "http://localhost:3005/api/solicitudes/66e1234567890abcdef12345",
-				"protocol": "http",
-				"host": [
-				  "localhost"
-				],
-				"port": "3005",
-				"path": [
-				  "api",
-				  "solicitudes",
-				  "66e1234567890abcdef12345"
-				]
-			  },
-			  "description": "Actualizar el estado de una solicitud (aceptar o rechazar)."
-			},
-			"response": []
-		},
-		{
-			"name": "Eliminar Solicitud",
-			"request": {
-			  "method": "DELETE",
-			  "header": [],
-			  "url": {
-				"raw": "http://localhost:3005/api/solicitudes/66e1234567890abcdef12345",
-				"protocol": "http",
-				"host": [
-				  "localhost"
-				],
-				"port": "3005",
-				"path": [
-				  "api",
-				  "solicitudes",
-				  "66e1234567890abcdef12345"
-				]
-			  },
-			  "description": "Eliminar una solicitud existente."
-			},
-			"response": []
 		}
-		  
-		  
-		  
-		  
 	]
 }

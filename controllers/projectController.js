@@ -169,6 +169,7 @@ export const updateProyecto = async (req, res, next) => {
 
 
 // **************************** Eliminar Proyecto (Soft Delete) ************************************************* //
+
 export const deleteProyecto = async (req, res, next) => {
   const { id } = req.params;
 
@@ -179,22 +180,61 @@ export const deleteProyecto = async (req, res, next) => {
       return res.status(404).json({ error: 'Proyecto no encontrado' });
     }
 
-    // Verificar permisos del usuario
-    if (req.userRole !== 'Administrador' && !proyecto.investigadores.includes(req.user._id)) {
-      return res.status(403).json({ error: 'No tienes permisos para eliminar este proyecto' });
+    // Verificar permisos del usuario (Administrador o Investigador asignado al proyecto)
+    const isInvestigador = proyecto.investigadores.some(investigadorId => investigadorId.equals(req.user._id));
+    const isAdmin = req.userRole === 'Administrador';
+
+    if (!isInvestigador && !isAdmin) {
+      return res.status(403).json({ error: 'No tienes permisos para eliminar este proyecto.' });
+    }
+
+    // Si el proyecto está en estado 'Finalizado' o 'Cancelado', solo el administrador puede eliminarlo
+    if ((proyecto.estado === 'Finalizado' || proyecto.estado === 'Cancelado') && !isAdmin) {
+      return res.status(400).json({ error: 'Solo los administradores pueden eliminar proyectos en estado finalizado o cancelado.' });
     }
 
     // Soft delete: Marcar el proyecto como eliminado
     proyecto.isDeleted = true;
     await proyecto.save();
 
-    res.status(200).json({ message: 'Proyecto eliminado (soft delete)' });
+    res.status(200).json({ message: 'Proyecto eliminado (soft delete).' });
   } catch (error) {
     next(error);
   }
 };
+
 // **************************** END ************************************************ //
 
+// **************************** Restaurar Proyecto (Revertir Soft Delete) ************************************************* //
+
+export const restoreProyecto = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    // Verificar si el proyecto existe y está eliminado
+    const proyecto = await Project.findById(id);
+    if (!proyecto || !proyecto.isDeleted) {
+      return res.status(404).json({ error: 'Proyecto no encontrado o no está eliminado.' });
+    }
+
+    // Solo los administradores pueden restaurar proyectos
+    if (req.userRole !== 'Administrador') {
+      return res.status(403).json({ error: 'No tienes permisos para restaurar este proyecto.' });
+    }
+
+    // Restaurar el proyecto (quitar el estado isDeleted)
+    proyecto.isDeleted = false;
+    await proyecto.save();
+
+    res.status(200).json({ message: 'Proyecto restaurado exitosamente.' });
+  } catch (error) {
+    res.status(500).json({ message: 'Error al restaurar el proyecto.', error: error.message });
+  }
+};
+
+// **************************** END ************************************************ //
+
+// **************************** Seccion de busquedas ************************************************* //
 
 // **************************** Obtener todos los Proyectos con Paginación y Filtrado ************************************************* //
 export const getAllProyectos = async (req, res, next) => {
