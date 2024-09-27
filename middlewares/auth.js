@@ -7,16 +7,21 @@ const auth = async (req, res, next) => {
     const token = req.header('Authorization')?.replace('Bearer ', ''); // Obtenemos de aqui el token del local storage
 
     if (!token) {
-      throw new Error('Token de autenticacion no encontrado')
+      throw new Error('Token de autenticación no encontrado');
     }
 
-    const decoded = jwt.verify(token, process.env.JWT_SEC_KEY)
-    const user = await User.findOne({ _id: decoded._id, 'tokens.token': token })
+    const decoded = jwt.verify(token, process.env.JWT_SEC_KEY);
+    const user = await User.findOne({ _id: decoded._id, 'tokens.token': token });
 
     if (!user) {
-      throw new Error('Usuario no encontrado con el token proporcionado')
+      throw new Error('Usuario no encontrado con el token proporcionado');
     }
 
+    // Verificar si el usuario está deshabilitado
+    if (user.isDisabled) {
+      return res.status(403).json({ error: 'Este usuario está deshabilitado. Contacta al administrador.' });
+    }
+    
     const role = await Role.findById(user.role)
     if (!role) {
       throw new Error('Rol no encontrado')      
