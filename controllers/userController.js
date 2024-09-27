@@ -362,6 +362,11 @@ export const disableUser = async (req, res) => {
       return res.status(403).json({ error: 'No tienes permisos para deshabilitar este usuario.' });
     }
 
+    // Verificamos si el usuario ya está deshabilitado
+    if (user.isDisabled) {
+      return res.status(400).json({ error: 'Este usuario ya está deshabilitado.' });
+    }
+
     // Deshabilitamos cualquier usuario
     user.isDisabled = true;
     await user.save();
@@ -389,6 +394,11 @@ export const enableUser = async (req, res) => {
     // Solo un administrador puede habilitar usuarios
     if (req.userRole !== 'Administrador') {
       return res.status(403).json({ error: 'No tienes permisos para habilitar este usuario.' });
+    }
+
+    // Verificamos si el usuario ya está habilitado
+    if (!user.isDisabled) {
+      return res.status(400).json({ error: 'Este usuario ya está habilitado.' });
     }
 
     // Habilitar el usuario
