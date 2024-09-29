@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 const requestSchema = new mongoose.Schema({
   solicitante: {
     type: mongoose.Schema.Types.ObjectId, 
-    ref: 'Usuario', // Asumiendo que hay un modelo Usuario
+    ref: 'User', // Asumiendo que hay un modelo Usuario
     required: true
   },
   tipo: {
@@ -17,7 +17,7 @@ const requestSchema = new mongoose.Schema({
   },
   proyecto: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'Proyecto', // Referencia al proyecto relacionado
+    ref: 'Project', // Referencia al proyecto relacionado
     required: false // Puede no estar relacionado a un proyecto específico
   },
   estado: {
@@ -31,7 +31,7 @@ const requestSchema = new mongoose.Schema({
   },
   comentarios: [
     {
-      usuario: { type: mongoose.Schema.Types.ObjectId, ref: 'Usuario' }, // Referencia a quien hizo el comentario
+      usuario: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }, // Referencia a quien hizo el comentario
       comentario: String,
       fecha: { type: Date, default: Date.now }
     }
@@ -41,7 +41,7 @@ const requestSchema = new mongoose.Schema({
   },
   revisadoPor: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'Usuario', // Usuario que revisa y resuelve la solicitud
+    ref: 'User', // Usuario que revisa y resuelve la solicitud
     required: false
   }
 });
