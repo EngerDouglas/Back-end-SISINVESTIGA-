@@ -214,7 +214,12 @@ export const restorePublication = async (req, res) => {
 
 export const getAllPublications = async (req, res) => {
   try {
-    const publications = await Publication.find()
+    const { tipoPublicacion } = req.query;
+
+    const filter = {};
+    if (tipoPublicacion) filter.tipoPublicacion = tipoPublicacion;
+
+    const publications = await Publication.find(filter)
     .populate({
       path: 'autores',
       select: 'nombre apellido especializacion responsabilidades',
