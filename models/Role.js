@@ -6,10 +6,17 @@ const roleSchema = mongoose.Schema({
     required: true,
     unique: true,
   },
-  createdAt: {
-    type: Date,
-    default: Date.now,
+  descripcion: {
+    type: String,
+    trim: true,
   },
-})
+  permisos: [{
+    type: String,
+    enum: ['leer', 'escribir', 'actualizar', 'eliminar', 'administrar'],
+    required: true,
+  }],
+}, {
+  timestamps: true, 
+});
 
 export default mongoose.model('Role', roleSchema)

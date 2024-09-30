@@ -1,52 +1,53 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
-const requestSchema = new mongoose.Schema({
-  solicitante: {
-    type: mongoose.Schema.Types.ObjectId, 
-    ref: 'User', // Asumiendo que hay un modelo Usuario
-    required: true
+const requestSchema = new mongoose.Schema(
+  {
+    solicitante: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
+    },
+    tipoSolicitud: {
+      type: String,
+      enum: ["Aprobación", "Recurso", "Permiso", "Otros"],
+      required: true,
+    },
+    descripcion: {
+      type: String,
+      required: true,
+    },
+    proyecto: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Project",
+    },
+    estado: {
+      type: String,
+      enum: ["Pendiente", "Aprobada", "Rechazada", "En Proceso"],
+      default: "Pendiente",
+    },
+    fechaCreacion: {
+      type: Date,
+      default: Date.now,
+    },
+    comentarios: [
+      {
+        usuario: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+        comentario: String,
+        fecha: { type: Date, default: Date.now },
+      },
+    ],
+    fechaResolucion: {
+      type: Date,
+    },
+    revisadoPor: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      required: false,
+    },
   },
-  tipo: {
-    type: String,
-    enum: ['Aprobación', 'Recurso', 'Permiso', 'Otros'], // Opciones de tipos de solicitud
-    required: true
-  },
-  descripcion: {
-    type: String,
-    required: true
-  },
-  proyecto: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Project', // Referencia al proyecto relacionado
-    required: false // Puede no estar relacionado a un proyecto específico
-  },
-  estado: {
-    type: String,
-    enum: ['Pendiente', 'Aprobada', 'Rechazada', 'En Proceso'], // Diferentes estados de una solicitud
-    default: 'Pendiente'
-  },
-  fechaCreacion: {
-    type: Date,
-    default: Date.now
-  },
-  comentarios: [
-    {
-      usuario: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }, // Referencia a quien hizo el comentario
-      comentario: String,
-      fecha: { type: Date, default: Date.now }
-    }
-  ],
-  fechaResolucion: {
-    type: Date
-  },
-  revisadoPor: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'User', // Usuario que revisa y resuelve la solicitud
-    required: false
+  {
+    timestamps: true,
   }
-});
+);
 
-// Crear el modelo de Solicitud
-const Request = mongoose.model('Request', requestSchema);
-
-export default Request;
+export default mongoose.model("Request", requestSchema);

@@ -64,9 +64,9 @@ const userSchema = mongoose.Schema({
     type: Boolean,
     default: false, // Los usuarios no están deshabilitados por defecto
   },
-  createdAt: {
-    type: Date,
-    default: Date.now
+  fotoPerfil: {
+    type: String,
+    trim: true,
   },
   tokens: [{
     token: {
@@ -77,6 +77,7 @@ const userSchema = mongoose.Schema({
 }, {
   toJSON: { virtuals: true },
   toObject: { virtuals: true },
+  timestamps: true,
 });
 
 // propiedad virtual para traer los 'proyectos'
@@ -92,6 +93,14 @@ userSchema.virtual('publicaciones', {
   localField: '_id',
   foreignField: 'autores',
 });
+
+// Propiedad virtual para 'requests' (solicitudes)
+userSchema.virtual('requests', {
+  ref: 'Request',
+  localField: '_id',
+  foreignField: 'solicitante',
+});
+
 
 // Vamos a eliminar las propiedades sensibles al convertir nuestro json
 userSchema.methods.toJSON = function () {  
