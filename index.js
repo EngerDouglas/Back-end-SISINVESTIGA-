@@ -9,7 +9,7 @@ import UsersRouter from './routes/userRoute.js'
 import ProjectRouter from './routes/projectRoute.js'
 import PublicationsRouter from './routes/publicationRoute.js'
 import EvaluationRouter from './routes/evaluationRoute.js'
-import RequestRouter from './routes/requestRouter.js'
+import RequestRouter from './routes/requestRoute.js'
 import './config/db.js'
 
 dotenv.config()

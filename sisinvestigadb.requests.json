@@ -1,0 +1,84 @@
+[{
+  "_id": {
+    "$oid": "66fb6a513d992c962d613b0c"
+  },
+  "solicitante": {
+    "$oid": "66e8c2ca50682593adb5d0bb"
+  },
+  "tipoSolicitud": "Unirse a Proyecto",
+  "descripcion": "Me gustaría unirme al proyecto por mi experiencia en IA.",
+  "proyecto": {
+    "$oid": "66d9f71976c4141cb4812abe"
+  },
+  "estado": "Aprobada",
+  "isDeleted": false,
+  "comentarios": [
+    {
+      "usuario": {
+        "$oid": "66d7d4bca6f6b3707d261b33"
+      },
+      "comentario": "Bienvenido al proyecto.",
+      "_id": {
+        "$oid": "66fb6c503d992c962d613b8d"
+      },
+      "fecha": {
+        "$date": "2024-10-01T03:28:16.786Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2024-10-01T03:19:45.557Z"
+  },
+  "updatedAt": {
+    "$date": "2024-10-01T03:28:16.787Z"
+  },
+  "__v": 1,
+  "fechaResolucion": {
+    "$date": "2024-10-01T03:28:16.786Z"
+  },
+  "revisadoPor": {
+    "$oid": "66d7d4bca6f6b3707d261b33"
+  }
+},
+{
+  "_id": {
+    "$oid": "66fb6a8b3d992c962d613b1a"
+  },
+  "solicitante": {
+    "$oid": "66e8c2ca50682593adb5d0bb"
+  },
+  "tipoSolicitud": "Unirse a Proyecto",
+  "descripcion": "Me gustaría unirme al proyecto por mi experiencia en IA.",
+  "proyecto": {
+    "$oid": "66d9f71976c4141cb4812abe"
+  },
+  "estado": "Aprobada",
+  "isDeleted": false,
+  "comentarios": [
+    {
+      "usuario": {
+        "$oid": "66d7d4bca6f6b3707d261b33"
+      },
+      "comentario": "Bienvenido al proyecto.",
+      "_id": {
+        "$oid": "66fb6b7e3d992c962d613b3b"
+      },
+      "fecha": {
+        "$date": "2024-10-01T03:24:46.581Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2024-10-01T03:20:43.944Z"
+  },
+  "updatedAt": {
+    "$date": "2024-10-01T03:24:46.583Z"
+  },
+  "__v": 1,
+  "fechaResolucion": {
+    "$date": "2024-10-01T03:24:46.580Z"
+  },
+  "revisadoPor": {
+    "$oid": "66d7d4bca6f6b3707d261b33"
+  }
+}]

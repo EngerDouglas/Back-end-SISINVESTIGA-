@@ -44,9 +44,11 @@
     "$date": "2024-09-05T18:23:21.340Z"
   },
   "updatedAt": {
-    "$date": "2024-09-05T18:23:21.340Z"
+    "$date": "2024-10-01T02:38:37.630Z"
   },
-  "__v": 1
+  "__v": 1,
+  "isDeleted": false,
+  "isEvaluated": true
 },
 {
   "_id": {
@@ -96,7 +98,8 @@
   "updatedAt": {
     "$date": "2024-09-06T14:39:46.608Z"
   },
-  "__v": 1
+  "__v": 1,
+  "isDeleted": false
 },
 {
   "_id": {
@@ -146,5 +149,6 @@
   "updatedAt": {
     "$date": "2024-09-06T15:03:51.604Z"
   },
-  "__v": 1
+  "__v": 1,
+  "isDeleted": false
 }]

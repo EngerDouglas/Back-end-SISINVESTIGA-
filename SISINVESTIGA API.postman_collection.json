@@ -1,10 +1,10 @@
 {
 	"info": {
-		"_postman_id": "70ce3deb-7fd0-4ba3-9cca-f5ff482ada74",
+		"_postman_id": "224351ea-e503-48d9-8054-b642fdaf093b",
 		"name": "SISINVESTIGA API",
 		"description": "API para la gestion de publicaciones academicas, usuarios, roles y publicaciones en SISINVESTIGA.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "35172422"
+		"_exporter_id": "33731987"
 	},
 	"item": [
 		{
@@ -14,7 +14,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"nombre\": \"Engel\",\r\n    \"apellido\": \"Douglas\",\r\n    \"email\": \"engeldg@gmail.com\",\r\n    \"password\": \"Investiga123@\",\r\n    \"especializacion\": \"Ingeniero de Software\",\r\n    \"responsabilidades\": [\"Desarrollar de APIs\", \"Probar EndPoints\"]\r\n}",
+					"raw": "{\r\n    \"nombre\": \"Carlos\",\r\n    \"apellido\": \"Sánchez\",\r\n    \"email\": \"carlos.sanchez@gmail.com\",\r\n    \"password\": \"Investiga123@\",\r\n    \"especializacion\": \"Ingeniero de Software\",\r\n    \"responsabilidades\": [\"Desarrollo de proyectos\", \"Investigación\"],\r\n    \"fotoPerfil\": \"https://example.com/profile.jpg\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -99,7 +99,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ3ZDRiY2E2ZjZiMzcwN2QyNjFiMzMiLCJpYXQiOjE3Mjc0Mzk0NDgsImV4cCI6MTcyNzUyNTg0OH0.JYck2LrPOG5Hm9qJSpWETHkP4Zff-jG1saLrHI51_Ss",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ3ZDRiY2E2ZjZiMzcwN2QyNjFiMzMiLCJpYXQiOjE3Mjc3NTM0NTksImV4cCI6MTcyNzgzOTg1OX0.Mdnys_lCH0pNaUGVRnQGiAJpCXQdAImroHLEann0_J0",
 							"type": "string"
 						}
 					]
@@ -234,6 +234,16 @@
 		{
 			"name": "Obtener tu propio Usuaro",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmU4YzJjYTUwNjgyNTkzYWRiNWQwYmIiLCJpYXQiOjE3Mjc3NTMxMzAsImV4cCI6MTcyNzgzOTUzMH0.Lc3tu_QJCs0tm-YJa0DA_Pr6Iy1lzZw1JHuSr0ru8VQ",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
 				"header": [],
 				"url": {
@@ -423,7 +433,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ3ZDRiY2E2ZjZiMzcwN2QyNjFiMzMiLCJpYXQiOjE3MjcyNzQ2NTgsImV4cCI6MTcyNzM2MTA1OH0.kKQ2OXVqnWjR4IkpjVGbBX9OSG-WiuLqM_y2e56gLbw",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ3ZDRiY2E2ZjZiMzcwN2QyNjFiMzMiLCJpYXQiOjE3Mjc3NDg5NTUsImV4cCI6MTcyNzgzNTM1NX0.JgOg2umDEnDWuvEgKC5nav8SEQIywbUFL4TPusmdocw",
 							"type": "string"
 						}
 					]
@@ -432,7 +442,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"titulo\": \"Prueba De Proyecto\",\r\n  \"fecha\": \"2024-09-25\",\r\n  \"proyecto\" : [\"66d9f71976c4141cb4812abe\"],\r\n  \"revista\": \"Revista de Investigación Tecnológica\",\r\n  \"resumen\": \"Este artículo explora las aplicaciones emergentes de la IA en la educación.\",\r\n  \"palabrasClave\": [\"IA\", \"educación\", \"tecnología\"],\r\n  \"tipoPublicacion\": \"Articulo\",\r\n  \"anexos\": [\"archivo1.pdf\", \"imagen1.png\"],\r\n  \"idioma\": \"Español\"\r\n}",
+					"raw": "{\r\n  \"titulo\": \"Nuevas Tendencias en Machine Learning\",\r\n  \"fecha\": \"2023-10-01T00:00:00.000Z\",\r\n  \"proyecto\": \"634d9bfa2b1f4e1b2c3d4e59\",\r\n  \"revista\": \"Revista Internacional de IA\",\r\n  \"resumen\": \"Esta publicación analiza las últimas tendencias en machine learning...\",\r\n  \"palabrasClave\": [\"Machine Learning\", \"Inteligencia Artificial\"],\r\n  \"tipoPublicacion\": \"Articulo\",\r\n  \"idioma\": \"Español\",\r\n  \"anexos\": [\"https://ejemplo.com/anexo1.pdf\", \"https://ejemplo.com/anexo2.pdf\"]\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -491,11 +501,21 @@
 		{
 			"name": "Actualizar Publicacion",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ3ZDRiY2E2ZjZiMzcwN2QyNjFiMzMiLCJpYXQiOjE3Mjc3NDg5NTUsImV4cCI6MTcyNzgzNTM1NX0.JgOg2umDEnDWuvEgKC5nav8SEQIywbUFL4TPusmdocw",
+							"type": "string"
+						}
+					]
+				},
 				"method": "PUT",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"proyecto\": [\"66db19d7ac4e6e65b64c921d\", \"66db143269069f5a5b76ff4f\" ]\r\n}",
+					"raw": "{\r\n  \"resumen\": \"Actualización: Se agregaron nuevas secciones sobre redes neuronales.\",\r\n  \"palabrasClave\": [\"Machine Learning\", \"Inteligencia Artificial\", \"Redes Neuronales\"],\r\n  \"estado\": \"Revisado\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -503,7 +523,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3005/api/publications/66e59c936ccc55df8408d5f3",
+					"raw": "http://localhost:3005/api/publications/66d9f71976c4141cb4812abe",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -512,7 +532,7 @@
 					"path": [
 						"api",
 						"publications",
-						"66e59c936ccc55df8408d5f3"
+						"66d9f71976c4141cb4812abe"
 					]
 				},
 				"description": "Actualizar una publicacion.\n\nRequerimientos: Ser Investigador y estar logeado en el sistema, ser el dueño de esa publicacion."
@@ -525,7 +545,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3005/api/publications",
+					"raw": "http://localhost:3005/api/publications?tipoPublicacion=Articulo&estado=Borrador",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -534,6 +554,16 @@
 					"path": [
 						"api",
 						"publications"
+					],
+					"query": [
+						{
+							"key": "tipoPublicacion",
+							"value": "Articulo"
+						},
+						{
+							"key": "estado",
+							"value": "Borrador"
+						}
 					]
 				},
 				"description": "Traer todas las publicaciones.\n\nNo se necesita estar logeado en el sistema, ni tener un rol en especifico."
@@ -569,7 +599,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3005/api/publications/titulo/SISINVESTIGA",
+					"raw": "http://localhost:3005/api/publications/search?titulo=Prueba de Proyecto",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -578,8 +608,13 @@
 					"path": [
 						"api",
 						"publications",
-						"titulo",
-						"SISINVESTIGA"
+						"search"
+					],
+					"query": [
+						{
+							"key": "titulo",
+							"value": "Prueba de Proyecto"
+						}
 					]
 				},
 				"description": "Traer una publicacion por su titulo\n\nNo se necesita estar logeado en el sistema, ni tener un rol en especifico."
@@ -594,7 +629,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ5YTNkMjg4MTFlNDRhZWE4YjFkZDYiLCJpYXQiOjE3Mjc0Mzg0NjksImV4cCI6MTcyNzUyNDg2OX0.Nh7vyR1HHRDOslzZlbUwpSkN68rwjdJl6l8Qq9I70p0",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmU4YzJjYTUwNjgyNTkzYWRiNWQwYmIiLCJpYXQiOjE3Mjc3NTA5NjAsImV4cCI6MTcyNzgzNzM2MH0.wNqJPXff_JQnnNtAa2jjo5ev5Zg8k8JFTwbOCD4CBQA",
 							"type": "string"
 						}
 					]
@@ -621,6 +656,16 @@
 		{
 			"name": "Obtener Publicaciones Propias",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ3ZDRiY2E2ZjZiMzcwN2QyNjFiMzMiLCJpYXQiOjE3Mjc3NDg5NTUsImV4cCI6MTcyNzgzNTM1NX0.JgOg2umDEnDWuvEgKC5nav8SEQIywbUFL4TPusmdocw",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
 				"header": [],
 				"url": {
@@ -637,6 +682,100 @@
 					]
 				},
 				"description": "Consultamos nuestras publicaciones.\n\nRequerimientos: Estar logeado, ser el owner de la publicacion, tener publicaciones creadas."
+			},
+			"response": []
+		},
+		{
+			"name": "Crear Proyectos",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nombre\": \"Nuevo Proyecto\",\r\n  \"descripcion\": \"Descripción del nuevo proyecto\",\r\n  \"objetivos\": \"Objetivos del proyecto\",\r\n  \"presupuesto\": 10000,\r\n  \"cronograma\": {\r\n    \"fechaInicio\": \"2024-01-01T00:00:00.000Z\",\r\n    \"fechaFin\": \"2024-12-31T00:00:00.000Z\"\r\n  },\r\n  \"investigadores\": [\"66d7d4bca6f6b3707d261b33\"],\r\n  \"recursos\": [\"Recurso 1\", \"Recurso 2\"],\r\n  \"hitos\": [\r\n    {\r\n      \"nombre\": \"Hito 1\",\r\n      \"fecha\": \"2024-06-30T00:00:00.000Z\",\r\n      \"entregable\": \"Entregable 1\"\r\n    }\r\n  ],\r\n  \"estado\": \"Planeado\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3005/api/projects",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"api",
+						"projects"
+					]
+				},
+				"description": "Crear un nueva proyecto.\n\nRequerimientos: Ser Investigador y estar logeado en el sistema."
+			},
+			"response": []
+		},
+		{
+			"name": "Restaurar Proyectos",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ3ZDRiY2E2ZjZiMzcwN2QyNjFiMzMiLCJpYXQiOjE3Mjc0Mzk0NDgsImV4cCI6MTcyNzUyNTg0OH0.JYck2LrPOG5Hm9qJSpWETHkP4Zff-jG1saLrHI51_Ss",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3005/api/projects/restore/66db19d7ac4e6e65b64c921d",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"api",
+						"projects",
+						"restore",
+						"66db19d7ac4e6e65b64c921d"
+					]
+				},
+				"description": "Endpoint para restaurar los proyectos que han sido eliminados.\n\nRequisito: Ser Administrador."
+			},
+			"response": []
+		},
+		{
+			"name": "Actualizar Proyecto",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nombre\": \"Proyecto Actualizado\",\r\n  \"descripcion\": \"Descripción actualizada del proyecto\",\r\n  \"objetivos\": \"Objetivos actualizados\",\r\n  \"presupuesto\": 12000,\r\n  \"cronograma\": {\r\n    \"fechaInicio\": \"2024-01-01T00:00:00.000Z\",\r\n    \"fechaFin\": \"2024-12-31T00:00:00.000Z\"\r\n  },\r\n  \"investigadores\": [\"64cbb0c759fe5c3503e4b8d9\"],\r\n  \"recursos\": [\"Recurso 1\", \"Recurso 2\", \"Recurso 3\"],\r\n  \"hitos\": [\r\n    {\r\n      \"nombre\": \"Hito 1\",\r\n      \"fecha\": \"2024-06-30T00:00:00.000Z\",\r\n      \"entregable\": \"Entregable 1\"\r\n    }\r\n  ],\r\n  \"estado\": \"En Proceso\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3005/api/projects/64d9c308aab9b5db033457d1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"api",
+						"projects",
+						"64d9c308aab9b5db033457d1"
+					]
+				},
+				"description": "Actualizar un proyecto.\n\nRequerimientos: Ser Investigador y estar logeado en el sistema."
 			},
 			"response": []
 		},
@@ -712,100 +851,6 @@
 			"response": []
 		},
 		{
-			"name": "Crear Proyectos",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n  \"nombre\": \"Nuevo Proyecto\",\r\n  \"descripcion\": \"Descripción del nuevo proyecto\",\r\n  \"objetivos\": \"Objetivos del proyecto\",\r\n  \"presupuesto\": 10000,\r\n  \"cronograma\": {\r\n    \"fechaInicio\": \"2024-01-01T00:00:00.000Z\",\r\n    \"fechaFin\": \"2024-12-31T00:00:00.000Z\"\r\n  },\r\n  \"investigadores\": [\"66d7d4bca6f6b3707d261b33\"],\r\n  \"recursos\": [\"Recurso 1\", \"Recurso 2\"],\r\n  \"hitos\": [\r\n    {\r\n      \"nombre\": \"Hito 1\",\r\n      \"fecha\": \"2024-06-30T00:00:00.000Z\",\r\n      \"entregable\": \"Entregable 1\"\r\n    }\r\n  ],\r\n  \"estado\": \"Planeado\"\r\n}\r\n",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:3005/api/projects",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3005",
-					"path": [
-						"api",
-						"projects"
-					]
-				},
-				"description": "Crear un nueva proyecto.\n\nRequerimientos: Ser Investigador y estar logeado en el sistema."
-			},
-			"response": []
-		},
-		{
-			"name": "Restaurar Proyectos",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ3ZDRiY2E2ZjZiMzcwN2QyNjFiMzMiLCJpYXQiOjE3Mjc0Mzk0NDgsImV4cCI6MTcyNzUyNTg0OH0.JYck2LrPOG5Hm9qJSpWETHkP4Zff-jG1saLrHI51_Ss",
-							"type": "string"
-						}
-					]
-				},
-				"method": "POST",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:3005/api/projects/restore/66db19d7ac4e6e65b64c921d",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3005",
-					"path": [
-						"api",
-						"projects",
-						"restore",
-						"66db19d7ac4e6e65b64c921d"
-					]
-				},
-				"description": "Endpoint para restaurar los proyectos que han sido eliminados.\r\n\r\nRequisito: Ser Administrador."
-			},
-			"response": []
-		},
-		{
-			"name": "Actualizar Proyecto",
-			"request": {
-				"method": "PUT",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n  \"nombre\": \"Proyecto Actualizado\",\r\n  \"descripcion\": \"Descripción actualizada del proyecto\",\r\n  \"objetivos\": \"Objetivos actualizados\",\r\n  \"presupuesto\": 12000,\r\n  \"cronograma\": {\r\n    \"fechaInicio\": \"2024-01-01T00:00:00.000Z\",\r\n    \"fechaFin\": \"2024-12-31T00:00:00.000Z\"\r\n  },\r\n  \"investigadores\": [\"64cbb0c759fe5c3503e4b8d9\"],\r\n  \"recursos\": [\"Recurso 1\", \"Recurso 2\", \"Recurso 3\"],\r\n  \"hitos\": [\r\n    {\r\n      \"nombre\": \"Hito 1\",\r\n      \"fecha\": \"2024-06-30T00:00:00.000Z\",\r\n      \"entregable\": \"Entregable 1\"\r\n    }\r\n  ],\r\n  \"estado\": \"En Proceso\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:3005/api/projects/64d9c308aab9b5db033457d1",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3005",
-					"path": [
-						"api",
-						"projects",
-						"64d9c308aab9b5db033457d1"
-					]
-				},
-				"description": "Actualizar un proyecto.\n\nRequerimientos: Ser Investigador y estar logeado en el sistema."
-			},
-			"response": []
-		},
-		{
 			"name": "Eliminar Proyecto",
 			"request": {
 				"auth": {
@@ -834,6 +879,396 @@
 					]
 				},
 				"description": "Eliminar una publicacion registrada.\n\nRequerimientos: la publicacion debe de existir, debe estar logeado en el sistema y ser administrador."
+			},
+			"response": []
+		},
+		{
+			"name": "Crear Evaluacion",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmU4YzJjYTUwNjgyNTkzYWRiNWQwYmIiLCJpYXQiOjE3Mjc3NTA5NjAsImV4cCI6MTcyNzgzNzM2MH0.wNqJPXff_JQnnNtAa2jjo5ev5Zg8k8JFTwbOCD4CBQA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "\r\n{\r\n    \"puntuacion\": 85,\r\n    \"comentarios\": \"El proyecto presenta un enfoque innovador y un plan de trabajo bien estructurado.\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3005/api/evaluations/projects/66d9f71976c4141cb4812abe",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"api",
+						"evaluations",
+						"projects",
+						"66d9f71976c4141cb4812abe"
+					]
+				},
+				"description": "Endpoint que permite crear evaluaciones de los proyectos.\r\n\r\nRequisito ser Administrador."
+			},
+			"response": []
+		},
+		{
+			"name": "Actualizar Evaluacion",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ3ZDRiY2E2ZjZiMzcwN2QyNjFiMzMiLCJpYXQiOjE3Mjc3NTAxMzEsImV4cCI6MTcyNzgzNjUzMX0.Mur3oWhFLFRyZr9eXtDF7zI1jWUrqilMLQuog7sysqE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"puntuacion\": 90,\r\n    \"comentarios\": \"Después de una revisión adicional, considero que el proyecto supera las expectativas.\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3005/api/evaluations/66fb60adb9c590ff9dbf9dcb",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"api",
+						"evaluations",
+						"66fb60adb9c590ff9dbf9dcb"
+					]
+				},
+				"description": "Endpoint que permite actualizar evaluaciones de los proyectos.\r\n\r\nRequisito ser Administrador."
+			},
+			"response": []
+		},
+		{
+			"name": "Restaurar Evaluacion",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ3ZDRiY2E2ZjZiMzcwN2QyNjFiMzMiLCJpYXQiOjE3Mjc3NTAxMzEsImV4cCI6MTcyNzgzNjUzMX0.Mur3oWhFLFRyZr9eXtDF7zI1jWUrqilMLQuog7sysqE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3005/api/evaluations/66fb60adb9c590ff9dbf9dcb/restore",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"api",
+						"evaluations",
+						"66fb60adb9c590ff9dbf9dcb",
+						"restore"
+					]
+				},
+				"description": "Endpoint que permite restaurar evluaciones del sistema.\r\n\r\nRequisito: Ser Administrador."
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener Evaluacion Por Proyecto",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ3ZDRiY2E2ZjZiMzcwN2QyNjFiMzMiLCJpYXQiOjE3Mjc3NTAxMzEsImV4cCI6MTcyNzgzNjUzMX0.Mur3oWhFLFRyZr9eXtDF7zI1jWUrqilMLQuog7sysqE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3005/api/evaluations/projects/66d9f71976c4141cb4812abe",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"api",
+						"evaluations",
+						"projects",
+						"66d9f71976c4141cb4812abe"
+					]
+				},
+				"description": "Endpoint que permite obtener las evaluaciones por proyectos.\r\n\r\nRequisito: Estar logeado en el sistema."
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar Evaluaciones",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ3ZDRiY2E2ZjZiMzcwN2QyNjFiMzMiLCJpYXQiOjE3Mjc3NTAxMzEsImV4cCI6MTcyNzgzNjUzMX0.Mur3oWhFLFRyZr9eXtDF7zI1jWUrqilMLQuog7sysqE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3005/api/evaluations/66fb60adb9c590ff9dbf9dcb",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"api",
+						"evaluations",
+						"66fb60adb9c590ff9dbf9dcb"
+					]
+				},
+				"description": "Endpoint que permite eliminar evaluaciones del sistema, pero no de la base de datos.\r\n\r\nRequisito: Ser Administrador."
+			},
+			"response": []
+		},
+		{
+			"name": "Crear Solicitudes",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmU4YzJjYTUwNjgyNTkzYWRiNWQwYmIiLCJpYXQiOjE3Mjc3NTI3NjUsImV4cCI6MTcyNzgzOTE2NX0.N8ZlDXy_UnHW98cTOAPzj17gTSXSP6ArXovJm-vO7xs",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"tipoSolicitud\": \"Unirse a Proyecto\",\r\n  \"descripcion\": \"Me gustaría unirme al proyecto por mi experiencia en IA.\",\r\n  \"proyecto\": \"66d9f71976c4141cb4812abe\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3005/api/requests",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"api",
+						"requests"
+					]
+				},
+				"description": "Endpoint que permite crear solicitudes en el sistema.\r\n\r\nRequisito: Estar logeado."
+			},
+			"response": []
+		},
+		{
+			"name": "Actualizar Solicitudes",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ3ZDRiY2E2ZjZiMzcwN2QyNjFiMzMiLCJpYXQiOjE3Mjc3NTMyMDUsImV4cCI6MTcyNzgzOTYwNX0.lakHGQ06cJZ6RfR-AUS1wkVrBVsNTeq-ePORdhKl95c",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"estado\": \"Aprobada\",\r\n  \"comentarios\": \"Bienvenido al proyecto.\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3005/api/requests/66fb6a513d992c962d613b0c",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"api",
+						"requests",
+						"66fb6a513d992c962d613b0c"
+					]
+				},
+				"description": "Endpoint que permite actualizar solicitudes en el sistema.\r\n\r\nRequisito: Estar logeado, solo los administradores cambiaran los estados de las solicitudes."
+			},
+			"response": []
+		},
+		{
+			"name": "Restaurar Solicitudes",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ3ZDRiY2E2ZjZiMzcwN2QyNjFiMzMiLCJpYXQiOjE3Mjc3NTMyMDUsImV4cCI6MTcyNzgzOTYwNX0.lakHGQ06cJZ6RfR-AUS1wkVrBVsNTeq-ePORdhKl95c",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3005/api/requests/66fb6a513d992c962d613b0c/restore",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"api",
+						"requests",
+						"66fb6a513d992c962d613b0c",
+						"restore"
+					]
+				},
+				"description": "StartFragmentEndpoint que permite restaurar solicitudes eliminadas en el sistema.\n\n  \nRequisito: Ser Administrador."
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener Solicitudes Por ID",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmU4YzJjYTUwNjgyNTkzYWRiNWQwYmIiLCJpYXQiOjE3Mjc3NTI3NjUsImV4cCI6MTcyNzgzOTE2NX0.N8ZlDXy_UnHW98cTOAPzj17gTSXSP6ArXovJm-vO7xs",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3005/api/requests/66fb6a8b3d992c962d613b1a",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"api",
+						"requests",
+						"66fb6a8b3d992c962d613b1a"
+					]
+				},
+				"description": "Endpoint que permite obtener las solicitudes por ID en el sistema.\r\n\r\nRequisito: Estar logeado."
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener Todas Las Solicitudes",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ3ZDRiY2E2ZjZiMzcwN2QyNjFiMzMiLCJpYXQiOjE3Mjc3NTM0NTksImV4cCI6MTcyNzgzOTg1OX0.Mdnys_lCH0pNaUGVRnQGiAJpCXQdAImroHLEann0_J0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3005/api/requests",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"api",
+						"requests"
+					]
+				},
+				"description": "Endpoint que permite obtener todas las solicitudes en el sistema.\r\n\r\nRequisito: Ser Administrador."
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar Solicitudes",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ3ZDRiY2E2ZjZiMzcwN2QyNjFiMzMiLCJpYXQiOjE3Mjc3NTMyMDUsImV4cCI6MTcyNzgzOTYwNX0.lakHGQ06cJZ6RfR-AUS1wkVrBVsNTeq-ePORdhKl95c",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3005/api/requests/66fb6a513d992c962d613b0c",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"api",
+						"requests",
+						"66fb6a513d992c962d613b0c"
+					]
+				},
+				"description": "Endpoint que permite eliminar solicitudes en el sistema, pero no se elimina de la base de datos.\r\n\r\nRequisito: Ser Administrador."
 			},
 			"response": []
 		}

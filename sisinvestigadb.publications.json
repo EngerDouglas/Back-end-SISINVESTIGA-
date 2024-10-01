@@ -1,5 +1,79 @@
 [{
   "_id": {
+    "$oid": "66d9f71976c4141cb4812abe"
+  },
+  "titulo": "SISINVESTIGA",
+  "fecha": {
+    "$date": "2024-09-04T00:00:00.000Z"
+  },
+  "autores": [
+    {
+      "$oid": "66d7d4bca6f6b3707d261b33"
+    }
+  ],
+  "revista": "Revista Académica de Investigación",
+  "resumen": "Estamos probando la API para ver su funcionalidad.",
+  "palabrasClave": [
+    "Investigación, Ciencia, Universidad"
+  ],
+  "tipoPublicacion": "Articulo",
+  "estado": "Borrador",
+  "anexos": [
+    "http://example.com/publicacion.pdf",
+    "http://example2.com/publicacion.img"
+  ],
+  "idioma": "Español",
+  "createdAt": {
+    "$date": "2024-09-05T18:23:21.340Z"
+  },
+  "updatedAt": {
+    "$date": "2024-10-01T02:26:16.381Z"
+  },
+  "__v": 2,
+  "isDeleted": false,
+  "proyecto": {
+    "$oid": "66d9f71976c4141cb4812abe"
+  }
+},
+{
+  "_id": {
+    "$oid": "66db143269069f5a5b76ff4f"
+  },
+  "titulo": "Prueba de Delete",
+  "fecha": {
+    "$date": "2024-09-06T00:00:00.000Z"
+  },
+  "autores": [
+    {
+      "$oid": "66db13d669069f5a5b76ff44"
+    }
+  ],
+  "revista": "Revista Académica de APIs",
+  "resumen": "Estamos probando la API para ver su funcionalidad.",
+  "palabrasClave": [
+    "Software, Sistemas, Talendig"
+  ],
+  "tipoPublicacion": "Articulo",
+  "estado": "Borrador",
+  "anexos": [
+    "http://example.com/publicacion.pdf",
+    "http://example2.com/publicacion.img"
+  ],
+  "idioma": "Español",
+  "createdAt": {
+    "$date": "2024-09-06T14:39:46.608Z"
+  },
+  "updatedAt": {
+    "$date": "2024-10-01T02:25:59.344Z"
+  },
+  "__v": 2,
+  "isDeleted": false,
+  "proyecto": {
+    "$oid": "66d9f71976c4141cb4812abe"
+  }
+},
+{
+  "_id": {
     "$oid": "66db1877732c34e9ba1c67c3"
   },
   "titulo": "Prueba de Delete",
@@ -13,7 +87,9 @@
   ],
   "revista": "Revista Académica de APIs",
   "resumen": "Estamos probando la API para ver su funcionalidad.",
-  "palabrasClave": "Software, Sistemas, Talendig",
+  "palabrasClave": [
+    "Software, Sistemas, Talendig"
+  ],
   "tipoPublicacion": "Articulo",
   "estado": "Borrador",
   "anexos": [
@@ -25,9 +101,50 @@
     "$date": "2024-09-06T14:57:59.920Z"
   },
   "updatedAt": {
-    "$date": "2024-09-06T14:57:59.920Z"
+    "$date": "2024-10-01T02:25:19.797Z"
   },
-  "__v": 1
+  "__v": 2,
+  "isDeleted": false,
+  "proyecto": {
+    "$oid": "66d9f71976c4141cb4812abe"
+  }
+},
+{
+  "_id": {
+    "$oid": "66db19d7ac4e6e65b64c921d"
+  },
+  "titulo": "Prueba de Delete 2",
+  "fecha": {
+    "$date": "2024-09-06T00:00:00.000Z"
+  },
+  "autores": [
+    {
+      "$oid": "66d9a3d28811e44aea8b1dd6"
+    }
+  ],
+  "revista": "Revista Académica de APIs",
+  "resumen": "Estamos probando la API para ver su funcionalidad.",
+  "palabrasClave": [
+    "Software, Sistemas, Talendig"
+  ],
+  "tipoPublicacion": "Articulo",
+  "estado": "Borrador",
+  "anexos": [
+    "http://example.com/publicacion.pdf",
+    "http://example2.com/publicacion.img"
+  ],
+  "idioma": "Español",
+  "createdAt": {
+    "$date": "2024-09-06T15:03:51.604Z"
+  },
+  "updatedAt": {
+    "$date": "2024-10-01T02:24:52.834Z"
+  },
+  "__v": 2,
+  "isDeleted": false,
+  "proyecto": {
+    "$oid": "66db19d7ac4e6e65b64c921d"
+  }
 },
 {
   "_id": {
@@ -50,7 +167,9 @@
   ],
   "revista": "Revista Académica de APIs",
   "resumen": "Estamos probando la API para ver su funcionalidad.",
-  "palabrasClave": "Software, Sistemas, Talendig",
+  "palabrasClave": [
+    "Software, Sistemas, Talendig"
+  ],
   "tipoPublicacion": "Articulo",
   "estado": "Borrador",
   "anexos": [
@@ -62,9 +181,13 @@
     "$date": "2024-09-12T20:35:33.147Z"
   },
   "updatedAt": {
-    "$date": "2024-09-12T20:35:33.147Z"
+    "$date": "2024-10-01T02:24:11.810Z"
   },
-  "__v": 1
+  "__v": 2,
+  "isDeleted": false,
+  "proyecto": {
+    "$oid": "66db143269069f5a5b76ff4f"
+  }
 },
 {
   "_id": {
@@ -82,9 +205,6 @@
   "proyecto": [
     {
       "$oid": "66db19d7ac4e6e65b64c921d"
-    },
-    {
-      "$oid": "66db143269069f5a5b76ff4f"
     }
   ],
   "revista": "Revista Académica de APIs",
@@ -103,5 +223,82 @@
   "updatedAt": {
     "$date": "2024-09-14T14:24:19.137Z"
   },
-  "__v": 1
+  "__v": 1,
+  "isDeleted": false
+},
+{
+  "_id": {
+    "$oid": "66fb5beba43a77cd0b762cd1"
+  },
+  "titulo": "Nuevas Tendencias en Machine Learning",
+  "fecha": {
+    "$date": "2023-10-01T00:00:00.000Z"
+  },
+  "autores": [
+    {
+      "$oid": "66db13d669069f5a5b76ff44"
+    }
+  ],
+  "proyecto": {
+    "$oid": "66db143269069f5a5b76ff4f"
+  },
+  "revista": "Revista Internacional de IA",
+  "resumen": "Esta publicación analiza las últimas tendencias en machine learning...",
+  "palabrasClave": [
+    "Machine Learning",
+    "Inteligencia Artificial"
+  ],
+  "tipoPublicacion": "Articulo",
+  "estado": "Borrador",
+  "anexos": [
+    "https://ejemplo.com/anexo1.pdf",
+    "https://ejemplo.com/anexo2.pdf"
+  ],
+  "idioma": "Español",
+  "isDeleted": false,
+  "createdAt": {
+    "$date": "2024-10-01T02:18:19.901Z"
+  },
+  "updatedAt": {
+    "$date": "2024-10-01T02:18:19.901Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66fb5c02a43a77cd0b762cda"
+  },
+  "titulo": "Nuevas Tendencias en Machine Learning",
+  "fecha": {
+    "$date": "2024-01-01T00:00:00.000Z"
+  },
+  "autores": [
+    {
+      "$oid": "66db13d669069f5a5b76ff44"
+    }
+  ],
+  "proyecto": {
+    "$oid": "66db143269069f5a5b76ff4f"
+  },
+  "revista": "Revista Internacional de IA",
+  "resumen": "Esta publicación analiza las últimas tendencias en machine learning...",
+  "palabrasClave": [
+    "Machine Learning",
+    "Inteligencia Artificial"
+  ],
+  "tipoPublicacion": "Articulo",
+  "estado": "Borrador",
+  "anexos": [
+    "https://ejemplo.com/anexo1.pdf",
+    "https://ejemplo.com/anexo2.pdf"
+  ],
+  "idioma": "Español",
+  "isDeleted": false,
+  "createdAt": {
+    "$date": "2024-10-01T02:18:42.681Z"
+  },
+  "updatedAt": {
+    "$date": "2024-10-01T02:18:42.681Z"
+  },
+  "__v": 0
 }]

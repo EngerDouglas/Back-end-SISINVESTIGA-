@@ -1,0 +1,24 @@
+[{
+  "_id": {
+    "$oid": "66fb60adb9c590ff9dbf9dcb"
+  },
+  "project": {
+    "$oid": "66d9f71976c4141cb4812abe"
+  },
+  "evaluator": {
+    "$oid": "66d7d4bca6f6b3707d261b33"
+  },
+  "puntuacion": 90,
+  "comentarios": "Después de una revisión adicional, considero que el proyecto supera las expectativas.",
+  "isDeleted": false,
+  "fechaEvaluacion": {
+    "$date": "2024-10-01T02:38:37.614Z"
+  },
+  "createdAt": {
+    "$date": "2024-10-01T02:38:37.618Z"
+  },
+  "updatedAt": {
+    "$date": "2024-10-01T02:46:57.240Z"
+  },
+  "__v": 0
+}]
