@@ -3,6 +3,16 @@ import User from '../models/User.js'
 import Role from '../models/Role.js'
 import bcrypt from 'bcryptjs'
 
+const validateStrongPassword = (password) => {
+  return validator.isStrongPassword(password, {
+    minLength: 8,
+    minLowercase: 1,
+    minUppercase: 1,
+    minNumbers: 1,
+    minSymbols: 1,
+  });
+};
+
 // *********************** Creando el Usuario ******************* //
 export const createUser = async (req, res) => {
   const errors = validationResult(req);
@@ -10,7 +20,7 @@ export const createUser = async (req, res) => {
     return res.status(400).json({ errors: errors.array() });
   }
 
-  const { nombre, apellido, email, password, especializacion, responsabilidades } = req.body;
+  const { nombre, apellido, email, password, especializacion, responsabilidades, fotoPerfil } = req.body;
 
   // Verificamos si el arreglo 'responsabilidades' está vacío antes de crear el usuario
   if (!responsabilidades || responsabilidades.length === 0) {
@@ -23,12 +33,6 @@ export const createUser = async (req, res) => {
     if (existUser) {
       return res.status(409).json({ error: 'El email colocado ya existe.' });
     }
-
-    // //Validemos si el rol proporcionado existe en la base de datos
-    // const existRole = await Role.findById(role)
-    // if (!existRole) {
-    //   return res.status(400).json({ error: 'Rol no valido' })
-    // }
 
     // Buscaremos el rol por el nombre
     const roleDocument = await Role.findOne({ roleName: 'Investigador' });
@@ -48,6 +52,7 @@ export const createUser = async (req, res) => {
       role: roleId,
       especializacion,
       responsabilidades,
+      fotoPerfil
     });
 
     await newUser.save();
@@ -87,13 +92,7 @@ export const updateUser = async (req, res) => {
       }
 
       // Validar la nueva contraseña usando los mismos criterios definidos en el modelo
-      if (!validator.isStrongPassword(updates.newPassword, {
-        minLength: 8,
-        minLowercase: 1,
-        minUppercase: 1,
-        minNumbers: 1,
-        minSymbols: 1,
-      })) {
+      if (!validateStrongPassword(updates.newPassword)) {
         return res.status(400).json({
           error: '¡La Contraseña debe tener un mínimo de 8 caracteres, incluyendo una letra mayúscula, una letra minúscula, un número y un símbolo!'
         })
@@ -117,10 +116,8 @@ export const updateUser = async (req, res) => {
       delete updates.roleName // Eliminamos `roleName` de `updates` para que no sea procesado más adelante
     }
 
-
-
     // aqui definiremos solo los campos que permitiremos para actualizar
-    const allowedUpdates = [ 'nombre', 'apellido', 'email', 'especializacion', 'responsabilidades']
+    const allowedUpdates = [ 'nombre', 'apellido', 'email', 'especializacion', 'responsabilidades', 'fotoPerfil']
     const updateKeys = Object.keys(updates)
 
     // vamos a filtrar esos campos permitido para actualizarlos
@@ -156,13 +153,7 @@ export const updateSelfUser = async (req, res) => {
         return res.status(400).json({ error: 'Contraseña incorrecta' })
       }
 
-      if (!validator.isStrongPassword(updates.newPassword, {
-        minLength: 8,
-        minLowercase: 1,
-        minUppercase: 1,
-        minNumbers: 1,
-        minSymbols: 1,
-      })) {
+      if (!validateStrongPassword(updates.newPassword)) {
         return res.status(400).json({
           error: '¡La contraseña debe tener un mínimo de 8 caracteres, incluyendo una letra mayúscula, una letra minúscula, un número y un símbolo!'
         })
@@ -174,7 +165,7 @@ export const updateSelfUser = async (req, res) => {
       delete updates.newPassword
     }
 
-    const allowedUpdates = ['nombre', 'apellido', 'email', 'especializacion', 'responsabilidades']
+    const allowedUpdates = ['nombre', 'apellido', 'email', 'especializacion', 'responsabilidades', 'fotoPerfil']
     const updateKeys = Object.keys(updates)
 
     // Actualizar los campos permitidos
@@ -215,7 +206,8 @@ export const getUser = async (req, res) => {
       .select('-password -tokens') // Excluimos campos de seguridad que no deberian verse
       .populate('role', 'roleName') 
       .populate('proyectos')
-      .populate('publicaciones');
+      .populate('publicaciones')
+      .populate('requests');
 
     res.status(200).json(user)
   } catch (error) {
@@ -230,10 +222,12 @@ export const getUser = async (req, res) => {
 
 export const getAllUsers = async (req, res) => {
   try {
-    const users = await User.find().populate('role', 'roleName -_id')
+    const users = await User.find()
     .select('-__v')
+    .populate('role', 'roleName -_id')
     .populate('proyectos')
-    .populate('publicaciones');
+    .populate('publicaciones')
+    .populate('requests');
     res.status(200).json(users)
   } catch (error) {
     res.status(500).send({ message: 'Error en la consulta de usuarios', error: error.message })
@@ -251,7 +245,8 @@ export const getUserById = async (req, res) => {
       .select('-__v')
       .populate('role', 'roleName -_id')
       .populate('proyectos')
-      .populate('publicaciones');
+      .populate('publicaciones')
+      .populate('requests');
 
     if (!user) {
       return res.status(404).json({ error: 'Usuario no encontrado' })

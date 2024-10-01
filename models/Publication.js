@@ -18,13 +18,11 @@ const publicationSchema = mongoose.Schema(
         required: true,
       },
     ],
-    proyecto: [
-      {
+    proyecto: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Project",
         required: true,
       },
-    ],
     revista: {
       type: String,
       required: true,
@@ -75,5 +73,16 @@ const publicationSchema = mongoose.Schema(
     timestamps: true,
   }
 );
+
+// Índice de texto para búsqueda
+publicationSchema.index({ titulo: 'text', resumen: 'text' });
+
+// Propiedad virtual para obtener datos adicionales del proyecto
+publicationSchema.virtual('proyectoDetalles', {
+  ref: 'Project',
+  localField: 'proyecto',
+  foreignField: '_id',
+  justOne: true,
+});
 
 export default mongoose.model("Publication", publicationSchema);

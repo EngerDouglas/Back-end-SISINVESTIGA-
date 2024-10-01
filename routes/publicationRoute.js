@@ -14,6 +14,6 @@ PublicationsRouter.post('/restore/:id', auth, authRole(['Administrador']), resto
 PublicationsRouter.get('/', getAllPublications)
 PublicationsRouter.get('/me', auth, getUserPublications)
 PublicationsRouter.get('/getpublication/:id', getPubById)
-PublicationsRouter.get('/titulo/:titulo', getPubByTitle)
+PublicationsRouter.get('/search', getPubByTitle)
 
 export default PublicationsRouter

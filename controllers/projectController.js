@@ -250,7 +250,12 @@ export const getAllProyectos = async (req, res, next) => {
     const proyectos = await Project.find(filter)
       .skip((page - 1) * limit)
       .limit(Number(limit))
-      .populate('investigadores', 'nombre apellido');
+      .populate('investigadores', 'nombre apellido')
+      .populate({
+        path: 'evaluaciones',
+        match: { isDeleted: false },
+        populate: { path: 'evaluator', select: 'nombre apellido email' },
+      });
 
     res.status(200).json(proyectos);
   } catch (error) {
@@ -265,7 +270,14 @@ export const getProyectoById = async (req, res, next) => {
   const { id } = req.params;
 
   try {
-    const proyecto = await Project.findById(id).populate('investigadores', 'nombre apellido');
+    const proyecto = await Project.findById(id)
+    .populate('investigadores', 'nombre apellido')
+    .populate({
+      path: 'evaluaciones',
+      match: { isDeleted: false },
+      populate: { path: 'evaluator', select: 'nombre apellido email' },
+    });
+
     if (!proyecto || proyecto.isDeleted) {
       return res.status(404).json({ error: 'Proyecto no encontrado' });
     }
@@ -286,7 +298,12 @@ export const searchProyectos = async (req, res, next) => {
     // Búsqueda por texto completo (nombre y descripción)
     const proyectos = await Project.find({
       $text: { $search: query }
-    }).populate('investigadores', 'nombre apellido');
+    }).populate('investigadores', 'nombre apellido')
+    .populate({
+      path: 'evaluaciones',
+      match: { isDeleted: false },
+      populate: { path: 'evaluator', select: 'nombre apellido email' },
+    });
 
     if (proyectos.length === 0) {
       return res.status(404).json({ error: 'No se encontraron proyectos que coincidan con la búsqueda' });

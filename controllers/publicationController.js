@@ -6,45 +6,45 @@ import validator from 'validator'
 
 export const createPublication = async (req, res) => {
   try {
-    const {
-      titulo,
-      fecha,
-      proyecto, 
-      revista,
-      resumen,
-      palabrasClave,
-      tipoPublicacion,
-      estado,
-      anexos,
-      idioma
-    } = req.body;
+    const { titulo, fecha, proyecto, revista, resumen, palabrasClave, tipoPublicacion, estado, anexos, idioma, } = req.body;
 
     // Validaciones básicas
     if (!titulo || !fecha || !proyecto || !revista || !tipoPublicacion || !idioma) {
-      return res.status(400).json({ error: 'Todos los campos obligatorios deben ser proporcionados' });
+      return res.status(400).json({ error: 'Todos los campos obligatorios deben ser proporcionados.' });
     }
 
-    if (!validator.isDate(fecha)) {
-      return res.status(400).json({ error: 'Fecha inválida' });
+    if (!validator.isISO8601(fecha)) {
+      return res.status(400).json({ error: 'Fecha inválida. Debe ser en formato ISO8601.' });
     }
 
-    // Verificar si el proyecto existe
-    const project = await Project.findById(proyecto).populate('investigadores', '_id nombre apellido role');
+    // Verificar si el proyecto existe y no está eliminado
+    const project = await Project.findOne({ _id: proyecto, isDeleted: false }).populate('investigadores', '_id');
 
     if (!project) {
-      return res.status(404).json({ error: 'Proyecto no encontrado' });
+      return res.status(404).json({ error: 'Proyecto no encontrado.' });
     }
 
     // Validar que el usuario que crea la publicación sea investigador del proyecto
-    const currentUser = req.user._id.toString();
-    const isCurrentUserPartOfProject = project.investigadores.some(investigador => investigador._id.toString() === currentUser);
+    const currentUserId = req.user._id.toString();
+    const isCurrentUserPartOfProject = project.investigadores.some(
+      (investigador) => investigador._id.toString() === currentUserId
+    );
 
-    if (!isCurrentUserPartOfProject) {
-      return res.status(403).json({ error: 'No tienes permiso para crear publicaciones en este proyecto, ya que no eres parte del equipo de investigadores' });
+    if (!isCurrentUserPartOfProject && req.userRole !== 'Administrador') {
+      return res.status(403).json({
+        error: 'No tienes permiso para crear publicaciones en este proyecto, ya que no eres parte del equipo de investigadores.',
+      });
     }
 
-    // Asignar automáticamente los investigadores del proyecto como autores de la publicación
-    const autores = project.investigadores.map(investigador => investigador._id);
+    // Validar que el estado inicial sea 'Borrador' o 'Revisado' (no 'Publicado')
+    if (estado && estado === 'Publicado' && req.userRole !== 'Administrador') {
+      return res.status(403).json({
+        error: 'Solo un administrador puede establecer el estado de la publicación como "Publicado".',
+      });
+    }
+
+    // Asignar automáticamente los investigadores del proyecto como autores
+    const autores = project.investigadores.map((investigador) => investigador._id);
 
     // Crear la nueva publicación
     const newPublication = new Publication({
@@ -55,10 +55,10 @@ export const createPublication = async (req, res) => {
       resumen,
       palabrasClave,
       tipoPublicacion,
-      estado,
+      estado: estado || 'Borrador',
       anexos,
       idioma,
-      autores // Asignamos automáticamente los autores
+      autores,
     });
 
     await newPublication.save();
@@ -79,51 +79,93 @@ export const updatePublication = async (req, res) => {
   const updates = req.body;
 
   try {
-    const publication = await Publication.findById(id);
+    const publication = await Publication.findOne({ _id: id, isDeleted: false });
+
     if (!publication) {
-      return res.status(404).json({ error: 'Publicación no encontrada' });
+      return res.status(404).json({ error: 'Publicación no encontrada.' });
     }
 
     // Solo el autor o un administrador pueden actualizar una publicación
-    if (req.userRole !== 'Administrador' && !publication.autores.includes(req.user._id)) {
+    const isAuthor = publication.autores.some((autorId) => autorId.equals(req.user._id));
+    const isAdmin = req.userRole === 'Administrador';
+
+    if (!isAuthor && !isAdmin) {
       return res.status(403).json({ error: 'No tienes permiso para actualizar esta publicación.' });
     }
 
-    // No se permite cambiar autores o proyectos si la publicación ya está "Revisada" o "Publicada"
-    if ((updates.autores || updates.proyecto) && ['Revisado', 'Publicado'].includes(publication.estado)) {
-      return res.status(400).json({ error: 'No puedes cambiar autores o el proyecto de una publicación ya revisada o publicada.' });
+    // No se permite cambiar autores o proyecto si la publicación ya está "Revisada" o "Publicado"
+    if ((updates.autores || updates.proyecto) && ['Revisado', 'Publicado'].includes(publication.estado) && !isAdmin) {
+      return res.status(400).json({
+        error: 'No puedes cambiar autores o el proyecto de una publicación que ha sido revisada o publicada.',
+      });
     }
 
     // Validaciones de fecha
-    if (updates.fecha && !validator.isDate(updates.fecha)) {
-      return res.status(400).json({ error: 'Fecha inválida.' });
+    if (updates.fecha && !validator.isISO8601(updates.fecha)) {
+      return res.status(400).json({ error: 'Fecha inválida. Debe ser en formato ISO8601.' });
     }
 
+    // Si se actualiza el proyecto, verificar que existe y que el usuario es investigador
     if (updates.proyecto) {
-      const project = await Project.findById(updates.proyecto).populate('investigadores', '_id nombre');
-      if (!project) {
+      const newProject = await Project.findOne({ _id: updates.proyecto, isDeleted: false }).populate(
+        'investigadores',
+        '_id'
+      );
+      if (!newProject) {
         return res.status(404).json({ error: 'El proyecto especificado no existe.' });
       }
 
+      if (!isAdmin) {
+        const isUserInNewProject = newProject.investigadores.some((investigador) => investigador._id.equals(req.user._id));
+        if (!isUserInNewProject) {
+          return res.status(403).json({
+            error: 'No tienes permiso para asignar esta publicación a un proyecto en el que no participas.',
+          });
+        }
+      }
+
+      // Validar que los autores pertenezcan al nuevo proyecto
       if (updates.autores) {
-        const projectInvestigadores = project.investigadores.map(investigador => investigador._id.toString());
-        const invalidAuthors = updates.autores.filter(autorId => !projectInvestigadores.includes(autorId));
+        const validAuthors = newProject.investigadores.map((investigador) => investigador._id.toString());
+        const invalidAuthors = updates.autores.filter((autorId) => !validAuthors.includes(autorId));
 
         if (invalidAuthors.length > 0) {
           return res.status(400).json({
-            error: 'Algunos autores no están asignados a este proyecto. Asigna solo investigadores del proyecto.',
-            invalidAuthors
+            error: 'Algunos autores no pertenecen al proyecto especificado.',
+            invalidAuthors,
           });
         }
       }
     }
 
+    // Si se actualiza el estado a 'Publicado', solo un administrador puede hacerlo
+    if (updates.estado && updates.estado === 'Publicado' && !isAdmin) {
+      return res.status(403).json({ error: 'Solo un administrador puede publicar esta publicación.' });
+    }
+
     // Actualizar los campos permitidos
-    const allowedUpdates = ['titulo', 'fecha', 'proyecto', 'revista', 'resumen', 'palabrasClave', 'tipoPublicacion', 'estado', 'anexos', 'idioma', 'autores'];
-    allowedUpdates.forEach((field) => {
-      if (updates[field] !== undefined) {
-        publication[field] = updates[field];
-      }
+    const allowedUpdates = [
+      'titulo',
+      'fecha',
+      'proyecto',
+      'revista',
+      'resumen',
+      'palabrasClave',
+      'tipoPublicacion',
+      'estado',
+      'anexos',
+      'idioma',
+      'autores',
+    ];
+    const updateKeys = Object.keys(updates);
+    const isValidOperation = updateKeys.every((update) => allowedUpdates.includes(update));
+
+    if (!isValidOperation) {
+      return res.status(400).json({ error: 'Intento de actualización no válido.' });
+    }
+
+    updateKeys.forEach((key) => {
+      publication[key] = updates[key];
     });
 
     await publication.save();
@@ -142,17 +184,17 @@ export const deletePublication = async (req, res) => {
   const { id } = req.params;
 
   try {
-    const publication = await Publication.findById(id);
+    const publication = await Publication.findOne({ _id: id, isDeleted: false });
     if (!publication) {
-      return res.status(404).json({ error: 'Publicación no encontrada' });
+      return res.status(404).json({ error: 'Publicación no encontrada.' });
     }
 
-    // Verificar si el usuario tiene permisos para eliminar (Administrador o Autor de la publicación)
-    const isAuthor = publication.autores.some(autorId => autorId.equals(req.user._id));
+    // Verificar permisos
+    const isAuthor = publication.autores.some((autorId) => autorId.equals(req.user._id));
     const isAdmin = req.userRole === 'Administrador';
 
     if (!isAuthor && !isAdmin) {
-      return res.status(403).json({ error: 'No tienes permisos para eliminar esta publicación.' });
+      return res.status(403).json({ error: 'No tienes permiso para eliminar esta publicación.' });
     }
 
     // Si la publicación está en estado "Publicado", solo el administrador puede eliminarla
@@ -160,7 +202,7 @@ export const deletePublication = async (req, res) => {
       return res.status(400).json({ error: 'No puedes eliminar una publicación que ya ha sido publicada.' });
     }
 
-    // Realizamos un soft delete (no eliminamos físicamente)
+    // Soft delete
     publication.isDeleted = true;
     await publication.save();
 
@@ -179,27 +221,22 @@ export const restorePublication = async (req, res) => {
   const { id } = req.params;
 
   try {
-    // Buscar la publicación por su ID
-    const publication = await Publication.findById(id);
+    const publication = await Publication.findOne({ _id: id, isDeleted: true });
+
     if (!publication) {
-      return res.status(404).json({ error: 'Publicación no encontrada' });
+      return res.status(404).json({ error: 'Publicación no encontrada o no está eliminada.' });
     }
 
-    // Verificar si el usuario es Administrador
+    // Solo los administradores pueden restaurar publicaciones
     if (req.userRole !== 'Administrador') {
       return res.status(403).json({ error: 'No tienes permisos para restaurar esta publicación.' });
     }
 
-    // Verificar si la publicación ya está habilitada
-    if (!publication.isDeleted) {
-      return res.status(400).json({ error: 'Esta publicación no está eliminada.' });
-    }
-
-    // Restaurar la publicación (marcar isDeleted como false)
+    // sfot delete
     publication.isDeleted = false;
     await publication.save();
 
-    res.status(200).json({ message: 'Publicación restaurada exitosamente.' });
+    res.status(200).json({ message: 'Publicación restaurada exitosamente.', publication });
   } catch (error) {
     res.status(500).json({ message: 'Error al restaurar la publicación.', error: error.message });
   }
@@ -214,10 +251,12 @@ export const restorePublication = async (req, res) => {
 
 export const getAllPublications = async (req, res) => {
   try {
-    const { tipoPublicacion } = req.query;
+    const { tipoPublicacion, estado, titulo } = req.query;
 
-    const filter = {};
-    if (tipoPublicacion) filter.tipoPublicacion = tipoPublicacion;
+    const filter = { isDeleted: false };
+    if (tipoPublicacion) filter.tipoPublicacion = new RegExp(`^${tipoPublicacion}$`, 'i');
+    if (estado) filter.estado = estado;
+    if (titulo) filter.titulo = new RegExp(titulo, 'i');
 
     const publications = await Publication.find(filter)
     .populate({
@@ -230,12 +269,9 @@ export const getAllPublications = async (req, res) => {
     })
     .populate({
       path: 'proyecto',
-      select: 'nombre descripcion investigadores',
-      populate: {
-        path: 'investigadores',
-        select: 'nombre apellido'
-      }
+      select: 'nombre descripcion'
     })
+    
     res.status(200).json(publications)
   } catch (error) {
     res.status(500).json({ message: 'Error en la consulta de las Publiaciones', error: error.message })
@@ -249,10 +285,8 @@ export const getAllPublications = async (req, res) => {
 
 export const getUserPublications = async (req, res) => {
 
-  const currentUser = req.user
-
   try {
-    const userPublications = await Publication.find({ autores: currentUser._id })
+    const publications = await Publication.find({ autores: req.user._id, isDeleted: false })
       .populate({
         path: 'autores',
         select: '-_id nombre apellido especializacion responsabilidades',
@@ -268,12 +302,12 @@ export const getUserPublications = async (req, res) => {
       })
 
     // Verificamos si nuestro usuario tiene publicaciones, en caso de tener no puede eliminarse
-    if (!userPublications || userPublications.length === 0) {
+    if (!publications.length) {
       return res.status(404).json({ error: 'No se encontraron publicaciones para este usuario.' })
     }
 
     // Respondemos con las publicaciones de nuestro usuarios
-    res.status(200).json(userPublications)
+    res.status(200).json(publications)
   } catch (error) {
     res.status(500).json({ message: 'Error al obtener las publicaciones del usuario', error: error.message })
   }
@@ -286,9 +320,10 @@ export const getUserPublications = async (req, res) => {
 // ******************************** Obtener publicaciones por ID ************************************************* //
 
 export const getPubById = async (req, res) => {
+  const { id } = req.params
+
   try {
-    const { id } = req.params
-    const publication = await Publication.findById(id)
+    const publication = await Publication.findById({ _id: id, isDeleted: false })
     .populate({
       path: 'autores',
       select: '-_id nombre apellido especializacion responsabilidades',
@@ -319,29 +354,32 @@ export const getPubById = async (req, res) => {
 // ******************************** Obtener publicaciones por el titulo ************************************************* //
 
 export const getPubByTitle = async (req, res) => {
-  try {
-    const { titulo } = req.params
+  const { titulo } = req.query
 
-    const publication = await Publication.find({ titulo })
+  try {
+    const publications = await Publication.find({ 
+      titulo: new RegExp(titulo, 'i'),
+      isDeleted: false,
+    })
     .populate({
       path: 'autores',
-      select: '-_id nombre apellido especializacion responsabilidades',
+      select: 'nombre apellido especializacion responsabilidades',
       populate: {
         path: 'role',
-        select: '-_id -__v',
+        select: 'roleName',
       }
     })
     .select('-_id -__v')
     .populate({
       path: 'proyecto',
-      select: '-_id',
+      select: 'nombre descripcion',
     })
 
-    if (publication.length === 0) {
+    if (!publications.length) {
       return res.status(404).json({ error: 'Publicacion no encontrada con el titulo suministrado' })
     }
 
-    res.status(200).json(publication)
+    res.status(200).json(publications)
   } catch (error) {
     res.status(500).json({ message: 'Error en la consulta de la Publicacion', error: error.message })
   }

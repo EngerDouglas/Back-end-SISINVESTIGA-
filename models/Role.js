@@ -6,15 +6,6 @@ const roleSchema = mongoose.Schema({
     required: true,
     unique: true,
   },
-  descripcion: {
-    type: String,
-    trim: true,
-  },
-  permisos: [{
-    type: String,
-    enum: ['leer', 'escribir', 'actualizar', 'eliminar', 'administrar'],
-    required: true,
-  }],
 }, {
   timestamps: true, 
 });

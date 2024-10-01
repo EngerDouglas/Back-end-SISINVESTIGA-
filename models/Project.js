@@ -6,13 +6,13 @@ const projectSchema = mongoose.Schema(
       type: String,
       required: true,
       trim: true,
-      text: true, // Añadir índice de texto
+      text: true,
     },
     descripcion: {
       type: String,
       required: true,
       trim: true,
-      text: true, // Añadir índice de texto
+      text: true,
     },
     objetivos: {
       type: String,
@@ -66,24 +66,6 @@ const projectSchema = mongoose.Schema(
       enum: ["Planeado", "En Proceso", "Finalizado", "Cancelado"],
       default: "Planeado",
     },
-    evaluacion: [
-      {
-        evaluador: {
-          type: mongoose.Schema.Types.ObjectId,
-          ref: "User",
-        },
-        puntuacion: {
-          type: Number,
-          min: 0,
-          max: 100,
-        },
-        comentarios: String,
-        fechaEvaluacion: {
-          type: Date,
-          default: Date.now,
-        },
-      },
-    ],
     isEvaluated: {
       type: Boolean,
       default: false,
@@ -95,8 +77,17 @@ const projectSchema = mongoose.Schema(
     },
   },
   {
+    toJSON: { virtuals: true },
+    toObject: { virtuals: true },
     timestamps: true,
   }
 );
+
+// Propiedad virtual para relacionar las evaluaciones
+projectSchema.virtual("evaluaciones", {
+  ref: "Evaluation",
+  localField: "_id",
+  foreignField: "project",
+});
 
 export default mongoose.model("Project", projectSchema);
