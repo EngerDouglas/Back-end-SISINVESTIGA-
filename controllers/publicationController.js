@@ -298,7 +298,7 @@ export const getUserPublications = async (req, res) => {
       .select('-_id -__v')
       .populate({
         path: 'proyecto',
-        select: '-_id',
+        select: '_id nombre',
       })
 
     // Verificamos si nuestro usuario tiene publicaciones, en caso de tener no puede eliminarse
@@ -335,7 +335,7 @@ export const getPubById = async (req, res) => {
     .select('-_id -__v')
     .populate({
       path: 'proyecto',
-      select: '-_id',
+      select: '_id nombre',
     })
 
     if (!publication) {
