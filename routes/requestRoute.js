@@ -5,6 +5,7 @@ import {
   deleteRequest,
   restoreRequest,
   getAllRequests,
+  getUserRequests,
   getRequestById,
 } from '../controllers/requestController.js'; 
 import { auth } from '../middlewares/auth.js'; 
@@ -18,6 +19,7 @@ RequestRouter.delete('/:id', auth, authRole(['Administrador']), deleteRequest);
 RequestRouter.put('/:id/restore', auth, authRole(['Administrador']), restoreRequest);
 
 RequestRouter.get('/', auth, authRole(['Administrador']), getAllRequests); 
+RequestRouter.get('/me', auth, getUserRequests); 
 RequestRouter.get('/:id', auth, getRequestById);
 
 export default RequestRouter;

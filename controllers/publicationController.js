@@ -281,12 +281,17 @@ export const getAllPublications = async (req, res) => {
 // **************************** END ************************************************ //
 
 
-// ******************************** Obtener todas las publicaciones ************************************************* //
+// ******************************** Obtener tus propias publicaciones ************************************************* //
 
 export const getUserPublications = async (req, res) => {
 
   try {
+    const { page = 1, limit = 10 } = req.query;
+
+    // Buscar publicaciones del usuario
     const publications = await Publication.find({ autores: req.user._id, isDeleted: false })
+      .skip((page - 1) * limit)
+      .limit(Number(limit))
       .populate({
         path: 'autores',
         select: '-_id nombre apellido especializacion responsabilidades',
@@ -295,21 +300,29 @@ export const getUserPublications = async (req, res) => {
           select: '-_id -__v',
         },
       })
-      .select('-_id -__v')
       .populate({
         path: 'proyecto',
         select: '_id nombre',
-      })
+      });
 
-    // Verificamos si nuestro usuario tiene publicaciones, en caso de tener no puede eliminarse
-    if (!publications.length) {
-      return res.status(404).json({ error: 'No se encontraron publicaciones para este usuario.' })
-    }
+    // Contar total de publicaciones
+    const totalPublications = await Publication.countDocuments({
+      autores: req.user._id,
+      isDeleted: false,
+    });
 
-    // Respondemos con las publicaciones de nuestro usuarios
-    res.status(200).json(publications)
+    // Respuesta estándar
+    res.status(200).json({
+      total: totalPublications,
+      page: Number(page),
+      limit: Number(limit),
+      data: publications.length ? publications : [],
+    });
   } catch (error) {
-    res.status(500).json({ message: 'Error al obtener las publicaciones del usuario', error: error.message })
+    res.status(500).json({
+      message: "Error al obtener las publicaciones del usuario",
+      error: error.message,
+    });
   }
 }
 

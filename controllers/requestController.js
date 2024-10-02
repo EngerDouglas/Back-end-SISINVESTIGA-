@@ -228,3 +228,39 @@ export const getRequestById = async (req, res) => {
   }
 };
 // **************************** END ************************************************ //
+
+// **************************** Obtener Propia Solicitud ************************************************* //
+export const getUserRequests = async (req, res) => {
+  try {
+    const { page = 1, limit = 10, estado, tipoSolicitud } = req.query;
+
+    const filter = { solicitante: req.user._id, isDeleted: false }; // Solo solicitudes del investigador
+    if (estado) filter.estado = estado;
+    if (tipoSolicitud) filter.tipoSolicitud = tipoSolicitud;
+
+    // Buscar solicitudes con paginación
+    const solicitudes = await Request.find(filter)
+      .skip((page - 1) * limit)
+      .limit(Number(limit))
+      .populate('solicitante', 'nombre apellido email')
+      .populate('proyecto', 'nombre descripcion')
+      .populate('revisadoPor', 'nombre apellido email');
+
+    // Contar total de solicitudes
+    const totalSolicitudes = await Request.countDocuments(filter);
+
+    // Enviar respuesta estándar
+    res.status(200).json({
+      total: totalSolicitudes,
+      page: Number(page),
+      limit: Number(limit),
+      data: solicitudes.length ? solicitudes : [],
+    });
+  } catch (error) {
+    res.status(500).json({
+      message: "Error al obtener las solicitudes",
+      error: error.message,
+    });
+  }
+};
+// **************************** END ************************************************ //

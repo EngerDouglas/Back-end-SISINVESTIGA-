@@ -16,11 +16,11 @@ export const createProyecto = async (req, res, next) => {
       descripcion,
       objetivos,
       presupuesto,
-      investigadores,
+      investigadores = [], // Si no hay investigadores en el body, se inicializa como un arreglo vacío
       cronograma,
       hitos,
       recursos,
-      estado
+      estado,
     } = req.body;
 
     // Validar que `cronograma` tenga las fechas obligatorias
@@ -51,9 +51,12 @@ export const createProyecto = async (req, res, next) => {
       return res.status(400).json({ error: 'Ya existe un proyecto con ese nombre' });
     }
 
+    // Añadir al creador del proyecto (usuario autenticado) a la lista de investigadores
+    const investigadoresFinal = [...investigadores, req.user._id];
+
     // Crear nuevo proyecto
     const newProyecto = new Project({
-      nombre,  // Usamos 'nombre' en lugar de 'titulo'
+      nombre, // Usamos 'nombre' en lugar de 'titulo'
       descripcion,
       objetivos,
       cronograma: {
@@ -61,14 +64,14 @@ export const createProyecto = async (req, res, next) => {
         fechaFin: cronograma.fechaFin,
       },
       presupuesto,
-      investigadores,
-      hitos: hitos.map(hito => ({
+      investigadores: investigadoresFinal, // Asignamos los investigadores incluyendo al creador
+      hitos: hitos.map((hito) => ({
         nombre: hito.nombre,
         fecha: hito.fecha,
-        entregables: hito.entregable ? [hito.entregable] : [] // Convertir 'entregable' en un arreglo
+        entregables: hito.entregable ? [hito.entregable] : [], // Convertir 'entregable' en un arreglo
       })),
       recursos,
-      estado
+      estado,
     });
 
     // Guardar en la base de datos
@@ -76,7 +79,7 @@ export const createProyecto = async (req, res, next) => {
 
     res.status(201).json({
       message: 'Proyecto creado exitosamente',
-      proyecto: newProyecto
+      proyecto: newProyecto,
     });
   } catch (error) {
     next(error); // Utilizamos un middleware centralizado para manejar errores
@@ -289,6 +292,43 @@ export const getProyectoById = async (req, res, next) => {
 };
 // **************************** END ************************************************ //
 
+// **************************** Obtener Proyectos propios ************************************************* //
+export const getUserProyectos = async (req, res) => {
+  try {
+    const { page = 1, limit = 10 } = req.query;
+
+    // Buscar proyectos en los que el usuario es investigador
+    const proyectos = await Project.find({ investigadores: req.user._id, isDeleted: false })
+      .skip((page - 1) * limit)
+      .limit(Number(limit))
+      .populate('investigadores', 'nombre apellido')
+      .populate({
+        path: 'evaluaciones',
+        match: { isDeleted: false },
+        populate: { path: 'evaluator', select: 'nombre apellido email' },
+      });
+
+    // Contar total de proyectos
+    const totalProyectos = await Project.countDocuments({
+      investigadores: req.user._id,
+      isDeleted: false,
+    });
+
+    // Respuesta estándar
+    res.status(200).json({
+      total: totalProyectos,
+      page: Number(page),
+      limit: Number(limit),
+      data: proyectos.length ? proyectos : [],
+    });
+  } catch (error) {
+    res.status(500).json({
+      message: "Error al obtener los proyectos del usuario",
+      error: error.message,
+    });
+  }
+};
+// **************************** END ************************************************ //
 
 // **************************** Búsqueda avanzada por texto completo ************************************************* //
 export const searchProyectos = async (req, res, next) => {
