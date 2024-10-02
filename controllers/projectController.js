@@ -271,7 +271,7 @@ export const getProyectoById = async (req, res, next) => {
 
   try {
     const proyecto = await Project.findById(id)
-    .populate('investigadores', 'nombre apellido')
+    .populate('investigadores', 'nombre apellido especializacion responsabilidades fotoPerfil')
     .populate({
       path: 'evaluaciones',
       match: { isDeleted: false },
