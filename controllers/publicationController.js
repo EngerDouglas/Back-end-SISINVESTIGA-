@@ -326,7 +326,7 @@ export const getPubById = async (req, res) => {
     const publication = await Publication.findById({ _id: id, isDeleted: false })
     .populate({
       path: 'autores',
-      select: '-_id nombre apellido especializacion responsabilidades',
+      select: '-_id nombre apellido especializacion responsabilidades fotoPerfil',
       populate: {
         path: 'role',
         select: '-_id -__v',
