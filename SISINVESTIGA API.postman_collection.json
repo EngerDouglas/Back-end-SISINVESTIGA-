@@ -1,10 +1,10 @@
 {
 	"info": {
-		"_postman_id": "224351ea-e503-48d9-8054-b642fdaf093b",
+		"_postman_id": "4a9eec0f-271e-427e-84e3-60da17ad1ef6",
 		"name": "SISINVESTIGA API",
 		"description": "API para la gestion de publicaciones academicas, usuarios, roles y publicaciones en SISINVESTIGA.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "33731987"
+		"_exporter_id": "35172422"
 	},
 	"item": [
 		{
@@ -289,6 +289,16 @@
 		{
 			"name": "Obtener Usuarios Todos",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ3ZDRiY2E2ZjZiMzcwN2QyNjFiMzMiLCJpYXQiOjE3Mjc5Njc4NDksImV4cCI6MTcyODA1NDI0OX0.vczHV3BqPlhhg_35McWV0pyOGvsdOnF6uJCBZZIt9-Q",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
 				"header": [],
 				"url": {
@@ -506,7 +516,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ3ZDRiY2E2ZjZiMzcwN2QyNjFiMzMiLCJpYXQiOjE3Mjc3NDg5NTUsImV4cCI6MTcyNzgzNTM1NX0.JgOg2umDEnDWuvEgKC5nav8SEQIywbUFL4TPusmdocw",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ5YTNkMjg4MTFlNDRhZWE4YjFkZDYiLCJpYXQiOjE3Mjc5NjgyMTAsImV4cCI6MTcyODA1NDYxMH0.gKht0ytrOdEDXzVouZ22_YNMsCJ4-Pq6dPtPKR8wYlo",
 							"type": "string"
 						}
 					]
@@ -1269,6 +1279,138 @@
 					]
 				},
 				"description": "Endpoint que permite eliminar solicitudes en el sistema, pero no se elimina de la base de datos.\r\n\r\nRequisito: Ser Administrador."
+			},
+			"response": []
+		},
+		{
+			"name": "Informes de Proyectos CSV",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ3ZDRiY2E2ZjZiMzcwN2QyNjFiMzMiLCJpYXQiOjE3Mjc5ODM1MzcsImV4cCI6MTcyODA2OTkzN30.hj8CKaVF3hd4HDtvMSZNWmWxFJWA0TQtcSFmKnU-Zsg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3005/api/reports/projects/csv",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"api",
+						"reports",
+						"projects",
+						"csv"
+					]
+				},
+				"description": "Obtener el Informe de Proyectos en CSV.\r\n\r\nRequisito: Ser Administrador."
+			},
+			"response": []
+		},
+		{
+			"name": "Informe de Proyectos en PDF",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ3ZDRiY2E2ZjZiMzcwN2QyNjFiMzMiLCJpYXQiOjE3Mjc5ODM1MzcsImV4cCI6MTcyODA2OTkzN30.hj8CKaVF3hd4HDtvMSZNWmWxFJWA0TQtcSFmKnU-Zsg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3005/api/reports/projects/pdf",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"api",
+						"reports",
+						"projects",
+						"pdf"
+					]
+				},
+				"description": "Obtener el Informe de Proyectos en PDF.\r\n\r\nRequisitp: Ser Administrador."
+			},
+			"response": []
+		},
+		{
+			"name": "Informes Evaluaciones e Investigadores",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ3ZDRiY2E2ZjZiMzcwN2QyNjFiMzMiLCJpYXQiOjE3Mjc5ODM1MzcsImV4cCI6MTcyODA2OTkzN30.hj8CKaVF3hd4HDtvMSZNWmWxFJWA0TQtcSFmKnU-Zsg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3005/api/reports/investigators/csv",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"api",
+						"reports",
+						"investigators",
+						"csv"
+					]
+				},
+				"description": "Obtener el Informe de Evaluaciones e Investigadores en CSV.\r\n\r\nRequisito: Ser Administrador."
+			},
+			"response": []
+		},
+		{
+			"name": "Informes Evaluaciones e Investigadores PDF",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ3ZDRiY2E2ZjZiMzcwN2QyNjFiMzMiLCJpYXQiOjE3Mjc5ODM1MzcsImV4cCI6MTcyODA2OTkzN30.hj8CKaVF3hd4HDtvMSZNWmWxFJWA0TQtcSFmKnU-Zsg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3005/api/reports/investigators/pdf",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"api",
+						"reports",
+						"investigators",
+						"pdf"
+					]
+				},
+				"description": "Obtener el Informe de Evaluaciones e Investigadores en PDF.\r\n\r\nRequisito: Ser Administrador."
 			},
 			"response": []
 		}
