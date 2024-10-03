@@ -311,12 +311,16 @@ export const getUserPublications = async (req, res) => {
       isDeleted: false,
     });
 
+    // Obtener los tipos de publicación del esquema
+    const tiposPublicacion = Publication.schema.path('tipoPublicacion').enumValues;
+
     // Respuesta estándar
     res.status(200).json({
       total: totalPublications,
       page: Number(page),
       limit: Number(limit),
       data: publications.length ? publications : [],
+      tiposPublicacion: tiposPublicacion,
     });
   } catch (error) {
     res.status(500).json({
