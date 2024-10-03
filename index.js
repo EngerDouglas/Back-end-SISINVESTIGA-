@@ -10,6 +10,7 @@ import ProjectRouter from './routes/projectRoute.js'
 import PublicationsRouter from './routes/publicationRoute.js'
 import EvaluationRouter from './routes/evaluationRoute.js'
 import RequestRouter from './routes/requestRoute.js'
+import ReportRouter from './routes/reportRoute.js'
 import './config/db.js'
 
 dotenv.config()
@@ -33,7 +34,7 @@ app.use('/api/projects', ProjectRouter)
 app.use('/api/publications', PublicationsRouter)
 app.use('/api/evaluations', EvaluationRouter)
 app.use('/api/requests', RequestRouter)
-
+app.use('/api/reports', ReportRouter)
 
 app.get('/', (req, res) => {
   res.json({
