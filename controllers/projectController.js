@@ -141,19 +141,23 @@ export const updateProyecto = async (req, res, next) => {
     // Actualizar solo los campos permitidos
     allowedUpdates.forEach((field) => {
       if (updates[field] !== undefined) {
-        if (field === 'hitos') {
-          proyecto.hitos = updates.hitos.map(hito => ({
-            nombre: hito.nombre,
-            fecha: hito.fecha,
-            entregables: hito.entregable ? [hito.entregable] : []
-          }));
-        } else if (field === 'cronograma') {
-          proyecto.cronograma = {
-            fechaInicio: updates.cronograma.fechaInicio,
-            fechaFin: updates.cronograma.fechaFin
-          };
-        } else {
-          proyecto[field] = updates[field];
+        switch (field) {
+          case 'hitos':
+            proyecto.hitos = updates.hitos.map(hito => ({
+              nombre: hito.nombre,
+              fecha: hito.fecha,
+              entregables: hito.entregable ? [hito.entregable] : []
+            }));
+            break;
+          case 'cronograma':
+            proyecto.cronograma = {
+              fechaInicio: updates.cronograma.fechaInicio,
+              fechaFin: updates.cronograma.fechaFin
+            };
+            break;
+          default:
+            proyecto[field] = updates[field];
+            break;
         }
       }
     });
