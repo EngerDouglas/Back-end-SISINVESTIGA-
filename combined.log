@@ -1,0 +1,20 @@
+{"level":"info","message":"Connected to BBDD!","timestamp":"2024-10-05T17:17:22.007Z"}
+{"level":"info","message":"The server is running on http://localhost:3005","timestamp":"2024-10-05T17:17:22.016Z"}
+{"level":"info","message":"Connected to BBDD!","timestamp":"2024-10-05T17:20:02.354Z"}
+{"level":"info","message":"The server is running on http://localhost:3005","timestamp":"2024-10-05T17:20:02.362Z"}
+{"level":"error","message":"Error: Validation error\n    at createUser (file:///C:/Users/carlo/OneDrive/code/2024/NodeJS/Back-end-SISINVESTIGA-/controllers/userController.js:10:13)\n    at Layer.handle [as handle_request] (C:\\Users\\carlo\\OneDrive\\code\\2024\\NodeJS\\Back-end-SISINVESTIGA-\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at next (C:\\Users\\carlo\\OneDrive\\code\\2024\\NodeJS\\Back-end-SISINVESTIGA-\\node_modules\\express\\lib\\router\\route.js:149:13)\n    at middleware (C:\\Users\\carlo\\OneDrive\\code\\2024\\NodeJS\\Back-end-SISINVESTIGA-\\node_modules\\express-validator\\lib\\middlewares\\check.js:16:13)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)","timestamp":"2024-10-05T17:20:21.636Z"}
+{"level":"error","message":"Error: Validation error\n    at createUser (file:///C:/Users/carlo/OneDrive/code/2024/NodeJS/Back-end-SISINVESTIGA-/controllers/userController.js:10:13)\n    at Layer.handle [as handle_request] (C:\\Users\\carlo\\OneDrive\\code\\2024\\NodeJS\\Back-end-SISINVESTIGA-\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at next (C:\\Users\\carlo\\OneDrive\\code\\2024\\NodeJS\\Back-end-SISINVESTIGA-\\node_modules\\express\\lib\\router\\route.js:149:13)\n    at middleware (C:\\Users\\carlo\\OneDrive\\code\\2024\\NodeJS\\Back-end-SISINVESTIGA-\\node_modules\\express-validator\\lib\\middlewares\\check.js:16:13)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)","timestamp":"2024-10-05T17:21:39.157Z"}
+{"level":"info","message":"Connected to BBDD!","timestamp":"2024-10-05T17:25:45.936Z"}
+{"level":"info","message":"The server is running on http://localhost:3005","timestamp":"2024-10-05T17:25:45.944Z"}
+{"errors":["La contraseña debe tener al menos 8 caracteres","La contraseña debe contener al menos una letra mayúscula, una minúscula, un número y un carácter especial","Las responsabilidades deben ser un array"],"isOperational":true,"level":"error","status":"fail","statusCode":400,"timestamp":"2024-10-05T17:25:50.780Z"}
+{"errors":["La contraseña debe tener al menos 8 caracteres","La contraseña debe contener al menos una letra mayúscula, una minúscula, un número y un carácter especial"],"isOperational":true,"level":"error","status":"fail","statusCode":400,"timestamp":"2024-10-05T17:26:04.176Z"}
+{"errors":["La contraseña debe contener al menos una letra mayúscula, una minúscula, un número y un carácter especial"],"isOperational":true,"level":"error","status":"fail","statusCode":400,"timestamp":"2024-10-05T17:26:11.724Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":401,"timestamp":"2024-10-05T17:26:43.300Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":403,"timestamp":"2024-10-05T17:27:43.045Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":409,"timestamp":"2024-10-05T17:28:03.011Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":401,"timestamp":"2024-10-05T17:28:20.881Z"}
+{"level":"error","message":"invalid signature","name":"JsonWebTokenError","timestamp":"2024-10-05T17:28:37.794Z"}
+{"level":"error","message":"invalid signature","name":"JsonWebTokenError","timestamp":"2024-10-05T17:28:48.744Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":404,"timestamp":"2024-10-05T17:30:43.407Z"}
+{"errors":[],"isOperational":true,"level":"error","status":"fail","statusCode":400,"timestamp":"2024-10-05T17:30:48.422Z"}
+{"errors":[],"isOperational":true,"level":"error","status":"fail","statusCode":400,"timestamp":"2024-10-05T17:30:54.966Z"}
