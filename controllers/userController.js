@@ -1,16 +1,9 @@
-import { validationResult } from 'express-validator'
 import UserService from '../services/userService.js'
 import { BadRequestError } from '../utils/errors.js';
 
 // *********************** Creando el Usuario ******************* //
 export const createUser = async (req, res, next) => {
-  try {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      const errorMessages = errors.array().map(err => err.msg);
-      throw new BadRequestError('Error de validación', errorMessages);
-    }    
-
+  try {  
     const { nombre, apellido, email, password, especializacion, responsabilidades, fotoPerfil } = req.body;
 
     // Verificamos si el arreglo 'responsabilidades' está vacío antes de crear el usuario

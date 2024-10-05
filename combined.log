@@ -139,3 +139,64 @@
 {"level":"info","message":"The server is running on http://localhost:3005","timestamp":"2024-10-05T20:45:08.790Z"}
 {"level":"info","message":"Connected to BBDD!","timestamp":"2024-10-05T20:45:54.975Z"}
 {"level":"info","message":"The server is running on http://localhost:3005","timestamp":"2024-10-05T20:45:54.984Z"}
+{"body":"{\r\n  \"tipoSolicitud\": \"Unirse a Proyecto\",\r\n  \"descripcion\": \"Me gustaría unirme al proyecto por mi experiencia en IA.\",\r\n}","expose":true,"level":"error","status":400,"statusCode":400,"timestamp":"2024-10-05T20:46:51.167Z","type":"entity.parse.failed"}
+{"errors":[],"isOperational":true,"level":"error","status":"fail","statusCode":400,"timestamp":"2024-10-05T20:47:13.280Z"}
+{"errors":[],"isOperational":true,"level":"error","status":"fail","statusCode":400,"timestamp":"2024-10-05T20:47:20.879Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":401,"timestamp":"2024-10-05T20:50:36.362Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":401,"timestamp":"2024-10-05T21:06:16.167Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":401,"timestamp":"2024-10-05T21:06:37.138Z"}
+{"level":"info","message":"Connected to BBDD!","timestamp":"2024-10-05T21:12:56.075Z"}
+{"level":"info","message":"The server is running on http://localhost:3005","timestamp":"2024-10-05T21:12:56.091Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":401,"timestamp":"2024-10-05T21:13:02.532Z"}
+{"level":"info","message":"Connected to BBDD!","timestamp":"2024-10-05T21:13:10.145Z"}
+{"level":"info","message":"The server is running on http://localhost:3005","timestamp":"2024-10-05T21:13:10.157Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":401,"timestamp":"2024-10-05T21:19:20.392Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":401,"timestamp":"2024-10-05T21:20:04.458Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":401,"timestamp":"2024-10-05T21:20:38.215Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":401,"timestamp":"2024-10-05T21:20:48.066Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":401,"timestamp":"2024-10-05T21:20:53.127Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":401,"timestamp":"2024-10-05T21:20:53.929Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":401,"timestamp":"2024-10-05T21:20:54.097Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":401,"timestamp":"2024-10-05T21:21:10.581Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":401,"timestamp":"2024-10-05T21:21:15.443Z"}
+{"errors":["La contraseña debe tener al menos 8 caracteres","La contraseña debe contener al menos una letra mayúscula, una minúscula, un número y un carácter especial"],"isOperational":true,"level":"error","status":"fail","statusCode":400,"timestamp":"2024-10-05T21:21:52.994Z"}
+{"errors":["La contraseña debe tener al menos 8 caracteres","La contraseña debe contener al menos una letra mayúscula, una minúscula, un número y un carácter especial"],"isOperational":true,"level":"error","status":"fail","statusCode":400,"timestamp":"2024-10-05T21:23:24.673Z"}
+{"errors":["La contraseña debe tener al menos 8 caracteres","La contraseña debe contener al menos una letra mayúscula, una minúscula, un número y un carácter especial"],"isOperational":true,"level":"error","status":"fail","statusCode":400,"timestamp":"2024-10-05T21:23:30.960Z"}
+{"errors":["La contraseña debe tener al menos 8 caracteres","La contraseña debe contener al menos una letra mayúscula, una minúscula, un número y un carácter especial"],"isOperational":true,"level":"error","status":"fail","statusCode":400,"timestamp":"2024-10-05T21:27:54.090Z"}
+{"errors":["La contraseña debe tener al menos 8 caracteres","La contraseña debe contener al menos una letra mayúscula, una minúscula, un número y un carácter especial"],"isOperational":true,"level":"error","status":"fail","statusCode":400,"timestamp":"2024-10-05T21:28:51.032Z"}
+{"errors":["La contraseña debe contener al menos una letra mayúscula, una minúscula, un número y un carácter especial"],"isOperational":true,"level":"error","status":"fail","statusCode":400,"timestamp":"2024-10-05T21:31:56.040Z"}
+{"errors":["La contraseña debe contener al menos una letra mayúscula, una minúscula, un número y un carácter especial"],"isOperational":true,"level":"error","status":"fail","statusCode":400,"timestamp":"2024-10-05T21:32:39.078Z"}
+{"errors":["La contraseña debe tener al menos 8 caracteres","La contraseña debe contener al menos una letra mayúscula, una minúscula, un número y un carácter especial"],"isOperational":true,"level":"error","status":"fail","statusCode":400,"timestamp":"2024-10-05T21:33:09.928Z"}
+{"level":"info","message":"Connected to BBDD!","timestamp":"2024-10-05T21:35:39.037Z"}
+{"level":"info","message":"The server is running on http://localhost:3005","timestamp":"2024-10-05T21:35:39.045Z"}
+{"errors":[],"isOperational":true,"level":"error","status":"fail","statusCode":400,"timestamp":"2024-10-05T21:35:41.176Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":409,"timestamp":"2024-10-05T21:35:46.678Z"}
+{"_message":"User validation failed","errors":{"password":{"kind":"minlength","message":"La contraseña debe tener un mínimo de 8 caracteres","name":"ValidatorError","path":"password","properties":{"message":"La contraseña debe tener un mínimo de 8 caracteres","minlength":8,"path":"password","type":"minlength","value":"Inve"},"value":"Inve"}},"level":"error","message":"User validation failed: password: La contraseña debe tener un mínimo de 8 caracteres","name":"ValidationError","timestamp":"2024-10-05T21:35:53.688Z"}
+{"_message":"User validation failed","errors":{"password":{"kind":"minlength","message":"La contraseña debe tener un mínimo de 8 caracteres","name":"ValidatorError","path":"password","properties":{"message":"La contraseña debe tener un mínimo de 8 caracteres","minlength":8,"path":"password","type":"minlength","value":"Inve"},"value":"Inve"}},"level":"error","message":"User validation failed: password: La contraseña debe tener un mínimo de 8 caracteres","name":"ValidationError","timestamp":"2024-10-05T21:36:33.905Z"}
+{"errors":[],"isOperational":true,"level":"error","status":"fail","statusCode":400,"timestamp":"2024-10-05T21:37:19.534Z"}
+{"_message":"User validation failed","errors":{"password":{"kind":"minlength","message":"La contraseña debe tener un mínimo de 8 caracteres","name":"ValidatorError","path":"password","properties":{"message":"La contraseña debe tener un mínimo de 8 caracteres","minlength":8,"path":"password","type":"minlength","value":"ecop"},"value":"ecop"}},"level":"error","message":"User validation failed: password: La contraseña debe tener un mínimo de 8 caracteres","name":"ValidationError","timestamp":"2024-10-05T21:37:22.402Z"}
+{"level":"info","message":"Connected to BBDD!","timestamp":"2024-10-05T21:37:39.366Z"}
+{"level":"info","message":"The server is running on http://localhost:3005","timestamp":"2024-10-05T21:37:39.378Z"}
+{"_message":"User validation failed","errors":{"password":{"kind":"minlength","message":"La contraseña debe tener un mínimo de 8 caracteres","name":"ValidatorError","path":"password","properties":{"message":"La contraseña debe tener un mínimo de 8 caracteres","minlength":8,"path":"password","type":"minlength","value":"ecop"},"value":"ecop"}},"level":"error","message":"User validation failed: password: La contraseña debe tener un mínimo de 8 caracteres","name":"ValidationError","timestamp":"2024-10-05T21:38:10.330Z"}
+{"_message":"User validation failed","errors":{"password":{"kind":"minlength","message":"La contraseña debe tener un mínimo de 8 caracteres","name":"ValidatorError","path":"password","properties":{"message":"La contraseña debe tener un mínimo de 8 caracteres","minlength":8,"path":"password","type":"minlength","value":"ecop"},"value":"ecop"}},"level":"error","message":"User validation failed: password: La contraseña debe tener un mínimo de 8 caracteres","name":"ValidationError","timestamp":"2024-10-05T21:38:45.463Z"}
+{"_message":"User validation failed","errors":{"password":{"kind":"minlength","message":"La contraseña debe tener un mínimo de 8 caracteres","name":"ValidatorError","path":"password","properties":{"message":"La contraseña debe tener un mínimo de 8 caracteres","minlength":8,"path":"password","type":"minlength","value":"ecop"},"value":"ecop"}},"level":"error","message":"User validation failed: password: La contraseña debe tener un mínimo de 8 caracteres","name":"ValidationError","timestamp":"2024-10-05T21:39:34.249Z"}
+{"_message":"User validation failed","errors":{"password":{"kind":"minlength","message":"La contraseña debe tener un mínimo de 8 caracteres","name":"ValidatorError","path":"password","properties":{"message":"La contraseña debe tener un mínimo de 8 caracteres","minlength":8,"path":"password","type":"minlength","value":"ecop"},"value":"ecop"}},"level":"error","message":"User validation failed: password: La contraseña debe tener un mínimo de 8 caracteres","name":"ValidationError","timestamp":"2024-10-05T21:40:15.143Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":401,"timestamp":"2024-10-05T21:54:09.720Z"}
+{"_message":"User validation failed","errors":{"password":{"kind":"minlength","message":"La contraseña debe tener un mínimo de 8 caracteres","name":"ValidatorError","path":"password","properties":{"message":"La contraseña debe tener un mínimo de 8 caracteres","minlength":8,"path":"password","type":"minlength","value":"iinves"},"value":"iinves"}},"level":"error","message":"User validation failed: password: La contraseña debe tener un mínimo de 8 caracteres","name":"ValidationError","timestamp":"2024-10-05T21:58:21.314Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":401,"timestamp":"2024-10-05T21:58:45.157Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":401,"timestamp":"2024-10-05T21:59:04.640Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":401,"timestamp":"2024-10-05T21:59:06.538Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":401,"timestamp":"2024-10-05T21:59:16.128Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":401,"timestamp":"2024-10-05T22:00:01.736Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":403,"timestamp":"2024-10-05T22:00:41.286Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":403,"timestamp":"2024-10-05T22:01:10.888Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":403,"timestamp":"2024-10-05T22:02:55.106Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":403,"timestamp":"2024-10-05T22:03:07.020Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":403,"timestamp":"2024-10-05T22:04:17.767Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":403,"timestamp":"2024-10-05T22:04:50.773Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":403,"timestamp":"2024-10-05T22:06:39.292Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":409,"timestamp":"2024-10-05T22:15:17.739Z"}
+{"level":"info","message":"Connected to BBDD!","timestamp":"2024-10-05T22:16:56.157Z"}
+{"level":"info","message":"The server is running on http://localhost:3005","timestamp":"2024-10-05T22:16:56.165Z"}
+{"level":"info","message":"Connected to BBDD!","timestamp":"2024-10-05T22:17:09.940Z"}
+{"level":"info","message":"The server is running on http://localhost:3005","timestamp":"2024-10-05T22:17:09.948Z"}
