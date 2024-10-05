@@ -85,4 +85,6 @@ publicationSchema.virtual('proyectoDetalles', {
   justOne: true,
 });
 
-export default mongoose.model("Publication", publicationSchema);
+const Publication = mongoose.model("Publication", publicationSchema);
+
+export default Publication;

@@ -90,4 +90,6 @@ projectSchema.virtual("evaluaciones", {
   foreignField: "project",
 });
 
-export default mongoose.model("Project", projectSchema);
+const Project = mongoose.model("Project", projectSchema);
+
+export default Project;

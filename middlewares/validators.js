@@ -80,3 +80,25 @@ export const validateUpdateProject = [
 ];
 
 //-------------------- END ------------------- //
+
+//-------------------- Validaciones para las Publicaciones ------------------- //
+
+export const validateCreatePublication = [
+  body('titulo').notEmpty().withMessage('El título es requerido'),
+  body('fecha').isISO8601().toDate().withMessage('La fecha debe ser válida'),
+  body('proyecto').isMongoId().withMessage('ID de proyecto inválido'),
+  body('revista').notEmpty().withMessage('La revista es requerida'),
+  body('tipoPublicacion').isIn(['Articulo', 'Informe', 'Tesis', 'Presentacion', 'Otro']).withMessage('Tipo de publicación inválido'),
+  body('idioma').notEmpty().withMessage('El idioma es requerido'),
+];
+
+export const validateUpdatePublication = [
+  body('titulo').optional().notEmpty().withMessage('El título no puede estar vacío'),
+  body('fecha').optional().isISO8601().toDate().withMessage('La fecha debe ser válida'),
+  body('proyecto').optional().isMongoId().withMessage('ID de proyecto inválido'),
+  body('revista').optional().notEmpty().withMessage('La revista no puede estar vacía'),
+  body('tipoPublicacion').optional().isIn(['Articulo', 'Informe', 'Tesis', 'Presentacion', 'Otro']).withMessage('Tipo de publicación inválido'),
+  body('idioma').optional().notEmpty().withMessage('El idioma no puede estar vacío'),
+];
+
+//-------------------- END ------------------- //
