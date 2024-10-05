@@ -1,88 +1,22 @@
-import mongoose from 'mongoose';
-import Project from '../models/Project.js';  // Asumiendo que ya tienes un modelo Proyecto
 import { validationResult } from 'express-validator';
+import ProjectService from '../services/projectService.js';
+import { BadRequestError } from '../utils/errors.js';
 
 // **************************** Crear Proyecto ************************************************* //
 export const createProyecto = async (req, res, next) => {
   try {
-    // Validar errores usando express-validator
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: errors.array() });
+      throw new BadRequestError('Error de validación', errors.array());
     }
 
-    const {
-      nombre, // Cambiamos de titulo a nombre ya que eso está en el body
-      descripcion,
-      objetivos,
-      presupuesto,
-      investigadores = [], // Si no hay investigadores en el body, se inicializa como un arreglo vacío
-      cronograma,
-      hitos,
-      recursos,
-      estado,
-    } = req.body;
-
-    // Validar que `cronograma` tenga las fechas obligatorias
-    if (!cronograma || !cronograma.fechaInicio || !cronograma.fechaFin) {
-      return res.status(400).json({
-        error: 'El cronograma debe incluir fechaInicio y fechaFin',
-      });
-    }
-
-    // Validar que cada hito tenga nombre y fecha
-    if (!hitos || hitos.length === 0) {
-      return res.status(400).json({
-        error: 'Al menos un hito es obligatorio con nombre y fecha',
-      });
-    }
-
-    hitos.forEach((hito, index) => {
-      if (!hito.nombre || !hito.fecha) {
-        return res.status(400).json({
-          error: `El hito en la posición ${index + 1} debe tener un nombre y una fecha`,
-        });
-      }
-    });
-
-    // Verificar si ya existe un proyecto con el mismo nombre
-    const existingProyecto = await Project.findOne({ nombre });
-    if (existingProyecto) {
-      return res.status(400).json({ error: 'Ya existe un proyecto con ese nombre' });
-    }
-
-    // Añadir al creador del proyecto (usuario autenticado) a la lista de investigadores
-    const investigadoresFinal = [...investigadores, req.user._id];
-
-    // Crear nuevo proyecto
-    const newProyecto = new Project({
-      nombre, // Usamos 'nombre' en lugar de 'titulo'
-      descripcion,
-      objetivos,
-      cronograma: {
-        fechaInicio: cronograma.fechaInicio,
-        fechaFin: cronograma.fechaFin,
-      },
-      presupuesto,
-      investigadores: investigadoresFinal, // Asignamos los investigadores incluyendo al creador
-      hitos: hitos.map((hito) => ({
-        nombre: hito.nombre,
-        fecha: hito.fecha,
-        entregables: hito.entregable ? [hito.entregable] : [], // Convertir 'entregable' en un arreglo
-      })),
-      recursos,
-      estado,
-    });
-
-    // Guardar en la base de datos
-    await newProyecto.save();
-
+    const project = await ProjectService.createProject(req.body, req.user._id);
     res.status(201).json({
       message: 'Proyecto creado exitosamente',
-      proyecto: newProyecto,
+      proyecto: project,
     });
   } catch (error) {
-    next(error); // Utilizamos un middleware centralizado para manejar errores
+    next(error);
   }
 };
 // **************************** END ************************************************ //
@@ -90,83 +24,17 @@ export const createProyecto = async (req, res, next) => {
 
 // **************************** Actualizar Proyecto ************************************************* //
 export const updateProyecto = async (req, res, next) => {
-  const { id } = req.params;
-  const updates = req.body;
-
   try {
-    // Validar errores usando express-validator
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: errors.array() });
+      throw new BadRequestError('Error de validación', errors.array());
     }
 
-    // Revisar si el proyecto existe
-    const proyecto = await Project.findById(id);
-
-    if (!proyecto || proyecto.isDeleted) {
-      return res.status(404).json({ error: 'Proyecto no encontrado o eliminado' });
-    }
-
-    // Verificar que el usuario tenga permisos para actualizar el proyecto
-    if (req.userRole !== 'Administrador' && !proyecto.investigadores.includes(req.user._id)) {
-      return res.status(403).json({ error: 'No tienes permisos para actualizar este proyecto' });
-    }
-
-    // Soft Delete: Verificar si el proyecto está marcado para eliminar
-    if (updates.isDeleted) {
-      proyecto.isDeleted = true;
-    }
-
-    // Verificar si ya existe un proyecto con el mismo nombre (excluyendo el actual)
-    if (updates.nombre) {
-      const existingProyecto = await Project.findOne({ nombre: updates.nombre, _id: { $ne: id } });
-      if (existingProyecto) {
-        return res.status(400).json({ error: 'Ya existe un proyecto con ese nombre' });
-      }
-    }
-
-    // Campos permitidos para actualizar
-    const allowedUpdates = [
-      'nombre',
-      'descripcion',
-      'objetivos',
-      'presupuesto',
-      'cronograma',
-      'hitos',
-      'investigadores',
-      'recursos',
-      'estado'
-    ];
-
-    // Actualizar solo los campos permitidos
-    allowedUpdates.forEach((field) => {
-      if (updates[field] !== undefined) {
-        switch (field) {
-          case 'hitos':
-            proyecto.hitos = updates.hitos.map(hito => ({
-              nombre: hito.nombre,
-              fecha: hito.fecha,
-              entregables: hito.entregable ? [hito.entregable] : []
-            }));
-            break;
-          case 'cronograma':
-            proyecto.cronograma = {
-              fechaInicio: updates.cronograma.fechaInicio,
-              fechaFin: updates.cronograma.fechaFin
-            };
-            break;
-          default:
-            proyecto[field] = updates[field];
-            break;
-        }
-      }
-    });
-
-    // Guardamos el proyecto actualizado
-    await proyecto.save();
+    const { id } = req.params;
+    const project = await ProjectService.updateProject(id, req.body, req.user._id, req.userRole);
     res.status(200).json({
       message: 'Proyecto actualizado correctamente',
-      proyecto
+      proyecto: project
     });
   } catch (error) {
     next(error);
@@ -178,32 +46,9 @@ export const updateProyecto = async (req, res, next) => {
 // **************************** Eliminar Proyecto (Soft Delete) ************************************************* //
 
 export const deleteProyecto = async (req, res, next) => {
-  const { id } = req.params;
-
   try {
-    // Verificar si el proyecto existe
-    const proyecto = await Project.findById(id);
-    if (!proyecto) {
-      return res.status(404).json({ error: 'Proyecto no encontrado' });
-    }
-
-    // Verificar permisos del usuario (Administrador o Investigador asignado al proyecto)
-    const isInvestigador = proyecto.investigadores.some(investigadorId => investigadorId.equals(req.user._id));
-    const isAdmin = req.userRole === 'Administrador';
-
-    if (!isInvestigador && !isAdmin) {
-      return res.status(403).json({ error: 'No tienes permisos para eliminar este proyecto.' });
-    }
-
-    // Si el proyecto está en estado 'Finalizado' o 'Cancelado', solo el administrador puede eliminarlo
-    if ((proyecto.estado === 'Finalizado' || proyecto.estado === 'Cancelado') && !isAdmin) {
-      return res.status(400).json({ error: 'Solo los administradores pueden eliminar proyectos en estado finalizado o cancelado.' });
-    }
-
-    // Soft delete: Marcar el proyecto como eliminado
-    proyecto.isDeleted = true;
-    await proyecto.save();
-
+    const { id } = req.params;
+    await ProjectService.deleteProject(id, req.user._id, req.userRole);
     res.status(200).json({ message: 'Proyecto eliminado (soft delete).' });
   } catch (error) {
     next(error);
@@ -213,29 +58,13 @@ export const deleteProyecto = async (req, res, next) => {
 // **************************** END ************************************************ //
 
 // **************************** Restaurar Proyecto (Revertir Soft Delete) ************************************************* //
-
-export const restoreProyecto = async (req, res) => {
-  const { id } = req.params;
-
+export const restoreProyecto = async (req, res, next) => {
   try {
-    // Verificar si el proyecto existe y está eliminado
-    const proyecto = await Project.findById(id);
-    if (!proyecto || !proyecto.isDeleted) {
-      return res.status(404).json({ error: 'Proyecto no encontrado o no está eliminado.' });
-    }
-
-    // Solo los administradores pueden restaurar proyectos
-    if (req.userRole !== 'Administrador') {
-      return res.status(403).json({ error: 'No tienes permisos para restaurar este proyecto.' });
-    }
-
-    // Restaurar el proyecto (quitar el estado isDeleted)
-    proyecto.isDeleted = false;
-    await proyecto.save();
-
+    const { id } = req.params;
+    await ProjectService.restoreProject(id, req.userRole);
     res.status(200).json({ message: 'Proyecto restaurado exitosamente.' });
   } catch (error) {
-    res.status(500).json({ message: 'Error al restaurar el proyecto.', error: error.message });
+    next(error);
   }
 };
 
@@ -247,26 +76,14 @@ export const restoreProyecto = async (req, res) => {
 export const getAllProyectos = async (req, res, next) => {
   try {
     const { page = 1, limit = 10, estado, nombre } = req.query;
-
-    // Filtros básicos
     const filter = {};
     if (estado) filter.estado = estado;
-    if (nombre) filter.nombre = new RegExp(nombre, 'i'); // Búsqueda por texto en 'nombre'
+    if (nombre) filter.nombre = new RegExp(nombre, 'i');
 
-    // Paginación
-    const proyectos = await Project.find(filter)
-      .skip((page - 1) * limit)
-      .limit(Number(limit))
-      .populate('investigadores', 'nombre apellido')
-      .populate({
-        path: 'evaluaciones',
-        match: { isDeleted: false },
-        populate: { path: 'evaluator', select: 'nombre apellido email' },
-      });
-
-    res.status(200).json(proyectos);
+    const projects = await ProjectService.getAllProjects(filter, page, limit);
+    res.status(200).json(projects);
   } catch (error) {
-    res.status(500).json({ message: 'Error al obtener los proyectos', error: error.message });
+    next(error);
   }
 };
 // **************************** END ************************************************ //
@@ -274,22 +91,10 @@ export const getAllProyectos = async (req, res, next) => {
 
 // **************************** Obtener Proyecto por ID ************************************************* //
 export const getProyectoById = async (req, res, next) => {
-  const { id } = req.params;
-
   try {
-    const proyecto = await Project.findById(id)
-    .populate('investigadores', 'nombre apellido especializacion responsabilidades fotoPerfil')
-    .populate({
-      path: 'evaluaciones',
-      match: { isDeleted: false },
-      populate: { path: 'evaluator', select: 'nombre apellido email' },
-    });
-
-    if (!proyecto || proyecto.isDeleted) {
-      return res.status(404).json({ error: 'Proyecto no encontrado' });
-    }
-
-    res.status(200).json(proyecto);
+    const { id } = req.params;
+    const project = await ProjectService.getProjectById(id);
+    res.status(200).json(project);
   } catch (error) {
     next(error);
   }
@@ -297,63 +102,28 @@ export const getProyectoById = async (req, res, next) => {
 // **************************** END ************************************************ //
 
 // **************************** Obtener Proyectos propios ************************************************* //
-export const getUserProyectos = async (req, res) => {
+export const getUserProyectos = async (req, res, next) => {
   try {
     const { page = 1, limit = 10 } = req.query;
-
-    // Buscar proyectos en los que el usuario es investigador
-    const proyectos = await Project.find({ investigadores: req.user._id, isDeleted: false })
-      .skip((page - 1) * limit)
-      .limit(Number(limit))
-      .populate('investigadores', 'nombre apellido')
-      .populate({
-        path: 'evaluaciones',
-        match: { isDeleted: false },
-        populate: { path: 'evaluator', select: 'nombre apellido email' },
-      });
-
-    // Contar total de proyectos
-    const totalProyectos = await Project.countDocuments({
-      investigadores: req.user._id,
-      isDeleted: false,
-    });
-
-    // Respuesta estándar
+    const { projects, totalProjects } = await ProjectService.getUserProjects(req.user._id, page, limit);
     res.status(200).json({
-      total: totalProyectos,
+      total: totalProjects,
       page: Number(page),
       limit: Number(limit),
-      data: proyectos.length ? proyectos : [],
+      data: projects,
     });
   } catch (error) {
-    res.status(500).json({
-      message: "Error al obtener los proyectos del usuario",
-      error: error.message,
-    });
+    next(error);
   }
 };
 // **************************** END ************************************************ //
 
 // **************************** Búsqueda avanzada por texto completo ************************************************* //
 export const searchProyectos = async (req, res, next) => {
-  const { query } = req.query;
-
   try {
-    // Búsqueda por texto completo (nombre y descripción)
-    const proyectos = await Project.find({
-      $text: { $search: query }
-    }).populate('investigadores', 'nombre apellido')
-    .populate({
-      path: 'evaluaciones',
-      match: { isDeleted: false },
-      populate: { path: 'evaluator', select: 'nombre apellido email' },
-    });
-
-    if (proyectos.length === 0) {
-      return res.status(404).json({ error: 'No se encontraron proyectos que coincidan con la búsqueda' });
-    }
-
-    res.status(200).json(proyectos);
+    const { query } = req.query;
+    const projects = await ProjectService.searchProjects(query);
+    res.status(200).json(projects);
   } catch (error) {
     next(error);
   }
