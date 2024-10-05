@@ -102,3 +102,18 @@ export const validateUpdatePublication = [
 ];
 
 //-------------------- END ------------------- //
+
+//-------------------- Validaciones para las Evaluaciones ------------------- //
+
+export const validateCreateEvaluation = [
+  body('puntuacion').isInt({ min: 0, max: 100 }).withMessage('La puntuación debe ser un número entre 0 y 100'),
+  body('comentarios').isString().notEmpty().withMessage('Los comentarios son requeridos'),
+];
+
+export const validateUpdateEvaluation = [
+  body('puntuacion').isInt({ min: 0, max: 100 }).withMessage('La puntuación debe ser un número entre 0 y 100'),
+  body('comentarios').isString().notEmpty().withMessage('Los comentarios son requeridos'),
+];
+
+
+//-------------------- END ------------------- //

@@ -36,4 +36,6 @@ const evaluationSchema = mongoose.Schema(
   }
 );
 
-export default mongoose.model("Evaluation", evaluationSchema);
+const Evaluation = mongoose.model("Evaluation", evaluationSchema);
+
+export default Evaluation;

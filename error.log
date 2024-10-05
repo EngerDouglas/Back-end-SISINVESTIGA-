@@ -27,3 +27,12 @@
 {"errors":[],"isOperational":true,"level":"error","status":"fail","statusCode":400,"timestamp":"2024-10-05T19:38:05.131Z"}
 {"isOperational":true,"level":"error","status":"fail","statusCode":404,"timestamp":"2024-10-05T19:41:16.363Z"}
 {"expiredAt":"2024-10-04T15:10:10.000Z","level":"error","message":"jwt expired","name":"TokenExpiredError","timestamp":"2024-10-05T19:42:53.254Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":404,"timestamp":"2024-10-05T19:45:55.376Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":401,"timestamp":"2024-10-05T19:46:34.771Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":401,"timestamp":"2024-10-05T19:46:39.896Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":401,"timestamp":"2024-10-05T20:03:26.418Z"}
+{"errors":[],"isOperational":true,"level":"error","status":"fail","statusCode":400,"timestamp":"2024-10-05T20:19:16.942Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":404,"timestamp":"2024-10-05T20:19:52.442Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":404,"timestamp":"2024-10-05T20:20:01.280Z"}
+{"expiredAt":"2024-10-02T02:35:31.000Z","level":"error","message":"jwt expired","name":"TokenExpiredError","timestamp":"2024-10-05T20:21:27.548Z"}
+{"level":"error","path":"project","timestamp":"2024-10-05T20:27:02.474Z"}

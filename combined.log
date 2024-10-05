@@ -93,3 +93,30 @@
 {"expiredAt":"2024-10-04T15:10:10.000Z","level":"error","message":"jwt expired","name":"TokenExpiredError","timestamp":"2024-10-05T19:42:53.254Z"}
 {"level":"info","message":"Connected to BBDD!","timestamp":"2024-10-05T19:45:36.164Z"}
 {"level":"info","message":"The server is running on http://localhost:3005","timestamp":"2024-10-05T19:45:36.172Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":404,"timestamp":"2024-10-05T19:45:55.376Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":401,"timestamp":"2024-10-05T19:46:34.771Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":401,"timestamp":"2024-10-05T19:46:39.896Z"}
+{"level":"info","message":"Connected to BBDD!","timestamp":"2024-10-05T20:03:18.278Z"}
+{"level":"info","message":"The server is running on http://localhost:3005","timestamp":"2024-10-05T20:03:18.289Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":401,"timestamp":"2024-10-05T20:03:26.418Z"}
+{"level":"info","message":"Connected to BBDD!","timestamp":"2024-10-05T20:05:07.983Z"}
+{"level":"info","message":"The server is running on http://localhost:3005","timestamp":"2024-10-05T20:05:07.993Z"}
+{"level":"info","message":"Connected to BBDD!","timestamp":"2024-10-05T20:10:51.853Z"}
+{"level":"info","message":"The server is running on http://localhost:3005","timestamp":"2024-10-05T20:10:51.864Z"}
+{"level":"info","message":"Connected to BBDD!","timestamp":"2024-10-05T20:14:34.802Z"}
+{"level":"info","message":"The server is running on http://localhost:3005","timestamp":"2024-10-05T20:14:34.812Z"}
+{"level":"info","message":"Connected to BBDD!","timestamp":"2024-10-05T20:18:00.355Z"}
+{"level":"info","message":"The server is running on http://localhost:3005","timestamp":"2024-10-05T20:18:00.363Z"}
+{"level":"info","message":"Connected to BBDD!","timestamp":"2024-10-05T20:18:38.435Z"}
+{"level":"info","message":"The server is running on http://localhost:3005","timestamp":"2024-10-05T20:18:38.452Z"}
+{"errors":[],"isOperational":true,"level":"error","status":"fail","statusCode":400,"timestamp":"2024-10-05T20:19:16.942Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":404,"timestamp":"2024-10-05T20:19:52.442Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":404,"timestamp":"2024-10-05T20:20:01.280Z"}
+{"expiredAt":"2024-10-02T02:35:31.000Z","level":"error","message":"jwt expired","name":"TokenExpiredError","timestamp":"2024-10-05T20:21:27.548Z"}
+{"level":"info","message":"Connected to BBDD!","timestamp":"2024-10-05T20:24:19.647Z"}
+{"level":"info","message":"The server is running on http://localhost:3005","timestamp":"2024-10-05T20:24:19.658Z"}
+{"level":"info","message":"Connected to BBDD!","timestamp":"2024-10-05T20:24:45.375Z"}
+{"level":"info","message":"The server is running on http://localhost:3005","timestamp":"2024-10-05T20:24:45.384Z"}
+{"level":"info","message":"Connected to BBDD!","timestamp":"2024-10-05T20:27:00.464Z"}
+{"level":"info","message":"The server is running on http://localhost:3005","timestamp":"2024-10-05T20:27:00.474Z"}
+{"level":"error","path":"project","timestamp":"2024-10-05T20:27:02.474Z"}
