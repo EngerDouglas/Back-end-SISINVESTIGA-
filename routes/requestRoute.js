@@ -8,13 +8,13 @@ import {
   getUserRequests,
   getRequestById,
 } from '../controllers/requestController.js'; 
-import { auth } from '../middlewares/auth.js'; 
-import { authRole } from '../middlewares/auth.js';
+import { auth, authRole } from '../middlewares/auth.js'; 
+import { ValidateCreateRequest, ValidateUpdateRequest } from '../middlewares/validators.js';
 
 const RequestRouter = express.Router();
 
-RequestRouter.post('/', auth, authRole(['Administrador', 'Investigador']), createRequest); 
-RequestRouter.put('/:id', auth, updateRequest); 
+RequestRouter.post('/', auth, authRole(['Administrador', 'Investigador']), ValidateCreateRequest, createRequest); 
+RequestRouter.put('/:id', auth, authRole(['Administrador', 'Investigador']), ValidateUpdateRequest, updateRequest); 
 RequestRouter.delete('/:id', auth, authRole(['Administrador']), deleteRequest); 
 RequestRouter.put('/:id/restore', auth, authRole(['Administrador']), restoreRequest);
 

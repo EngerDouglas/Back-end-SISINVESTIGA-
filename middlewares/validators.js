@@ -114,6 +114,19 @@ export const validateUpdateEvaluation = [
   body('puntuacion').isInt({ min: 0, max: 100 }).withMessage('La puntuación debe ser un número entre 0 y 100'),
   body('comentarios').isString().notEmpty().withMessage('Los comentarios son requeridos'),
 ];
+//-------------------- END ------------------- //
 
+//-------------------- Validaciones para las Request ------------------- //
+
+export const ValidateCreateRequest = [
+  body('tipoSolicitud').isIn(['Unirse a Proyecto', 'Recursos', 'Aprobación', 'Permiso', 'Otro']).withMessage('Tipo de solicitud inválido'),
+  body('descripcion').notEmpty().withMessage('La descripción es requerida'),
+  body('proyecto').optional().isMongoId().withMessage('ID de proyecto inválido'),
+];
+
+export const ValidateUpdateRequest = [
+  body('estado').optional().isIn(['Pendiente', 'Aprobada', 'Rechazada', 'En Proceso']).withMessage('Estado inválido'),
+  body('comentarios').optional().isString().notEmpty().withMessage('El comentario no puede estar vacío'),
+];
 
 //-------------------- END ------------------- //

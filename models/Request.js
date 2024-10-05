@@ -53,4 +53,6 @@ const requestSchema = new mongoose.Schema(
   }
 );
 
-export default mongoose.model('Request', requestSchema);
+const Request = mongoose.model('Request', requestSchema);
+
+export default Request;

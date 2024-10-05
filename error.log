@@ -36,3 +36,4 @@
 {"isOperational":true,"level":"error","status":"fail","statusCode":404,"timestamp":"2024-10-05T20:20:01.280Z"}
 {"expiredAt":"2024-10-02T02:35:31.000Z","level":"error","message":"jwt expired","name":"TokenExpiredError","timestamp":"2024-10-05T20:21:27.548Z"}
 {"level":"error","path":"project","timestamp":"2024-10-05T20:27:02.474Z"}
+{"expiredAt":"2024-10-02T02:35:31.000Z","level":"error","message":"jwt expired","name":"TokenExpiredError","timestamp":"2024-10-05T20:28:04.528Z"}
