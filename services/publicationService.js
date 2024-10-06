@@ -192,13 +192,16 @@ class PublicationService {
   // ******************************** Obtener todas las publicaciones ************************************************* //
 
   static async getAllPublications(filters, page = 1, limit = 10) {
-    const query = { isDeleted: false, ...filters };
-    
+    const query = { isDeleted: false };
+  
     if (filters.tipoPublicacion) {
       query.tipoPublicacion = new RegExp(`^${filters.tipoPublicacion}$`, 'i');
     }
     if (filters.titulo) {
       query.titulo = new RegExp(filters.titulo, 'i');
+    }
+    if (filters.estado) {
+      query.estado = filters.estado;
     }
 
     const total = await Publication.countDocuments(query);
@@ -215,6 +218,7 @@ class PublicationService {
         path: 'proyecto',
         select: 'nombre descripcion'
       })
+      .sort({ createdAt: -1 }) // Ordenar por fecha de creación, más reciente primero
       .skip((page - 1) * limit)
       .limit(Number(limit))
       .lean();
@@ -252,14 +256,15 @@ class PublicationService {
       })
       .lean();
 
+    const tiposPublicacion = Publication.schema.path('tipoPublicacion').enumValues;
+
     return {
       publications,
       total,
       page: Number(page),
       limit: Number(limit),
       totalPages: Math.ceil(total / limit),
-      tiposPublicacion: PUBLICATION_TYPES,
-      estadosPublicacion: PUBLICATION_STATES
+      tiposPublicacion
     };
   }
   // **************************** END ************************************************ //

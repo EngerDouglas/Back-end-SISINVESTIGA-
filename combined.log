@@ -200,3 +200,23 @@
 {"level":"info","message":"The server is running on http://localhost:3005","timestamp":"2024-10-05T22:16:56.165Z"}
 {"level":"info","message":"Connected to BBDD!","timestamp":"2024-10-05T22:17:09.940Z"}
 {"level":"info","message":"The server is running on http://localhost:3005","timestamp":"2024-10-05T22:17:09.948Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":401,"timestamp":"2024-10-05T22:43:53.832Z"}
+{"level":"info","message":"Connected to BBDD!","timestamp":"2024-10-06T00:04:22.800Z"}
+{"level":"info","message":"The server is running on http://localhost:3005","timestamp":"2024-10-06T00:04:22.826Z"}
+{"level":"info","message":"Connected to BBDD!","timestamp":"2024-10-06T00:14:42.376Z"}
+{"level":"info","message":"The server is running on http://localhost:3005","timestamp":"2024-10-06T00:14:42.386Z"}
+{"level":"info","message":"Connected to BBDD!","timestamp":"2024-10-06T00:16:31.860Z"}
+{"level":"info","message":"The server is running on http://localhost:3005","timestamp":"2024-10-06T00:16:31.892Z"}
+{"level":"info","message":"Connected to BBDD!","timestamp":"2024-10-06T00:20:45.554Z"}
+{"level":"info","message":"The server is running on http://localhost:3005","timestamp":"2024-10-06T00:20:45.562Z"}
+{"level":"info","message":"Connected to BBDD!","timestamp":"2024-10-06T00:22:41.916Z"}
+{"level":"info","message":"The server is running on http://localhost:3005","timestamp":"2024-10-06T00:22:41.924Z"}
+{"level":"info","message":"Connected to BBDD!","timestamp":"2024-10-06T00:34:56.357Z"}
+{"level":"info","message":"The server is running on http://localhost:3005","timestamp":"2024-10-06T00:34:56.366Z"}
+{"level":"info","message":"Connected to BBDD!","timestamp":"2024-10-06T00:57:36.887Z"}
+{"level":"info","message":"The server is running on http://localhost:3005","timestamp":"2024-10-06T00:57:36.896Z"}
+{"level":"info","message":"Connected to BBDD!","timestamp":"2024-10-06T01:00:32.815Z"}
+{"level":"info","message":"The server is running on http://localhost:3005","timestamp":"2024-10-06T01:00:32.824Z"}
+{"level":"info","message":"Connected to BBDD!","timestamp":"2024-10-06T01:01:03.175Z"}
+{"level":"info","message":"The server is running on http://localhost:3005","timestamp":"2024-10-06T01:01:03.187Z"}
+{"errors":[],"isOperational":true,"level":"error","status":"fail","statusCode":400,"timestamp":"2024-10-06T01:07:51.049Z"}

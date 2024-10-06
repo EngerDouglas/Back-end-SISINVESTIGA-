@@ -159,10 +159,13 @@ class ProjectService {
 
 // **************************** Obtener todos los Proyectos con Paginación y Filtrado ************************************************* //
 
-  static async getAllProjects(filters, page, limit) {
+  static async getAllProjects(filters, page = 1, limit = 10) {
+    const total = await Project.countDocuments(filters)
     const projects = await Project.find(filters)
+      .sort({ createdAt: -1 })
       .skip((page - 1) * limit)
       .limit(Number(limit))
+      .lean()
       .populate('investigadores', 'nombre apellido')
       .populate({
         path: 'evaluaciones',
@@ -170,7 +173,12 @@ class ProjectService {
         populate: { path: 'evaluator', select: 'nombre apellido email' },
       });
 
-    return projects;
+    return {
+      projects,
+      page: Number(page),
+      limit: Number(limit),
+      totalPages: Math.ceil(total / limit)
+    };
   }
 
   // **************************** END ************************************************ //

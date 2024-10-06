@@ -80,7 +80,7 @@ export const getAllProyectos = async (req, res, next) => {
     if (estado) filter.estado = estado;
     if (nombre) filter.nombre = new RegExp(nombre, 'i');
 
-    const projects = await ProjectService.getAllProjects(filter, page, limit);
+    const projects = await ProjectService.getAllProjects(filter, parseInt(page), parseInt(limit));
     res.status(200).json(projects);
   } catch (error) {
     next(error);

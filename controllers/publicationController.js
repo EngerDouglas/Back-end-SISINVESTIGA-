@@ -72,12 +72,12 @@ export const getAllPublications = async (req, res, next) => {
     if (estado) filters.estado = estado;
     if (titulo) filters.titulo = titulo;
 
-    const result = await PublicationService.getAllPublications(filters, page, limit);
+    const result = await PublicationService.getAllPublications(filters, parseInt(page), parseInt(limit));
     res.status(200).json(result);
   } catch (error) {
     next(error);
   }
-}
+};
 
 // **************************** END ************************************************ //
 
@@ -92,7 +92,7 @@ export const getUserPublications = async (req, res, next) => {
   } catch (error) {
     next(error);
   }
-}
+};
 
 // **************************** END ************************************************ //
 

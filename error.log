@@ -86,3 +86,5 @@
 {"isOperational":true,"level":"error","status":"fail","statusCode":403,"timestamp":"2024-10-05T22:04:50.773Z"}
 {"isOperational":true,"level":"error","status":"fail","statusCode":403,"timestamp":"2024-10-05T22:06:39.292Z"}
 {"isOperational":true,"level":"error","status":"fail","statusCode":409,"timestamp":"2024-10-05T22:15:17.739Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":401,"timestamp":"2024-10-05T22:43:53.832Z"}
+{"errors":[],"isOperational":true,"level":"error","status":"fail","statusCode":400,"timestamp":"2024-10-06T01:07:51.049Z"}
