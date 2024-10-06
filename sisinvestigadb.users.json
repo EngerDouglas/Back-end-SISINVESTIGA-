@@ -5,8 +5,8 @@
   "nombre": "Carlos Alberto",
   "apellido": "Castillo Garcia",
   "email": "castillox671@gmail.com",
-  "password": "$2a$08$a40gjThXJR6OSni0TVFbLuH8whxQXmzIizfsTxUS4F/LMr0MHpD7K",
-  "especializacion": "Desarrollador de Software",
+  "password": "$2a$08$W4DySq5LSW4XAT9OD7.ASu/EjjG5EIlbPcmmhAZsK55iLl8BTZsiK",
+  "especializacion": "Desarrollador de Sistemas",
   "responsabilidades": [
     "Desarrollador Backend",
     "CoLider de Proyecto"
@@ -18,7 +18,12 @@
     "$date": "2024-09-04T03:32:12.107Z"
   },
   "tokens": [],
-  "__v": 32
+  "__v": 176,
+  "proyectos": [],
+  "isDisabled": false,
+  "updatedAt": {
+    "$date": "2024-10-05T20:50:44.820Z"
+  }
 },
 {
   "_id": {
@@ -27,7 +32,7 @@
   "nombre": "Carlos Alberto",
   "apellido": "Castillo Garcia",
   "email": "castilloz671@gmail.com",
-  "password": "$2a$08$/UPEQU1.r3RVjlBQkTcat.sFSdkw2Z1nCBurlgJ9c7rBl7F2I1Fe2",
+  "password": "$2a$08$d34SSvoY5Pj5qqYRJXnz5e8iaOOZCPICEhaEVtDUMAfCIvr5SolMe",
   "especializacion": "Ingeniero Quimico",
   "responsabilidades": [
     "Desarrollar Materiales",
@@ -41,13 +46,17 @@
   },
   "tokens": [
     {
-      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ5YTNkMjg4MTFlNDRhZWE4YjFkZDYiLCJpYXQiOjE3MjU2MzQ3NDksImV4cCI6MTcyNTcyMTE0OX0.sVO_-t5dmdGS7WoYECtnp5fcb8QLT8x1fdW06P6ef9o",
+      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ5YTNkMjg4MTFlNDRhZWE4YjFkZDYiLCJpYXQiOjE3MjgxNjgwNjIsImV4cCI6MTcyODI1NDQ2Mn0.KTzzAIM3L5NMNp4XIxl8RAwYcEAt39vt29zKsRT_JRE",
       "_id": {
-        "$oid": "66db18bd475cb19b3a1428c3"
+        "$oid": "6701c07e5349b3c64ad2cb84"
       }
     }
   ],
-  "__v": 9
+  "__v": 42,
+  "isDisabled": false,
+  "updatedAt": {
+    "$date": "2024-10-05T22:41:02.824Z"
+  }
 },
 {
   "_id": {
@@ -69,5 +78,136 @@
     "$date": "2024-09-06T14:38:14.221Z"
   },
   "tokens": [],
-  "__v": 2
+  "__v": 6,
+  "isDisabled": false
+},
+{
+  "_id": {
+    "$oid": "66e8c2ca50682593adb5d0bb"
+  },
+  "nombre": "Engel",
+  "apellido": "Douglas",
+  "email": "engeldg@gmail.com",
+  "password": "$2a$08$2a2WmyBlORyJfOSxpQNXBeCzXsXv.4TalrnrZ2nZ.gw11d2jI5z8C",
+  "especializacion": "Ingeniero de Software",
+  "responsabilidades": [
+    "Desarrollar de APIs",
+    "Probar EndPoints"
+  ],
+  "role": {
+    "$oid": "66d77649d458301a4aba678c"
+  },
+  "createdAt": {
+    "$date": "2024-09-16T23:44:10.417Z"
+  },
+  "tokens": [],
+  "__v": 89,
+  "isDisabled": false,
+  "updatedAt": {
+    "$date": "2024-10-03T01:50:55.917Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "66f9cafd2e0c839a01c64791"
+  },
+  "nombre": "Silvia Maria",
+  "apellido": "Garcia Alexander",
+  "email": "silvia@gmail.com",
+  "password": "$2a$08$HONLuwQhI9ESz.oLcDJA3uYqTd00RYGY6/ky3uQvjOwK8r2lCEBxy",
+  "especializacion": "Contable",
+  "responsabilidades": [
+    "Hello"
+  ],
+  "role": {
+    "$oid": "66d77649d458301a4aba678c"
+  },
+  "isDisabled": false,
+  "createdAt": {
+    "$date": "2024-09-29T21:47:41.041Z"
+  },
+  "tokens": [],
+  "__v": 3,
+  "updatedAt": {
+    "$date": "2024-10-03T01:49:47.725Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "66fb47601289da2b27ac618f"
+  },
+  "nombre": "Carlos",
+  "apellido": "Sánchez",
+  "email": "carlos.sanchez@gmail.com",
+  "password": "$2a$08$h06nIaMS.Czrsc1wUGhQf.HaxbT4faqt.kHJEC4gfsrVuckwbyk76",
+  "especializacion": "Ingeniero de Software",
+  "responsabilidades": [
+    "Desarrollo de proyectos",
+    "Investigación"
+  ],
+  "role": {
+    "$oid": "66d77649d458301a4aba678c"
+  },
+  "isDisabled": false,
+  "fotoPerfil": "https://example.com/profile.jpg",
+  "tokens": [],
+  "createdAt": {
+    "$date": "2024-10-01T00:50:40.896Z"
+  },
+  "updatedAt": {
+    "$date": "2024-10-02T05:10:12.013Z"
+  },
+  "__v": 4
+},
+{
+  "_id": {
+    "$oid": "670176bd89d0720ebc333d00"
+  },
+  "nombre": "Smailin",
+  "apellido": "Espinal",
+  "email": "noemi@gmail.com",
+  "password": "$2a$08$rTiFuGGUlVtJSB9KVNxAmu8njThTj9N0f/Sss4upMk/5ByOam1xBC",
+  "especializacion": "Ingeniero de Software",
+  "responsabilidades": [
+    "Desarrollo de proyectos",
+    "Investigación"
+  ],
+  "role": {
+    "$oid": "66d77649d458301a4aba678c"
+  },
+  "isDisabled": false,
+  "fotoPerfil": "https://example.com/profile.jpg",
+  "tokens": [],
+  "createdAt": {
+    "$date": "2024-10-05T17:26:21.060Z"
+  },
+  "updatedAt": {
+    "$date": "2024-10-05T17:32:00.399Z"
+  },
+  "__v": 4
+},
+{
+  "_id": {
+    "$oid": "6701b68ce179d82e4ca5f6a0"
+  },
+  "nombre": "Noemi",
+  "apellido": "Garcia",
+  "email": "smailin@gmail.com",
+  "password": "$2a$08$VLDz5UKL.eKK80XYKPOfFeXbyORy/YiLE2laMCVjNUTZflKVH1hqq",
+  "especializacion": "Doctora",
+  "responsabilidades": [
+    "Cirujana"
+  ],
+  "role": {
+    "$oid": "66d77649d458301a4aba678c"
+  },
+  "isDisabled": false,
+  "tokens": [],
+  "createdAt": {
+    "$date": "2024-10-05T21:58:36.534Z"
+  },
+  "updatedAt": {
+    "$date": "2024-10-05T22:00:17.383Z"
+  },
+  "__v": 4
 }]

@@ -81,4 +81,46 @@
   "revisadoPor": {
     "$oid": "66d7d4bca6f6b3707d261b33"
   }
+},
+{
+  "_id": {
+    "$oid": "6701a5dd25e3b47ecb71c86c"
+  },
+  "solicitante": {
+    "$oid": "66d7d4bca6f6b3707d261b33"
+  },
+  "tipoSolicitud": "Unirse a Proyecto",
+  "descripcion": "Me gustaría unirme al proyecto por mi experiencia en IA.",
+  "proyecto": {
+    "$oid": "67018428a540d912a0fd537e"
+  },
+  "estado": "Aprobada",
+  "isDeleted": false,
+  "comentarios": [
+    {
+      "usuario": {
+        "$oid": "66d7d4bca6f6b3707d261b33"
+      },
+      "comentario": "Bienvenido al proyecto.",
+      "_id": {
+        "$oid": "6701a63625e3b47ecb71c872"
+      },
+      "fecha": {
+        "$date": "2024-10-05T20:48:54.419Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2024-10-05T20:47:25.607Z"
+  },
+  "updatedAt": {
+    "$date": "2024-10-05T20:50:23.451Z"
+  },
+  "__v": 1,
+  "fechaResolucion": {
+    "$date": "2024-10-05T20:48:54.417Z"
+  },
+  "revisadoPor": {
+    "$oid": "66d7d4bca6f6b3707d261b33"
+  }
 }]

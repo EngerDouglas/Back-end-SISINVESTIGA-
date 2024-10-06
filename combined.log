@@ -220,3 +220,20 @@
 {"level":"info","message":"Connected to BBDD!","timestamp":"2024-10-06T01:01:03.175Z"}
 {"level":"info","message":"The server is running on http://localhost:3005","timestamp":"2024-10-06T01:01:03.187Z"}
 {"errors":[],"isOperational":true,"level":"error","status":"fail","statusCode":400,"timestamp":"2024-10-06T01:07:51.049Z"}
+{"level":"info","message":"Connected to BBDD!","timestamp":"2024-10-06T01:19:41.711Z"}
+{"level":"info","message":"The server is running on http://localhost:3005","timestamp":"2024-10-06T01:19:41.731Z"}
+{"errors":[],"isOperational":true,"level":"error","status":"fail","statusCode":400,"timestamp":"2024-10-06T01:31:00.703Z"}
+{"level":"info","message":"Connected to BBDD!","timestamp":"2024-10-06T01:39:40.870Z"}
+{"level":"info","message":"The server is running on http://localhost:3005","timestamp":"2024-10-06T01:39:40.878Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":401,"timestamp":"2024-10-06T01:43:59.671Z"}
+{"errors":[],"isOperational":true,"level":"error","status":"fail","statusCode":400,"timestamp":"2024-10-06T01:45:42.539Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":409,"timestamp":"2024-10-06T01:45:48.372Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":409,"timestamp":"2024-10-06T01:45:56.055Z"}
+{"_message":"User validation failed","errors":{"password":{"kind":"minlength","message":"La contraseña debe tener un mínimo de 8 caracteres","name":"ValidatorError","path":"password","properties":{"message":"La contraseña debe tener un mínimo de 8 caracteres","minlength":8,"path":"password","type":"minlength","value":"sdfsdf"},"value":"sdfsdf"}},"level":"error","message":"User validation failed: password: La contraseña debe tener un mínimo de 8 caracteres","name":"ValidationError","timestamp":"2024-10-06T01:46:03.473Z"}
+{"level":"info","message":"Connected to BBDD!","timestamp":"2024-10-06T01:48:14.270Z"}
+{"level":"info","message":"The server is running on http://localhost:3005","timestamp":"2024-10-06T01:48:14.278Z"}
+{"errors":[],"isOperational":true,"level":"error","status":"fail","statusCode":400,"timestamp":"2024-10-06T01:50:49.140Z"}
+{"_message":"User validation failed","errors":{"password":{"kind":"minlength","message":"La contraseña debe tener un mínimo de 8 caracteres","name":"ValidatorError","path":"password","properties":{"message":"La contraseña debe tener un mínimo de 8 caracteres","minlength":8,"path":"password","type":"minlength","value":"Inbvss"},"value":"Inbvss"}},"level":"error","message":"User validation failed: password: La contraseña debe tener un mínimo de 8 caracteres","name":"ValidationError","timestamp":"2024-10-06T01:50:52.710Z"}
+{"_message":"User validation failed","errors":{"password":{"kind":"minlength","message":"La contraseña debe tener un mínimo de 8 caracteres","name":"ValidatorError","path":"password","properties":{"message":"La contraseña debe tener un mínimo de 8 caracteres","minlength":8,"path":"password","type":"minlength","value":"ibvee"},"value":"ibvee"}},"level":"error","message":"User validation failed: password: La contraseña debe tener un mínimo de 8 caracteres","name":"ValidationError","timestamp":"2024-10-06T01:51:53.330Z"}
+{"errors":[],"isOperational":true,"level":"error","status":"fail","statusCode":400,"timestamp":"2024-10-06T01:53:21.634Z"}
+{"_message":"User validation failed","errors":{"password":{"kind":"minlength","message":"La contraseña debe tener un mínimo de 8 caracteres","name":"ValidatorError","path":"password","properties":{"message":"La contraseña debe tener un mínimo de 8 caracteres","minlength":8,"path":"password","type":"minlength","value":"uidbfj"},"value":"uidbfj"}},"level":"error","message":"User validation failed: password: La contraseña debe tener un mínimo de 8 caracteres","name":"ValidationError","timestamp":"2024-10-06T01:53:23.584Z"}

@@ -20,21 +20,24 @@
 },
 {
   "_id": {
-    "$oid": "66d77691d458301a4aba6790"
-  },
-  "roleName": "Asistente",
-  "createdAt": {
-    "$date": "2024-09-03T20:50:25.276Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
     "$oid": "66d86b15c58859de09db964a"
   },
   "roleName": "Administrador",
   "createdAt": {
     "$date": "2024-09-04T14:13:41.812Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67017e48eb8eeec96d67621e"
+  },
+  "roleName": "Asistente",
+  "createdAt": {
+    "$date": "2024-10-05T17:58:32.489Z"
+  },
+  "updatedAt": {
+    "$date": "2024-10-05T17:58:49.607Z"
   },
   "__v": 0
 }]

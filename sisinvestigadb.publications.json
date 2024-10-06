@@ -209,9 +209,11 @@
   ],
   "revista": "Revista Académica de APIs",
   "resumen": "Estamos probando la API para ver su funcionalidad.",
-  "palabrasClave": "Software, Sistemas, Talendig",
+  "palabrasClave": [
+    "Software, Sistemas, Talendig"
+  ],
   "tipoPublicacion": "Articulo",
-  "estado": "Borrador",
+  "estado": "Publicado",
   "anexos": [
     "https://example.com/file1.pdf",
     "https://example.com/file2.pdf"
@@ -221,9 +223,9 @@
     "$date": "2024-09-14T14:24:19.137Z"
   },
   "updatedAt": {
-    "$date": "2024-09-14T14:24:19.137Z"
+    "$date": "2024-10-05T20:02:03.632Z"
   },
-  "__v": 1,
+  "__v": 2,
   "isDeleted": false
 },
 {
@@ -301,4 +303,80 @@
     "$date": "2024-10-01T02:18:42.681Z"
   },
   "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66fcdc40a8e8a1295a1531a3"
+  },
+  "titulo": "Nuevas Tendencias en IA Siglo XXI",
+  "fecha": {
+    "$date": "2023-10-01T00:00:00.000Z"
+  },
+  "autores": [
+    {
+      "$oid": "66d9a3d28811e44aea8b1dd6"
+    }
+  ],
+  "proyecto": {
+    "$oid": "66fcdc26a8e8a1295a153194"
+  },
+  "revista": "Revista Internacional de IA",
+  "resumen": "Esta publicación analiza las últimas tendencias en machine learning...",
+  "palabrasClave": [
+    "Machine Learning",
+    "Inteligencia Artificial",
+    "IA"
+  ],
+  "tipoPublicacion": "Articulo",
+  "estado": "Publicado",
+  "anexos": [
+    "https://ejemplo.com/anexo4.pdf",
+    "https://ejemplo.com/anexo3.pdf"
+  ],
+  "idioma": "Español",
+  "isDeleted": false,
+  "createdAt": {
+    "$date": "2024-10-02T05:38:08.749Z"
+  },
+  "updatedAt": {
+    "$date": "2024-10-02T05:38:08.749Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67019684836f5ab9169c48da"
+  },
+  "titulo": "Modularizacion de Proyectos",
+  "fecha": {
+    "$date": "2024-10-01T00:00:00.000Z"
+  },
+  "autores": [
+    {
+      "$oid": "66d7d4bca6f6b3707d261b33"
+    }
+  ],
+  "proyecto": {
+    "$oid": "67018428a540d912a0fd537e"
+  },
+  "revista": "Revista Internacional de Programacion",
+  "resumen": "Actualización: Se agregaron nuevas secciones a modularizar....",
+  "palabrasClave": [
+    "Parametrizacion"
+  ],
+  "tipoPublicacion": "Articulo",
+  "estado": "Revisado",
+  "anexos": [
+    "https://ejemplo.com/anexo1.pdf",
+    "https://ejemplo.com/anexo2.pdf"
+  ],
+  "idioma": "Español",
+  "isDeleted": false,
+  "createdAt": {
+    "$date": "2024-10-05T19:41:56.291Z"
+  },
+  "updatedAt": {
+    "$date": "2024-10-05T19:45:59.497Z"
+  },
+  "__v": 1
 }]

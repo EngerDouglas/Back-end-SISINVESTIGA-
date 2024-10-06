@@ -108,7 +108,7 @@
   "nombre": "Investigación sobre Software",
   "descripcion": "Un estudio sobre metodologías ágiles en desarrollo de software.",
   "objetivos": "Implementar metodologías ágiles en proyectos de gran escala.",
-  "presupuesto": 20000,
+  "presupuesto": 200000,
   "cronograma": {
     "fechaInicio": {
       "$date": "2024-09-05T00:00:00.000Z"
@@ -124,7 +124,7 @@
   ],
   "recursos": [
     "Software de gestión de proyectos",
-    "Equipo de pruebas"
+    "Equipo de Test"
   ],
   "hitos": [
     {
@@ -132,14 +132,18 @@
       "fecha": {
         "$date": "2024-09-15T00:00:00.000Z"
       },
-      "entregable": "Certificación de capacitación"
+      "_id": {
+        "$oid": "66ff289ffe36d570139eef30"
+      }
     },
     {
       "nombre": "Primera entrega",
       "fecha": {
         "$date": "2024-11-01T00:00:00.000Z"
       },
-      "entregable": "Módulo funcional"
+      "_id": {
+        "$oid": "66ff289ffe36d570139eef31"
+      }
     }
   ],
   "estado": "En Proceso",
@@ -147,8 +151,315 @@
     "$date": "2024-09-06T15:03:51.604Z"
   },
   "updatedAt": {
-    "$date": "2024-09-06T15:03:51.604Z"
+    "$date": "2024-10-03T23:28:31.884Z"
   },
-  "__v": 1,
-  "isDeleted": false
+  "__v": 2,
+  "isDeleted": false,
+  "isEvaluated": false
+},
+{
+  "_id": {
+    "$oid": "66fcdbefa8e8a1295a15317a"
+  },
+  "nombre": "IA En Tiempos antiguos",
+  "descripcion": "Descripción del nuevo proyecto",
+  "objetivos": "Objetivos del proyecto",
+  "presupuesto": 10000,
+  "cronograma": {
+    "fechaInicio": {
+      "$date": "2024-01-01T00:00:00.000Z"
+    },
+    "fechaFin": {
+      "$date": "2024-12-31T00:00:00.000Z"
+    }
+  },
+  "investigadores": [
+    {
+      "$oid": "66e8c2ca50682593adb5d0bb"
+    }
+  ],
+  "recursos": [
+    "Recurso 1",
+    "Recurso 2"
+  ],
+  "hitos": [
+    {
+      "nombre": "Hito 1",
+      "fecha": {
+        "$date": "2024-06-30T00:00:00.000Z"
+      },
+      "_id": {
+        "$oid": "66fcdbefa8e8a1295a15317b"
+      }
+    }
+  ],
+  "estado": "Planeado",
+  "isEvaluated": false,
+  "isDeleted": false,
+  "createdAt": {
+    "$date": "2024-10-02T05:36:47.778Z"
+  },
+  "updatedAt": {
+    "$date": "2024-10-02T05:36:47.778Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66fcdc26a8e8a1295a153194"
+  },
+  "nombre": "IA En Tiempos Modernos",
+  "descripcion": "Descripción del nuevo proyecto",
+  "objetivos": "Objetivos del proyecto",
+  "presupuesto": 10000,
+  "cronograma": {
+    "fechaInicio": {
+      "$date": "2024-01-01T00:00:00.000Z"
+    },
+    "fechaFin": {
+      "$date": "2024-12-31T00:00:00.000Z"
+    }
+  },
+  "investigadores": [
+    {
+      "$oid": "66d9a3d28811e44aea8b1dd6"
+    }
+  ],
+  "recursos": [
+    "Recurso 1",
+    "Recurso 2"
+  ],
+  "hitos": [
+    {
+      "nombre": "Hito 1",
+      "fecha": {
+        "$date": "2024-06-30T00:00:00.000Z"
+      },
+      "_id": {
+        "$oid": "66fddf8b91dc46116fa44101"
+      }
+    },
+    {
+      "nombre": "Hito 2",
+      "fecha": {
+        "$date": "2024-10-04T00:04:17.000Z"
+      },
+      "_id": {
+        "$oid": "66fddf8b91dc46116fa44102"
+      }
+    }
+  ],
+  "estado": "Finalizado",
+  "isEvaluated": false,
+  "isDeleted": false,
+  "createdAt": {
+    "$date": "2024-10-02T05:37:42.986Z"
+  },
+  "updatedAt": {
+    "$date": "2024-10-03T00:04:27.305Z"
+  },
+  "__v": 3
+},
+{
+  "_id": {
+    "$oid": "66fddabd599b3cbe57f3bb05"
+  },
+  "nombre": "Tren Metropolitano",
+  "descripcion": "Proyecto de Estacion de trenes en la Ecologica",
+  "objetivos": "Mejorar el transporte y reducir los tapones.",
+  "presupuesto": 150000,
+  "cronograma": {
+    "fechaInicio": {
+      "$date": "2024-10-02T23:42:31.678Z"
+    },
+    "fechaFin": {
+      "$date": "2026-05-01T23:42:31.000Z"
+    }
+  },
+  "investigadores": [
+    {
+      "$oid": "66d9a3d28811e44aea8b1dd6"
+    }
+  ],
+  "recursos": [
+    "ISO 97001"
+  ],
+  "hitos": [
+    {
+      "nombre": "Entrega de Trenes",
+      "fecha": {
+        "$date": "2024-10-02T23:42:31.678Z"
+      },
+      "_id": {
+        "$oid": "66ff2881fe36d570139eeeed"
+      }
+    },
+    {
+      "nombre": "Finalizar Mantenimiento",
+      "fecha": {
+        "$date": "2025-03-06T23:43:32.000Z"
+      },
+      "_id": {
+        "$oid": "66ff2881fe36d570139eeeee"
+      }
+    },
+    {
+      "nombre": "Instalar Trenes",
+      "fecha": {
+        "$date": "2024-10-03T00:10:58.166Z"
+      },
+      "_id": {
+        "$oid": "66ff2881fe36d570139eeeef"
+      }
+    }
+  ],
+  "estado": "En Proceso",
+  "isEvaluated": false,
+  "isDeleted": false,
+  "createdAt": {
+    "$date": "2024-10-02T23:43:57.245Z"
+  },
+  "updatedAt": {
+    "$date": "2024-10-03T23:28:01.440Z"
+  },
+  "__v": 4
+},
+{
+  "_id": {
+    "$oid": "66ff2b42fe36d570139eeffd"
+  },
+  "nombre": "Semaforos con Inteligencia Artificial",
+  "descripcion": "Implementar semaforos con Inteligencia Artificial.",
+  "objetivos": "Reducir los tapones.",
+  "presupuesto": 1200000,
+  "cronograma": {
+    "fechaInicio": {
+      "$date": "2024-10-03T23:39:01.000Z"
+    },
+    "fechaFin": {
+      "$date": "2025-10-03T23:39:01.000Z"
+    }
+  },
+  "investigadores": [
+    {
+      "$oid": "66d9a3d28811e44aea8b1dd6"
+    }
+  ],
+  "recursos": [
+    "Camaras"
+  ],
+  "hitos": [
+    {
+      "nombre": "Comprar Semaforos",
+      "fecha": {
+        "$date": "2024-10-09T23:39:01.000Z"
+      },
+      "_id": {
+        "$oid": "66ff2b42fe36d570139eeffe"
+      }
+    }
+  ],
+  "estado": "Planeado",
+  "isEvaluated": false,
+  "isDeleted": false,
+  "createdAt": {
+    "$date": "2024-10-03T23:39:46.455Z"
+  },
+  "updatedAt": {
+    "$date": "2024-10-03T23:39:46.455Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67018428a540d912a0fd537e"
+  },
+  "nombre": "Probando Modularidad",
+  "descripcion": "Descripción del nuevo proyecto",
+  "objetivos": "Objetivos del proyecto",
+  "presupuesto": 10000,
+  "cronograma": {
+    "fechaInicio": {
+      "$date": "2024-01-01T00:00:00.000Z"
+    },
+    "fechaFin": {
+      "$date": "2024-12-31T00:00:00.000Z"
+    }
+  },
+  "investigadores": [
+    {
+      "$oid": "66d7d4bca6f6b3707d261b33"
+    }
+  ],
+  "recursos": [
+    "Recurso 1",
+    "Recurso 2"
+  ],
+  "hitos": [
+    {
+      "nombre": "Hito 1",
+      "fecha": {
+        "$date": "2024-06-30T00:00:00.000Z"
+      },
+      "_id": {
+        "$oid": "67018428a540d912a0fd537f"
+      }
+    }
+  ],
+  "estado": "En Proceso",
+  "isEvaluated": true,
+  "isDeleted": false,
+  "createdAt": {
+    "$date": "2024-10-05T18:23:36.236Z"
+  },
+  "updatedAt": {
+    "$date": "2024-10-05T20:19:25.578Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6701ba84e179d82e4ca5f8ed"
+  },
+  "nombre": "Semaforos con Machine Learning.",
+  "descripcion": "Comprar Semaforos",
+  "objetivos": "Traer Semaforos",
+  "presupuesto": 20000,
+  "cronograma": {
+    "fechaInicio": {
+      "$date": "2024-10-05T22:14:48.715Z"
+    },
+    "fechaFin": {
+      "$date": "2024-10-05T22:14:48.715Z"
+    }
+  },
+  "investigadores": [
+    {
+      "$oid": "66d9a3d28811e44aea8b1dd6"
+    }
+  ],
+  "recursos": [
+    "Camaras"
+  ],
+  "hitos": [
+    {
+      "nombre": "Comprar Semaforos",
+      "fecha": {
+        "$date": "2024-10-05T22:14:48.715Z"
+      },
+      "_id": {
+        "$oid": "6701ba90e179d82e4ca5f936"
+      }
+    }
+  ],
+  "estado": "Planeado",
+  "isEvaluated": false,
+  "isDeleted": false,
+  "createdAt": {
+    "$date": "2024-10-05T22:15:32.932Z"
+  },
+  "updatedAt": {
+    "$date": "2024-10-05T22:15:44.775Z"
+  },
+  "__v": 1
 }]
