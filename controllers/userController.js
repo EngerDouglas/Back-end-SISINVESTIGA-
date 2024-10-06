@@ -1,4 +1,5 @@
 import UserService from '../services/userService.js'
+import emailService from '../services/emailService.js';
 import { BadRequestError } from '../utils/errors.js';
 
 // *********************** Creando el Usuario ******************* //
@@ -12,6 +13,8 @@ export const createUser = async (req, res, next) => {
     }
 
     const user = await UserService.createUser({ nombre, apellido, email, password, especializacion, responsabilidades, fotoPerfil })
+
+    await emailService.sendRegistrationConfirmation(user);
 
     res.status(201).json({ message: 'Usuario registrado exitosamente', user })
   } catch (error) {
@@ -28,6 +31,14 @@ export const logInUser = async (req, res, next) => {
   try {
     const { email, password } = req.body;
     const { user, token } = await UserService.loginUser(email, password);
+
+    const loginInfo = {
+      location: req.headers['x-forwarded-for'] || req.connection.remoteAddress,
+      ipAddress: req.ip,
+      device: req.headers['user-agent'],
+    };
+    await emailService.sendLoginNotification(user, loginInfo);
+
     res.status(200).json({
       message: 'Inicio de sesion exitoso',
       token,
@@ -168,6 +179,41 @@ export const enableUser = async (req, res, next) => {
     await UserService.enableUser(id, req.userRole);
     res.status(200).json({ message: 'Usuario habilitado exitosamente.' });
   } catch (error) {
+    next(error);
+  }
+};
+// *********************** END ******************* //
+
+// *********************** Olvide Contraseña ******************* //
+export const forgotPassword = async (req, res, next) => {
+  try {
+    const { email } = req.body;
+    const user = await UserService.createPasswordResetToken(email);
+    
+    const resetLink = `${req.headers.origin}/reset-password/${user.resetPasswordToken}`;
+    
+    await emailService.sendForgotPasswordEmail(user, resetLink);
+    
+    res.status(200).json({ message: 'Se ha enviado un correo para restablecer la contraseña' });
+  } catch (error) {
+    next(error);
+  }
+};
+// *********************** END ******************* //
+
+// *********************** Reestablecer Contraseña ******************* //
+export const resetPassword = async (req, res, next) => {
+  try {
+    const { token } = req.params;
+    const { password } = req.body;
+    
+    const user = await UserService.resetPassword(token, password);
+    
+    await emailService.sendResetPasswordConfirmationEmail(user);
+    
+    res.status(200).json({ message: 'Contraseña restablecida exitosamente' });
+  } catch (error) {
+    console.error('Error en resetPassword controller:', error);
     next(error);
   }
 };

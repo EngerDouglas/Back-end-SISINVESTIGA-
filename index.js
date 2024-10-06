@@ -1,4 +1,5 @@
 import express from 'express'
+import morgan from 'morgan'
 import bodyParser from 'body-parser'
 import cookieParser from 'cookie-parser'
 import dotenv from 'dotenv'
@@ -14,6 +15,7 @@ import ReportRouter from './routes/reportRoute.js'
 import errorHandler from './middlewares/errorHandler.js'
 import logger from './utils/logger.js'
 import { connectDB } from './config/db.js'
+import emailService from './services/emailService.js';
 
 dotenv.config()
 
@@ -27,6 +29,7 @@ app.use( corsMiddleware())
 // app.use(bodyParser.urlencoded({ extended:true }))
 app.use(express.json())
 app.use(express.urlencoded({ extended:true }))
+app.use(morgan('dev'))
 app.use(cookieParser())
 app.use(helmet())
 
@@ -46,14 +49,24 @@ app.get('/', (req, res) => {
 
 app.use(errorHandler)
 
-// Definicion de mi puerto y arranque del proyecto
-connectDB().then(() => {
-  app.listen(port, () => {
-    logger.info(`The server is running on http://localhost:${port}`)
-  });
-}).catch(err => {
-  logger.error('Failet to connect to the database', err)
-  process.exit(1)
-})
+const startServer = async () => {
+  try {
+    logger.info('Starting server...');
+    await connectDB();
+    emailService.initialize();
+    logger.info('Email service initialized.');
+    app.listen(port, () => {
+      logger.info(`The server is running on http://localhost:${port}`);
+    });
+  } catch (error) {
+    logger.error('Failed to start the server:', error);
+    process.exit(1);
+  }
+};
+
+startServer().catch(err => {
+  logger.error('Unhandled error during server startup:', err);
+  process.exit(1);
+});
 
 export default app

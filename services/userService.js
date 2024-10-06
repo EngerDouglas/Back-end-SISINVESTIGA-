@@ -1,6 +1,7 @@
 import User from "../models/User.js";
 import Role from "../models/Role.js";
 import bcrypt from "bcryptjs";
+import jwt from 'jsonwebtoken';
 import { BadRequestError, ConflictError, NotFoundError, UnauthorizedError, ForbiddenError,  } from "../utils/errors.js";
 
 class UserService {
@@ -212,6 +213,46 @@ class UserService {
     await user.save();
   }
   // *********************** END ******************* //
+
+    // *********************** Creamos el token para resetear la clave ******************* //
+    static async createPasswordResetToken(email) {
+      const user = await User.findOne({ email });
+      if (!user) {
+        throw new NotFoundError('Usuario no encontrado');
+      }
+      user.generatePasswordResetToken();
+      await user.save();
+      return user;
+    }
+    // *********************** END ******************* //
+
+    // *********************** Resetamos la clave del usuario ******************* //
+    static async resetPassword(token, newPassword) {
+      try {
+        const decoded = jwt.verify(token, process.env.JWT_SEC_KEY);
+        const user = await User.findOne({
+          _id: decoded._id,
+          resetPasswordToken: token,
+          resetPasswordExpires: { $gt: Date.now() }
+        });
+  
+        if (!user) {
+          throw new BadRequestError('Token inválido o expirado');
+        }
+  
+        user.password = newPassword;
+        user.resetPasswordToken = undefined;
+        user.resetPasswordExpires = undefined;
+        await user.save();
+        return user;
+      } catch (error) {
+        if (error instanceof jwt.JsonWebTokenError) {
+          throw new BadRequestError('Token inválido');
+        }
+        throw error;
+      }
+    }
+    // *********************** END ******************* //
 
 }
 

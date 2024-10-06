@@ -1,7 +1,7 @@
 import express from 'express'
-import { createUser, logInUser, logOutUser, logOutAllUser, updateUser, updateSelfUser, getUser, getAllUsers, getUserById, disableUser, enableUser } from '../controllers/userController.js'
+import { createUser, logInUser, logOutUser, logOutAllUser, updateUser, updateSelfUser, getUser, getAllUsers, getUserById, disableUser, enableUser, resetPassword, forgotPassword } from '../controllers/userController.js'
 import { auth, authRole } from '../middlewares/auth.js'
-import { validateCreateUser, validateUpdateUser } from '../middlewares/validators.js'
+import { validateCreateUser, validateUpdateUser, validateForgotPassword, validateResetPassword } from '../middlewares/validators.js'
 
 const UsersRouter = express.Router()
 
@@ -10,6 +10,8 @@ UsersRouter.post('/register', validateCreateUser, createUser)
 UsersRouter.post('/login', logInUser)
 UsersRouter.post('/logout', auth, logOutUser)
 UsersRouter.post('/logout-all', auth, logOutAllUser)
+UsersRouter.post('/forgot-password', validateForgotPassword, forgotPassword)
+UsersRouter.post('/reset-password/:token', validateResetPassword, resetPassword)
 UsersRouter.put('/me', auth, validateUpdateUser, updateSelfUser)
 UsersRouter.put('/:id', auth, authRole(['Administrador']), validateUpdateUser, updateUser)
 

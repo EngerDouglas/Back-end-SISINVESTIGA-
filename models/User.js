@@ -74,6 +74,8 @@ const userSchema = mongoose.Schema({
       required: true
     }
   }],
+  resetPasswordToken: String,
+  resetPasswordExpires: Date,
 }, {
   toJSON: { virtuals: true },
   toObject: { virtuals: true },
@@ -107,6 +109,8 @@ userSchema.methods.toJSON = function () {
   const user = this.toObject()
   delete user.password
   delete user.tokens
+  delete user.resetPasswordToken
+  delete user.resetPasswordExpires
   return user
 };
 
@@ -118,6 +122,12 @@ userSchema.methods.generateAuthToken = async function () {
   await user.save()
   return token
 }
+
+// Generaremos nuestro token JWT para restablecer la contraseña
+userSchema.methods.generatePasswordResetToken = function() {
+  this.resetPasswordToken = jwt.sign({ _id: this._id.toString() }, process.env.JWT_SEC_KEY, { expiresIn: '1h' });
+  this.resetPasswordExpires = Date.now() + 3600000; // 1 hour
+};
 
 // Hashearemos la clave antes de que la guardemos
 userSchema.pre('save', async function (next) {

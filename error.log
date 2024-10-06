@@ -99,3 +99,28 @@
 {"_message":"User validation failed","errors":{"password":{"kind":"minlength","message":"La contraseña debe tener un mínimo de 8 caracteres","name":"ValidatorError","path":"password","properties":{"message":"La contraseña debe tener un mínimo de 8 caracteres","minlength":8,"path":"password","type":"minlength","value":"ibvee"},"value":"ibvee"}},"level":"error","message":"User validation failed: password: La contraseña debe tener un mínimo de 8 caracteres","name":"ValidationError","timestamp":"2024-10-06T01:51:53.330Z"}
 {"errors":[],"isOperational":true,"level":"error","status":"fail","statusCode":400,"timestamp":"2024-10-06T01:53:21.634Z"}
 {"_message":"User validation failed","errors":{"password":{"kind":"minlength","message":"La contraseña debe tener un mínimo de 8 caracteres","name":"ValidatorError","path":"password","properties":{"message":"La contraseña debe tener un mínimo de 8 caracteres","minlength":8,"path":"password","type":"minlength","value":"uidbfj"},"value":"uidbfj"}},"level":"error","message":"User validation failed: password: La contraseña debe tener un mínimo de 8 caracteres","name":"ValidationError","timestamp":"2024-10-06T01:53:23.584Z"}
+{"body":"\"disable\"","expose":true,"level":"error","status":400,"statusCode":400,"timestamp":"2024-10-06T03:26:46.884Z","type":"entity.parse.failed"}
+{"body":"\"disable\"","expose":true,"level":"error","status":400,"statusCode":400,"timestamp":"2024-10-06T03:30:39.211Z","type":"entity.parse.failed"}
+{"body":"\"/disable\"","expose":true,"level":"error","status":400,"statusCode":400,"timestamp":"2024-10-06T03:36:58.276Z","type":"entity.parse.failed"}
+{"body":"\"disable\"","expose":true,"level":"error","status":400,"statusCode":400,"timestamp":"2024-10-06T03:38:03.639Z","type":"entity.parse.failed"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":403,"timestamp":"2024-10-06T03:50:25.109Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":403,"timestamp":"2024-10-06T03:53:46.547Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":401,"timestamp":"2024-10-06T18:47:01.781Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":401,"timestamp":"2024-10-06T18:54:47.407Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":401,"timestamp":"2024-10-06T18:55:08.201Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":401,"timestamp":"2024-10-06T18:55:11.371Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":401,"timestamp":"2024-10-06T20:15:27.136Z"}
+{"level":"error","message":"Failed to start the server: emailService is not defined","stack":"ReferenceError: emailService is not defined\n    at startServer (file:///C:/Users/carlo/OneDrive/code/2024/NodeJS/Back-end-SISINVESTIGA-/index.js:54:5)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)","timestamp":"2024-10-06T20:22:36.239Z"}
+{"level":"error","message":"Failed to start the server: emailService is not defined","stack":"ReferenceError: emailService is not defined\n    at startServer (file:///C:/Users/carlo/OneDrive/code/2024/NodeJS/Back-end-SISINVESTIGA-/index.js:58:5)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)","timestamp":"2024-10-06T20:23:09.476Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":401,"timestamp":"2024-10-06T20:42:52.378Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":401,"timestamp":"2024-10-06T20:53:16.734Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":401,"timestamp":"2024-10-06T20:53:24.340Z"}
+{"level":"error","timestamp":"2024-10-06T22:34:33.338Z"}
+{"level":"error","timestamp":"2024-10-06T22:43:32.576Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":401,"timestamp":"2024-10-06T22:44:00.465Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":401,"timestamp":"2024-10-06T22:44:05.030Z"}
+{"level":"error","timestamp":"2024-10-06T22:44:59.172Z"}
+{"level":"error","timestamp":"2024-10-06T22:47:49.995Z"}
+{"level":"error","timestamp":"2024-10-06T22:52:10.047Z"}
+{"level":"error","timestamp":"2024-10-06T22:54:55.451Z"}
+{"code":"ENOENT","errno":-4058,"level":"error","path":"C:\\Users\\carlo\\OneDrive\\code\\2024\\NodeJS\\Back-end-SISINVESTIGA-\\templates\\reset_password_confirmation.hbs","syscall":"open","timestamp":"2024-10-06T22:58:11.670Z"}

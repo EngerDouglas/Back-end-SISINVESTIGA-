@@ -1,4 +1,4 @@
-import { body } from 'express-validator';
+import { body, param } from 'express-validator';
 
 
 //-------------------- Validaciones para los Usuarios ------------------- //
@@ -129,4 +129,25 @@ export const ValidateUpdateRequest = [
   body('comentarios').optional().isString().notEmpty().withMessage('El comentario no puede estar vacío'),
 ];
 
+//-------------------- END ------------------- //
+
+//-------------------- Validaciones para los Olvide Password ------------------- //
+export const validateForgotPassword = [
+  body('email')
+    .isEmail()
+    .withMessage('Debe proporcionar un correo electrónico válido'),
+];
+//-------------------- END ------------------- //
+
+//-------------------- Validaciones para los Resetar Password ------------------- //
+export const validateResetPassword = [
+  param('token')
+    .notEmpty()
+    .withMessage('El token de restablecimiento es requerido'),
+  body('password')
+    .isLength({ min: 8 })
+    .withMessage('La contraseña debe tener al menos 8 caracteres')
+    .matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).{8,}$/, "i")
+    .withMessage('La contraseña debe incluir al menos una letra mayúscula, una minúscula, un número y un carácter especial'),
+];
 //-------------------- END ------------------- //
