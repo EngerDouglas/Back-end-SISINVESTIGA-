@@ -126,3 +126,6 @@
 {"code":"ENOENT","errno":-4058,"level":"error","path":"C:\\Users\\carlo\\OneDrive\\code\\2024\\NodeJS\\Back-end-SISINVESTIGA-\\templates\\reset_password_confirmation.hbs","syscall":"open","timestamp":"2024-10-06T22:58:11.670Z"}
 {"errors":[],"isOperational":true,"level":"error","status":"fail","statusCode":400,"timestamp":"2024-10-06T22:58:58.952Z"}
 {"isOperational":true,"level":"error","status":"fail","statusCode":401,"timestamp":"2024-10-06T23:01:56.617Z"}
+{"code":"EAUTH","command":"AUTH PLAIN","level":"error","response":"535-5.7.8 Username and Password not accepted. For more information, go to\n535 5.7.8  https://support.google.com/mail/?p=BadCredentials ada2fe7eead31-4a412da86f5sm1069835137.6 - gsmtp","responseCode":535,"timestamp":"2024-10-07T11:53:37.074Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":409,"timestamp":"2024-10-07T11:54:47.321Z"}
+{"code":"EAUTH","command":"AUTH PLAIN","level":"error","response":"535-5.7.8 Username and Password not accepted. For more information, go to\n535 5.7.8  https://support.google.com/mail/?p=BadCredentials 71dfb90a1353d-50c9ae36557sm807709e0c.35 - gsmtp","responseCode":535,"timestamp":"2024-10-07T11:55:32.505Z"}
