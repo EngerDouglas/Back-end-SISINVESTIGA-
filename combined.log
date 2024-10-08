@@ -358,3 +358,9 @@
 {"level":"info","message":"Email service initialized.","timestamp":"2024-10-06T22:58:04.321Z"}
 {"level":"info","message":"The server is running on http://localhost:3005","timestamp":"2024-10-06T22:58:04.326Z"}
 {"code":"ENOENT","errno":-4058,"level":"error","path":"C:\\Users\\carlo\\OneDrive\\code\\2024\\NodeJS\\Back-end-SISINVESTIGA-\\templates\\reset_password_confirmation.hbs","syscall":"open","timestamp":"2024-10-06T22:58:11.670Z"}
+{"level":"info","message":"Starting server...","timestamp":"2024-10-06T22:58:49.443Z"}
+{"level":"info","message":"Connected to BBDD!","timestamp":"2024-10-06T22:58:49.513Z"}
+{"level":"info","message":"Email service initialized.","timestamp":"2024-10-06T22:58:49.519Z"}
+{"level":"info","message":"The server is running on http://localhost:3005","timestamp":"2024-10-06T22:58:49.525Z"}
+{"errors":[],"isOperational":true,"level":"error","status":"fail","statusCode":400,"timestamp":"2024-10-06T22:58:58.952Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":401,"timestamp":"2024-10-06T23:01:56.617Z"}

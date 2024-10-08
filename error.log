@@ -124,3 +124,5 @@
 {"level":"error","timestamp":"2024-10-06T22:52:10.047Z"}
 {"level":"error","timestamp":"2024-10-06T22:54:55.451Z"}
 {"code":"ENOENT","errno":-4058,"level":"error","path":"C:\\Users\\carlo\\OneDrive\\code\\2024\\NodeJS\\Back-end-SISINVESTIGA-\\templates\\reset_password_confirmation.hbs","syscall":"open","timestamp":"2024-10-06T22:58:11.670Z"}
+{"errors":[],"isOperational":true,"level":"error","status":"fail","statusCode":400,"timestamp":"2024-10-06T22:58:58.952Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":401,"timestamp":"2024-10-06T23:01:56.617Z"}
