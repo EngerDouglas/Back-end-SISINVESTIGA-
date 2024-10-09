@@ -373,3 +373,19 @@
 {"level":"info","message":"Connected to BBDD!","timestamp":"2024-10-07T11:56:33.128Z"}
 {"level":"info","message":"Email service initialized.","timestamp":"2024-10-07T11:56:33.166Z"}
 {"level":"info","message":"The server is running on http://localhost:3005","timestamp":"2024-10-07T11:56:33.172Z"}
+{"errors":[],"isOperational":true,"level":"error","status":"fail","statusCode":400,"timestamp":"2024-10-07T12:07:46.967Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":404,"timestamp":"2024-10-07T12:29:26.057Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":404,"timestamp":"2024-10-07T12:32:29.988Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":404,"timestamp":"2024-10-07T12:32:30.007Z"}
+{"errors":[],"isOperational":true,"level":"error","status":"fail","statusCode":400,"timestamp":"2024-10-07T17:34:27.888Z"}
+{"errors":[],"isOperational":true,"level":"error","status":"fail","statusCode":400,"timestamp":"2024-10-07T17:36:34.477Z"}
+{"errors":[],"isOperational":true,"level":"error","status":"fail","statusCode":400,"timestamp":"2024-10-07T17:36:45.194Z"}
+{"errors":[],"isOperational":true,"level":"error","status":"fail","statusCode":400,"timestamp":"2024-10-07T17:37:51.611Z"}
+{"errors":[],"isOperational":true,"level":"error","status":"fail","statusCode":400,"timestamp":"2024-10-07T17:43:30.350Z"}
+{"errors":[],"isOperational":true,"level":"error","status":"fail","statusCode":400,"timestamp":"2024-10-07T17:44:16.064Z"}
+{"errors":[],"isOperational":true,"level":"error","status":"fail","statusCode":400,"timestamp":"2024-10-07T17:45:22.461Z"}
+{"errors":[],"isOperational":true,"level":"error","status":"fail","statusCode":400,"timestamp":"2024-10-07T17:46:00.953Z"}
+{"errors":[],"isOperational":true,"level":"error","status":"fail","statusCode":400,"timestamp":"2024-10-07T17:47:10.173Z"}
+{"errors":[],"isOperational":true,"level":"error","status":"fail","statusCode":400,"timestamp":"2024-10-07T17:47:23.545Z"}
+{"errors":[],"isOperational":true,"level":"error","status":"fail","statusCode":400,"timestamp":"2024-10-07T17:48:04.132Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":404,"timestamp":"2024-10-07T17:48:28.498Z"}
