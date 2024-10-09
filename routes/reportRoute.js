@@ -1,7 +1,6 @@
 import express from 'express'
 import { exportReportCSV, exportReportPDF, exportReportInvestigatorsCSV, exportReportInvestigatorsPDF } from '../controllers/reportController.js'
-import { auth } from '../middlewares/auth.js'
-import { authRole } from '../middlewares/auth.js'
+import { auth, authRole } from '../middlewares/auth.js'
 
 const ReportRouter = express.Router();
 
