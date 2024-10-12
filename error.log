@@ -181,3 +181,5 @@
 {"isOperational":true,"level":"error","status":"fail","statusCode":403,"timestamp":"2024-10-12T00:40:04.640Z"}
 {"isOperational":true,"level":"error","status":"fail","statusCode":403,"timestamp":"2024-10-12T00:42:08.037Z"}
 {"isOperational":true,"level":"error","status":"fail","statusCode":403,"timestamp":"2024-10-12T00:42:13.027Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":403,"timestamp":"2024-10-12T00:55:20.479Z"}
+{"errors":[],"isOperational":true,"level":"error","status":"fail","statusCode":400,"timestamp":"2024-10-12T00:59:25.093Z"}
