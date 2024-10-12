@@ -26,7 +26,6 @@ class PublicationService {
     );
 
     if (!isCurrentUserPartOfProject && userRole !== 'Administrador') {
-      console.log(`El usuario con ID ${userId} no tiene permisos en el proyecto ${proyecto}.`);
       throw new ForbiddenError('No tienes permiso para crear publicaciones en este proyecto.');
     }
 
