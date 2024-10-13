@@ -2,6 +2,7 @@ import User from "../models/User.js";
 import Role from "../models/Role.js";
 import bcrypt from "bcryptjs";
 import jwt from 'jsonwebtoken';
+import { uploadFileToFirebase } from "./firebaseService.js";
 import { BadRequestError, ConflictError, NotFoundError, UnauthorizedError, ForbiddenError,  } from "../utils/errors.js";
 
 class UserService {
@@ -86,11 +87,16 @@ class UserService {
     }
 
     const allowedUpdates = ['nombre', 'apellido', 'email', 'especializacion', 'responsabilidades', 'fotoPerfil'];
-    Object.keys(updates).forEach((key) => {
-      if (allowedUpdates.includes(key)) {
-        user[key] = updates[key];
+    // Actualizar campos permitidos
+    for (const key of allowedUpdates) {
+      if (updates[key] !== undefined) {
+        if (key === 'responsabilidades' && typeof updates[key] === 'string') {
+          user[key] = updates[key].split(',').map((res) => res.trim());
+        } else {
+          user[key] = updates[key];
+        }
       }
-    });
+    }
 
     await user.save();
     await user.populate('role', 'roleName -_id');
@@ -111,11 +117,16 @@ class UserService {
     }
 
     const allowedUpdates = ['nombre', 'apellido', 'email', 'especializacion', 'responsabilidades', 'fotoPerfil'];
-    Object.keys(updates).forEach((key) => {
-      if (allowedUpdates.includes(key)) {
-        user[key] = updates[key];
+    // Actualizar campos permitidos
+    for (const key of allowedUpdates) {
+      if (updates[key] !== undefined) {
+        if (key === 'responsabilidades' && typeof updates[key] === 'string') {
+          user[key] = updates[key].split(',').map((res) => res.trim());
+        } else {
+          user[key] = updates[key];
+        }
       }
-    });
+    }
 
     if (updates.email && updates.email !== user.email) {
       const emailExists = await User.findOne({ email: updates.email });

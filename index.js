@@ -1,8 +1,8 @@
+import dotenv from 'dotenv'
 import express from 'express'
 import morgan from 'morgan'
 import bodyParser from 'body-parser'
 import cookieParser from 'cookie-parser'
-import dotenv from 'dotenv'
 import helmet from 'helmet'
 import { corsMiddleware } from './middlewares/cors.js'
 import RolesRouter from './routes/roleRoute.js'
@@ -16,8 +16,12 @@ import errorHandler from './middlewares/errorHandler.js'
 import logger from './utils/logger.js'
 import { connectDB } from './config/db.js'
 import emailService from './services/emailService.js';
+import { initializeFirebase } from './services/firebaseService.js'
 
 dotenv.config()
+
+// Inicializar Firebase
+initializeFirebase();
 
 // Crear la app
 const app = express()
