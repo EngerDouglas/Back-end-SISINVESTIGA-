@@ -86,8 +86,8 @@ export const getAllPublications = async (req, res, next) => {
 
 export const getUserPublications = async (req, res, next) => {
   try {
-    const { page = 1, limit = 10 } = req.query;
-    const result = await PublicationService.getUserPublications(req.user._id, page, limit);
+    const { page = 1, limit = 10, search = '' } = req.query;
+    const result = await PublicationService.getUserPublications(req.user._id, page, limit, search);
     res.status(200).json(result);
   } catch (error) {
     next(error);

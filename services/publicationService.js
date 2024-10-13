@@ -235,9 +235,16 @@ class PublicationService {
 
   // ******************************** Obtener tus propias publicaciones ************************************************* //
 
-  static async getUserPublications(userId, page = 1, limit = 10) {
-    const query = { autores: userId, isDeleted: false };
+  static async getUserPublications(userId, page = 1, limit = 10, search) {
+    let query = { autores: userId, isDeleted: false };
     const total = await Publication.countDocuments(query);
+
+    if (search) {
+      query.$or = [
+        { titulo: { $regex: search, $options: 'i' } },
+        { resumen: { $regex: search, $options: 'i' } }
+      ]
+    }
 
     const publications = await Publication.find(query)
       .skip((page - 1) * limit)

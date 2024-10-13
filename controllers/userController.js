@@ -1,6 +1,8 @@
 import UserService from '../services/userService.js'
 import emailService from '../services/emailService.js';
 import { BadRequestError } from '../utils/errors.js';
+import geoip from 'geoip-lite';
+import useragent from 'express-useragent';
 
 // *********************** Creando el Usuario ******************* //
 export const createUser = async (req, res, next) => {
@@ -32,11 +34,16 @@ export const logInUser = async (req, res, next) => {
     const { email, password } = req.body;
     const { user, token } = await UserService.loginUser(email, password);
 
+    const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+    const geo = geoip.lookup(ip);
+    const ua = useragent.parse(req.headers['user-agent']);
+
     const loginInfo = {
-      location: req.headers['x-forwarded-for'] || req.connection.remoteAddress,
-      ipAddress: req.ip,
-      device: req.headers['user-agent'],
+      location: geo ? `${geo.city}, ${geo.country}` : 'Ubicación desconocida',
+      ipAddress: ip,
+      device: `${ua.browser} on ${ua.os}`,
     };
+    
     await emailService.sendLoginNotification(user, loginInfo);
 
     res.status(200).json({

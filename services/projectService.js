@@ -205,8 +205,17 @@ class ProjectService {
 
 // **************************** Obtener Proyectos propios ************************************************* //
 
-  static async getUserProjects(userId, page, limit) {
-    const projects = await Project.find({ investigadores: userId, isDeleted: false })
+  static async getUserProjects(userId, page, limit, search) {
+    let query = { investigadores: userId, isDeleted: false };
+    
+    if (search) {
+      query.$or = [
+        { nombre: { $regex: search, $options: 'i' } },
+        { descripcion: { $regex: search, $options: 'i' } }
+      ];
+    }
+
+    const projects = await Project.find(query)
       .skip((page - 1) * limit)
       .limit(Number(limit))
       .populate('investigadores', 'nombre apellido')
@@ -216,10 +225,7 @@ class ProjectService {
         populate: { path: 'evaluator', select: 'nombre apellido email' },
       });
 
-    const totalProjects = await Project.countDocuments({
-      investigadores: userId,
-      isDeleted: false,
-    });
+    const totalProjects = await Project.countDocuments(query);
 
     return { projects, totalProjects };
   }

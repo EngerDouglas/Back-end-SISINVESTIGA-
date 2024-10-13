@@ -13,100 +13,117 @@ body {
   max-width: 600px;
   margin: 20px auto;
   background-color: #ffffff;
-  border-radius: 8px;
+  border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .header {
-  background-color: #004d40; /* Color verde oscuro */
+  background-color: #004d40;
   color: #ffffff;
-  padding: 20px;
+  padding: 30px 20px;
   text-align: center;
 }
 
 .logo {
-  max-width: 100px;
-  margin-bottom: 10px;
+  max-width: 120px;
+  margin-bottom: 15px;
 }
 
 .header h1 {
   margin: 0;
-  font-size: 24px;
+  font-size: 28px;
   font-weight: 700;
+  letter-spacing: 0.5px;
 }
 
 .content {
-  padding: 30px;
+  padding: 40px 30px;
 }
 
 .greeting {
-  font-size: 18px;
-  margin-bottom: 15px;
+  font-size: 20px;
+  margin-bottom: 20px;
+  color: #004d40;
 }
 
 .info {
   font-size: 16px;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
+  line-height: 1.8;
 }
 
 .login-details {
-  background-color: #e0f2f1; /* Fondo verde claro */
-  border-radius: 6px;
-  padding: 15px;
-  margin-bottom: 20px;
+  background-color: #e0f2f1;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 30px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
 }
 
 .detail-item {
   display: flex;
   align-items: center;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
 .icon {
-  font-size: 20px;
-  margin-right: 10px;
+  font-size: 24px;
+  margin-right: 15px;
+  color: #00796b;
 }
 
 .label {
   font-weight: bold;
-  margin-right: 5px;
+  margin-right: 10px;
+  color: #004d40;
+}
+
+.value {
+  color: #333;
 }
 
 .warning {
   background-color: #fff3cd;
   border-left: 4px solid #ffeb3b;
-  padding: 15px;
-  margin-bottom: 20px;
+  padding: 20px;
+  margin-bottom: 30px;
+  font-weight: 500;
+  color: #856404;
 }
 
 .action-button {
   display: inline-block;
-  background-color: #00796b; /* Botón verde */
+  background-color: #00796b;
   color: #ffffff;
-  padding: 12px 24px;
+  padding: 14px 28px;
   text-decoration: none;
-  border-radius: 4px;
+  border-radius: 6px;
   font-weight: bold;
   text-align: center;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
+  font-size: 16px;
+  letter-spacing: 0.5px;
 }
 
 .action-button:hover {
   background-color: #004d40;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .footer {
   background-color: #f1f1f1;
-  padding: 20px;
+  padding: 25px 20px;
   text-align: center;
-  font-size: 13px;
+  font-size: 14px;
   color: #666;
 }
 
 .footer a {
   color: #004d40;
   text-decoration: none;
+  font-weight: 500;
 }
 
 .footer a:hover {
@@ -119,6 +136,6 @@ body {
     border-radius: 0;
   }
   .content {
-    padding: 20px;
+    padding: 30px 20px;
   }
 }

@@ -104,8 +104,8 @@ export const getProyectoById = async (req, res, next) => {
 // **************************** Obtener Proyectos propios ************************************************* //
 export const getUserProyectos = async (req, res, next) => {
   try {
-    const { page = 1, limit = 10 } = req.query;
-    const { projects, totalProjects } = await ProjectService.getUserProjects(req.user._id, page, limit);
+    const { page = 1, limit = 10, search = '' } = req.query;
+    const { projects, totalProjects } = await ProjectService.getUserProjects(req.user._id, page, limit, search);
     res.status(200).json({
       total: totalProjects,
       page: Number(page),
