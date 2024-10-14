@@ -14,6 +14,10 @@ const projectSchema = mongoose.Schema(
       trim: true,
       text: true,
     },
+    imagen: {
+      type: String,
+      trim: true,
+    },
     objetivos: {
       type: String,
       trim: true,

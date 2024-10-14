@@ -6,7 +6,7 @@ import { PUBLICATION_TYPES, PUBLICATION_STATES } from '../utils/constants.js';
 class PublicationService {
   // **************************** Crear Publicacion ************************************************* //
   static async createPublication(publicationData, userId, userRole) {
-    const { titulo, fecha, proyecto, revista, resumen, palabrasClave, tipoPublicacion, estado, anexos, idioma } = publicationData;
+    const { titulo, fecha, proyecto, revista, resumen, palabrasClave, tipoPublicacion, estado, idioma, imagen, anexos } = publicationData;
 
     if (!titulo || !fecha || !proyecto || !revista || !tipoPublicacion || !idioma) {
       throw new BadRequestError('Todos los campos obligatorios deben ser proporcionados.');
@@ -44,9 +44,10 @@ class PublicationService {
       palabrasClave,
       tipoPublicacion,
       estado: estado || 'Borrador',
-      anexos,
       idioma,
       autores,
+      imagen,
+      anexos: anexos || [],
     });
 
     await newPublication.save();
@@ -102,7 +103,7 @@ class PublicationService {
 
     const allowedUpdates = [
       'titulo', 'fecha', 'proyecto', 'revista', 'resumen', 'palabrasClave',
-      'tipoPublicacion', 'estado', 'anexos', 'idioma', 'autores'
+      'tipoPublicacion', 'estado', 'anexos', 'idioma', 'autores', 'imagen'
     ];
 
     const updateKeys = Object.keys(updates);
@@ -115,6 +116,14 @@ class PublicationService {
     updateKeys.forEach((key) => {
       publication[key] = updates[key];
     });
+
+    if (updates.imagen) {
+      publication.imagen = updates.imagen;
+    }
+
+    if (updates.anexos) {
+      publication.anexos = updates.anexos;
+    }
 
     await publication.save();
     return publication;

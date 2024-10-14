@@ -48,10 +48,27 @@ const publicationSchema = mongoose.Schema(
       enum: ["Borrador", "Revisado", "Publicado"],
       default: "Borrador",
     },
+    imagen: {
+      type: String,
+      trim: true,
+    },
     anexos: [
       {
-        type: String,
-        trim: true,
+        nombre: {
+          type: String,
+          required: true,
+          trim: true,
+        },
+        url: {
+          type: String,
+          required: true,
+          trim: true,
+        },
+        tipo: {
+          type: String,
+          required: true,
+          trim: true,
+        },
       },
     ],
     idioma: {

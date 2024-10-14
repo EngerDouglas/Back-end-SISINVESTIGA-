@@ -2,7 +2,6 @@ import User from "../models/User.js";
 import Role from "../models/Role.js";
 import bcrypt from "bcryptjs";
 import jwt from 'jsonwebtoken';
-import { uploadFileToFirebase } from "./firebaseService.js";
 import { BadRequestError, ConflictError, NotFoundError, UnauthorizedError, ForbiddenError,  } from "../utils/errors.js";
 
 class UserService {

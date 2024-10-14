@@ -10,6 +10,10 @@ export const createProyecto = async (req, res, next) => {
       throw new BadRequestError('Error de validación', errors.array());
     }
 
+    if (req.body.imagen) {
+      req.body.imagen = req.body.imagen;
+    }
+
     const project = await ProjectService.createProject(req.body, req.user._id);
     res.status(201).json({
       message: 'Proyecto creado exitosamente',
@@ -31,6 +35,11 @@ export const updateProyecto = async (req, res, next) => {
     }
 
     const { id } = req.params;
+
+    if (req.body.imagen) {
+      req.body.imagen = req.body.imagen;
+    }
+    
     const project = await ProjectService.updateProject(id, req.body, req.user._id, req.userRole);
     res.status(200).json({
       message: 'Proyecto actualizado correctamente',

@@ -1,3 +1,4 @@
+import { validationResult } from 'express-validator';
 import PublicationService from '../services/publicationService.js';
 import { BadRequestError } from '../utils/errors.js';
 
@@ -5,6 +6,15 @@ import { BadRequestError } from '../utils/errors.js';
 
 export const createPublication = async (req, res, next) => {
   try {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      throw new BadRequestError('Error de validación', errors.array());
+    }
+
+    if (typeof req.body.palabrasClave === 'string') {
+      req.body.palabrasClave = JSON.parse(req.body.palabrasClave);
+    }
+
     const publication = await PublicationService.createPublication(req.body, req.user._id, req.userRole);
     res.status(201).json({ message: 'Publicación creada exitosamente', publication });
   } catch (error) {
@@ -19,7 +29,40 @@ export const createPublication = async (req, res, next) => {
 
 export const updatePublication = async (req, res, next) => {
   try {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      throw new BadRequestError('Error de validación', errors.array());
+    }
+
     const { id } = req.params;
+
+    if (typeof req.body.palabrasClave === 'string') {
+      req.body.palabrasClave = JSON.parse(req.body.palabrasClave);
+    }
+
+    // Parsear 'existingAnexos' si viene como cadena JSON
+    if (typeof req.body.existingAnexos === 'string') {
+      req.body.existingAnexos = JSON.parse(req.body.existingAnexos);
+    }
+    // Combinar 'existingAnexos' y 'anexos' (nuevos anexos subidos)
+    const combinedAnexos = [];
+    // Añadir anexos existentes
+    if (Array.isArray(req.body.existingAnexos)) {
+      combinedAnexos.push(...req.body.existingAnexos);
+    }
+    // Añadir nuevos anexos (si los hay)
+    if (Array.isArray(req.body.anexos)) {
+      combinedAnexos.push(...req.body.anexos);
+    } else if (req.body.anexos) {
+      // Si 'anexos' es un solo objeto
+      combinedAnexos.push(req.body.anexos);
+    }
+    // Asignar el arreglo combinado de anexos a 'req.body.anexos'
+    req.body.anexos = combinedAnexos;
+
+    // Eliminar 'existingAnexos' de 'req.body' para que no interfiera con la validación
+    delete req.body.existingAnexos;
+
     const publication = await PublicationService.updatePublication(id, req.body, req.user._id, req.userRole);
     res.status(200).json({ message: 'Publicación actualizada correctamente', publication });
   } catch (error) {

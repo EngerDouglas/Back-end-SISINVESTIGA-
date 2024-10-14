@@ -10,19 +10,34 @@ import {
   searchProyectos 
 } from '../controllers/projectController.js'; 
 import { auth, authRole } from '../middlewares/auth.js'; 
+import { uploadImages, handleFileUpload } from '../middlewares/fileUpload.js';
 import { validateCreateProject, validateUpdateProject } from '../middlewares/validators.js';
 
 const ProjectRouter = express.Router();
 
 // Rutas para los proyectos
-ProjectRouter.post('/', auth, authRole(['Administrador', 'Investigador']), validateCreateProject, createProyecto); // Solo un administrador puede crear proyectos
-ProjectRouter.put('/:id', auth, authRole(['Administrador', 'Investigador']), validateUpdateProject, updateProyecto); // Administradores e Investigadores pueden actualizar
-ProjectRouter.delete('/:id', auth, authRole(['Administrador', 'Investigador']), deleteProyecto); // Administradores e Investigadores pueden hacer soft
-ProjectRouter.put('/restore/:id', auth, authRole(['Administrador']), restoreProyecto); // Administradores pueden restaurar proyectos
+ProjectRouter.post(
+  '/', 
+  auth,   
+  authRole(['Administrador', 'Investigador']), 
+  uploadImages('imagen', 1),
+  handleFileUpload('projects', 'imagen'),
+  validateCreateProject, 
+  createProyecto); 
+ProjectRouter.put(
+  '/:id', 
+  auth, 
+  authRole(['Administrador', 'Investigador']), 
+  uploadImages('imagen', 1),
+  handleFileUpload('projects', 'imagen'),
+  validateUpdateProject, 
+  updateProyecto); 
+ProjectRouter.delete('/:id', auth, authRole(['Administrador', 'Investigador']), deleteProyecto); 
+ProjectRouter.put('/restore/:id', auth, authRole(['Administrador']), restoreProyecto); 
 
-ProjectRouter.get('/', getAllProyectos); // Listar proyectos con paginación y filtro
+ProjectRouter.get('/', getAllProyectos); 
 ProjectRouter.get('/me', auth, getUserProyectos); 
-ProjectRouter.get('/search', searchProyectos); // Buscar proyectos por texto completo
-ProjectRouter.get('/:id', getProyectoById); // Obtener un proyecto por ID
+ProjectRouter.get('/search', searchProyectos); 
+ProjectRouter.get('/:id', getProyectoById); 
 
 export default ProjectRouter;

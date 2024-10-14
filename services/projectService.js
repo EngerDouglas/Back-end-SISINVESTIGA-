@@ -39,6 +39,7 @@ class ProjectService {
         fecha: hito.fecha,
         entregables: hito.entregable ? [hito.entregable] : [],
       })),
+      imagen: projectData.imagen,
     });
 
     await newProject.save();
@@ -66,7 +67,7 @@ class ProjectService {
     }
 
     const allowedUpdates = [
-      'nombre', 'descripcion', 'objetivos', 'presupuesto', 'cronograma', 'hitos', 'investigadores', 'recursos', 'estado'
+      'nombre', 'descripcion', 'objetivos', 'presupuesto', 'cronograma', 'hitos', 'investigadores', 'recursos', 'estado', 'imagen'
     ];
 
     allowedUpdates.forEach((field) => {
@@ -84,6 +85,9 @@ class ProjectService {
               fechaInicio: updates.cronograma.fechaInicio,
               fechaFin: updates.cronograma.fechaFin
             };
+            break;
+          case 'imagen':
+            project.imagen = updates.imagen;
             break;
           default:
             project[field] = updates[field];
