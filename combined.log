@@ -781,3 +781,14 @@
 {"level":"info","message":"Connected to BBDD!","timestamp":"2024-10-14T00:17:56.521Z"}
 {"level":"info","message":"Email service initialized.","timestamp":"2024-10-14T00:17:56.525Z"}
 {"level":"info","message":"The server is running on http://localhost:3005","timestamp":"2024-10-14T00:17:56.528Z"}
+{"level":"info","message":"Starting server...","timestamp":"2024-10-14T12:24:01.704Z"}
+{"level":"info","message":"Connected to BBDD!","timestamp":"2024-10-14T12:24:01.769Z"}
+{"level":"info","message":"Email service initialized.","timestamp":"2024-10-14T12:24:01.891Z"}
+{"level":"info","message":"The server is running on http://localhost:3005","timestamp":"2024-10-14T12:24:01.895Z"}
+{"code":"EAUTH","command":"AUTH PLAIN","level":"error","response":"535-5.7.8 Username and Password not accepted. For more information, go to\n535 5.7.8  https://support.google.com/mail/?p=BadCredentials 71dfb90a1353d-50d5fb522dcsm196298e0c.41 - gsmtp","responseCode":535,"timestamp":"2024-10-14T12:40:42.937Z"}
+{"level":"info","message":"Starting server...","timestamp":"2024-10-14T12:41:11.952Z"}
+{"level":"info","message":"Connected to BBDD!","timestamp":"2024-10-14T12:41:12.011Z"}
+{"level":"info","message":"Email service initialized.","timestamp":"2024-10-14T12:41:12.028Z"}
+{"level":"info","message":"The server is running on http://localhost:3005","timestamp":"2024-10-14T12:41:12.033Z"}
+{"_message":"Publication validation failed","errors":{"anexos":{"kind":"embedded","message":"Cast to embedded failed for value \"http://image.pik.com\" (type string) at path \"anexos\" because of \"ObjectParameterError\"","name":"CastError","path":"anexos","reason":{},"stringValue":"\"http://image.pik.com\"","value":"http://image.pik.com","valueType":"string"}},"level":"error","message":"Publication validation failed: anexos: Cast to embedded failed for value \"http://image.pik.com\" (type string) at path \"anexos\" because of \"ObjectParameterError\"","name":"ValidationError","timestamp":"2024-10-14T12:53:44.747Z"}
+{"errors":[],"isOperational":true,"level":"error","status":"fail","statusCode":400,"timestamp":"2024-10-14T12:55:30.592Z"}
