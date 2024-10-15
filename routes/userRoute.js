@@ -28,6 +28,7 @@ const UsersRouter = express.Router();
 
 // Rutas de los usuarios
 UsersRouter.post("/register", validateCreateUser, createUser);
+UsersRouter.post("/verify-email", verifyEmail);
 UsersRouter.post("/login", logInUser);
 UsersRouter.post("/logout", auth, logOutUser);
 UsersRouter.post("/logout-all", auth, logOutAllUser);
@@ -58,7 +59,6 @@ UsersRouter.put(
 UsersRouter.put("/:id/disable", auth, authRole(["Administrador"]), disableUser);
 UsersRouter.put("/:id/enable", auth, authRole(["Administrador"]), enableUser);
 
-UsersRouter.get("/verify-email/:token", verifyEmail);
 UsersRouter.get("/me", auth, getUser);
 UsersRouter.get("/getuser/:id", auth, authRole(["Administrador"]), getUserById);
 UsersRouter.get("/", auth, authRole(["Administrador"]), getAllUsers);

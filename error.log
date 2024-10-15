@@ -229,3 +229,17 @@
 {"errors":[],"isOperational":true,"level":"error","status":"fail","statusCode":400,"timestamp":"2024-10-15T01:30:59.775Z"}
 {"errors":[],"isOperational":true,"level":"error","status":"fail","statusCode":400,"timestamp":"2024-10-15T01:53:52.071Z"}
 {"isOperational":true,"level":"error","status":"fail","statusCode":403,"timestamp":"2024-10-15T02:04:29.037Z"}
+{"errors":[],"isOperational":true,"level":"error","status":"fail","statusCode":400,"timestamp":"2024-10-15T02:50:42.712Z"}
+{"level":"error","timestamp":"2024-10-15T02:57:56.668Z"}
+{"level":"error","timestamp":"2024-10-15T02:57:56.679Z"}
+{"level":"error","timestamp":"2024-10-15T03:00:05.636Z"}
+{"level":"error","timestamp":"2024-10-15T03:00:05.648Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":409,"timestamp":"2024-10-15T03:31:30.015Z"}
+{"errors":[],"isOperational":true,"level":"error","status":"fail","statusCode":400,"timestamp":"2024-10-15T03:38:50.222Z"}
+{"errors":[],"isOperational":true,"level":"error","status":"fail","statusCode":400,"timestamp":"2024-10-15T03:38:50.229Z"}
+{"errors":[],"isOperational":true,"level":"error","status":"fail","statusCode":400,"timestamp":"2024-10-15T03:41:02.660Z"}
+{"errors":[],"isOperational":true,"level":"error","status":"fail","statusCode":400,"timestamp":"2024-10-15T03:41:02.664Z"}
+{"errors":[],"isOperational":true,"level":"error","status":"fail","statusCode":400,"timestamp":"2024-10-15T03:41:40.235Z"}
+{"errors":[],"isOperational":true,"level":"error","status":"fail","statusCode":400,"timestamp":"2024-10-15T03:41:40.241Z"}
+{"errors":[],"isOperational":true,"level":"error","status":"fail","statusCode":400,"timestamp":"2024-10-15T03:41:45.645Z"}
+{"errors":[],"isOperational":true,"level":"error","status":"fail","statusCode":400,"timestamp":"2024-10-15T03:41:46.025Z"}
