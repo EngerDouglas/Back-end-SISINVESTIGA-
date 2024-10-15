@@ -64,6 +64,12 @@ const userSchema = mongoose.Schema({
     type: Boolean,
     default: false, // Los usuarios no están deshabilitados por defecto
   },
+  isVerified: {
+    type: Boolean,
+    default: false
+  },
+  verificationToken: String,
+  verificationTokenExpires: Date,
   fotoPerfil: {
     type: String,
     trim: true,
@@ -122,6 +128,12 @@ userSchema.methods.generateAuthToken = async function () {
   await user.save()
   return token
 }
+
+// Generaremos nuestro token JWT para verificar los usuarios
+userSchema.methods.generateVerificationToken = function() {
+  this.verificationToken = jwt.sign({ _id: this._id.toString() }, process.env.JWT_SEC_KEY, { expiresIn: '1h' });
+  this.verificationTokenExpires = Date.now() + 3600000; // 1 hour
+};
 
 // Generaremos nuestro token JWT para restablecer la contraseña
 userSchema.methods.generatePasswordResetToken = function() {

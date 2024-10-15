@@ -1,6 +1,7 @@
 import express from "express";
 import {
   createUser,
+  verifyEmail,
   logInUser,
   logOutUser,
   logOutAllUser,
@@ -27,6 +28,7 @@ const UsersRouter = express.Router();
 
 // Rutas de los usuarios
 UsersRouter.post("/register", validateCreateUser, createUser);
+UsersRouter.post("/verify-email", verifyEmail);
 UsersRouter.post("/login", logInUser);
 UsersRouter.post("/logout", auth, logOutUser);
 UsersRouter.post("/logout-all", auth, logOutAllUser);

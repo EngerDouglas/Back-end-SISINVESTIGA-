@@ -88,26 +88,35 @@
   "revista": "Revista Académica de APIs",
   "resumen": "Estamos probando la API para ver su funcionalidad.",
   "palabrasClave": [
-    "Software, Sistemas, Talendig"
+    "Software",
+    "Sistemas",
+    "Talendig"
   ],
   "tipoPublicacion": "Articulo",
   "estado": "Borrador",
   "anexos": [
-    "http://example.com/publicacion.pdf",
-    "http://example2.com/publicacion.img"
+    {
+      "nombre": "SisInvestiga (1).pdf",
+      "url": "https://firebasestorage.googleapis.com/v0/b/sisinvestiga.appspot.com/o/attachments%2F71285721-bf2d-4c50-bf64-3a327401994b-SisInvestiga%20(1).pdf?alt=media",
+      "tipo": "application/pdf",
+      "_id": {
+        "$oid": "670c633ae7bf2e5aa141882c"
+      }
+    }
   ],
   "idioma": "Español",
   "createdAt": {
     "$date": "2024-09-06T14:57:59.920Z"
   },
   "updatedAt": {
-    "$date": "2024-10-01T02:25:19.797Z"
+    "$date": "2024-10-14T00:18:02.638Z"
   },
-  "__v": 2,
+  "__v": 3,
   "isDeleted": false,
   "proyecto": {
     "$oid": "66d9f71976c4141cb4812abe"
-  }
+  },
+  "imagen": "https://firebasestorage.googleapis.com/v0/b/sisinvestiga.appspot.com/o/publications%2F2c37a61e-0e23-4a55-a554-2fdf3ab7e3e4-delete-file.avif?alt=media"
 },
 {
   "_id": {
@@ -330,8 +339,14 @@
   "tipoPublicacion": "Articulo",
   "estado": "Publicado",
   "anexos": [
-    "https://ejemplo.com/anexo4.pdf",
-    "https://ejemplo.com/anexo3.pdf"
+    {
+      "nombre": "SISINVESTIGA (1) (1).pdf",
+      "url": "https://firebasestorage.googleapis.com/v0/b/sisinvestiga.appspot.com/o/attachments%2F34ba2e67-037e-4de4-a50e-32814b654cbc-SISINVESTIGA%20(1)%20(1).pdf?alt=media",
+      "tipo": "application/pdf",
+      "_id": {
+        "$oid": "670c5e3ae7203a8846c55a58"
+      }
+    }
   ],
   "idioma": "Español",
   "isDeleted": false,
@@ -339,9 +354,10 @@
     "$date": "2024-10-02T05:38:08.749Z"
   },
   "updatedAt": {
-    "$date": "2024-10-02T05:38:08.749Z"
+    "$date": "2024-10-13T23:56:42.886Z"
   },
-  "__v": 0
+  "__v": 1,
+  "imagen": "https://firebasestorage.googleapis.com/v0/b/sisinvestiga.appspot.com/o/publications%2Fe743be66-8e3a-4588-878c-465b4533c1f2-IAXXI.jpg?alt=media"
 },
 {
   "_id": {
@@ -379,4 +395,98 @@
     "$date": "2024-10-05T19:45:59.497Z"
   },
   "__v": 1
+},
+{
+  "_id": {
+    "$oid": "6709c6d837a662b8207547f0"
+  },
+  "titulo": "La ira un mal en el mundo.",
+  "fecha": {
+    "$date": "2024-10-12T00:45:38.121Z"
+  },
+  "autores": [
+    {
+      "$oid": "66d9a3d28811e44aea8b1dd6"
+    }
+  ],
+  "proyecto": {
+    "$oid": "6709bbdf1c400205daed34be"
+  },
+  "revista": "Ira en Republica Dominicana.",
+  "resumen": "Formas de como tratar nuestra ira y como no dejarnos controlar por ella en cualquier momento.",
+  "palabrasClave": [
+    "Ira",
+    "Inteligencia Emocional",
+    "RD",
+    "Gobierno",
+    "Psicologia."
+  ],
+  "tipoPublicacion": "Tesis",
+  "estado": "Borrador",
+  "anexos": [
+    {
+      "nombre": "SisInvestiga (1).pdf",
+      "url": "https://firebasestorage.googleapis.com/v0/b/sisinvestiga.appspot.com/o/attachments%2F994493dd-4ad6-4715-bab4-4f3ac4360f0a-SisInvestiga%20(1).pdf?alt=media",
+      "tipo": "application/pdf",
+      "_id": {
+        "$oid": "670c5f46a7dea1eff9669231"
+      }
+    }
+  ],
+  "idioma": "Español",
+  "isDeleted": false,
+  "createdAt": {
+    "$date": "2024-10-12T00:46:16.234Z"
+  },
+  "updatedAt": {
+    "$date": "2024-10-14T00:01:10.436Z"
+  },
+  "__v": 2,
+  "imagen": "https://firebasestorage.googleapis.com/v0/b/sisinvestiga.appspot.com/o/publications%2F92d4a615-e96c-480a-b458-3191e6761215-la%20ira.jpg?alt=media"
+},
+{
+  "_id": {
+    "$oid": "670c56e17f2af20d56aef453"
+  },
+  "titulo": "Haciendo Niños Felices.",
+  "fecha": {
+    "$date": "2024-10-13T23:24:32.594Z"
+  },
+  "autores": [
+    {
+      "$oid": "66d9a3d28811e44aea8b1dd6"
+    }
+  ],
+  "proyecto": {
+    "$oid": "670c41ed711133584a5b9b5d"
+  },
+  "revista": "Revista Infantil RD.",
+  "resumen": "Proyecto que abarca las actividades y juego con los niños de los barrios de RD.",
+  "palabrasClave": [
+    "Niños",
+    "Juegos",
+    "Sonrisas."
+  ],
+  "tipoPublicacion": "Presentacion",
+  "estado": "Borrador",
+  "imagen": "https://firebasestorage.googleapis.com/v0/b/sisinvestiga.appspot.com/o/publications%2Fbc8cd9f6-2571-4083-bc11-4685fdee2918-children.jpg?alt=media",
+  "anexos": [
+    {
+      "nombre": "SisInvestiga (2).pdf",
+      "url": "https://firebasestorage.googleapis.com/v0/b/sisinvestiga.appspot.com/o/attachments%2F67c2e0c3-f7c4-4f84-b83f-2a7502017e40-SisInvestiga%20(2).pdf?alt=media",
+      "tipo": "application/pdf",
+      "_id": {
+        "$oid": "670c56e17f2af20d56aef454"
+      }
+    }
+  ],
+  "idioma": "Español",
+  "isDeleted": false,
+  "createdAt": {
+    "$date": "2024-10-13T23:25:21.433Z"
+  },
+  "updatedAt": {
+    "$date": "2024-10-13T23:25:21.433Z"
+  },
+  "__v": 0
 }]

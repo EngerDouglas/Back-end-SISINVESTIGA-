@@ -17,13 +17,21 @@
   "createdAt": {
     "$date": "2024-09-04T03:32:12.107Z"
   },
-  "tokens": [],
-  "__v": 176,
+  "tokens": [
+    {
+      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ3ZDRiY2E2ZjZiMzcwN2QyNjFiMzMiLCJpYXQiOjE3Mjg0MzI3MDksImV4cCI6MTcyODUxOTEwOX0.jX3rDLxoJfI4RgVegrGtmHl-xaadxeUKt_2GTuw0ZbY",
+      "_id": {
+        "$oid": "6705ca4531f18cce0c05e18d"
+      }
+    }
+  ],
+  "__v": 189,
   "proyectos": [],
   "isDisabled": false,
   "updatedAt": {
-    "$date": "2024-10-05T20:50:44.820Z"
-  }
+    "$date": "2024-10-14T01:08:09.041Z"
+  },
+  "isVerified": true
 },
 {
   "_id": {
@@ -32,11 +40,12 @@
   "nombre": "Carlos Alberto",
   "apellido": "Castillo Garcia",
   "email": "castilloz671@gmail.com",
-  "password": "$2a$08$d34SSvoY5Pj5qqYRJXnz5e8iaOOZCPICEhaEVtDUMAfCIvr5SolMe",
+  "password": "$2a$08$/Wk5WcH7dMz1csqsej18TO4FJTTYH6BVLMFRVVMq3r67.LcvISeQK",
   "especializacion": "Ingeniero Quimico",
   "responsabilidades": [
     "Desarrollar Materiales",
-    "Probar Productos"
+    "Probar Productos",
+    "Crear Formulas."
   ],
   "role": {
     "$oid": "66d77649d458301a4aba678c"
@@ -44,19 +53,14 @@
   "createdAt": {
     "$date": "2024-09-05T12:28:02.312Z"
   },
-  "tokens": [
-    {
-      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ5YTNkMjg4MTFlNDRhZWE4YjFkZDYiLCJpYXQiOjE3MjgxNjgwNjIsImV4cCI6MTcyODI1NDQ2Mn0.KTzzAIM3L5NMNp4XIxl8RAwYcEAt39vt29zKsRT_JRE",
-      "_id": {
-        "$oid": "6701c07e5349b3c64ad2cb84"
-      }
-    }
-  ],
-  "__v": 42,
+  "tokens": [],
+  "__v": 96,
   "isDisabled": false,
   "updatedAt": {
-    "$date": "2024-10-05T22:41:02.824Z"
-  }
+    "$date": "2024-10-15T02:05:35.943Z"
+  },
+  "fotoPerfil": "https://firebasestorage.googleapis.com/v0/b/sisinvestiga.appspot.com/o/profile%2F3f0b1e07-8b60-4e07-b670-836f37df7a6e-8.jpeg?alt=media",
+  "isVerified": true
 },
 {
   "_id": {
@@ -79,7 +83,11 @@
   },
   "tokens": [],
   "__v": 6,
-  "isDisabled": false
+  "isDisabled": false,
+  "updatedAt": {
+    "$date": "2024-10-06T03:45:01.235Z"
+  },
+  "isVerified": true
 },
 {
   "_id": {
@@ -105,7 +113,8 @@
   "isDisabled": false,
   "updatedAt": {
     "$date": "2024-10-03T01:50:55.917Z"
-  }
+  },
+  "isVerified": true
 },
 {
   "_id": {
@@ -127,10 +136,11 @@
     "$date": "2024-09-29T21:47:41.041Z"
   },
   "tokens": [],
-  "__v": 3,
+  "__v": 5,
   "updatedAt": {
-    "$date": "2024-10-03T01:49:47.725Z"
-  }
+    "$date": "2024-10-09T23:46:17.056Z"
+  },
+  "isVerified": true
 },
 {
   "_id": {
@@ -146,7 +156,7 @@
     "Investigación"
   ],
   "role": {
-    "$oid": "66d77649d458301a4aba678c"
+    "$oid": "66d86b15c58859de09db964a"
   },
   "isDisabled": false,
   "fotoPerfil": "https://example.com/profile.jpg",
@@ -155,9 +165,10 @@
     "$date": "2024-10-01T00:50:40.896Z"
   },
   "updatedAt": {
-    "$date": "2024-10-02T05:10:12.013Z"
+    "$date": "2024-10-06T03:59:36.879Z"
   },
-  "__v": 4
+  "__v": 4,
+  "isVerified": true
 },
 {
   "_id": {
@@ -182,9 +193,10 @@
     "$date": "2024-10-05T17:26:21.060Z"
   },
   "updatedAt": {
-    "$date": "2024-10-05T17:32:00.399Z"
+    "$date": "2024-10-06T03:53:37.066Z"
   },
-  "__v": 4
+  "__v": 6,
+  "isVerified": true
 },
 {
   "_id": {
@@ -199,7 +211,7 @@
     "Cirujana"
   ],
   "role": {
-    "$oid": "66d77649d458301a4aba678c"
+    "$oid": "66d86b15c58859de09db964a"
   },
   "isDisabled": false,
   "tokens": [],
@@ -207,7 +219,61 @@
     "$date": "2024-10-05T21:58:36.534Z"
   },
   "updatedAt": {
-    "$date": "2024-10-05T22:00:17.383Z"
+    "$date": "2024-10-06T04:00:25.816Z"
   },
-  "__v": 4
+  "__v": 8,
+  "isVerified": true
+},
+{
+  "_id": {
+    "$oid": "670b21c6f7227ef50ba9f153"
+  },
+  "nombre": "Silvia Maria",
+  "apellido": "Garcia",
+  "email": "silviaysbel83@hotmail.com",
+  "password": "$2a$08$ciV/hBNAWWjHBbidwu/iWuhwh5pQAIC4wbiPGVuGaguzL2ll4bxnG",
+  "especializacion": "Contadora",
+  "responsabilidades": [
+    "Crear ISR",
+    "Registrar Formulario 606"
+  ],
+  "role": {
+    "$oid": "66d77649d458301a4aba678c"
+  },
+  "isDisabled": false,
+  "tokens": [],
+  "createdAt": {
+    "$date": "2024-10-13T01:26:30.132Z"
+  },
+  "updatedAt": {
+    "$date": "2024-10-13T01:26:30.132Z"
+  },
+  "__v": 0,
+  "isVerified": true
+},
+{
+  "_id": {
+    "$oid": "670dcd35ffe5a5022b14a4e0"
+  },
+  "nombre": "Alejandro",
+  "apellido": "Montero",
+  "email": "castillogarcia.gtl@gmail.com",
+  "password": "$2a$08$J/7eC2OXz7zakfIN.5W2xe1fiJxR.2kjGBFeRsGHybf6TkIWQ7K.O",
+  "especializacion": "Ingenierio En Sistemas",
+  "responsabilidades": [
+    "Desarrollador de Software"
+  ],
+  "role": {
+    "$oid": "66d77649d458301a4aba678c"
+  },
+  "isDisabled": false,
+  "isVerified": true,
+  "tokens": [],
+  "createdAt": {
+    "$date": "2024-10-15T02:02:29.633Z"
+  },
+  "updatedAt": {
+    "$date": "2024-10-15T02:04:19.453Z"
+  },
+  "__v": 2
 }]

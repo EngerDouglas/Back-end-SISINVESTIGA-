@@ -16,11 +16,47 @@ export const createUser = async (req, res, next) => {
 
     const user = await UserService.createUser({ nombre, apellido, email, password, especializacion, responsabilidades, fotoPerfil })
 
-    await emailService.sendRegistrationConfirmation(user);
+    const verificationLink = `${req.headers.origin}/verify-email?token=${user.verificationToken}`;
+    await emailService.sendVerificationEmail(user, verificationLink);
 
-    res.status(201).json({ message: 'Usuario registrado exitosamente', user })
+    res.status(201).json({ message: 'Usuario registrado exitosamente. Por favor, verifica tu correo electrónico.', user })
   } catch (error) {
     next(error)
+  }
+};
+
+// *********************** END ******************* //
+
+// *********************** Verificar Email ******************* //
+
+export const verifyEmail = async (req, res, next) => {
+  try {
+    const { token } = req.body;
+
+    let result;
+    try {
+      result = await UserService.verifyUser(token);
+    } catch (error) {
+      throw new BadRequestError(error.message);
+    }
+
+    const { alreadyVerified, user } = result;
+
+    let message = '';
+
+    if (alreadyVerified) {
+      message = 'Tu email ya ha sido verificado. Ahora puedes iniciar sesión.';
+    } else {
+      try {
+        await emailService.sendRegistrationConfirmation(user);
+      } catch (error) {
+        console.error('Error al enviar el email de confirmación:', error);
+      }
+      message = 'Email verificado exitosamente. Ahora puedes iniciar sesión.'
+    }
+    res.status(200).json({ message });
+  } catch (error) {
+    next(error);
   }
 };
 

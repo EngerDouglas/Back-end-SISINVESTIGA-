@@ -219,6 +219,30 @@
 {"isOperational":true,"level":"error","status":"fail","statusCode":404,"timestamp":"2024-10-14T00:10:35.970Z"}
 {"_message":"Publication validation failed","errors":{"anexos.0.nombre":{"kind":"required","message":"Path `nombre` is required.","name":"ValidatorError","path":"nombre","properties":{"message":"Path `nombre` is required.","path":"nombre","type":"required"}},"anexos.0.tipo":{"kind":"required","message":"Path `tipo` is required.","name":"ValidatorError","path":"tipo","properties":{"message":"Path `tipo` is required.","path":"tipo","type":"required"}},"anexos.0.url":{"kind":"required","message":"Path `url` is required.","name":"ValidatorError","path":"url","properties":{"message":"Path `url` is required.","path":"url","type":"required"}},"imagen":{"kind":"string","message":"Cast to string failed for value \"{}\" (type Object) at path \"imagen\"","name":"CastError","path":"imagen","reason":null,"stringValue":"\"{}\"","value":{},"valueType":"Object"}},"level":"error","message":"Publication validation failed: imagen: Cast to string failed for value \"{}\" (type Object) at path \"imagen\", anexos.0.tipo: Path `tipo` is required., anexos.0.url: Path `url` is required., anexos.0.nombre: Path `nombre` is required.","name":"ValidationError","timestamp":"2024-10-14T00:12:41.548Z"}
 {"level":"error","storageErrors":[],"timestamp":"2024-10-14T00:17:32.330Z"}
+{"errors":[],"isOperational":true,"level":"error","status":"fail","statusCode":400,"timestamp":"2024-10-15T00:54:38.518Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":409,"timestamp":"2024-10-15T00:54:58.905Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":403,"timestamp":"2024-10-15T00:56:45.212Z"}
+{"errors":[],"isOperational":true,"level":"error","status":"fail","statusCode":400,"timestamp":"2024-10-15T01:17:06.851Z"}
+{"errors":[],"isOperational":true,"level":"error","status":"fail","statusCode":400,"timestamp":"2024-10-15T01:17:06.862Z"}
+{"errors":[],"isOperational":true,"level":"error","status":"fail","statusCode":400,"timestamp":"2024-10-15T01:18:04.265Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":403,"timestamp":"2024-10-15T01:30:38.740Z"}
+{"errors":[],"isOperational":true,"level":"error","status":"fail","statusCode":400,"timestamp":"2024-10-15T01:30:59.775Z"}
+{"errors":[],"isOperational":true,"level":"error","status":"fail","statusCode":400,"timestamp":"2024-10-15T01:53:52.071Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":403,"timestamp":"2024-10-15T02:04:29.037Z"}
+{"errors":[],"isOperational":true,"level":"error","status":"fail","statusCode":400,"timestamp":"2024-10-15T02:50:42.712Z"}
+{"level":"error","timestamp":"2024-10-15T02:57:56.668Z"}
+{"level":"error","timestamp":"2024-10-15T02:57:56.679Z"}
+{"level":"error","timestamp":"2024-10-15T03:00:05.636Z"}
+{"level":"error","timestamp":"2024-10-15T03:00:05.648Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":409,"timestamp":"2024-10-15T03:31:30.015Z"}
+{"errors":[],"isOperational":true,"level":"error","status":"fail","statusCode":400,"timestamp":"2024-10-15T03:38:50.222Z"}
+{"errors":[],"isOperational":true,"level":"error","status":"fail","statusCode":400,"timestamp":"2024-10-15T03:38:50.229Z"}
+{"errors":[],"isOperational":true,"level":"error","status":"fail","statusCode":400,"timestamp":"2024-10-15T03:41:02.660Z"}
+{"errors":[],"isOperational":true,"level":"error","status":"fail","statusCode":400,"timestamp":"2024-10-15T03:41:02.664Z"}
+{"errors":[],"isOperational":true,"level":"error","status":"fail","statusCode":400,"timestamp":"2024-10-15T03:41:40.235Z"}
+{"errors":[],"isOperational":true,"level":"error","status":"fail","statusCode":400,"timestamp":"2024-10-15T03:41:40.241Z"}
+{"errors":[],"isOperational":true,"level":"error","status":"fail","statusCode":400,"timestamp":"2024-10-15T03:41:45.645Z"}
+{"errors":[],"isOperational":true,"level":"error","status":"fail","statusCode":400,"timestamp":"2024-10-15T03:41:46.025Z"}
 {"code":"EAUTH","command":"AUTH PLAIN","level":"error","response":"535-5.7.8 Username and Password not accepted. For more information, go to\n535 5.7.8  https://support.google.com/mail/?p=BadCredentials 71dfb90a1353d-50d5fb522dcsm196298e0c.41 - gsmtp","responseCode":535,"timestamp":"2024-10-14T12:40:42.937Z"}
 {"_message":"Publication validation failed","errors":{"anexos":{"kind":"embedded","message":"Cast to embedded failed for value \"http://image.pik.com\" (type string) at path \"anexos\" because of \"ObjectParameterError\"","name":"CastError","path":"anexos","reason":{},"stringValue":"\"http://image.pik.com\"","value":"http://image.pik.com","valueType":"string"}},"level":"error","message":"Publication validation failed: anexos: Cast to embedded failed for value \"http://image.pik.com\" (type string) at path \"anexos\" because of \"ObjectParameterError\"","name":"ValidationError","timestamp":"2024-10-14T12:53:44.747Z"}
 {"errors":[],"isOperational":true,"level":"error","status":"fail","statusCode":400,"timestamp":"2024-10-14T12:55:30.592Z"}
