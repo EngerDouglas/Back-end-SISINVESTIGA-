@@ -1,6 +1,7 @@
 import express from "express";
 import {
   createUser,
+  verifyEmail,
   logInUser,
   logOutUser,
   logOutAllUser,
@@ -57,6 +58,7 @@ UsersRouter.put(
 UsersRouter.put("/:id/disable", auth, authRole(["Administrador"]), disableUser);
 UsersRouter.put("/:id/enable", auth, authRole(["Administrador"]), enableUser);
 
+UsersRouter.get("/verify-email/:token", verifyEmail);
 UsersRouter.get("/me", auth, getUser);
 UsersRouter.get("/getuser/:id", auth, authRole(["Administrador"]), getUserById);
 UsersRouter.get("/", auth, authRole(["Administrador"]), getAllUsers);

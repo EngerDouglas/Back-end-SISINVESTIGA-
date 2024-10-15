@@ -24,9 +24,49 @@ class UserService {
       role: roleDocument._id
     })
 
+    newUser.generateVerificationToken();
     await newUser.save()
     return newUser
   }
+  // *********************** END ******************* //
+
+  // *********************** Verificar Token para Validacion de Usuario ******************* //
+
+  static async verifyUser(token) {
+    let decoded;
+    try {
+      decoded = jwt.verify(token, process.env.JWT_SEC_KEY);
+    } catch (error) {
+      throw new BadRequestError('Token inválido o expirado');
+    }
+
+    // Buscar al usuario
+    const user = await User.findOne({ _id: decoded._id });
+
+    if (!user) {
+      throw new BadRequestError('Usuario no encontrado');
+    }
+
+    // Si el usuario ya está verificado
+    if (user.isVerified) {
+      return { alreadyVerified: true, user };
+    }
+
+    // Verificar si el token coincide y no ha expirado
+    if (
+      user.verificationToken !== token ||
+      user.verificationTokenExpires < Date.now()
+    ) {
+      throw new BadRequestError('Token de verificación inválido o expirado');
+    }
+
+    user.isVerified = true;
+    user.verificationToken = undefined;
+    user.verificationTokenExpires = undefined;
+    await user.save();
+    return { alreadyVerified: false, user };
+  }
+
   // *********************** END ******************* //
 
   // *********************** Iniciando Sesion ******************* //
@@ -40,6 +80,10 @@ class UserService {
       throw new ForbiddenError('El usuario está deshabilitado, contacta al administrador.');
     }
 
+    if (!user.isVerified) {
+      throw new ForbiddenError('Por favor, verifica tu cuenta antes de iniciar sesión.');
+    }
+
     const isPassCorrect = await bcrypt.compare(password, user.password);
     if (!isPassCorrect) {
       throw new UnauthorizedError('Credenciales incorrectas');
@@ -49,11 +93,18 @@ class UserService {
     return { user, token };
   }
 
+  // *********************** END ******************* //
+
+  // *********************** Cerrando Sesion ******************* //
+
   static async logoutUser(user, token) {
     user.tokens = user.tokens.filter((userToken) => userToken.token !== token);
     await user.save();
   }
 
+  // *********************** END ******************* //
+
+  // *********************** Cerrando todas las Sesiones ******************* //
   static async logoutAllUser(user) {
     user.tokens = [];
     await user.save();

@@ -1,0 +1,43 @@
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Verifica tu cuenta - SISINVESTIGA</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      {{{css}}}
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <img src="cid:logo@ucsd" alt="UCSD Logo" class="logo" />
+        <h1>Verifica tu cuenta</h1>
+      </header>
+      <main class="content">
+        <p class="greeting">Hola, <strong>{{userName}}</strong>.</p>
+        <p class="info">Gracias por registrarte en
+          <strong>SISINVESTIGA</strong>. Para completar tu registro, por favor
+          verifica tu dirección de correo electrónico haciendo clic en el botón
+          de abajo:</p>
+        <a href="{{verificationLink}}" class="action-button">Verificar mi cuenta</a>
+        <p class="warning">
+          Si no creaste una cuenta en SISINVESTIGA, puedes ignorar este correo.
+        </p>
+      </main>
+      <footer class="footer">
+        <p>&copy;
+          {{year}}
+          SISINVESTIGA - Universidad Católica Santo Domingo. Todos los derechos
+          reservados.</p>
+        <p>
+          Si tienes alguna pregunta, por favor
+          <a href="mailto:support@sisinvestiga.ucsd.edu.do">Contáctanos</a>.
+        </p>
+      </footer>
+    </div>
+  </body>
+</html>

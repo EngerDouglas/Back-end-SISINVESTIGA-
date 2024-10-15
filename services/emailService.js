@@ -114,6 +114,23 @@ class EmailService {
 
   // *********************** END ******************* //
 
+  // *********************** Envio de Verificacion de Email ******************* //
+  async sendVerificationEmail(user, verificationLink) {
+    const context = {
+      userName: `${user.nombre} ${user.apellido}`,
+      verificationLink: verificationLink,
+      year: new Date().getFullYear(),
+    };
+
+    return this.sendMail(
+      user.email,
+      "Verifica tu cuenta - SISINVESTIGA",
+      "verify_email",
+      context
+    );
+  }
+  // *********************** END ******************* //
+
   // *********************** Envio de Notificaciones de Registro ******************* //
   async sendRegistrationConfirmation(user) {
     const context = {
