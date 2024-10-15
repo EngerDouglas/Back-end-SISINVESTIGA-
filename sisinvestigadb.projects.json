@@ -123,8 +123,7 @@
     }
   ],
   "recursos": [
-    "Software de gestión de proyectos",
-    "Equipo de Test"
+    "Software de gestión de proyectos"
   ],
   "hitos": [
     {
@@ -133,16 +132,16 @@
         "$date": "2024-09-15T00:00:00.000Z"
       },
       "_id": {
-        "$oid": "66ff289ffe36d570139eef30"
+        "$oid": "670c4400711133584a5b9c82"
       }
     },
     {
-      "nombre": "Primera entrega",
+      "nombre": "Ultima Entrega",
       "fecha": {
-        "$date": "2024-11-01T00:00:00.000Z"
+        "$date": "2024-10-12T00:04:37.124Z"
       },
       "_id": {
-        "$oid": "66ff289ffe36d570139eef31"
+        "$oid": "670c4400711133584a5b9c83"
       }
     }
   ],
@@ -151,11 +150,12 @@
     "$date": "2024-09-06T15:03:51.604Z"
   },
   "updatedAt": {
-    "$date": "2024-10-03T23:28:31.884Z"
+    "$date": "2024-10-13T22:04:48.465Z"
   },
-  "__v": 2,
+  "__v": 8,
   "isDeleted": false,
-  "isEvaluated": false
+  "isEvaluated": false,
+  "imagen": "https://firebasestorage.googleapis.com/v0/b/sisinvestiga.appspot.com/o/projects%2F03f54e2c-61f9-422a-81b9-8b376de4bd55-what-is-software.png?alt=media"
 },
 {
   "_id": {
@@ -236,7 +236,7 @@
         "$date": "2024-06-30T00:00:00.000Z"
       },
       "_id": {
-        "$oid": "66fddf8b91dc46116fa44101"
+        "$oid": "670c443d711133584a5b9ce9"
       }
     },
     {
@@ -245,7 +245,7 @@
         "$date": "2024-10-04T00:04:17.000Z"
       },
       "_id": {
-        "$oid": "66fddf8b91dc46116fa44102"
+        "$oid": "670c443d711133584a5b9cea"
       }
     }
   ],
@@ -256,9 +256,10 @@
     "$date": "2024-10-02T05:37:42.986Z"
   },
   "updatedAt": {
-    "$date": "2024-10-03T00:04:27.305Z"
+    "$date": "2024-10-13T22:05:49.524Z"
   },
-  "__v": 3
+  "__v": 4,
+  "imagen": "https://firebasestorage.googleapis.com/v0/b/sisinvestiga.appspot.com/o/projects%2F86f4001b-fc5a-44b7-a76b-1fbfb0c093cb-IA.jpg?alt=media"
 },
 {
   "_id": {
@@ -291,7 +292,7 @@
         "$date": "2024-10-02T23:42:31.678Z"
       },
       "_id": {
-        "$oid": "66ff2881fe36d570139eeeed"
+        "$oid": "670c445c711133584a5b9d42"
       }
     },
     {
@@ -300,7 +301,7 @@
         "$date": "2025-03-06T23:43:32.000Z"
       },
       "_id": {
-        "$oid": "66ff2881fe36d570139eeeee"
+        "$oid": "670c445c711133584a5b9d43"
       }
     },
     {
@@ -309,7 +310,7 @@
         "$date": "2024-10-03T00:10:58.166Z"
       },
       "_id": {
-        "$oid": "66ff2881fe36d570139eeeef"
+        "$oid": "670c445c711133584a5b9d44"
       }
     }
   ],
@@ -320,9 +321,10 @@
     "$date": "2024-10-02T23:43:57.245Z"
   },
   "updatedAt": {
-    "$date": "2024-10-03T23:28:01.440Z"
+    "$date": "2024-10-13T22:06:20.597Z"
   },
-  "__v": 4
+  "__v": 5,
+  "imagen": "https://firebasestorage.googleapis.com/v0/b/sisinvestiga.appspot.com/o/projects%2F2759810b-20ac-4107-a851-0af938b43bf0-tren.jpeg?alt=media"
 },
 {
   "_id": {
@@ -355,7 +357,7 @@
         "$date": "2024-10-09T23:39:01.000Z"
       },
       "_id": {
-        "$oid": "66ff2b42fe36d570139eeffe"
+        "$oid": "670c449a8b1217e8642227f8"
       }
     }
   ],
@@ -366,9 +368,10 @@
     "$date": "2024-10-03T23:39:46.455Z"
   },
   "updatedAt": {
-    "$date": "2024-10-03T23:39:46.455Z"
+    "$date": "2024-10-13T22:07:22.203Z"
   },
-  "__v": 0
+  "__v": 1,
+  "imagen": "https://firebasestorage.googleapis.com/v0/b/sisinvestiga.appspot.com/o/projects%2F2075d7f7-2b76-43e9-a3ed-ccc717238042-semIA.webp?alt=media"
 },
 {
   "_id": {
@@ -448,7 +451,7 @@
         "$date": "2024-10-05T22:14:48.715Z"
       },
       "_id": {
-        "$oid": "6701ba90e179d82e4ca5f936"
+        "$oid": "670c44c68b1217e86422285d"
       }
     }
   ],
@@ -459,7 +462,170 @@
     "$date": "2024-10-05T22:15:32.932Z"
   },
   "updatedAt": {
-    "$date": "2024-10-05T22:15:44.775Z"
+    "$date": "2024-10-13T22:08:06.677Z"
   },
-  "__v": 1
+  "__v": 2,
+  "imagen": "https://firebasestorage.googleapis.com/v0/b/sisinvestiga.appspot.com/o/projects%2Fcf90fce5-999a-4da3-9b37-217894757788-machinelearning.png?alt=media"
+},
+{
+  "_id": {
+    "$oid": "6709bbdf1c400205daed34be"
+  },
+  "nombre": "Como Manejar la Ira",
+  "descripcion": "Proyecto acerca de como manejar los momentos en donde tenemos mucha ira hacia alguien.",
+  "objetivos": "Reducir la ira.\r\nMejorar la Inteligencia Emocional.",
+  "presupuesto": 250000,
+  "cronograma": {
+    "fechaInicio": {
+      "$date": "2024-10-11T23:56:44.738Z"
+    },
+    "fechaFin": {
+      "$date": "2024-10-31T23:56:44.000Z"
+    }
+  },
+  "investigadores": [
+    {
+      "$oid": "66d9a3d28811e44aea8b1dd6"
+    }
+  ],
+  "recursos": [
+    "Como mejorar Las Emociones. Aidra Belton. Libro 2005.",
+    "Como calmar tu ira. Aiden Blonde. Libro 2021."
+  ],
+  "hitos": [
+    {
+      "nombre": "Iniciar Proyecto.",
+      "fecha": {
+        "$date": "2024-10-11T23:56:44.738Z"
+      },
+      "_id": {
+        "$oid": "670c44ea8b1217e8642228b4"
+      }
+    },
+    {
+      "nombre": "Reunir a los Psicologos.",
+      "fecha": {
+        "$date": "2024-10-15T23:58:14.000Z"
+      },
+      "_id": {
+        "$oid": "670c44ea8b1217e8642228b5"
+      }
+    }
+  ],
+  "estado": "Planeado",
+  "isEvaluated": false,
+  "isDeleted": false,
+  "createdAt": {
+    "$date": "2024-10-11T23:59:27.158Z"
+  },
+  "updatedAt": {
+    "$date": "2024-10-13T22:08:42.722Z"
+  },
+  "__v": 1,
+  "imagen": "https://firebasestorage.googleapis.com/v0/b/sisinvestiga.appspot.com/o/projects%2Fe5a0e890-5aae-4970-846d-625b55d37b00-IRA.jpg?alt=media"
+},
+{
+  "_id": {
+    "$oid": "670b18955ec380d47c96359b"
+  },
+  "nombre": "Presupuesto Nacional",
+  "descripcion": "Estudio sobre el presupuesto del gobierno de la Republica Dominicana.",
+  "objetivos": "Verificar cuanto se roban los del partido.",
+  "presupuesto": 1500000,
+  "cronograma": {
+    "fechaInicio": {
+      "$date": "2024-10-13T00:46:18.747Z"
+    },
+    "fechaFin": {
+      "$date": "2025-02-13T00:46:18.000Z"
+    }
+  },
+  "investigadores": [
+    {
+      "$oid": "66d9a3d28811e44aea8b1dd6"
+    }
+  ],
+  "recursos": [
+    "Periodistas",
+    "Noticias"
+  ],
+  "hitos": [
+    {
+      "nombre": "Inicio del Proyecto",
+      "fecha": {
+        "$date": "2024-10-13T00:46:18.747Z"
+      },
+      "_id": {
+        "$oid": "670c43b6711133584a5b9bc9"
+      }
+    }
+  ],
+  "estado": "Planeado",
+  "isEvaluated": false,
+  "isDeleted": false,
+  "createdAt": {
+    "$date": "2024-10-13T00:47:17.915Z"
+  },
+  "updatedAt": {
+    "$date": "2024-10-13T22:03:34.003Z"
+  },
+  "__v": 1,
+  "imagen": "https://firebasestorage.googleapis.com/v0/b/sisinvestiga.appspot.com/o/projects%2F1238dbb7-1b0b-4a76-a70c-615b82c64406-budget.jpeg?alt=media"
+},
+{
+  "_id": {
+    "$oid": "670c41ed711133584a5b9b5d"
+  },
+  "nombre": "Niños Felices.",
+  "descripcion": "Proyecto que hara a los niños felices, regalandole juguetes, comida y un dia de diversion.",
+  "imagen": "https://firebasestorage.googleapis.com/v0/b/sisinvestiga.appspot.com/o/projects%2Fed2a505a-050e-418d-9c12-8a040aa2d6bb-OIP.jpeg?alt=media",
+  "objetivos": "Hacer sonreir a los niños.",
+  "presupuesto": 500000,
+  "cronograma": {
+    "fechaInicio": {
+      "$date": "2024-10-13T21:41:06.643Z"
+    },
+    "fechaFin": {
+      "$date": "2024-11-30T21:41:06.000Z"
+    }
+  },
+  "investigadores": [
+    {
+      "$oid": "66d9a3d28811e44aea8b1dd6"
+    }
+  ],
+  "recursos": [
+    "Juguetes",
+    "Comida"
+  ],
+  "hitos": [
+    {
+      "nombre": "Inicio de Proyecto.",
+      "fecha": {
+        "$date": "2024-10-13T21:41:06.643Z"
+      },
+      "_id": {
+        "$oid": "670c41ed711133584a5b9b5e"
+      }
+    },
+    {
+      "nombre": "Bucar barrio.",
+      "fecha": {
+        "$date": "2024-10-20T21:42:27.000Z"
+      },
+      "_id": {
+        "$oid": "670c41ed711133584a5b9b5f"
+      }
+    }
+  ],
+  "estado": "Planeado",
+  "isEvaluated": false,
+  "isDeleted": false,
+  "createdAt": {
+    "$date": "2024-10-13T21:55:57.554Z"
+  },
+  "updatedAt": {
+    "$date": "2024-10-13T21:55:57.554Z"
+  },
+  "__v": 0
 }]
