@@ -912,3 +912,7 @@
 {"level":"info","message":"The server is running on http://localhost:3005","timestamp":"2024-10-14T12:41:12.033Z"}
 {"_message":"Publication validation failed","errors":{"anexos":{"kind":"embedded","message":"Cast to embedded failed for value \"http://image.pik.com\" (type string) at path \"anexos\" because of \"ObjectParameterError\"","name":"CastError","path":"anexos","reason":{},"stringValue":"\"http://image.pik.com\"","value":"http://image.pik.com","valueType":"string"}},"level":"error","message":"Publication validation failed: anexos: Cast to embedded failed for value \"http://image.pik.com\" (type string) at path \"anexos\" because of \"ObjectParameterError\"","name":"ValidationError","timestamp":"2024-10-14T12:53:44.747Z"}
 {"errors":[],"isOperational":true,"level":"error","status":"fail","statusCode":400,"timestamp":"2024-10-14T12:55:30.592Z"}
+{"level":"info","message":"Starting server...","timestamp":"2024-10-15T12:33:04.811Z"}
+{"level":"info","message":"Connected to BBDD!","timestamp":"2024-10-15T12:33:04.870Z"}
+{"level":"info","message":"Email service initialized.","timestamp":"2024-10-15T12:33:04.881Z"}
+{"level":"info","message":"The server is running on http://localhost:3005","timestamp":"2024-10-15T12:33:04.884Z"}
