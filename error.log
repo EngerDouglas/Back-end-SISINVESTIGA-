@@ -322,3 +322,5 @@
 {"isOperational":true,"level":"error","status":"fail","statusCode":429,"timestamp":"2024-10-19T18:15:18.746Z"}
 {"isOperational":true,"level":"error","status":"fail","statusCode":429,"timestamp":"2024-10-19T18:18:52.765Z"}
 {"isOperational":true,"level":"error","status":"fail","statusCode":401,"timestamp":"2024-10-19T18:20:59.159Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":401,"timestamp":"2024-10-19T18:21:22.588Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":401,"timestamp":"2024-10-19T18:29:27.322Z"}

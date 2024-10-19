@@ -1196,3 +1196,21 @@
 {"level":"info","message":"Email service initialized.","timestamp":"2024-10-19T18:20:45.086Z"}
 {"level":"info","message":"The server is running on http://localhost:3005","timestamp":"2024-10-19T18:20:45.089Z"}
 {"isOperational":true,"level":"error","status":"fail","statusCode":401,"timestamp":"2024-10-19T18:20:59.159Z"}
+{"level":"info","message":"Starting server...","timestamp":"2024-10-19T18:21:12.633Z"}
+{"level":"info","message":"Connected to BBDD!","timestamp":"2024-10-19T18:21:12.778Z"}
+{"level":"info","message":"Email service initialized.","timestamp":"2024-10-19T18:21:12.813Z"}
+{"level":"info","message":"The server is running on http://localhost:3005","timestamp":"2024-10-19T18:21:12.839Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":401,"timestamp":"2024-10-19T18:21:22.588Z"}
+{"level":"info","message":"Starting server...","timestamp":"2024-10-19T18:29:06.835Z"}
+{"level":"info","message":"Connected to BBDD!","timestamp":"2024-10-19T18:29:06.905Z"}
+{"level":"info","message":"Email service initialized.","timestamp":"2024-10-19T18:29:06.909Z"}
+{"level":"info","message":"The server is running on http://localhost:3005","timestamp":"2024-10-19T18:29:06.913Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":401,"timestamp":"2024-10-19T18:29:27.322Z"}
+{"level":"info","message":"Starting server...","timestamp":"2024-10-19T18:34:29.103Z"}
+{"level":"info","message":"Connected to BBDD!","timestamp":"2024-10-19T18:34:29.192Z"}
+{"level":"info","message":"Email service initialized.","timestamp":"2024-10-19T18:34:29.195Z"}
+{"level":"info","message":"The server is running on http://localhost:3005","timestamp":"2024-10-19T18:34:29.199Z"}
+{"level":"info","message":"Starting server...","timestamp":"2024-10-19T18:34:33.969Z"}
+{"level":"info","message":"Connected to BBDD!","timestamp":"2024-10-19T18:34:34.109Z"}
+{"level":"info","message":"Email service initialized.","timestamp":"2024-10-19T18:34:34.112Z"}
+{"level":"info","message":"The server is running on http://localhost:3005","timestamp":"2024-10-19T18:34:34.159Z"}

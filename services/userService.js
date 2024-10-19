@@ -88,7 +88,7 @@ class UserService {
     }
   });
 
-  static async loginUser(email, password, ip) {
+  static async loginUser(email, password ) {
     const user = await User.findOne({ email }).populate('role');
     if (!user) {
       throw new UnauthorizedError('Credenciales incorrectas');
