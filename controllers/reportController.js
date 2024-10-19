@@ -5,7 +5,7 @@ import path from 'path';
 
 export const exportReportCSV = async (req, res, next) => {
   try {
-    const csv = await ReportService.generateProjectsCSV();
+    const csv = await ReportService.generateProjectsCSV(req.user);
     res.header('Content-Type', 'text/csv');
     res.attachment(ReportService.generateUniqueFilename('Project_Reports', 'csv'));
     res.status(200).send(csv);
@@ -16,30 +16,17 @@ export const exportReportCSV = async (req, res, next) => {
 
 export const exportReportPDF = async (req, res, next) => {
   try {
-    const exportDir = ReportService.ensureExportDirExists();
-    const doc = await ReportService.generateProjectsPDF();
-    const filename = ReportService.generateUniqueFilename('Report_Projects', 'pdf');
-    const filePath = path.join(exportDir, filename);
-    
-    const writeStream = fs.createWriteStream(filePath);
-    doc.pipe(writeStream);
+    const doc = await ReportService.generateProjectsPDF(req.user);
+
+    // Configurar los encabezados para la descarga
+    res.setHeader('Content-Type', 'application/pdf');
+    res.setHeader('Content-Disposition', `attachment; filename=${ReportService.generateUniqueFilename('Project_Reports', 'pdf')}`);
+
+    // Enviar el PDF al cliente
+    doc.pipe(res);
+
+    // Finalizar el documento
     doc.end();
-
-    writeStream.on('finish', () => {
-      res.status(200).download(filePath, (err) => {
-        if (err) {
-          next(new BadRequestError('Error al descargar el archivo PDF de proyectos', err));
-        }
-        // Eliminar el archivo después de la descarga
-        fs.unlink(filePath, (unlinkErr) => {
-          if (unlinkErr) console.error('Error al eliminar el archivo temporal:', unlinkErr);
-        });
-      });
-    });
-
-    writeStream.on('error', (err) => {
-      next(new BadRequestError('Error al escribir el archivo PDF de proyectos', err));
-    });
   } catch (error) {
     next(new BadRequestError('Error al generar el informe PDF de proyectos', error));
   }
@@ -47,9 +34,9 @@ export const exportReportPDF = async (req, res, next) => {
 
 export const exportReportInvestigatorsCSV = async (req, res, next) => {
   try {
-    const csv = await ReportService.generateEvaluationsCSV();
+    const csv = await ReportService.generateEvaluationsCSV(req.user);
     res.header('Content-Type', 'text/csv');
-    res.attachment(ReportService.generateUniqueFilename('Report_Investigators', 'csv'));
+    res.attachment(ReportService.generateUniqueFilename('Evaluations_Report', 'csv'));
     res.status(200).send(csv);
   } catch (error) {
     next(new BadRequestError('Error al generar el informe CSV de evaluaciones', error));
@@ -58,30 +45,17 @@ export const exportReportInvestigatorsCSV = async (req, res, next) => {
 
 export const exportReportInvestigatorsPDF = async (req, res, next) => {
   try {
-    const exportDir = ReportService.ensureExportDirExists();
-    const doc = await ReportService.generateEvaluationsPDF();
-    const filename = ReportService.generateUniqueFilename('Report_Investigators', 'pdf');
-    const filePath = path.join(exportDir, filename);
-    
-    const writeStream = fs.createWriteStream(filePath);
-    doc.pipe(writeStream);
+    const doc = await ReportService.generateEvaluationsPDF(req.user);
+
+    // Configurar los encabezados para la descarga
+    res.setHeader('Content-Type', 'application/pdf');
+    res.setHeader('Content-Disposition', `attachment; filename=${ReportService.generateUniqueFilename('Evaluations_Report', 'pdf')}`);
+
+    // Enviar el PDF al cliente
+    doc.pipe(res);
+
+    // Finalizar el documento
     doc.end();
-
-    writeStream.on('finish', () => {
-      res.status(200).download(filePath, (err) => {
-        if (err) {
-          next(new BadRequestError('Error al descargar el archivo PDF de evaluaciones', err));
-        }
-        // Eliminar el archivo después de la descarga
-        fs.unlink(filePath, (unlinkErr) => {
-          if (unlinkErr) console.error('Error al eliminar el archivo temporal:', unlinkErr);
-        });
-      });
-    });
-
-    writeStream.on('error', (err) => {
-      next(new BadRequestError('Error al escribir el archivo PDF de evaluaciones', err));
-    });
   } catch (error) {
     next(new BadRequestError('Error al generar el informe PDF de evaluaciones', error));
   }

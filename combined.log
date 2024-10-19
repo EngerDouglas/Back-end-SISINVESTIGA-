@@ -912,3 +912,287 @@
 {"level":"info","message":"The server is running on http://localhost:3005","timestamp":"2024-10-14T12:41:12.033Z"}
 {"_message":"Publication validation failed","errors":{"anexos":{"kind":"embedded","message":"Cast to embedded failed for value \"http://image.pik.com\" (type string) at path \"anexos\" because of \"ObjectParameterError\"","name":"CastError","path":"anexos","reason":{},"stringValue":"\"http://image.pik.com\"","value":"http://image.pik.com","valueType":"string"}},"level":"error","message":"Publication validation failed: anexos: Cast to embedded failed for value \"http://image.pik.com\" (type string) at path \"anexos\" because of \"ObjectParameterError\"","name":"ValidationError","timestamp":"2024-10-14T12:53:44.747Z"}
 {"errors":[],"isOperational":true,"level":"error","status":"fail","statusCode":400,"timestamp":"2024-10-14T12:55:30.592Z"}
+{"level":"info","message":"Starting server...","timestamp":"2024-10-15T23:38:48.889Z"}
+{"level":"info","message":"Connected to BBDD!","timestamp":"2024-10-15T23:38:48.949Z"}
+{"level":"info","message":"Email service initialized.","timestamp":"2024-10-15T23:38:48.952Z"}
+{"level":"info","message":"The server is running on http://localhost:3005","timestamp":"2024-10-15T23:38:48.958Z"}
+{"level":"info","message":"Starting server...","timestamp":"2024-10-17T01:25:35.135Z"}
+{"level":"info","message":"Connected to BBDD!","timestamp":"2024-10-17T01:25:35.228Z"}
+{"level":"info","message":"Email service initialized.","timestamp":"2024-10-17T01:25:35.234Z"}
+{"level":"info","message":"The server is running on http://localhost:3005","timestamp":"2024-10-17T01:25:35.249Z"}
+{"expiredAt":"2024-10-17T00:05:17.000Z","level":"error","message":"jwt expired","name":"TokenExpiredError","timestamp":"2024-10-17T01:58:55.477Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":401,"timestamp":"2024-10-17T03:18:50.736Z"}
+{"level":"info","message":"Starting server...","timestamp":"2024-10-17T23:17:33.523Z"}
+{"level":"info","message":"Connected to BBDD!","timestamp":"2024-10-17T23:17:33.614Z"}
+{"level":"info","message":"Email service initialized.","timestamp":"2024-10-17T23:17:33.617Z"}
+{"level":"info","message":"The server is running on http://localhost:3005","timestamp":"2024-10-17T23:17:33.624Z"}
+{"level":"info","message":"Starting server...","timestamp":"2024-10-17T23:19:13.458Z"}
+{"level":"info","message":"Connected to BBDD!","timestamp":"2024-10-17T23:19:13.541Z"}
+{"level":"info","message":"Email service initialized.","timestamp":"2024-10-17T23:19:13.544Z"}
+{"level":"info","message":"The server is running on http://localhost:3005","timestamp":"2024-10-17T23:19:13.548Z"}
+{"level":"info","message":"Starting server...","timestamp":"2024-10-19T00:28:36.485Z"}
+{"level":"info","message":"Connected to BBDD!","timestamp":"2024-10-19T00:28:36.587Z"}
+{"level":"info","message":"Email service initialized.","timestamp":"2024-10-19T00:28:36.590Z"}
+{"level":"info","message":"The server is running on http://localhost:3005","timestamp":"2024-10-19T00:28:36.597Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":401,"timestamp":"2024-10-19T00:29:54.158Z"}
+{"level":"info","message":"Starting server...","timestamp":"2024-10-19T14:49:18.567Z"}
+{"level":"info","message":"Connected to BBDD!","timestamp":"2024-10-19T14:49:18.691Z"}
+{"level":"info","message":"Email service initialized.","timestamp":"2024-10-19T14:49:18.701Z"}
+{"level":"info","message":"The server is running on http://localhost:3005","timestamp":"2024-10-19T14:49:18.705Z"}
+{"level":"info","message":"Starting server...","timestamp":"2024-10-19T14:56:09.942Z"}
+{"level":"info","message":"Connected to BBDD!","timestamp":"2024-10-19T14:56:09.997Z"}
+{"level":"info","message":"Email service initialized.","timestamp":"2024-10-19T14:56:10.001Z"}
+{"level":"info","message":"The server is running on http://localhost:3005","timestamp":"2024-10-19T14:56:10.005Z"}
+{"error":{},"level":"error","message":"Error al generar el informe de proyectos","timestamp":"2024-10-19T14:59:49.663Z"}
+{"level":"error","timestamp":"2024-10-19T14:59:49.665Z"}
+{"level":"info","message":"Starting server...","timestamp":"2024-10-19T15:02:14.204Z"}
+{"level":"info","message":"Connected to BBDD!","timestamp":"2024-10-19T15:02:14.260Z"}
+{"level":"info","message":"Email service initialized.","timestamp":"2024-10-19T15:02:14.264Z"}
+{"level":"info","message":"The server is running on http://localhost:3005","timestamp":"2024-10-19T15:02:14.268Z"}
+{"error":{"code":"ENOENT","errno":-4058,"path":"C:\\Users\\carlo\\OneDrive\\code\\2024\\NodeJS\\templates\\assets\\img\\LogoWebUCSD.png","syscall":"open"},"level":"error","message":"Error al generar el informe de proyectos","timestamp":"2024-10-19T15:02:18.309Z"}
+{"code":"ENOENT","errno":-4058,"level":"error","path":"C:\\Users\\carlo\\OneDrive\\code\\2024\\NodeJS\\templates\\assets\\img\\LogoWebUCSD.png","syscall":"open","timestamp":"2024-10-19T15:02:18.311Z"}
+{"level":"info","message":"Starting server...","timestamp":"2024-10-19T15:02:45.421Z"}
+{"level":"info","message":"Connected to BBDD!","timestamp":"2024-10-19T15:02:45.477Z"}
+{"level":"info","message":"Email service initialized.","timestamp":"2024-10-19T15:02:45.481Z"}
+{"level":"info","message":"The server is running on http://localhost:3005","timestamp":"2024-10-19T15:02:45.486Z"}
+{"error":{},"level":"error","message":"Error al generar el informe de proyectos","timestamp":"2024-10-19T15:02:50.289Z"}
+{"level":"error","timestamp":"2024-10-19T15:02:50.291Z"}
+{"level":"info","message":"Starting server...","timestamp":"2024-10-19T15:04:51.618Z"}
+{"level":"info","message":"Connected to BBDD!","timestamp":"2024-10-19T15:04:51.693Z"}
+{"level":"info","message":"Email service initialized.","timestamp":"2024-10-19T15:04:51.696Z"}
+{"level":"info","message":"The server is running on http://localhost:3005","timestamp":"2024-10-19T15:04:51.703Z"}
+{"level":"info","message":"Starting server...","timestamp":"2024-10-19T15:10:20.305Z"}
+{"level":"info","message":"Connected to BBDD!","timestamp":"2024-10-19T15:10:20.389Z"}
+{"level":"info","message":"Email service initialized.","timestamp":"2024-10-19T15:10:20.392Z"}
+{"level":"info","message":"The server is running on http://localhost:3005","timestamp":"2024-10-19T15:10:20.396Z"}
+{"level":"info","message":"Starting server...","timestamp":"2024-10-19T15:12:36.721Z"}
+{"level":"info","message":"Connected to BBDD!","timestamp":"2024-10-19T15:12:36.773Z"}
+{"level":"info","message":"Email service initialized.","timestamp":"2024-10-19T15:12:36.777Z"}
+{"level":"info","message":"The server is running on http://localhost:3005","timestamp":"2024-10-19T15:12:36.781Z"}
+{"level":"info","message":"Starting server...","timestamp":"2024-10-19T15:16:18.806Z"}
+{"level":"info","message":"Connected to BBDD!","timestamp":"2024-10-19T15:16:18.862Z"}
+{"level":"info","message":"Email service initialized.","timestamp":"2024-10-19T15:16:18.866Z"}
+{"level":"info","message":"The server is running on http://localhost:3005","timestamp":"2024-10-19T15:16:18.869Z"}
+{"level":"info","message":"Starting server...","timestamp":"2024-10-19T15:16:45.374Z"}
+{"level":"info","message":"Connected to BBDD!","timestamp":"2024-10-19T15:16:45.454Z"}
+{"level":"info","message":"Email service initialized.","timestamp":"2024-10-19T15:16:45.457Z"}
+{"level":"info","message":"The server is running on http://localhost:3005","timestamp":"2024-10-19T15:16:45.462Z"}
+{"level":"info","message":"Starting server...","timestamp":"2024-10-19T15:17:38.681Z"}
+{"level":"info","message":"Connected to BBDD!","timestamp":"2024-10-19T15:17:38.736Z"}
+{"level":"info","message":"Email service initialized.","timestamp":"2024-10-19T15:17:38.739Z"}
+{"level":"info","message":"The server is running on http://localhost:3005","timestamp":"2024-10-19T15:17:38.744Z"}
+{"level":"info","message":"Starting server...","timestamp":"2024-10-19T15:17:51.673Z"}
+{"level":"info","message":"Connected to BBDD!","timestamp":"2024-10-19T15:17:51.749Z"}
+{"level":"info","message":"Email service initialized.","timestamp":"2024-10-19T15:17:51.752Z"}
+{"level":"info","message":"The server is running on http://localhost:3005","timestamp":"2024-10-19T15:17:51.757Z"}
+{"level":"info","message":"Starting server...","timestamp":"2024-10-19T15:20:16.331Z"}
+{"level":"info","message":"Connected to BBDD!","timestamp":"2024-10-19T15:20:16.397Z"}
+{"level":"info","message":"Email service initialized.","timestamp":"2024-10-19T15:20:16.401Z"}
+{"level":"info","message":"The server is running on http://localhost:3005","timestamp":"2024-10-19T15:20:16.404Z"}
+{"level":"info","message":"Starting server...","timestamp":"2024-10-19T15:20:22.190Z"}
+{"level":"info","message":"Connected to BBDD!","timestamp":"2024-10-19T15:20:22.250Z"}
+{"level":"info","message":"Email service initialized.","timestamp":"2024-10-19T15:20:22.254Z"}
+{"level":"info","message":"The server is running on http://localhost:3005","timestamp":"2024-10-19T15:20:22.259Z"}
+{"level":"info","message":"Starting server...","timestamp":"2024-10-19T15:22:15.398Z"}
+{"level":"info","message":"Connected to BBDD!","timestamp":"2024-10-19T15:22:15.451Z"}
+{"level":"info","message":"Email service initialized.","timestamp":"2024-10-19T15:22:15.455Z"}
+{"level":"info","message":"The server is running on http://localhost:3005","timestamp":"2024-10-19T15:22:15.459Z"}
+{"level":"info","message":"Starting server...","timestamp":"2024-10-19T15:22:45.397Z"}
+{"level":"info","message":"Connected to BBDD!","timestamp":"2024-10-19T15:22:45.463Z"}
+{"level":"info","message":"Email service initialized.","timestamp":"2024-10-19T15:22:45.467Z"}
+{"level":"info","message":"The server is running on http://localhost:3005","timestamp":"2024-10-19T15:22:45.473Z"}
+{"level":"info","message":"Starting server...","timestamp":"2024-10-19T15:23:16.508Z"}
+{"level":"info","message":"Connected to BBDD!","timestamp":"2024-10-19T15:23:16.591Z"}
+{"level":"info","message":"Email service initialized.","timestamp":"2024-10-19T15:23:16.594Z"}
+{"level":"info","message":"The server is running on http://localhost:3005","timestamp":"2024-10-19T15:23:16.598Z"}
+{"level":"info","message":"Starting server...","timestamp":"2024-10-19T15:23:29.473Z"}
+{"level":"info","message":"Connected to BBDD!","timestamp":"2024-10-19T15:23:29.561Z"}
+{"level":"info","message":"Email service initialized.","timestamp":"2024-10-19T15:23:29.571Z"}
+{"level":"info","message":"The server is running on http://localhost:3005","timestamp":"2024-10-19T15:23:29.583Z"}
+{"level":"info","message":"Starting server...","timestamp":"2024-10-19T15:26:06.160Z"}
+{"level":"info","message":"Connected to BBDD!","timestamp":"2024-10-19T15:26:06.215Z"}
+{"level":"info","message":"Email service initialized.","timestamp":"2024-10-19T15:26:06.219Z"}
+{"level":"info","message":"The server is running on http://localhost:3005","timestamp":"2024-10-19T15:26:06.223Z"}
+{"level":"info","message":"Starting server...","timestamp":"2024-10-19T15:26:21.800Z"}
+{"level":"info","message":"Connected to BBDD!","timestamp":"2024-10-19T15:26:21.874Z"}
+{"level":"info","message":"Email service initialized.","timestamp":"2024-10-19T15:26:21.878Z"}
+{"level":"info","message":"The server is running on http://localhost:3005","timestamp":"2024-10-19T15:26:21.882Z"}
+{"level":"info","message":"Starting server...","timestamp":"2024-10-19T15:27:35.547Z"}
+{"level":"info","message":"Connected to BBDD!","timestamp":"2024-10-19T15:27:35.601Z"}
+{"level":"info","message":"Email service initialized.","timestamp":"2024-10-19T15:27:35.605Z"}
+{"level":"info","message":"The server is running on http://localhost:3005","timestamp":"2024-10-19T15:27:35.608Z"}
+{"level":"error","timestamp":"2024-10-19T15:27:38.249Z"}
+{"level":"info","message":"Starting server...","timestamp":"2024-10-19T15:27:52.758Z"}
+{"level":"info","message":"Connected to BBDD!","timestamp":"2024-10-19T15:27:52.836Z"}
+{"level":"info","message":"Email service initialized.","timestamp":"2024-10-19T15:27:52.839Z"}
+{"level":"info","message":"The server is running on http://localhost:3005","timestamp":"2024-10-19T15:27:52.843Z"}
+{"level":"info","message":"Starting server...","timestamp":"2024-10-19T15:28:25.196Z"}
+{"level":"info","message":"Connected to BBDD!","timestamp":"2024-10-19T15:28:25.254Z"}
+{"level":"info","message":"Email service initialized.","timestamp":"2024-10-19T15:28:25.258Z"}
+{"level":"info","message":"The server is running on http://localhost:3005","timestamp":"2024-10-19T15:28:25.262Z"}
+{"level":"info","message":"Starting server...","timestamp":"2024-10-19T15:29:30.852Z"}
+{"level":"info","message":"Connected to BBDD!","timestamp":"2024-10-19T15:29:30.903Z"}
+{"level":"info","message":"Email service initialized.","timestamp":"2024-10-19T15:29:30.906Z"}
+{"level":"info","message":"The server is running on http://localhost:3005","timestamp":"2024-10-19T15:29:30.910Z"}
+{"level":"info","message":"Starting server...","timestamp":"2024-10-19T15:37:40.450Z"}
+{"level":"info","message":"Connected to BBDD!","timestamp":"2024-10-19T15:37:40.503Z"}
+{"level":"info","message":"Email service initialized.","timestamp":"2024-10-19T15:37:40.506Z"}
+{"level":"info","message":"The server is running on http://localhost:3005","timestamp":"2024-10-19T15:37:40.510Z"}
+{"level":"info","message":"Starting server...","timestamp":"2024-10-19T15:40:34.018Z"}
+{"level":"info","message":"Connected to BBDD!","timestamp":"2024-10-19T15:40:34.072Z"}
+{"level":"info","message":"Email service initialized.","timestamp":"2024-10-19T15:40:34.075Z"}
+{"level":"info","message":"The server is running on http://localhost:3005","timestamp":"2024-10-19T15:40:34.079Z"}
+{"level":"info","message":"Starting server...","timestamp":"2024-10-19T15:42:55.118Z"}
+{"level":"info","message":"Connected to BBDD!","timestamp":"2024-10-19T15:42:55.233Z"}
+{"level":"info","message":"Email service initialized.","timestamp":"2024-10-19T15:42:55.237Z"}
+{"level":"info","message":"The server is running on http://localhost:3005","timestamp":"2024-10-19T15:42:55.245Z"}
+{"level":"info","message":"Starting server...","timestamp":"2024-10-19T15:48:28.037Z"}
+{"level":"info","message":"Connected to BBDD!","timestamp":"2024-10-19T15:48:28.095Z"}
+{"level":"info","message":"Email service initialized.","timestamp":"2024-10-19T15:48:28.098Z"}
+{"level":"info","message":"The server is running on http://localhost:3005","timestamp":"2024-10-19T15:48:28.102Z"}
+{"level":"info","message":"Starting server...","timestamp":"2024-10-19T16:18:40.323Z"}
+{"level":"info","message":"Connected to BBDD!","timestamp":"2024-10-19T16:18:40.429Z"}
+{"level":"info","message":"Email service initialized.","timestamp":"2024-10-19T16:18:40.432Z"}
+{"level":"info","message":"The server is running on http://localhost:3005","timestamp":"2024-10-19T16:18:40.437Z"}
+{"level":"info","message":"Starting server...","timestamp":"2024-10-19T16:24:12.084Z"}
+{"level":"info","message":"Connected to BBDD!","timestamp":"2024-10-19T16:24:12.134Z"}
+{"level":"info","message":"Email service initialized.","timestamp":"2024-10-19T16:24:12.137Z"}
+{"level":"info","message":"The server is running on http://localhost:3005","timestamp":"2024-10-19T16:24:12.141Z"}
+{"level":"info","message":"Starting server...","timestamp":"2024-10-19T16:27:50.641Z"}
+{"level":"info","message":"Connected to BBDD!","timestamp":"2024-10-19T16:27:50.691Z"}
+{"level":"info","message":"Email service initialized.","timestamp":"2024-10-19T16:27:50.694Z"}
+{"level":"info","message":"The server is running on http://localhost:3005","timestamp":"2024-10-19T16:27:50.697Z"}
+{"level":"info","message":"Starting server...","timestamp":"2024-10-19T16:29:40.407Z"}
+{"level":"info","message":"Connected to BBDD!","timestamp":"2024-10-19T16:29:40.459Z"}
+{"level":"info","message":"Email service initialized.","timestamp":"2024-10-19T16:29:40.462Z"}
+{"level":"info","message":"The server is running on http://localhost:3005","timestamp":"2024-10-19T16:29:40.466Z"}
+{"level":"info","message":"Starting server...","timestamp":"2024-10-19T17:00:56.478Z"}
+{"level":"info","message":"Connected to BBDD!","timestamp":"2024-10-19T17:00:56.572Z"}
+{"level":"info","message":"Email service initialized.","timestamp":"2024-10-19T17:00:56.578Z"}
+{"level":"info","message":"The server is running on http://localhost:3005","timestamp":"2024-10-19T17:00:56.584Z"}
+{"level":"info","message":"Starting server...","timestamp":"2024-10-19T17:05:02.395Z"}
+{"level":"info","message":"Connected to BBDD!","timestamp":"2024-10-19T17:05:02.476Z"}
+{"level":"info","message":"Email service initialized.","timestamp":"2024-10-19T17:05:02.479Z"}
+{"level":"info","message":"The server is running on http://localhost:3005","timestamp":"2024-10-19T17:05:02.493Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":401,"timestamp":"2024-10-19T17:05:39.940Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":401,"timestamp":"2024-10-19T17:05:44.674Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":401,"timestamp":"2024-10-19T17:05:49.039Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":401,"timestamp":"2024-10-19T17:05:53.702Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":401,"timestamp":"2024-10-19T17:05:57.072Z"}
+{"level":"info","message":"Starting server...","timestamp":"2024-10-19T17:15:13.963Z"}
+{"level":"info","message":"Connected to BBDD!","timestamp":"2024-10-19T17:15:14.160Z"}
+{"level":"info","message":"Email service initialized.","timestamp":"2024-10-19T17:15:14.164Z"}
+{"level":"info","message":"The server is running on http://localhost:3005","timestamp":"2024-10-19T17:15:14.168Z"}
+{"level":"info","message":"Starting server...","timestamp":"2024-10-19T17:15:37.689Z"}
+{"level":"info","message":"Connected to BBDD!","timestamp":"2024-10-19T17:15:37.753Z"}
+{"level":"info","message":"Email service initialized.","timestamp":"2024-10-19T17:15:37.757Z"}
+{"level":"info","message":"The server is running on http://localhost:3005","timestamp":"2024-10-19T17:15:37.761Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":401,"timestamp":"2024-10-19T17:15:56.744Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":401,"timestamp":"2024-10-19T17:16:15.796Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":401,"timestamp":"2024-10-19T17:16:18.898Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":401,"timestamp":"2024-10-19T17:16:25.525Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":401,"timestamp":"2024-10-19T17:16:32.546Z"}
+{"level":"info","message":"Starting server...","timestamp":"2024-10-19T17:39:20.570Z"}
+{"level":"info","message":"Connected to BBDD!","timestamp":"2024-10-19T17:39:20.656Z"}
+{"level":"info","message":"Email service initialized.","timestamp":"2024-10-19T17:39:20.660Z"}
+{"level":"info","message":"The server is running on http://localhost:3005","timestamp":"2024-10-19T17:39:20.663Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":401,"timestamp":"2024-10-19T17:40:04.682Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":401,"timestamp":"2024-10-19T17:40:16.617Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":401,"timestamp":"2024-10-19T17:40:23.959Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":401,"timestamp":"2024-10-19T17:40:30.550Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":401,"timestamp":"2024-10-19T17:40:40.492Z"}
+{"level":"error","timestamp":"2024-10-19T17:40:47.409Z"}
+{"level":"info","message":"Starting server...","timestamp":"2024-10-19T17:41:00.852Z"}
+{"level":"info","message":"Connected to BBDD!","timestamp":"2024-10-19T17:41:00.947Z"}
+{"level":"info","message":"Email service initialized.","timestamp":"2024-10-19T17:41:00.951Z"}
+{"level":"info","message":"The server is running on http://localhost:3005","timestamp":"2024-10-19T17:41:00.955Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":401,"timestamp":"2024-10-19T17:41:09.150Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":401,"timestamp":"2024-10-19T17:41:20.249Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":401,"timestamp":"2024-10-19T17:41:28.013Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":401,"timestamp":"2024-10-19T17:41:34.892Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":401,"timestamp":"2024-10-19T17:41:40.590Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":429,"timestamp":"2024-10-19T17:41:47.190Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":429,"timestamp":"2024-10-19T17:42:15.350Z"}
+{"level":"error","timestamp":"2024-10-19T17:42:39.310Z"}
+{"level":"error","timestamp":"2024-10-19T17:43:04.364Z"}
+{"level":"info","message":"Starting server...","timestamp":"2024-10-19T17:46:32.592Z"}
+{"level":"info","message":"Connected to BBDD!","timestamp":"2024-10-19T17:46:32.681Z"}
+{"level":"info","message":"Email service initialized.","timestamp":"2024-10-19T17:46:32.685Z"}
+{"level":"info","message":"The server is running on http://localhost:3005","timestamp":"2024-10-19T17:46:32.693Z"}
+{"level":"error","timestamp":"2024-10-19T17:47:17.569Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":401,"timestamp":"2024-10-19T17:47:47.225Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":401,"timestamp":"2024-10-19T17:47:54.758Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":401,"timestamp":"2024-10-19T17:48:02.710Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":401,"timestamp":"2024-10-19T17:48:09.542Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":401,"timestamp":"2024-10-19T17:48:16.366Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":429,"timestamp":"2024-10-19T17:48:24.240Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":429,"timestamp":"2024-10-19T17:48:34.719Z"}
+{"level":"error","timestamp":"2024-10-19T17:48:49.136Z"}
+{"level":"info","message":"Starting server...","timestamp":"2024-10-19T17:51:57.551Z"}
+{"level":"info","message":"Connected to BBDD!","timestamp":"2024-10-19T17:51:57.613Z"}
+{"level":"info","message":"Email service initialized.","timestamp":"2024-10-19T17:51:57.617Z"}
+{"level":"info","message":"The server is running on http://localhost:3005","timestamp":"2024-10-19T17:51:57.621Z"}
+{"level":"info","message":"Starting server...","timestamp":"2024-10-19T17:52:01.183Z"}
+{"level":"info","message":"Connected to BBDD!","timestamp":"2024-10-19T17:52:01.251Z"}
+{"level":"info","message":"Email service initialized.","timestamp":"2024-10-19T17:52:01.254Z"}
+{"level":"info","message":"The server is running on http://localhost:3005","timestamp":"2024-10-19T17:52:01.259Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":401,"timestamp":"2024-10-19T17:52:19.399Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":401,"timestamp":"2024-10-19T17:52:33.994Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":401,"timestamp":"2024-10-19T17:52:40.080Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":401,"timestamp":"2024-10-19T17:52:49.707Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":401,"timestamp":"2024-10-19T17:52:57.382Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":401,"timestamp":"2024-10-19T17:53:05.533Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":429,"timestamp":"2024-10-19T17:53:10.526Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":429,"timestamp":"2024-10-19T17:53:16.551Z"}
+{"level":"error","timestamp":"2024-10-19T17:53:36.039Z"}
+{"level":"info","message":"Starting server...","timestamp":"2024-10-19T17:54:12.229Z"}
+{"level":"info","message":"Connected to BBDD!","timestamp":"2024-10-19T17:54:12.285Z"}
+{"level":"info","message":"Email service initialized.","timestamp":"2024-10-19T17:54:12.288Z"}
+{"level":"info","message":"The server is running on http://localhost:3005","timestamp":"2024-10-19T17:54:12.292Z"}
+{"level":"info","message":"Starting server...","timestamp":"2024-10-19T17:54:22.444Z"}
+{"level":"info","message":"Connected to BBDD!","timestamp":"2024-10-19T17:54:22.518Z"}
+{"level":"info","message":"Email service initialized.","timestamp":"2024-10-19T17:54:22.521Z"}
+{"level":"info","message":"The server is running on http://localhost:3005","timestamp":"2024-10-19T17:54:22.527Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":401,"timestamp":"2024-10-19T17:55:09.824Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":401,"timestamp":"2024-10-19T17:55:16.263Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":401,"timestamp":"2024-10-19T17:55:21.525Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":401,"timestamp":"2024-10-19T17:55:35.284Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":401,"timestamp":"2024-10-19T17:55:50.339Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":429,"timestamp":"2024-10-19T17:55:57.660Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":429,"timestamp":"2024-10-19T17:56:05.099Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":401,"timestamp":"2024-10-19T17:57:07.602Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":401,"timestamp":"2024-10-19T17:57:07.661Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":401,"timestamp":"2024-10-19T17:57:33.509Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":401,"timestamp":"2024-10-19T17:57:33.542Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":401,"timestamp":"2024-10-19T18:01:18.207Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":429,"timestamp":"2024-10-19T18:01:43.997Z"}
+{"level":"info","message":"Starting server...","timestamp":"2024-10-19T18:09:23.567Z"}
+{"level":"info","message":"Connected to BBDD!","timestamp":"2024-10-19T18:09:23.641Z"}
+{"level":"info","message":"Email service initialized.","timestamp":"2024-10-19T18:09:23.645Z"}
+{"level":"info","message":"The server is running on http://localhost:3005","timestamp":"2024-10-19T18:09:23.648Z"}
+{"level":"info","message":"Starting server...","timestamp":"2024-10-19T18:10:23.226Z"}
+{"level":"info","message":"Connected to BBDD!","timestamp":"2024-10-19T18:10:23.296Z"}
+{"level":"info","message":"Email service initialized.","timestamp":"2024-10-19T18:10:23.320Z"}
+{"level":"info","message":"The server is running on http://localhost:3005","timestamp":"2024-10-19T18:10:23.339Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":401,"timestamp":"2024-10-19T18:12:15.642Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":401,"timestamp":"2024-10-19T18:12:32.268Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":401,"timestamp":"2024-10-19T18:12:37.091Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":401,"timestamp":"2024-10-19T18:13:02.952Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":401,"timestamp":"2024-10-19T18:13:15.011Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":429,"timestamp":"2024-10-19T18:13:24.279Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":429,"timestamp":"2024-10-19T18:14:06.247Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":429,"timestamp":"2024-10-19T18:15:18.746Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":429,"timestamp":"2024-10-19T18:18:52.765Z"}
+{"level":"info","message":"Starting server...","timestamp":"2024-10-19T18:19:09.356Z"}
+{"level":"info","message":"Connected to BBDD!","timestamp":"2024-10-19T18:19:09.431Z"}
+{"level":"info","message":"Email service initialized.","timestamp":"2024-10-19T18:19:09.435Z"}
+{"level":"info","message":"The server is running on http://localhost:3005","timestamp":"2024-10-19T18:19:09.438Z"}
+{"level":"info","message":"Starting server...","timestamp":"2024-10-19T18:20:36.302Z"}
+{"level":"info","message":"Connected to BBDD!","timestamp":"2024-10-19T18:20:36.360Z"}
+{"level":"info","message":"Email service initialized.","timestamp":"2024-10-19T18:20:36.406Z"}
+{"level":"info","message":"The server is running on http://localhost:3005","timestamp":"2024-10-19T18:20:36.438Z"}
+{"level":"info","message":"Starting server...","timestamp":"2024-10-19T18:20:45.005Z"}
+{"level":"info","message":"Connected to BBDD!","timestamp":"2024-10-19T18:20:45.081Z"}
+{"level":"info","message":"Email service initialized.","timestamp":"2024-10-19T18:20:45.086Z"}
+{"level":"info","message":"The server is running on http://localhost:3005","timestamp":"2024-10-19T18:20:45.089Z"}
+{"isOperational":true,"level":"error","status":"fail","statusCode":401,"timestamp":"2024-10-19T18:20:59.159Z"}

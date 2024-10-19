@@ -5,11 +5,11 @@ import { auth, authRole } from '../middlewares/auth.js'
 const ReportRouter = express.Router();
 
 // Exportamos informes de proyectos
-ReportRouter.get('/projects/csv', auth, authRole(['Administrador']), exportReportCSV)
-ReportRouter.get('/projects/pdf', auth, authRole(['Administrador']), exportReportPDF)
+ReportRouter.get('/projects/csv', auth, exportReportCSV)
+ReportRouter.get('/projects/pdf', auth, exportReportPDF)
 
 // Exportamos informes de investigadores y evaluaciones
-ReportRouter.get('/investigators/csv', auth, authRole(['Administrador']), exportReportInvestigatorsCSV)
-ReportRouter.get('/investigators/pdf', auth, authRole(['Administrador']), exportReportInvestigatorsPDF)
+ReportRouter.get('/investigators/csv', auth, exportReportInvestigatorsCSV)
+ReportRouter.get('/investigators/pdf', auth, exportReportInvestigatorsPDF)
 
 export default ReportRouter
