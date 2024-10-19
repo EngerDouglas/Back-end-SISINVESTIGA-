@@ -1214,3 +1214,11 @@
 {"level":"info","message":"Connected to BBDD!","timestamp":"2024-10-19T18:34:34.109Z"}
 {"level":"info","message":"Email service initialized.","timestamp":"2024-10-19T18:34:34.112Z"}
 {"level":"info","message":"The server is running on http://localhost:3005","timestamp":"2024-10-19T18:34:34.159Z"}
+{"level":"info","message":"Starting server...","timestamp":"2024-10-19T18:34:49.529Z"}
+{"level":"info","message":"Connected to BBDD!","timestamp":"2024-10-19T18:34:49.582Z"}
+{"level":"info","message":"Email service initialized.","timestamp":"2024-10-19T18:34:49.586Z"}
+{"level":"info","message":"The server is running on http://localhost:3005","timestamp":"2024-10-19T18:34:49.590Z"}
+{"level":"info","message":"Starting server...","timestamp":"2024-10-19T18:36:41.778Z"}
+{"level":"info","message":"Connected to BBDD!","timestamp":"2024-10-19T18:36:41.896Z"}
+{"level":"info","message":"Email service initialized.","timestamp":"2024-10-19T18:36:41.899Z"}
+{"level":"info","message":"The server is running on http://localhost:3005","timestamp":"2024-10-19T18:36:41.903Z"}
