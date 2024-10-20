@@ -1,10 +1,10 @@
 {
 	"info": {
-		"_postman_id": "4a9eec0f-271e-427e-84e3-60da17ad1ef6",
+		"_postman_id": "6270b4fb-90a1-4741-9c6c-c209ba7ff750",
 		"name": "SISINVESTIGA API",
 		"description": "API para la gestion de publicaciones academicas, usuarios, roles y publicaciones en SISINVESTIGA.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "35172422"
+		"_exporter_id": "33731987"
 	},
 	"item": [
 		{
@@ -14,7 +14,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"nombre\": \"Carlos\",\r\n    \"apellido\": \"Sánchez\",\r\n    \"email\": \"carlos.sanchez@gmail.com\",\r\n    \"password\": \"Investiga123@\",\r\n    \"especializacion\": \"Ingeniero de Software\",\r\n    \"responsabilidades\": [\"Desarrollo de proyectos\", \"Investigación\"],\r\n    \"fotoPerfil\": \"https://example.com/profile.jpg\"\r\n}",
+					"raw": "{\r\n    \"nombre\": \"Smailin\",\r\n    \"apellido\": \"Espinal\",\r\n    \"email\": \"noemi@gmail.com\",\r\n    \"password\": \"Investiga123@\",\r\n    \"especializacion\": \"Ingeniero de Software\",\r\n    \"responsabilidades\": [\"Desarrollo de proyectos\", \"Investigación\"],\r\n    \"fotoPerfil\": \"https://example.com/profile.jpg\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -72,6 +72,16 @@
 		{
 			"name": "Cerrar Sesion",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzAxNzZiZDg5ZDA3MjBlYmMzMzNkMDAiLCJpYXQiOjE3MjgxNDkyMTgsImV4cCI6MTcyODIzNTYxOH0.0LWm5dH7PI8dt2V821Sty3beS-NmDPlaMvtgHltxEX4",
+							"type": "string"
+						}
+					]
+				},
 				"method": "POST",
 				"header": [],
 				"url": {
@@ -99,7 +109,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ3ZDRiY2E2ZjZiMzcwN2QyNjFiMzMiLCJpYXQiOjE3Mjc3NTM0NTksImV4cCI6MTcyNzgzOTg1OX0.Mdnys_lCH0pNaUGVRnQGiAJpCXQdAImroHLEann0_J0",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ3ZDRiY2E2ZjZiMzcwN2QyNjFiMzMiLCJpYXQiOjE3MjkzODU0MDYsImV4cCI6MTcyOTQ3MTgwNn0.UPOtob6aKddTj3py2U20oTIVNmcwNC9PGIlCP7k0N94",
 							"type": "string"
 						}
 					]
@@ -157,11 +167,21 @@
 		{
 			"name": "Actualizar Usuario",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ3ZDRiY2E2ZjZiMzcwN2QyNjFiMzMiLCJpYXQiOjE3MjgxNDkzOTUsImV4cCI6MTcyODIzNTc5NX0.FRNPHRXvLeDFZyj9msYqgaGsgN0D1Vw3mejul214TaE",
+							"type": "string"
+						}
+					]
+				},
 				"method": "PUT",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"currentPassword\": \"Carlos2527@\",\r\n    \"newPassword\": \"Investiga123@\"\r\n}",
+					"raw": "{\r\n    \"currentPassword\": \"Investiga123@\",\r\n    \"newPassword\": \"Investiga123@\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -169,7 +189,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3005/api/users/66db13d669069f5a5b76ff44",
+					"raw": "http://localhost:3005/api/users/670176bd89d0720ebc333d00",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -178,7 +198,7 @@
 					"path": [
 						"api",
 						"users",
-						"66db13d669069f5a5b76ff44"
+						"670176bd89d0720ebc333d00"
 					]
 				},
 				"description": "Actualiza los usuarios del sistema.\n\nRequerimiento: Estar logeado en el sistema y ser administrador para hacer el cambio a cualquier usuario.\n\nSe pueden actualizar campos especificos."
@@ -188,10 +208,20 @@
 		{
 			"name": "Habilitar Usuarios",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ3ZDRiY2E2ZjZiMzcwN2QyNjFiMzMiLCJpYXQiOjE3MjgxNDkzOTUsImV4cCI6MTcyODIzNTc5NX0.FRNPHRXvLeDFZyj9msYqgaGsgN0D1Vw3mejul214TaE",
+							"type": "string"
+						}
+					]
+				},
 				"method": "PUT",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3005/api/users/66db13d669069f5a5b76ff44/enable",
+					"raw": "http://localhost:3005/api/users/670176bd89d0720ebc333d00/enable",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -200,7 +230,7 @@
 					"path": [
 						"api",
 						"users",
-						"66db13d669069f5a5b76ff44",
+						"670176bd89d0720ebc333d00",
 						"enable"
 					]
 				},
@@ -211,10 +241,20 @@
 		{
 			"name": "Deshabilitar Usuarios",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ3ZDRiY2E2ZjZiMzcwN2QyNjFiMzMiLCJpYXQiOjE3MjgxNDkzOTUsImV4cCI6MTcyODIzNTc5NX0.FRNPHRXvLeDFZyj9msYqgaGsgN0D1Vw3mejul214TaE",
+							"type": "string"
+						}
+					]
+				},
 				"method": "PUT",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3005/api/users/66db13d669069f5a5b76ff44/disable",
+					"raw": "http://localhost:3005/api/users/670176bd89d0720ebc333d00/disable",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -223,7 +263,7 @@
 					"path": [
 						"api",
 						"users",
-						"66db13d669069f5a5b76ff44",
+						"670176bd89d0720ebc333d00",
 						"disable"
 					]
 				},
@@ -239,7 +279,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmU4YzJjYTUwNjgyNTkzYWRiNWQwYmIiLCJpYXQiOjE3Mjc3NTMxMzAsImV4cCI6MTcyNzgzOTUzMH0.Lc3tu_QJCs0tm-YJa0DA_Pr6Iy1lzZw1JHuSr0ru8VQ",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzAxNzZiZDg5ZDA3MjBlYmMzMzNkMDAiLCJpYXQiOjE3MjgxNDkyMTgsImV4cCI6MTcyODIzNTYxOH0.0LWm5dH7PI8dt2V821Sty3beS-NmDPlaMvtgHltxEX4",
 							"type": "string"
 						}
 					]
@@ -294,7 +334,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ3ZDRiY2E2ZjZiMzcwN2QyNjFiMzMiLCJpYXQiOjE3Mjc5Njc4NDksImV4cCI6MTcyODA1NDI0OX0.vczHV3BqPlhhg_35McWV0pyOGvsdOnF6uJCBZZIt9-Q",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzAxNzZiZDg5ZDA3MjBlYmMzMzNkMDAiLCJpYXQiOjE3MjgxNDkyMTgsImV4cCI6MTcyODIzNTYxOH0.0LWm5dH7PI8dt2V821Sty3beS-NmDPlaMvtgHltxEX4",
 							"type": "string"
 						}
 					]
@@ -320,11 +360,21 @@
 		{
 			"name": "Crear Roles",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ3ZDRiY2E2ZjZiMzcwN2QyNjFiMzMiLCJpYXQiOjE3MjgxNTEwMzMsImV4cCI6MTcyODIzNzQzM30.jK-Vr1utdIsUeWFf60VIPf69N8Ttej8Pj2I24yzbbnY",
+							"type": "string"
+						}
+					]
+				},
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"roleName\": \"Admin\"\r\n}",
+					"raw": "{\r\n    \"roleName\": \"Asistent\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -350,11 +400,21 @@
 		{
 			"name": "Actualizar Roles",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ3ZDRiY2E2ZjZiMzcwN2QyNjFiMzMiLCJpYXQiOjE3MjgxNTEwMzMsImV4cCI6MTcyODIzNzQzM30.jK-Vr1utdIsUeWFf60VIPf69N8Ttej8Pj2I24yzbbnY",
+							"type": "string"
+						}
+					]
+				},
 				"method": "PUT",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"roleName\": \"Administrador\"\r\n}",
+					"raw": "{\r\n    \"roleName\": \"Asistente\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -362,7 +422,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3005/api/roles/66d86b15c58859de09db964a",
+					"raw": "http://localhost:3005/api/roles/67017e48eb8eeec96d67621e",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -371,7 +431,7 @@
 					"path": [
 						"api",
 						"roles",
-						"66d86b15c58859de09db964a"
+						"67017e48eb8eeec96d67621e"
 					]
 				},
 				"description": "Actualiza los roles del sistema.\n\nRequerimiento: Estar logeado en el sistema Y ser Administrador."
@@ -390,7 +450,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ3ZDRiY2E2ZjZiMzcwN2QyNjFiMzMiLCJpYXQiOjE3MjcyNzQ2NTgsImV4cCI6MTcyNzM2MTA1OH0.kKQ2OXVqnWjR4IkpjVGbBX9OSG-WiuLqM_y2e56gLbw",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ3ZDRiY2E2ZjZiMzcwN2QyNjFiMzMiLCJpYXQiOjE3MjgxNTEwMzMsImV4cCI6MTcyODIzNzQzM30.jK-Vr1utdIsUeWFf60VIPf69N8Ttej8Pj2I24yzbbnY",
 							"type": "string"
 						}
 					]
@@ -416,10 +476,20 @@
 		{
 			"name": "Eiminar Roles",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ3ZDRiY2E2ZjZiMzcwN2QyNjFiMzMiLCJpYXQiOjE3MjgxNTEwMzMsImV4cCI6MTcyODIzNzQzM30.jK-Vr1utdIsUeWFf60VIPf69N8Ttej8Pj2I24yzbbnY",
+							"type": "string"
+						}
+					]
+				},
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3005/api/roles/66d8a81c2f7d28c4b133913f",
+					"raw": "http://localhost:3005/api/roles/66d77691d458301a4aba6790",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -428,7 +498,7 @@
 					"path": [
 						"api",
 						"roles",
-						"66d8a81c2f7d28c4b133913f"
+						"66d77691d458301a4aba6790"
 					]
 				},
 				"description": "Elimina un rol creado en el sistema.\n\nRequerimiento: Estar logeado en el sistema Y ser Administrador."
@@ -443,7 +513,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ3ZDRiY2E2ZjZiMzcwN2QyNjFiMzMiLCJpYXQiOjE3Mjc3NDg5NTUsImV4cCI6MTcyNzgzNTM1NX0.JgOg2umDEnDWuvEgKC5nav8SEQIywbUFL4TPusmdocw",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ5YTNkMjg4MTFlNDRhZWE4YjFkZDYiLCJpYXQiOjE3Mjg2OTA1MDMsImV4cCI6MTcyODc3NjkwM30.SpaaWVIkiaCsLMxc0Bna2nVmkVOjGafivObvRGtjEoI",
 							"type": "string"
 						}
 					]
@@ -452,7 +522,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"titulo\": \"Nuevas Tendencias en Machine Learning\",\r\n  \"fecha\": \"2023-10-01T00:00:00.000Z\",\r\n  \"proyecto\": \"634d9bfa2b1f4e1b2c3d4e59\",\r\n  \"revista\": \"Revista Internacional de IA\",\r\n  \"resumen\": \"Esta publicación analiza las últimas tendencias en machine learning...\",\r\n  \"palabrasClave\": [\"Machine Learning\", \"Inteligencia Artificial\"],\r\n  \"tipoPublicacion\": \"Articulo\",\r\n  \"idioma\": \"Español\",\r\n  \"anexos\": [\"https://ejemplo.com/anexo1.pdf\", \"https://ejemplo.com/anexo2.pdf\"]\r\n}",
+					"raw": "{\r\n  \"titulo\": \"Modularizacion de Proyectos\",\r\n  \"fecha\": \"2024-10-01T00:00:00.000Z\",\r\n  \"proyecto\": \"6709bbdf1c400205daed34be\",\r\n  \"revista\": \"Revista Internacional de Programacion\",\r\n  \"resumen\": \"Esta publicación analiza las forma de modularizar...\",\r\n  \"palabrasClave\": [\"Programacion\", \"Node JS\"],\r\n  \"tipoPublicacion\": \"Articulo\",\r\n  \"idioma\": \"Español\",\r\n  \"anexos\": [\"https://ejemplo.com/anexo1.pdf\", \"https://ejemplo.com/anexo2.pdf\"]\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -483,15 +553,15 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ3ZDRiY2E2ZjZiMzcwN2QyNjFiMzMiLCJpYXQiOjE3Mjc0Mzg1NDIsImV4cCI6MTcyNzUyNDk0Mn0.aeb-eFCm5ADE73pXJZpOWtPMiEDnIIW9AxaqDi2uVa8",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ3ZDRiY2E2ZjZiMzcwN2QyNjFiMzMiLCJpYXQiOjE3MjgxNTEwMzMsImV4cCI6MTcyODIzNzQzM30.jK-Vr1utdIsUeWFf60VIPf69N8Ttej8Pj2I24yzbbnY",
 							"type": "string"
 						}
 					]
 				},
-				"method": "POST",
+				"method": "PUT",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3005/api/publications/restore/66e35095a8c45ab613a20231",
+					"raw": "http://localhost:3005/api/publications/restore/66e59c936ccc55df8408d5f3",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -501,7 +571,7 @@
 						"api",
 						"publications",
 						"restore",
-						"66e35095a8c45ab613a20231"
+						"66e59c936ccc55df8408d5f3"
 					]
 				},
 				"description": "Endpoint para la restauracion de Publicaciones que han sido eliminadas.\r\n\r\nRequisito: Ser Administrador."
@@ -516,7 +586,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ5YTNkMjg4MTFlNDRhZWE4YjFkZDYiLCJpYXQiOjE3Mjc5NjgyMTAsImV4cCI6MTcyODA1NDYxMH0.gKht0ytrOdEDXzVouZ22_YNMsCJ4-Pq6dPtPKR8wYlo",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ3ZDRiY2E2ZjZiMzcwN2QyNjFiMzMiLCJpYXQiOjE3MjgxNTEwMzMsImV4cCI6MTcyODIzNzQzM30.jK-Vr1utdIsUeWFf60VIPf69N8Ttej8Pj2I24yzbbnY",
 							"type": "string"
 						}
 					]
@@ -525,7 +595,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"resumen\": \"Actualización: Se agregaron nuevas secciones sobre redes neuronales.\",\r\n  \"palabrasClave\": [\"Machine Learning\", \"Inteligencia Artificial\", \"Redes Neuronales\"],\r\n  \"estado\": \"Revisado\"\r\n}",
+					"raw": "{\r\n  \"resumen\": \"Actualización: Se agregaron nuevas secciones a modularizar....\",\r\n  \"palabrasClave\": [\"Parametrizacion\"],\r\n  \"estado\": \"Revisado\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -533,7 +603,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3005/api/publications/66d9f71976c4141cb4812abe",
+					"raw": "http://localhost:3005/api/publications/67019684836f5ab9169c48da",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -542,7 +612,7 @@
 					"path": [
 						"api",
 						"publications",
-						"66d9f71976c4141cb4812abe"
+						"67019684836f5ab9169c48da"
 					]
 				},
 				"description": "Actualizar una publicacion.\n\nRequerimientos: Ser Investigador y estar logeado en el sistema, ser el dueño de esa publicacion."
@@ -552,6 +622,16 @@
 		{
 			"name": "Obtener Todas las Publicaciones.",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ3ZDRiY2E2ZjZiMzcwN2QyNjFiMzMiLCJpYXQiOjE3MjgxNTEwMzMsImV4cCI6MTcyODIzNzQzM30.jK-Vr1utdIsUeWFf60VIPf69N8Ttej8Pj2I24yzbbnY",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
 				"header": [],
 				"url": {
@@ -609,7 +689,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3005/api/publications/search?titulo=Prueba de Proyecto",
+					"raw": "http://localhost:3005/api/publications/search?query=Prueba de Proyecto",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -622,7 +702,7 @@
 					],
 					"query": [
 						{
-							"key": "titulo",
+							"key": "query",
 							"value": "Prueba de Proyecto"
 						}
 					]
@@ -639,7 +719,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmU4YzJjYTUwNjgyNTkzYWRiNWQwYmIiLCJpYXQiOjE3Mjc3NTA5NjAsImV4cCI6MTcyNzgzNzM2MH0.wNqJPXff_JQnnNtAa2jjo5ev5Zg8k8JFTwbOCD4CBQA",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ3ZDRiY2E2ZjZiMzcwN2QyNjFiMzMiLCJpYXQiOjE3MjgxNTEwMzMsImV4cCI6MTcyODIzNzQzM30.jK-Vr1utdIsUeWFf60VIPf69N8Ttej8Pj2I24yzbbnY",
 							"type": "string"
 						}
 					]
@@ -647,7 +727,7 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3005/api/publications/66e35095a8c45ab613a20231",
+					"raw": "http://localhost:3005/api/publications/66e59c936ccc55df8408d5f3",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -656,7 +736,7 @@
 					"path": [
 						"api",
 						"publications",
-						"66e35095a8c45ab613a20231"
+						"66e59c936ccc55df8408d5f3"
 					]
 				},
 				"description": "Eliminar una publicacion registrada.\n\nRequerimientos: la publicacion debe de existir, debe estar logeado en el sistema y se el owner de la publicacion o ser administrador."
@@ -698,11 +778,21 @@
 		{
 			"name": "Crear Proyectos",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ3ZDRiY2E2ZjZiMzcwN2QyNjFiMzMiLCJpYXQiOjE3MjgxNTEwMzMsImV4cCI6MTcyODIzNzQzM30.jK-Vr1utdIsUeWFf60VIPf69N8Ttej8Pj2I24yzbbnY",
+							"type": "string"
+						}
+					]
+				},
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"nombre\": \"Nuevo Proyecto\",\r\n  \"descripcion\": \"Descripción del nuevo proyecto\",\r\n  \"objetivos\": \"Objetivos del proyecto\",\r\n  \"presupuesto\": 10000,\r\n  \"cronograma\": {\r\n    \"fechaInicio\": \"2024-01-01T00:00:00.000Z\",\r\n    \"fechaFin\": \"2024-12-31T00:00:00.000Z\"\r\n  },\r\n  \"investigadores\": [\"66d7d4bca6f6b3707d261b33\"],\r\n  \"recursos\": [\"Recurso 1\", \"Recurso 2\"],\r\n  \"hitos\": [\r\n    {\r\n      \"nombre\": \"Hito 1\",\r\n      \"fecha\": \"2024-06-30T00:00:00.000Z\",\r\n      \"entregable\": \"Entregable 1\"\r\n    }\r\n  ],\r\n  \"estado\": \"Planeado\"\r\n}\r\n",
+					"raw": "{\r\n  \"nombre\": \"Probando Modularidad\",\r\n  \"descripcion\": \"Descripción del nuevo proyecto\",\r\n  \"objetivos\": \"Objetivos del proyecto\",\r\n  \"presupuesto\": 10000,\r\n  \"cronograma\": {\r\n    \"fechaInicio\": \"2024-01-01T00:00:00.000Z\",\r\n    \"fechaFin\": \"2024-12-31T00:00:00.000Z\"\r\n  },\r\n  \"recursos\": [\"Recurso 1\", \"Recurso 2\"],\r\n  \"hitos\": [\r\n    {\r\n      \"nombre\": \"Hito 1\",\r\n      \"fecha\": \"2024-06-30T00:00:00.000Z\",\r\n      \"entregable\": \"Entregable 1\"\r\n    }\r\n  ]\r\n}\r\n",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -733,7 +823,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ3ZDRiY2E2ZjZiMzcwN2QyNjFiMzMiLCJpYXQiOjE3Mjc0Mzk0NDgsImV4cCI6MTcyNzUyNTg0OH0.JYck2LrPOG5Hm9qJSpWETHkP4Zff-jG1saLrHI51_Ss",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ3ZDRiY2E2ZjZiMzcwN2QyNjFiMzMiLCJpYXQiOjE3MjgxNTEwMzMsImV4cCI6MTcyODIzNzQzM30.jK-Vr1utdIsUeWFf60VIPf69N8Ttej8Pj2I24yzbbnY",
 							"type": "string"
 						}
 					]
@@ -741,7 +831,7 @@
 				"method": "PUT",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3005/api/projects/restore/66db19d7ac4e6e65b64c921d",
+					"raw": "http://localhost:3005/api/projects/restore/67018428a540d912a0fd537e",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -751,7 +841,7 @@
 						"api",
 						"projects",
 						"restore",
-						"66db19d7ac4e6e65b64c921d"
+						"67018428a540d912a0fd537e"
 					]
 				},
 				"description": "Endpoint para restaurar los proyectos que han sido eliminados.\n\nRequisito: Ser Administrador."
@@ -761,6 +851,16 @@
 		{
 			"name": "Actualizar Proyecto",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ3ZDRiY2E2ZjZiMzcwN2QyNjFiMzMiLCJpYXQiOjE3MjgxNTEwMzMsImV4cCI6MTcyODIzNzQzM30.jK-Vr1utdIsUeWFf60VIPf69N8Ttej8Pj2I24yzbbnY",
+							"type": "string"
+						}
+					]
+				},
 				"method": "PUT",
 				"header": [],
 				"body": {
@@ -773,7 +873,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3005/api/projects/64d9c308aab9b5db033457d1",
+					"raw": "http://localhost:3005/api/projects/67018428a540d912a0fd537e",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -782,7 +882,7 @@
 					"path": [
 						"api",
 						"projects",
-						"64d9c308aab9b5db033457d1"
+						"67018428a540d912a0fd537e"
 					]
 				},
 				"description": "Actualizar un proyecto.\n\nRequerimientos: Ser Investigador y estar logeado en el sistema."
@@ -792,6 +892,16 @@
 		{
 			"name": "Obtener todos los Proyectos",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ3ZDRiY2E2ZjZiMzcwN2QyNjFiMzMiLCJpYXQiOjE3MjgxNTEwMzMsImV4cCI6MTcyODIzNzQzM30.jK-Vr1utdIsUeWFf60VIPf69N8Ttej8Pj2I24yzbbnY",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
 				"header": [],
 				"url": {
@@ -813,10 +923,20 @@
 		{
 			"name": "Obtener Proyecto por ID",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ3ZDRiY2E2ZjZiMzcwN2QyNjFiMzMiLCJpYXQiOjE3MjgxNTEwMzMsImV4cCI6MTcyODIzNzQzM30.jK-Vr1utdIsUeWFf60VIPf69N8Ttej8Pj2I24yzbbnY",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3005/api/projects/66d9f71976c4141cb4812abe",
+					"raw": "http://localhost:3005/api/projects/67018428a540d912a0fd537e",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -825,7 +945,7 @@
 					"path": [
 						"api",
 						"projects",
-						"66d9f71976c4141cb4812abe"
+						"67018428a540d912a0fd537e"
 					]
 				},
 				"description": "Traer un proyecto por ID.\n\nNo se necesita estar logeado en el sistema, ni tener un rol en especifico."
@@ -838,7 +958,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3005/api/projects/search?query=investigación",
+					"raw": "http://localhost:3005/api/projects/search?query=modularidad",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -852,7 +972,7 @@
 					"query": [
 						{
 							"key": "query",
-							"value": "investigación"
+							"value": "modularidad"
 						}
 					]
 				},
@@ -868,7 +988,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ5YTNkMjg4MTFlNDRhZWE4YjFkZDYiLCJpYXQiOjE3Mjc0MzkzMzksImV4cCI6MTcyNzUyNTczOX0.x9NluvERP0rwYtzLQVxXWDmOm6h4X6NxTuddAHrNQY0",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ3ZDRiY2E2ZjZiMzcwN2QyNjFiMzMiLCJpYXQiOjE3MjgxNTEwMzMsImV4cCI6MTcyODIzNzQzM30.jK-Vr1utdIsUeWFf60VIPf69N8Ttej8Pj2I24yzbbnY",
 							"type": "string"
 						}
 					]
@@ -876,7 +996,7 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3005/api/projects/66db19d7ac4e6e65b64c921d",
+					"raw": "http://localhost:3005/api/projects/67018428a540d912a0fd537e",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -885,7 +1005,7 @@
 					"path": [
 						"api",
 						"projects",
-						"66db19d7ac4e6e65b64c921d"
+						"67018428a540d912a0fd537e"
 					]
 				},
 				"description": "Eliminar una publicacion registrada.\n\nRequerimientos: la publicacion debe de existir, debe estar logeado en el sistema y ser administrador."
@@ -900,7 +1020,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmU4YzJjYTUwNjgyNTkzYWRiNWQwYmIiLCJpYXQiOjE3Mjc3NTA5NjAsImV4cCI6MTcyNzgzNzM2MH0.wNqJPXff_JQnnNtAa2jjo5ev5Zg8k8JFTwbOCD4CBQA",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ3ZDRiY2E2ZjZiMzcwN2QyNjFiMzMiLCJpYXQiOjE3MjkzNzQ2ODksImV4cCI6MTcyOTQ2MTA4OX0.u9er9SmDMfVedflJh8By0CRKEfZ5AS9iocNMkBAIdpM",
 							"type": "string"
 						}
 					]
@@ -909,7 +1029,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "\r\n{\r\n    \"puntuacion\": 85,\r\n    \"comentarios\": \"El proyecto presenta un enfoque innovador y un plan de trabajo bien estructurado.\"\r\n}",
+					"raw": "\r\n{\r\n    \"puntuacion\": 92,\r\n    \"comentarios\": \"El proyecto presenta un enfoque innovador y un plan de trabajo bien estructurado.\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -917,7 +1037,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3005/api/evaluations/projects/66d9f71976c4141cb4812abe",
+					"raw": "http://localhost:3005/api/evaluations/projects/66db19d7ac4e6e65b64c921d",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -927,7 +1047,7 @@
 						"api",
 						"evaluations",
 						"projects",
-						"66d9f71976c4141cb4812abe"
+						"66db19d7ac4e6e65b64c921d"
 					]
 				},
 				"description": "Endpoint que permite crear evaluaciones de los proyectos.\r\n\r\nRequisito ser Administrador."
@@ -942,7 +1062,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ3ZDRiY2E2ZjZiMzcwN2QyNjFiMzMiLCJpYXQiOjE3Mjc3NTAxMzEsImV4cCI6MTcyNzgzNjUzMX0.Mur3oWhFLFRyZr9eXtDF7zI1jWUrqilMLQuog7sysqE",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ3ZDRiY2E2ZjZiMzcwN2QyNjFiMzMiLCJpYXQiOjE3MjgxNTEwMzMsImV4cCI6MTcyODIzNzQzM30.jK-Vr1utdIsUeWFf60VIPf69N8Ttej8Pj2I24yzbbnY",
 							"type": "string"
 						}
 					]
@@ -959,7 +1079,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3005/api/evaluations/66fb60adb9c590ff9dbf9dcb",
+					"raw": "http://localhost:3005/api/evaluations/67019f4dc2d859654e57027a",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -968,7 +1088,7 @@
 					"path": [
 						"api",
 						"evaluations",
-						"66fb60adb9c590ff9dbf9dcb"
+						"67019f4dc2d859654e57027a"
 					]
 				},
 				"description": "Endpoint que permite actualizar evaluaciones de los proyectos.\r\n\r\nRequisito ser Administrador."
@@ -983,7 +1103,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ3ZDRiY2E2ZjZiMzcwN2QyNjFiMzMiLCJpYXQiOjE3Mjc3NTAxMzEsImV4cCI6MTcyNzgzNjUzMX0.Mur3oWhFLFRyZr9eXtDF7zI1jWUrqilMLQuog7sysqE",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ3ZDRiY2E2ZjZiMzcwN2QyNjFiMzMiLCJpYXQiOjE3MjgxNTEwMzMsImV4cCI6MTcyODIzNzQzM30.jK-Vr1utdIsUeWFf60VIPf69N8Ttej8Pj2I24yzbbnY",
 							"type": "string"
 						}
 					]
@@ -991,7 +1111,7 @@
 				"method": "PUT",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3005/api/evaluations/66fb60adb9c590ff9dbf9dcb/restore",
+					"raw": "http://localhost:3005/api/evaluations/67019f4dc2d859654e57027a/restore",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -1000,7 +1120,7 @@
 					"path": [
 						"api",
 						"evaluations",
-						"66fb60adb9c590ff9dbf9dcb",
+						"67019f4dc2d859654e57027a",
 						"restore"
 					]
 				},
@@ -1016,7 +1136,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ3ZDRiY2E2ZjZiMzcwN2QyNjFiMzMiLCJpYXQiOjE3Mjc3NTAxMzEsImV4cCI6MTcyNzgzNjUzMX0.Mur3oWhFLFRyZr9eXtDF7zI1jWUrqilMLQuog7sysqE",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ3ZDRiY2E2ZjZiMzcwN2QyNjFiMzMiLCJpYXQiOjE3MjgxNTEwMzMsImV4cCI6MTcyODIzNzQzM30.jK-Vr1utdIsUeWFf60VIPf69N8Ttej8Pj2I24yzbbnY",
 							"type": "string"
 						}
 					]
@@ -1024,7 +1144,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3005/api/evaluations/projects/66d9f71976c4141cb4812abe",
+					"raw": "http://localhost:3005/api/evaluations/projects/67018428a540d912a0fd537e",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -1034,7 +1154,7 @@
 						"api",
 						"evaluations",
 						"projects",
-						"66d9f71976c4141cb4812abe"
+						"67018428a540d912a0fd537e"
 					]
 				},
 				"description": "Endpoint que permite obtener las evaluaciones por proyectos.\r\n\r\nRequisito: Estar logeado en el sistema."
@@ -1049,7 +1169,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ3ZDRiY2E2ZjZiMzcwN2QyNjFiMzMiLCJpYXQiOjE3Mjc3NTAxMzEsImV4cCI6MTcyNzgzNjUzMX0.Mur3oWhFLFRyZr9eXtDF7zI1jWUrqilMLQuog7sysqE",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ3ZDRiY2E2ZjZiMzcwN2QyNjFiMzMiLCJpYXQiOjE3MjgxNTEwMzMsImV4cCI6MTcyODIzNzQzM30.jK-Vr1utdIsUeWFf60VIPf69N8Ttej8Pj2I24yzbbnY",
 							"type": "string"
 						}
 					]
@@ -1057,7 +1177,7 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3005/api/evaluations/66fb60adb9c590ff9dbf9dcb",
+					"raw": "http://localhost:3005/api/evaluations/67019f4dc2d859654e57027a",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -1066,7 +1186,7 @@
 					"path": [
 						"api",
 						"evaluations",
-						"66fb60adb9c590ff9dbf9dcb"
+						"67019f4dc2d859654e57027a"
 					]
 				},
 				"description": "Endpoint que permite eliminar evaluaciones del sistema, pero no de la base de datos.\r\n\r\nRequisito: Ser Administrador."
@@ -1081,7 +1201,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmU4YzJjYTUwNjgyNTkzYWRiNWQwYmIiLCJpYXQiOjE3Mjc3NTI3NjUsImV4cCI6MTcyNzgzOTE2NX0.N8ZlDXy_UnHW98cTOAPzj17gTSXSP6ArXovJm-vO7xs",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ5YTNkMjg4MTFlNDRhZWE4YjFkZDYiLCJpYXQiOjE3Mjg1MTc3NTIsImV4cCI6MTcyODYwNDE1Mn0.5I6fhjnnnj0ctP4xGrKRYCi17ggPlGO1NH4YhUKenj8",
 							"type": "string"
 						}
 					]
@@ -1121,7 +1241,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ3ZDRiY2E2ZjZiMzcwN2QyNjFiMzMiLCJpYXQiOjE3Mjc3NTMyMDUsImV4cCI6MTcyNzgzOTYwNX0.lakHGQ06cJZ6RfR-AUS1wkVrBVsNTeq-ePORdhKl95c",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ3ZDRiY2E2ZjZiMzcwN2QyNjFiMzMiLCJpYXQiOjE3MjgxNTEwMzMsImV4cCI6MTcyODIzNzQzM30.jK-Vr1utdIsUeWFf60VIPf69N8Ttej8Pj2I24yzbbnY",
 							"type": "string"
 						}
 					]
@@ -1138,7 +1258,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3005/api/requests/66fb6a513d992c962d613b0c",
+					"raw": "http://localhost:3005/api/requests/6701a5dd25e3b47ecb71c86c",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -1147,7 +1267,7 @@
 					"path": [
 						"api",
 						"requests",
-						"66fb6a513d992c962d613b0c"
+						"6701a5dd25e3b47ecb71c86c"
 					]
 				},
 				"description": "Endpoint que permite actualizar solicitudes en el sistema.\r\n\r\nRequisito: Estar logeado, solo los administradores cambiaran los estados de las solicitudes."
@@ -1162,7 +1282,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ3ZDRiY2E2ZjZiMzcwN2QyNjFiMzMiLCJpYXQiOjE3Mjc3NTMyMDUsImV4cCI6MTcyNzgzOTYwNX0.lakHGQ06cJZ6RfR-AUS1wkVrBVsNTeq-ePORdhKl95c",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ3ZDRiY2E2ZjZiMzcwN2QyNjFiMzMiLCJpYXQiOjE3MjgxNTEwMzMsImV4cCI6MTcyODIzNzQzM30.jK-Vr1utdIsUeWFf60VIPf69N8Ttej8Pj2I24yzbbnY",
 							"type": "string"
 						}
 					]
@@ -1170,7 +1290,7 @@
 				"method": "PUT",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3005/api/requests/66fb6a513d992c962d613b0c/restore",
+					"raw": "http://localhost:3005/api/requests/6701a5dd25e3b47ecb71c86c/restore",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -1179,7 +1299,7 @@
 					"path": [
 						"api",
 						"requests",
-						"66fb6a513d992c962d613b0c",
+						"6701a5dd25e3b47ecb71c86c",
 						"restore"
 					]
 				},
@@ -1227,7 +1347,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ3ZDRiY2E2ZjZiMzcwN2QyNjFiMzMiLCJpYXQiOjE3Mjc3NTM0NTksImV4cCI6MTcyNzgzOTg1OX0.Mdnys_lCH0pNaUGVRnQGiAJpCXQdAImroHLEann0_J0",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ3ZDRiY2E2ZjZiMzcwN2QyNjFiMzMiLCJpYXQiOjE3MjgxNTEwMzMsImV4cCI6MTcyODIzNzQzM30.jK-Vr1utdIsUeWFf60VIPf69N8Ttej8Pj2I24yzbbnY",
 							"type": "string"
 						}
 					]
@@ -1258,7 +1378,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ3ZDRiY2E2ZjZiMzcwN2QyNjFiMzMiLCJpYXQiOjE3Mjc3NTMyMDUsImV4cCI6MTcyNzgzOTYwNX0.lakHGQ06cJZ6RfR-AUS1wkVrBVsNTeq-ePORdhKl95c",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ3ZDRiY2E2ZjZiMzcwN2QyNjFiMzMiLCJpYXQiOjE3MjgxNTEwMzMsImV4cCI6MTcyODIzNzQzM30.jK-Vr1utdIsUeWFf60VIPf69N8Ttej8Pj2I24yzbbnY",
 							"type": "string"
 						}
 					]
@@ -1266,7 +1386,7 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3005/api/requests/66fb6a513d992c962d613b0c",
+					"raw": "http://localhost:3005/api/requests/6701a5dd25e3b47ecb71c86c",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -1275,7 +1395,7 @@
 					"path": [
 						"api",
 						"requests",
-						"66fb6a513d992c962d613b0c"
+						"6701a5dd25e3b47ecb71c86c"
 					]
 				},
 				"description": "Endpoint que permite eliminar solicitudes en el sistema, pero no se elimina de la base de datos.\r\n\r\nRequisito: Ser Administrador."
@@ -1290,7 +1410,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ3ZDRiY2E2ZjZiMzcwN2QyNjFiMzMiLCJpYXQiOjE3Mjc5ODM1MzcsImV4cCI6MTcyODA2OTkzN30.hj8CKaVF3hd4HDtvMSZNWmWxFJWA0TQtcSFmKnU-Zsg",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ5YTNkMjg4MTFlNDRhZWE4YjFkZDYiLCJpYXQiOjE3MjkzNjI1ODcsImV4cCI6MTcyOTQ0ODk4N30.RFb3UWgxvX-PU2maIkx3r8-vKYFEZkWBxwf3tE0bS6w",
 							"type": "string"
 						}
 					]
@@ -1298,7 +1418,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3005/api/reports/projects/csv",
+					"raw": "http://localhost:3005/api/reports/investigator/projects/csv",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -1307,6 +1427,7 @@
 					"path": [
 						"api",
 						"reports",
+						"investigator",
 						"projects",
 						"csv"
 					]
@@ -1323,7 +1444,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ3ZDRiY2E2ZjZiMzcwN2QyNjFiMzMiLCJpYXQiOjE3Mjc5ODM1MzcsImV4cCI6MTcyODA2OTkzN30.hj8CKaVF3hd4HDtvMSZNWmWxFJWA0TQtcSFmKnU-Zsg",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ5YTNkMjg4MTFlNDRhZWE4YjFkZDYiLCJpYXQiOjE3MjkzNjI1ODcsImV4cCI6MTcyOTQ0ODk4N30.RFb3UWgxvX-PU2maIkx3r8-vKYFEZkWBxwf3tE0bS6w",
 							"type": "string"
 						}
 					]
@@ -1331,7 +1452,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3005/api/reports/projects/pdf",
+					"raw": "http://localhost:3005/api/reports/investigator/projects/pdf",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -1340,6 +1461,7 @@
 					"path": [
 						"api",
 						"reports",
+						"investigator",
 						"projects",
 						"pdf"
 					]
@@ -1356,7 +1478,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ3ZDRiY2E2ZjZiMzcwN2QyNjFiMzMiLCJpYXQiOjE3Mjc5ODM1MzcsImV4cCI6MTcyODA2OTkzN30.hj8CKaVF3hd4HDtvMSZNWmWxFJWA0TQtcSFmKnU-Zsg",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ3ZDRiY2E2ZjZiMzcwN2QyNjFiMzMiLCJpYXQiOjE3MjkyOTc3OTYsImV4cCI6MTcyOTM4NDE5Nn0.ebE3xfeAWvOqD5qHlYEQ-n-TNv85I1WgqzJuyxcf_nI",
 							"type": "string"
 						}
 					]
@@ -1364,7 +1486,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3005/api/reports/investigators/csv",
+					"raw": "http://localhost:3005/api/reports/investigators/evaluations/csv",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -1374,6 +1496,7 @@
 						"api",
 						"reports",
 						"investigators",
+						"evaluations",
 						"csv"
 					]
 				},
@@ -1389,7 +1512,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ3ZDRiY2E2ZjZiMzcwN2QyNjFiMzMiLCJpYXQiOjE3Mjc5ODM1MzcsImV4cCI6MTcyODA2OTkzN30.hj8CKaVF3hd4HDtvMSZNWmWxFJWA0TQtcSFmKnU-Zsg",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ5YTNkMjg4MTFlNDRhZWE4YjFkZDYiLCJpYXQiOjE3MjkzNjI1ODcsImV4cCI6MTcyOTQ0ODk4N30.RFb3UWgxvX-PU2maIkx3r8-vKYFEZkWBxwf3tE0bS6w",
 							"type": "string"
 						}
 					]
@@ -1397,7 +1520,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3005/api/reports/investigators/pdf",
+					"raw": "http://localhost:3005/api/reports/investigator/evaluations/pdf",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -1406,11 +1529,144 @@
 					"path": [
 						"api",
 						"reports",
-						"investigators",
+						"investigator",
+						"evaluations",
 						"pdf"
 					]
 				},
 				"description": "Obtener el Informe de Evaluaciones e Investigadores en PDF.\r\n\r\nRequisito: Ser Administrador."
+			},
+			"response": []
+		},
+		{
+			"name": "Informe Proyectos PDF Administradores",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ3ZDRiY2E2ZjZiMzcwN2QyNjFiMzMiLCJpYXQiOjE3MjkzODU0MDYsImV4cCI6MTcyOTQ3MTgwNn0.UPOtob6aKddTj3py2U20oTIVNmcwNC9PGIlCP7k0N94",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3005/api/reports/admin/projects/pdf",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"api",
+						"reports",
+						"admin",
+						"projects",
+						"pdf"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Informe Proyectos CSV Administradores",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ3ZDRiY2E2ZjZiMzcwN2QyNjFiMzMiLCJpYXQiOjE3MjkzODMxMDgsImV4cCI6MTcyOTQ2OTUwOH0.3MNuJnH65cdiTDkpTxGlzl1uxQohLdJZxoTc80RMlF0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3005/api/reports/admin/projects/csv",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"api",
+						"reports",
+						"admin",
+						"projects",
+						"csv"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Informe Evaluaciones CSV Administradores",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ3ZDRiY2E2ZjZiMzcwN2QyNjFiMzMiLCJpYXQiOjE3MjkzODMxMDgsImV4cCI6MTcyOTQ2OTUwOH0.3MNuJnH65cdiTDkpTxGlzl1uxQohLdJZxoTc80RMlF0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3005/api/reports/admin/evaluations/csv",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"api",
+						"reports",
+						"admin",
+						"evaluations",
+						"csv"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Informe Evaluaciones PDF Administradores",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ3ZDRiY2E2ZjZiMzcwN2QyNjFiMzMiLCJpYXQiOjE3MjkzODU0MDYsImV4cCI6MTcyOTQ3MTgwNn0.UPOtob6aKddTj3py2U20oTIVNmcwNC9PGIlCP7k0N94",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3005/api/reports/admin/evaluations/pdf",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"api",
+						"reports",
+						"admin",
+						"evaluations",
+						"pdf"
+					]
+				}
 			},
 			"response": []
 		}

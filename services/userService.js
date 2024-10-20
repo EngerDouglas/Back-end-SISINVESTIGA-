@@ -2,7 +2,8 @@ import User from "../models/User.js";
 import Role from "../models/Role.js";
 import bcrypt from "bcryptjs";
 import jwt from 'jsonwebtoken';
-import { BadRequestError, ConflictError, NotFoundError, UnauthorizedError, ForbiddenError,  } from "../utils/errors.js";
+import { BadRequestError, ConflictError, NotFoundError, UnauthorizedError, ForbiddenError, ManyRequest } from "../utils/errors.js";
+import rateLimit from 'express-rate-limit';
 
 class UserService {
 
@@ -70,7 +71,24 @@ class UserService {
   // *********************** END ******************* //
 
   // *********************** Iniciando Sesion ******************* //
-  static async loginUser(email, password){
+  static loginLimiter = rateLimit({
+    windowMs: 15 * 60 * 1000, // 15 minutos
+    max: 5, // Limita cada usuario a 5 intentos de inicio de sesión por ventana
+    standardHeaders: true,
+    legacyHeaders: false,
+    keyGenerator: (req) => {
+      return req.body.email || req.ip; // Usa el email como clave, o la IP si no está disponible
+    },
+    skip: (req) => {
+      return req.successfulLogin === true;
+    },
+    handler: (req, res, next) => {
+      const error = new ManyRequest('Demasiados intentos de inicio de sesión, por favor intente nuevamente después de 15 minutos');
+      next(error);
+    }
+  });
+
+  static async loginUser(email, password ) {
     const user = await User.findOne({ email }).populate('role');
     if (!user) {
       throw new UnauthorizedError('Credenciales incorrectas');
@@ -92,7 +110,6 @@ class UserService {
     const token = await user.generateAuthToken();
     return { user, token };
   }
-
   // *********************** END ******************* //
 
   // *********************** Cerrando Sesion ******************* //

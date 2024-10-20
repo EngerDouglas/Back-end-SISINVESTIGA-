@@ -1,4 +1,5 @@
 import express from "express";
+import userService from "../services/userService.js";
 import {
   createUser,
   verifyEmail,
@@ -29,7 +30,7 @@ const UsersRouter = express.Router();
 // Rutas de los usuarios
 UsersRouter.post("/register", validateCreateUser, createUser);
 UsersRouter.post("/verify-email", verifyEmail);
-UsersRouter.post("/login", logInUser);
+UsersRouter.post("/login", userService.loginLimiter, logInUser);
 UsersRouter.post("/logout", auth, logOutUser);
 UsersRouter.post("/logout-all", auth, logOutAllUser);
 UsersRouter.post("/forgot-password", validateForgotPassword, forgotPassword);

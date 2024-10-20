@@ -68,9 +68,11 @@ export const verifyEmail = async (req, res, next) => {
 export const logInUser = async (req, res, next) => {
   try {
     const { email, password } = req.body;
+    const ip = req.ip;
     const { user, token } = await UserService.loginUser(email, password);
+    
+    req.successfulLogin = true;
 
-    const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
     const geo = geoip.lookup(ip);
     const ua = useragent.parse(req.headers['user-agent']);
 

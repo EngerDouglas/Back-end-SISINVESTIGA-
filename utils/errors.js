@@ -40,6 +40,12 @@ export class ConflictError extends AppError {
   }
 }
 
+export class ManyRequest extends AppError {
+  constructor(message){
+    super(message, 429)
+  }
+}
+
 export class InternalServerError extends AppError {
   constructor(message){
     super(message, 500)
