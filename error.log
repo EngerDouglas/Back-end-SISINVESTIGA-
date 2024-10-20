@@ -334,3 +334,10 @@
 {"errors":{},"isOperational":true,"level":"error","status":"fail","statusCode":400,"timestamp":"2024-10-19T22:12:22.727Z"}
 {"errors":{},"isOperational":true,"level":"error","status":"fail","statusCode":400,"timestamp":"2024-10-19T22:15:41.818Z"}
 {"isOperational":true,"level":"error","status":"fail","statusCode":401,"timestamp":"2024-10-19T22:26:17.105Z"}
+{"errors":{},"isOperational":true,"level":"error","status":"fail","statusCode":400,"timestamp":"2024-10-19T23:26:34.102Z"}
+{"errors":{"code":"ENOENT","errno":-4058,"path":"C:\\Users\\carlo\\OneDrive\\code\\2024\\NodeJS\\Back-end-SISINVESTIGA-\\templates\\assets\\fonts\\Roboto-Regular.ttf","syscall":"open"},"isOperational":true,"level":"error","status":"fail","statusCode":400,"timestamp":"2024-10-19T23:27:45.795Z"}
+{"errors":{},"isOperational":true,"level":"error","status":"fail","statusCode":400,"timestamp":"2024-10-19T23:43:26.410Z"}
+{"errors":{},"isOperational":true,"level":"error","status":"fail","statusCode":400,"timestamp":"2024-10-19T23:44:55.350Z"}
+{"errors":{},"isOperational":true,"level":"error","status":"fail","statusCode":400,"timestamp":"2024-10-20T00:22:42.041Z"}
+{"errors":{},"isOperational":true,"level":"error","status":"fail","statusCode":400,"timestamp":"2024-10-20T00:57:34.710Z"}
+{"errors":{},"isOperational":true,"level":"error","status":"fail","statusCode":400,"timestamp":"2024-10-20T00:58:09.487Z"}
