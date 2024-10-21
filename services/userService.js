@@ -145,16 +145,15 @@ class UserService {
       user.password = updates.newPassword;
     }
 
-    if (updates.roleName) {
-      const roleDocument = await Role.findOne({ roleName: updates.roleName });
-      if (!roleDocument) {
-        throw new BadRequestError('Rol no válido');
-      }
-      user.role = roleDocument._id;
-    }
+    const allowedUpdates = [
+      'nombre',
+      'apellido',
+      'email',
+      'especializacion',
+      'responsabilidades',
+      'fotoPerfil',
+    ];
 
-    const allowedUpdates = ['nombre', 'apellido', 'email', 'especializacion', 'responsabilidades', 'fotoPerfil'];
-    // Actualizar campos permitidos
     for (const key of allowedUpdates) {
       if (updates[key] !== undefined) {
         if (key === 'responsabilidades' && typeof updates[key] === 'string') {
@@ -166,11 +165,28 @@ class UserService {
     }
 
     await user.save();
-    await user.populate('role', 'roleName -_id');
     return user;
   }
 
   // *********************** END ******************* //
+
+  static async updateUserRole(userId, roleId) {
+    const user = await User.findById(userId);
+    if (!user) {
+      throw new NotFoundError('Usuario no encontrado');
+    }
+
+    const role = await Role.findById(roleId);
+    if (!role) {
+      throw new BadRequestError('Rol no válido');
+    }
+
+    user.role = roleId;
+    await user.save();
+    await user.populate('role');
+
+    return user;
+  }
 
   // *********************** Actualizando tu propio Usuario ******************* //
 
@@ -203,7 +219,7 @@ class UserService {
     }
 
     await user.save();
-    await user.populate('role', 'roleName -_id');
+    await user.populate('role', 'roleName');
     return user;
   }
 
@@ -226,7 +242,7 @@ class UserService {
   static async getAllUsers() {
     return User.find()
       .select('-__v')
-      .populate('role', 'roleName -_id')
+      .populate('role', 'roleName')
       .populate('proyectos')
       .populate('publicaciones')
       .populate('requests');
@@ -238,7 +254,7 @@ class UserService {
   static async getUserById(id) {
     const user = await User.findById(id)
       .select('-__v')
-      .populate('role', 'roleName -_id')
+      .populate('role', 'roleName')
       .populate('proyectos')
       .populate('publicaciones')
       .populate('requests');

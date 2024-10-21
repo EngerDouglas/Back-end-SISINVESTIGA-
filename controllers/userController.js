@@ -143,6 +143,17 @@ export const updateUser = async (req, res, next) => {
 }
 // *********************** END ******************* //
 
+export const updateUserRole = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const { roleId } = req.body;
+    const user = await UserService.updateUserRole(id, roleId);
+    res.status(200).json({ message: 'Rol del usuario actualizado correctamente', user });
+  } catch (error) {
+    next(error);
+  }
+};
+
 // ************************** Actualizar tu propio Usuario ******************************* //
 
 export const updateSelfUser = async (req, res, next) => {
