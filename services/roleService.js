@@ -36,7 +36,7 @@ class RoleService {
   }
 
   static async getRoles() {
-    return Role.find().select('-_id -__v');
+    return Role.find().select('-__v');
   }
 
   static async deleteRole(id) {

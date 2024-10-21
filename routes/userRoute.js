@@ -7,6 +7,7 @@ import {
   logOutUser,
   logOutAllUser,
   updateUser,
+  updateUserRole,
   updateSelfUser,
   getUser,
   getAllUsers,
@@ -47,6 +48,7 @@ UsersRouter.put(
   validateUpdateUser,
   updateSelfUser
 );
+UsersRouter.put('/:id/role', auth, authRole(['Administrador']), updateUserRole);
 UsersRouter.put(
   "/:id",
   auth,
