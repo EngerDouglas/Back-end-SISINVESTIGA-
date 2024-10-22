@@ -1655,3 +1655,7 @@
 {"level":"info","message":"Email service initialized.","timestamp":"2024-10-21T01:05:00.752Z"}
 {"level":"info","message":"The server is running on http://localhost:3005","timestamp":"2024-10-21T01:05:00.757Z"}
 {"isOperational":true,"level":"error","status":"fail","statusCode":401,"timestamp":"2024-10-21T01:16:32.680Z"}
+{"level":"info","message":"Starting server...","timestamp":"2024-10-21T23:31:10.132Z"}
+{"level":"info","message":"Connected to BBDD!","timestamp":"2024-10-21T23:31:10.199Z"}
+{"level":"info","message":"Email service initialized.","timestamp":"2024-10-21T23:31:10.202Z"}
+{"level":"info","message":"The server is running on http://localhost:3005","timestamp":"2024-10-21T23:31:10.208Z"}
