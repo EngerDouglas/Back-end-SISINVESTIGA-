@@ -131,6 +131,44 @@ class PublicationService {
 
   // **************************** END ************************************************* //
 
+  // **************************** Actualizar Publicacion Admins ************************************************* //
+
+  static async updateAdmPublication(id, updates) {
+    const publication = await Publication.findById(id);
+    if (!publication) {
+      throw new NotFoundError('Publicación no encontrada.');
+    }
+
+    // Validar si se está actualizando el proyecto
+    if (updates.proyecto) {
+      const project = await Project.findById(updates.proyecto);
+      if (!project) {
+        throw new BadRequestError('El proyecto especificado no existe.');
+      }
+    }
+
+    // Solo actualizamos los campos si están presentes en la solicitud
+    for (const key of Object.keys(updates)) {
+      // Validar tipos de datos específicos
+      if (key === 'palabrasClave' && typeof updates[key] === 'string') {
+        updates[key] = JSON.parse(updates[key]);
+      }
+      if (key === 'anexos' && typeof updates[key] === 'string') {
+        updates[key] = JSON.parse(updates[key]);
+      }
+      if (key === 'autores' && typeof updates[key] === 'string') {
+        updates[key] = JSON.parse(updates[key]);
+      }
+
+      // Asignar la actualización a la publicación
+      publication[key] = updates[key];
+    }
+
+    await publication.save();
+    return publication;
+  }
+
+  // **************************** END ************************************************* //
 
   // **************************** Eliminar Publicacion ************************************************* //
 

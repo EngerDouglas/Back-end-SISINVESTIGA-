@@ -72,6 +72,38 @@ export const updatePublication = async (req, res, next) => {
 
 // **************************** END ************************************************ //
 
+// **************************** Actualizar Publicacion Admins ************************************************* //
+
+export const updateAdmPublication = async (req, res, next) => {
+  try {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      throw new BadRequestError('Error de validación', errors.array());
+    }
+
+    const { id } = req.params;
+    const updates = req.body;
+
+    // Si estos campos son enviados como string, los procesamos
+    if (updates.palabrasClave && typeof updates.palabrasClave === 'string') {
+      updates.palabrasClave = JSON.parse(updates.palabrasClave);
+    }
+    if (updates.anexos && typeof updates.anexos === 'string') {
+      updates.anexos = JSON.parse(updates.anexos);
+    }
+    if (updates.autores && typeof updates.autores === 'string') {
+      updates.autores = JSON.parse(updates.autores);
+    }
+
+    const publication = await PublicationService.updateAdmPublication(id, updates);
+    res.status(200).json({ message: 'Publicación actualizada correctamente', publication });
+  } catch (error) {
+    next(error);
+  }
+};
+
+// **************************** END ************************************************ //
+
 
 // ******************************** Eliminar publicaciones ************************************************* //
 

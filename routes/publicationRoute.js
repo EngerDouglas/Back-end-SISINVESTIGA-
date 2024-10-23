@@ -1,5 +1,5 @@
 import express from 'express'
-import { createPublication, updatePublication, deletePublication, restorePublication, getAllPublications, getPubById, getPubByTitle, getUserPublications }  from '../controllers/publicationController.js'
+import { createPublication, updatePublication, updateAdmPublication, deletePublication, restorePublication, getAllPublications, getPubById, getPubByTitle, getUserPublications }  from '../controllers/publicationController.js'
 import { auth, authRole } from '../middlewares/auth.js'
 import { optionalAuth } from '../middlewares/optionalAuth.js'
 import { uploadFiles, handleMultipleFileUploads } from '../middlewares/fileUpload.js'
@@ -29,11 +29,17 @@ PublicationsRouter.post(
 PublicationsRouter.put(
   '/:id', 
   auth, 
-  authRole(['Administrador', 'Investigador']), 
+  authRole(['Investigador']), 
   uploadFiles(uploadFields),
   handleMultipleFileUploads(uploadConfigs),
   validateUpdatePublication, 
   updatePublication)
+PublicationsRouter.put(
+  '/admin/:id', 
+  auth, 
+  authRole(['Administrador']), 
+  validateUpdatePublication, 
+  updateAdmPublication)
 PublicationsRouter.delete('/:id', auth, authRole(['Administrador', 'Investigador']), deletePublication)
 PublicationsRouter.put('/restore/:id', auth, authRole(['Administrador']), restorePublication); 
 
