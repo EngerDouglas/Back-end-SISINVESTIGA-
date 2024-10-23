@@ -58,6 +58,28 @@ class EvaluationService {
   }
     // ***********************  END ******************* //
 
+  // ***********************  Obtenemos todas las Evaluacion ******************* //
+
+  static async getAllEvaluations(filters, page = 1, limit = 10) {
+    const total = await Evaluation.countDocuments(filters);
+    const evaluations = await Evaluation.find(filters)
+      .sort({ createdAt: -1 })
+      .skip((page - 1) * limit)
+      .limit(Number(limit))
+      .lean()
+      .populate('evaluator', 'nombre apellido email')
+      .populate('project', 'nombre descripcion');
+  
+    return {
+      evaluations,
+      page: Number(page),
+      limit: Number(limit),
+      totalPages: Math.ceil(total / limit)
+    };
+  }
+
+  // ***********************  END ******************* //
+
   // ***********************  Obtenemos la Evaluacion por Proyecto ******************* //
   static async getEvaluationsByProject(projectId) {
     const project = await Project.findOne({ _id: projectId, isDeleted: false })

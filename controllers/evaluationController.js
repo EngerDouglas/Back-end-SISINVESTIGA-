@@ -33,6 +33,29 @@ import { BadRequestError } from '../utils/errors.js';
   }
   // ***********************  END ******************* //
 
+  // ***********************  Obtenemos todas las Evaluaciones ******************* //
+
+  export const getAllEvaluations = async (req, res, next) => {
+    try {
+      const { page = 1, limit = 10, search } = req.query;
+      const filter = {};
+      if (search) {
+        filter.$or = [
+          { 'project.nombre': new RegExp(search, 'i') },
+          { 'evaluator.nombre': new RegExp(search, 'i') },
+          { 'evaluator.apellido': new RegExp(search, 'i') }
+        ];
+      }
+  
+      const evaluations = await EvaluationService.getAllEvaluations(filter, parseInt(page), parseInt(limit));
+      res.status(200).json(evaluations);
+    } catch (error) {
+      next(error);
+    }
+  };
+
+  // ***********************  END ******************* //
+
   // ***********************  Obtenemos la Evaluacion por Proyecto ******************* //
   export const getEvaluationsByProject = async (req, res, next) => {
     try {
