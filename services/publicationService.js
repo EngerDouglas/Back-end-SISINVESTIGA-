@@ -200,8 +200,18 @@ class PublicationService {
 
   // ******************************** Obtener todas las publicaciones ************************************************* //
 
-  static async getAllPublications(filters, page = 1, limit = 10) {
-    const query = { isDeleted: false };
+  static async getAllPublications(filters, page = 1, limit = 10, userRole) {
+    const query = { };
+
+    if (userRole === 'Administrador') {
+      if (filters.isDeleted !== undefined) {
+        query.isDeleted = filters.isDeleted;
+      } else {
+        // No establecer query.isDeleted para mostrar todas las publicaciones
+      }
+    } else {
+      query.isDeleted = false; // Los no administradores solo ven publicaciones no eliminadas
+    }
   
     if (filters.tipoPublicacion) {
       query.tipoPublicacion = new RegExp(`^${filters.tipoPublicacion}$`, 'i');
@@ -287,8 +297,14 @@ class PublicationService {
 
   // ******************************** Obtener publicaciones por ID ************************************************* //
 
-  static async getPubById(id) {
-    const publication = await Publication.findOne({ _id: id, isDeleted: false })
+  static async getPubById(id, userRole) {
+    const query = { _id: id };
+
+    if (userRole !== 'Administrador') {
+      query.isDeleted = false; // Los no administradores no ven publicaciones eliminadas
+    }
+
+    const publication = await Publication.findOne(query)
       .populate({
         path: 'autores',
         select: 'nombre apellido especializacion responsabilidades fotoPerfil',

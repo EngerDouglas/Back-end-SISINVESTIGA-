@@ -1,6 +1,7 @@
 import express from 'express'
 import { createPublication, updatePublication, deletePublication, restorePublication, getAllPublications, getPubById, getPubByTitle, getUserPublications }  from '../controllers/publicationController.js'
 import { auth, authRole } from '../middlewares/auth.js'
+import { optionalAuth } from '../middlewares/optionalAuth.js'
 import { uploadFiles, handleMultipleFileUploads } from '../middlewares/fileUpload.js'
 import { validateCreatePublication, validateUpdatePublication } from '../middlewares/validators.js'
 
@@ -36,9 +37,9 @@ PublicationsRouter.put(
 PublicationsRouter.delete('/:id', auth, authRole(['Administrador', 'Investigador']), deletePublication)
 PublicationsRouter.put('/restore/:id', auth, authRole(['Administrador']), restorePublication); 
 
-PublicationsRouter.get('/', getAllPublications)
+PublicationsRouter.get('/', optionalAuth, getAllPublications)
 PublicationsRouter.get('/me', auth, getUserPublications)
-PublicationsRouter.get('/getpublication/:id', getPubById)
+PublicationsRouter.get('/getpublication/:id', optionalAuth, getPubById)
 PublicationsRouter.get('/search', getPubByTitle)
 
 export default PublicationsRouter

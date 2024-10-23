@@ -109,13 +109,16 @@ export const restorePublication = async (req, res, next) => {
 
 export const getAllPublications = async (req, res, next) => {
   try {
-    const { page = 1, limit = 10, tipoPublicacion, estado, titulo } = req.query;
+    const { page = 1, limit = 10, tipoPublicacion, estado, titulo, isDeleted } = req.query;
     const filters = {};
     if (tipoPublicacion) filters.tipoPublicacion = tipoPublicacion;
     if (estado) filters.estado = estado;
     if (titulo) filters.titulo = titulo;
+    if (isDeleted !== undefined) filters.isDeleted = isDeleted === 'true';
 
-    const result = await PublicationService.getAllPublications(filters, parseInt(page), parseInt(limit));
+    const userRole = req.userRole || 'Invitado';
+
+    const result = await PublicationService.getAllPublications(filters, parseInt(page), parseInt(limit), userRole);
     res.status(200).json(result);
   } catch (error) {
     next(error);
@@ -146,7 +149,9 @@ export const getUserPublications = async (req, res, next) => {
 export const getPubById = async (req, res, next) => {
   try {
     const { id } = req.params;
-    const publication = await PublicationService.getPubById(id);
+    const userRole = req.userRole || 'Invitado';
+
+    const publication = await PublicationService.getPubById(id, userRole);
     res.status(200).json(publication);
   } catch (error) {
     next(error);
