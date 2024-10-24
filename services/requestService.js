@@ -109,7 +109,7 @@ class RequestService {
 
   // **************************** Obtener todas las Solicitudes con Paginación y Filtrado ************************************************* //
   static async getAllRequests(filters, page = 1, limit = 10, userId, userRole) {
-    const query = { isDeleted: false, ...filters };
+    const query = { ...filters };
 
     if (userRole === 'Investigador') {
       query.solicitante = userId;

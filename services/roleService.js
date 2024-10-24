@@ -3,55 +3,96 @@ import User from '../models/User.js';
 import { BadRequestError, ConflictError, NotFoundError } from '../utils/errors.js';
 
 class RoleService {
+  // ***********************  Creamos un nuevo roles ******************* //
   static async createRole(roleData) {
     const existingRole = await Role.findOne({ roleName: roleData.roleName });
     if (existingRole) {
+      // Si el rol existe pero está eliminado, lo restauramos
+      if (existingRole.isDeleted) {
+        existingRole.isDeleted = false;
+        await existingRole.save();
+        return existingRole;
+      }
       throw new ConflictError('El rol ya existe');
     }
+    // Crear y guardar el nuevo rol
     const role = new Role(roleData);
     await role.save();
     return role;
   }
+  // ***********************  END ******************* //
 
+  // *********************** Actualizar los Roles ******************* //
   static async updateRole(id, roleData) {
+    // Verificar si el rol existe y no está eliminado
+    const role = await Role.findById(id);
+    if (!role || role.isDeleted) {
+      throw new NotFoundError('Rol no encontrado');
+    }
+
+    // Verificar si otro rol con el mismo nombre ya existe
     const existingRole = await Role.findOne({
       roleName: roleData.roleName,
-      _id: { $ne: id }
+      _id: { $ne: id }, // Excluimos el rol actual
     });
 
     if (existingRole) {
       throw new ConflictError('El rol suministrado ya existe');
     }
+    
+    role.roleName = roleData.roleName || role.roleName;
 
-    const updatedRole = await Role.findByIdAndUpdate(id, roleData, {
-      new: true,
-      runValidators: true,
-    });
-
-    if (!updatedRole) {
-      throw new NotFoundError('Rol no encontrado');
-    }
-
-    return updatedRole;
+    await role.save();
+    return role;
   }
 
+  // *********************** END ******************* //
+
+  // *********************** Obtener todos los roles ******************* //
   static async getRoles() {
     return Role.find().select('-__v');
   }
+  // *********************** END ******************* //
 
+  // ********************************* Eliminar un Rol ****************************************///
   static async deleteRole(id) {
+    // Buscar el rol por ID
+    const role = await Role.findById(id);
+    if (!role || role.isDeleted) {
+      throw new NotFoundError('Rol no encontrado');
+    }
+
+    // Verificar si hay usuarios asignados a este rol
+    const userWithRole = await User.findOne({ role: id });
+    if (userWithRole) {
+      throw new BadRequestError('No se puede eliminar el rol porque está asignado a uno o más usuarios');
+    }
+
+    // Eliminación lógica del rol (establecer isDeleted a true)
+    role.isDeleted = true;
+    await role.save();
+  }
+  // ********************************* END ****************************************///
+
+  // ********************************* Restaurar un Rol ****************************************///
+  static async restoreRole(id) {
     const role = await Role.findById(id);
     if (!role) {
       throw new NotFoundError('Rol no encontrado');
     }
 
-    const userWithRole = await User.find({ role: id });
-    if (userWithRole.length > 0) {
-      throw new BadRequestError('No se puede eliminar el rol porque está asignado a uno o más usuarios');
+    // Verificamos si el rol ya está activo
+    if (!role.isDeleted) {
+      throw new BadRequestError('El rol ya está activo');
     }
 
-    await Role.findByIdAndDelete(id);
+    // Restauramos el rol
+    role.isDeleted = false;
+    await role.save();
+
+    return role;
   }
+  // ********************************* END ****************************************///
 }
 
 export default RoleService;

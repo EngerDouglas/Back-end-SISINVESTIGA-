@@ -53,13 +53,25 @@ export const getRoles = async (req, res, next) => {
 
 // *********************** END ******************* //
 
-
 // ********************************* Eliminar un Rol ****************************************///
 export const deleteRole = async (req, res, next) => {
   try {
     const { id } = req.params;
     await RoleService.deleteRole(id);
     res.status(200).json({ message: 'Rol eliminado correctamente' });
+  } catch (error) {
+    next(error);
+  }
+};
+
+// ********************************* END ****************************************///
+
+// ********************************* Restauramos un Rol ****************************************///
+export const restoreRole = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const restoredRole = await RoleService.restoreRole(id);
+    res.status(200).json({ message: 'Rol restaurado correctamente', role: restoredRole });
   } catch (error) {
     next(error);
   }
