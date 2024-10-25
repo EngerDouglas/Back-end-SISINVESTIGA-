@@ -3,7 +3,6 @@ import geoip from "geoip-lite";
 import useragent from "express-useragent";
 
 const methodMappers = {
-  "GET": "Fetching",
   "POST": "Adding",
   "PUT": "Updating",
   "PATCH": "Updating",
@@ -45,41 +44,44 @@ const logAuditTrails = (req, res, next) => {
   try {
     const originalJson = res.json;
     res.json = async function (body) {
-      // Filtrar datos sensibles
-      const filteredPayload = filterSensitiveData(req.body);
-      const filteredResponse = filterSensitiveData(body);
 
-      // Obtener información del usuario autenticado
-      const user = req.user ? req.user._id : null;
+      if (req.method !== 'GET') {
+        // Filtrar datos sensibles
+        const filteredPayload = filterSensitiveData(req.body);
+        const filteredResponse = filterSensitiveData(body);
 
-      const activity = getActivityDescription(req);
+        // Obtener información del usuario autenticado
+        const user = req.user ? req.user._id : null;
 
-      // Obtener la dirección IP del usuario
-      const ipAddress = req.headers['x-forwarded-for'] || req.connection.remoteAddress || req.socket.remoteAddress || req.ip;
+        const activity = getActivityDescription(req);
 
-      // Obtener la ubicación geográfica
-      const geo = geoip.lookup(ipAddress);
-      const location = geo ? `${geo.city || 'Unknown City'}, ${geo.country || 'Unknown Country'}` : 'Unknown Location';
+        // Obtener la dirección IP del usuario
+        const ipAddress = req.headers['x-forwarded-for'] || req.connection.remoteAddress || req.socket.remoteAddress || req.ip;
 
-      // Obtener información del dispositivo
-      const ua = useragent.parse(req.headers['user-agent']);
-      const device = `${ua.browser} on ${ua.os}`;
+        // Obtener la ubicación geográfica
+        const geo = geoip.lookup(ipAddress);
+        const location = geo ? `${geo.city || 'Unknown City'}, ${geo.country || 'Unknown Country'}` : 'Unknown Location';
 
-      // Crear registro de auditoría
-      await Audit.create({
-        user,
-        method: req.method,
-        url: req.originalUrl,
-        activity,
-        params: req.params,
-        query: req.query,
-        payload: filteredPayload,
-        response: filteredResponse,
-        ipAddress,
-        location,
-        device,
-        timestamp: new Date()
-      });
+        // Obtener información del dispositivo
+        const ua = useragent.parse(req.headers['user-agent']);
+        const device = `${ua.browser} on ${ua.os}`;
+
+        // Crear registro de auditoría
+        await Audit.create({
+          user,
+          method: req.method,
+          url: req.originalUrl,
+          activity,
+          params: req.params,
+          query: req.query,
+          payload: filteredPayload,
+          response: filteredResponse,
+          ipAddress,
+          location,
+          device,
+          timestamp: new Date()
+        });
+      }
 
       return originalJson.call(this, body);
     }
