@@ -12,11 +12,13 @@ import PublicationsRouter from './routes/publicationRoute.js'
 import EvaluationRouter from './routes/evaluationRoute.js'
 import RequestRouter from './routes/requestRoute.js'
 import ReportRouter from './routes/reportRoute.js'
+import AuditRouter from './routes/auditRoute.js'
 import errorHandler from './middlewares/errorHandler.js'
 import logger from './utils/logger.js'
 import { connectDB } from './config/db.js'
 import emailService from './services/emailService.js';
 import { initializeFirebase } from './services/firebaseService.js'
+import { logAuditTrails } from './middlewares/audit.js'
 
 dotenv.config()
 
@@ -29,6 +31,7 @@ const port = process.env.PORT || 3005
 
 // Habilitamos Lectura y Cookie Parser mas Middlewares
 app.use( corsMiddleware())
+app.use(logAuditTrails)
 // app.use(bodyParser.json())
 // app.use(bodyParser.urlencoded({ extended:true }))
 app.use(express.json())
@@ -44,6 +47,7 @@ app.use('/api/publications', PublicationsRouter)
 app.use('/api/evaluations', EvaluationRouter)
 app.use('/api/requests', RequestRouter)
 app.use('/api/reports', ReportRouter)
+app.use('/api/audits', AuditRouter)
 
 app.get('/', (req, res) => {
   res.json({
