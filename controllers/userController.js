@@ -4,7 +4,7 @@ import { BadRequestError } from '../utils/errors.js';
 import geoip from 'geoip-lite';
 import useragent from 'express-useragent';
 
-// *********************** Creando el Usuario ******************* //
+// #region *********************** Creando el Usuario ******************* //
 export const createUser = async (req, res, next) => {
   try {  
     const { nombre, apellido, email, password, especializacion, responsabilidades, fotoPerfil } = req.body;
@@ -25,9 +25,9 @@ export const createUser = async (req, res, next) => {
   }
 };
 
-// *********************** END ******************* //
+// #endregion *********************************************************** //
 
-// *********************** Verificar Email ******************* //
+// #region *********************** Verificar Email ******************* //
 
 export const verifyEmail = async (req, res, next) => {
   try {
@@ -60,9 +60,9 @@ export const verifyEmail = async (req, res, next) => {
   }
 };
 
-// *********************** END ******************* //
+// #endregion *********************************************************** //
 
-// *********************** Log In ******************* //
+// #region *********************** Log In ******************* //
 
 // Iniciar la sesion de los usuarios
 export const logInUser = async (req, res, next) => {
@@ -99,10 +99,10 @@ export const logInUser = async (req, res, next) => {
   }
 }
 
-// *********************** END ******************* //
+// #endregion *********************************************************** //
 
 
-// *********************** Log Out ******************* //
+// #region *********************** Log Out ******************* //
 
 export const logOutUser = async (req, res, next) => {
   try {
@@ -113,10 +113,10 @@ export const logOutUser = async (req, res, next) => {
   }
 }
 
-// *********************** END ******************* //
+// #endregion *********************************************************** //
 
 
-// *********************** Log Out All Devices ******************* //
+// #region *********************** Log Out All Devices ******************* //
 
 export const logOutAllUser = async (req, res, next) => {
   try {
@@ -127,9 +127,9 @@ export const logOutAllUser = async (req, res, next) => {
   }
 }
 
-// *********************** END ******************* //
+// #endregion *********************************************************** //
 
-// *********************** Actualizar Usuarios por el Administrador ******************* //
+// #region *********************** Actualizar Usuarios por el Administrador ******************* //
 
 export const updateUser = async (req, res, next) => {
   try {
@@ -141,8 +141,9 @@ export const updateUser = async (req, res, next) => {
     next(error);
   }
 }
-// *********************** END ******************* //
+// #endregion *********************************************************** //
 
+// #region Actualizar Rol del Usuario *********************************************************** //
 export const updateUserRole = async (req, res, next) => {
   try {
     const { id } = req.params;
@@ -153,8 +154,9 @@ export const updateUserRole = async (req, res, next) => {
     next(error);
   }
 };
+// #endregion *********************************************************** //
 
-// ************************** Actualizar tu propio Usuario ******************************* //
+// #region ************************** Actualizar tu propio Usuario ******************************* //
 
 export const updateSelfUser = async (req, res, next) => {
   try {
@@ -165,13 +167,13 @@ export const updateSelfUser = async (req, res, next) => {
     next(error);
   }
 }
-// ************************** END ******************************* //
+// #endregion *********************************************************** //
 
 
-// ************************** Filtros y Busquedas para los Usuarios ******************************* //
+// #region ************************** Filtros y Busquedas para los Usuarios ******************************* //
 
 
-// *********************** Buscar tu propio usuario ******************* //
+// #region *********************** Buscar tu propio usuario ******************* //
 
 export const getUser = async (req, res, next) => {
   try {
@@ -181,9 +183,9 @@ export const getUser = async (req, res, next) => {
     next(error);
   }
 }
-// ****************************** END *************************** //
+// #endregion *********************************************************** //
 
-// *********************** Buscar Todos los usuarios ******************* //
+// #region *********************** Buscar Todos los usuarios ******************* //
 
 export const getAllUsers = async (req, res, next) => {
   try {
@@ -193,9 +195,9 @@ export const getAllUsers = async (req, res, next) => {
     next(error);
   }
 }
-// *********************** END ******************* //
+// #endregion *********************************************************** //
 
-// *********************** Buscar por ID ******************* //
+// #region *********************** Buscar por ID ******************* //
 
 export const getUserById = async (req, res, next) => {
   try {
@@ -207,12 +209,12 @@ export const getUserById = async (req, res, next) => {
   }
 }
 
-// *********************** END ******************* //
+// #endregion *********************************************************** //
 
-// ************************** END de los Filtros ******************************* //
+// #endregion Filtros Busqueda *********************************************************** //
 
 
-// *********************** Disabling Users ******************* //
+// #region *********************** Disabling Users ******************* //
 
 export const disableUser = async (req, res, next) => {
   try {
@@ -224,10 +226,10 @@ export const disableUser = async (req, res, next) => {
   }
 };
 
-// *********************** END ******************* //
+// #endregion *********************************************************** //
 
 
-// *********************** Enabling Users ******************* //
+// #region *********************** Enabling Users ******************* //
 
 export const enableUser = async (req, res, next) => {
   try {
@@ -238,9 +240,9 @@ export const enableUser = async (req, res, next) => {
     next(error);
   }
 };
-// *********************** END ******************* //
+// #endregion *********************************************************** //
 
-// *********************** Olvide Contraseña ******************* //
+// #region *********************** Olvide Contraseña ******************* //
 export const forgotPassword = async (req, res, next) => {
   try {
     const { email } = req.body;
@@ -255,9 +257,9 @@ export const forgotPassword = async (req, res, next) => {
     next(error);
   }
 };
-// *********************** END ******************* //
+// #endregion *********************************************************** //
 
-// *********************** Reestablecer Contraseña ******************* //
+// #region *********************** Reestablecer Contraseña ******************* //
 export const resetPassword = async (req, res, next) => {
   try {
     const { token } = req.params;
@@ -273,4 +275,4 @@ export const resetPassword = async (req, res, next) => {
     next(error);
   }
 };
-// *********************** END ******************* //
+// #endregion *********************************************************** //
