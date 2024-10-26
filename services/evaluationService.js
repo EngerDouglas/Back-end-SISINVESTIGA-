@@ -3,7 +3,7 @@ import Project from '../models/Project.js';
 import { BadRequestError, ConflictError, NotFoundError, ForbiddenError } from '../utils/errors.js';
 
 class EvaluationService {
-  // ***********************  Creamos la Evaluacion ******************* //
+  // #region ***********************  Creamos la Evaluacion ******************* //
   static async createEvaluation(projectId, evaluatorId, evaluationData, userRole) {
     if (userRole !== 'Administrador') {
       throw new ForbiddenError('No tienes permisos para evaluar proyectos.');
@@ -33,9 +33,9 @@ class EvaluationService {
 
     return evaluation;
   }
-  // ***********************  END ******************* //
+  // #endregion **************************************************************** //
 
-  // ***********************  Actualizamos la Evaluacion ******************* //
+  // #region ***********************  Actualizamos la Evaluacion ******************* //
   static async updateEvaluation(evaluationId, evaluatorId, updateData, userRole) {
     if (userRole !== 'Administrador') {
       throw new ForbiddenError('No tienes permisos para actualizar evaluaciones.');
@@ -56,47 +56,9 @@ class EvaluationService {
     await evaluation.save();
     return evaluation;
   }
-    // ***********************  END ******************* //
+  // #endregion **************************************************************** //
 
-  // ***********************  Obtenemos todas las Evaluacion ******************* //
-
-  static async getAllEvaluations(filters, page = 1, limit = 10) {
-    const total = await Evaluation.countDocuments(filters);
-    const evaluations = await Evaluation.find(filters)
-      .sort({ createdAt: -1 })
-      .skip((page - 1) * limit)
-      .limit(Number(limit))
-      .lean()
-      .populate('evaluator', 'nombre apellido email')
-      .populate('project', 'nombre descripcion');
-  
-    return {
-      evaluations,
-      page: Number(page),
-      limit: Number(limit),
-      totalPages: Math.ceil(total / limit)
-    };
-  }
-
-  // ***********************  END ******************* //
-
-  // ***********************  Obtenemos la Evaluacion por Proyecto ******************* //
-  static async getEvaluationsByProject(projectId) {
-    const project = await Project.findOne({ _id: projectId, isDeleted: false })
-
-    if (!project) {
-      throw new NotFoundError('Proyecto no encontrado.');
-    }
-
-    const evaluations = await Evaluation.find({ project: projectId, isDeleted: false })
-      .populate('evaluator', 'nombre apellido email')
-      .populate({ path: 'project', select: 'nombre descripcion objetivos presupuesto' });
-
-    return evaluations;
-  }
-    // ***********************  END ******************* //
-
-  // ***********************  Eliminamos la Evaluacion ******************* //
+  // #region ***********************  Eliminamos la Evaluacion ******************* //
   static async deleteEvaluation(evaluationId, evaluatorId, userRole) {
     if (userRole !== 'Administrador') {
       throw new ForbiddenError('No tienes permisos para eliminar evaluaciones.');
@@ -116,9 +78,9 @@ class EvaluationService {
 
     return { message: 'Evaluación eliminada exitosamente.' };
   }
-    // ***********************  END ******************* //
+  // #endregion **************************************************************** //
 
-  // ***********************  Restauramos la Evaluacion ******************* //
+  // #region ***********************  Restauramos la Evaluacion ******************* //
   static async restoreEvaluation(evaluationId, userRole) {
     if (userRole !== 'Administrador') {
       throw new ForbiddenError('No tienes permisos para restaurar evaluaciones.');
@@ -138,7 +100,49 @@ class EvaluationService {
 
     return evaluation;
   }
-  // ***********************  END ******************* //
+  // #endregion **************************************************************** //
+
+  // #region ***************** Seccion de busquedas ************************************************* //
+
+  // #region ***********************  Obtenemos todas las Evaluaciones ******************* //
+
+  static async getAllEvaluations(filters, page = 1, limit = 10) {
+    const total = await Evaluation.countDocuments(filters);
+    const evaluations = await Evaluation.find(filters)
+      .sort({ createdAt: -1 })
+      .skip((page - 1) * limit)
+      .limit(Number(limit))
+      .lean()
+      .populate('evaluator', 'nombre apellido email')
+      .populate('project', 'nombre descripcion');
+  
+    return {
+      evaluations,
+      page: Number(page),
+      limit: Number(limit),
+      totalPages: Math.ceil(total / limit)
+    };
+  }
+
+  // #endregion **************************************************************** //
+
+  // #region ***********************  Obtenemos la Evaluacion por Proyecto ******************* //
+  static async getEvaluationsByProject(projectId) {
+    const project = await Project.findOne({ _id: projectId, isDeleted: false })
+
+    if (!project) {
+      throw new NotFoundError('Proyecto no encontrado.');
+    }
+
+    const evaluations = await Evaluation.find({ project: projectId, isDeleted: false })
+      .populate('evaluator', 'nombre apellido email')
+      .populate({ path: 'project', select: 'nombre descripcion objetivos presupuesto' });
+
+    return evaluations;
+  }
+  // #endregion **************************************************************** //
+
+  // #endregion Seccion de Busqueda *************************************************************** //
 }
 
 export default EvaluationService;

@@ -3,7 +3,7 @@ import { BadRequestError } from "../utils/errors.js";
 import fs from "fs";
 import { promises as fsPromises } from "fs";
 
-// Administrator controllers
+// #region Exportar CSV de Proyectos por el Administrador ************************************************* //
 export const exportReportCSV = async (req, res, next) => {
   try {
     const csv = await ReportService.generateProjectsCSV();
@@ -19,6 +19,9 @@ export const exportReportCSV = async (req, res, next) => {
   }
 };
 
+// #endregion *************************************************************** //
+
+// #region Exportar PDF de Proyectos por el Administrador ************************************************* //
 export const exportReportPDF = async (req, res, next) => {
   try {
     const { filePath, filename } = await ReportService.generateProjectsPDF();
@@ -49,6 +52,9 @@ export const exportReportPDF = async (req, res, next) => {
   }
 };
 
+// #endregion *************************************************************** //
+
+// #region Exportar CSV de Evaluaciones por el Administrador ************************************************* //
 export const exportReportInvestigatorsCSV = async (req, res, next) => {
   try {
     const csv = await ReportService.generateEvaluationsCSV();
@@ -67,6 +73,9 @@ export const exportReportInvestigatorsCSV = async (req, res, next) => {
   }
 };
 
+// #endregion *************************************************************** //
+
+// #region Exportar PDF de Evaluaciones por el Administrador ************************************************* //
 export const exportReportInvestigatorsPDF = async (req, res, next) => {
   try {
     const { filePath, filename } = await ReportService.generateEvaluationsPDF();
@@ -108,7 +117,9 @@ export const exportReportInvestigatorsPDF = async (req, res, next) => {
   }
 };
 
-// Investigator controllers
+// #endregion *************************************************************** //
+
+// #region Exportar CSV de Proyectos por el Investigador ************************************************* //
 export const exportInvestigatorProjectsCSV = async (req, res, next) => {
   try {
     const csv = await ReportService.generateProjectsCSVForInvestigator(req.user._id);
@@ -124,6 +135,9 @@ export const exportInvestigatorProjectsCSV = async (req, res, next) => {
   }
 };
 
+// #endregion *************************************************************** //
+
+// #region Exportar PDF de Proyectos por el Investigador ************************************************* //
 export const exportInvestigatorProjectsPDF = async (req, res, next) => {
   try {
     const { filePath, filename } = await ReportService.generateProjectsPDFForInvestigator(req.user._id);
@@ -154,6 +168,9 @@ export const exportInvestigatorProjectsPDF = async (req, res, next) => {
   }
 };
 
+// #endregion *************************************************************** //
+
+// #region Exportar CSV de Evaluaciones por el Investigador ************************************************* //
 export const exportInvestigatorEvaluationsCSV = async (req, res, next) => {
   try {
     const csv = await ReportService.generateEvaluationsCSVForInvestigator(req.user._id);
@@ -172,6 +189,9 @@ export const exportInvestigatorEvaluationsCSV = async (req, res, next) => {
   }
 };
 
+// #endregion *************************************************************** //
+
+// #region Exportar PDF de Evaluaciones por el Investigador ************************************************* //
 export const exportInvestigatorEvaluationsPDF = async (req, res, next) => {
   try {
     const { filePath, filename } = await ReportService.generateEvaluationsPDFForInvestigator(req.user._id);
@@ -209,3 +229,5 @@ export const exportInvestigatorEvaluationsPDF = async (req, res, next) => {
     );
   }
 };
+
+// #endregion *************************************************************** //

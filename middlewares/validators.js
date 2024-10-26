@@ -1,7 +1,7 @@
 import { body, param } from 'express-validator';
 
 
-//-------------------- Validaciones para los Usuarios ------------------- //
+// #region -------------------- Validaciones para los Usuarios ------------------- //
 
 export const validateCreateUser = [
   body('nombre').notEmpty().withMessage('El nombre es requerido'),
@@ -32,9 +32,9 @@ export const validateUpdateUser = [
   body('responsabilidades.*').optional().notEmpty().withMessage('Cada responsabilidad debe ser un string no vacío'),
 ];
 
-//-------------------- END ------------------- //
+// #endregion ------------------------------------------------------------------------------------------------------------ //
 
-//-------------------- Validaciones para los Roles ------------------- //
+// #region -------------------- Validaciones para los Roles ------------------- //
 
 export const validateCreateRole = [
   body('roleName')
@@ -51,9 +51,9 @@ export const validateUpdateRole = [
     .isLength({ min: 2, max: 50 }).withMessage('El nombre del rol debe tener entre 2 y 50 caracteres'),
 ];
 
-//-------------------- END ------------------- //
+// #endregion ------------------------------------------------------------------------------------------------------------ //
 
-//-------------------- Validaciones para los Proyectos ------------------- //
+// #region -------------------- Validaciones para los Proyectos ------------------- //
 
 export const validateCreateProject = [
   body('nombre').notEmpty().withMessage('El nombre del proyecto es requerido'),
@@ -79,9 +79,9 @@ export const validateUpdateProject = [
   body('hitos.*.fecha').optional().isISO8601().toDate().withMessage('La fecha del hito debe ser una fecha válida'),
 ];
 
-//-------------------- END ------------------- //
+// #endregion ------------------------------------------------------------------------------------------------------------ //
 
-//-------------------- Validaciones para las Publicaciones ------------------- //
+// #region  -------------------- Validaciones para las Publicaciones ------------------- //
 
 export const validateCreatePublication = [
   body('titulo').notEmpty().withMessage('El título es requerido'),
@@ -101,9 +101,9 @@ export const validateUpdatePublication = [
   body('idioma').optional().notEmpty().withMessage('El idioma no puede estar vacío'),
 ];
 
-//-------------------- END ------------------- //
+// #endregion ------------------------------------------------------------------------------------------------------------ //
 
-//-------------------- Validaciones para las Evaluaciones ------------------- //
+// #region -------------------- Validaciones para las Evaluaciones ------------------- //
 
 export const validateCreateEvaluation = [
   body('puntuacion').isInt({ min: 0, max: 100 }).withMessage('La puntuación debe ser un número entre 0 y 100'),
@@ -114,9 +114,9 @@ export const validateUpdateEvaluation = [
   body('puntuacion').isInt({ min: 0, max: 100 }).withMessage('La puntuación debe ser un número entre 0 y 100'),
   body('comentarios').isString().notEmpty().withMessage('Los comentarios son requeridos'),
 ];
-//-------------------- END ------------------- //
+// #endregion ------------------------------------------------------------------------------------------------------------ //
 
-//-------------------- Validaciones para las Request ------------------- //
+// #region -------------------- Validaciones para las Request ------------------- //
 
 export const ValidateCreateRequest = [
   body('tipoSolicitud').isIn(['Unirse a Proyecto', 'Recursos', 'Aprobación', 'Permiso', 'Otro']).withMessage('Tipo de solicitud inválido'),
@@ -129,17 +129,17 @@ export const ValidateUpdateRequest = [
   body('comentarios').optional().isString().notEmpty().withMessage('El comentario no puede estar vacío'),
 ];
 
-//-------------------- END ------------------- //
+// #endregion ------------------------------------------------------------------------------------------------------------ //
 
-//-------------------- Validaciones para los Olvide Password ------------------- //
+// #region -------------------- Validaciones para los Olvide Password ------------------- //
 export const validateForgotPassword = [
   body('email')
     .isEmail()
     .withMessage('Debe proporcionar un correo electrónico válido'),
 ];
-//-------------------- END ------------------- //
+// #endregion ------------------------------------------------------------------------------------------------------------ //
 
-//-------------------- Validaciones para los Resetar Password ------------------- //
+// #region -------------------- Validaciones para los Resetar Password ------------------- //
 export const validateResetPassword = [
   param('token')
     .notEmpty()
@@ -150,4 +150,4 @@ export const validateResetPassword = [
     .matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).{8,}$/, "i")
     .withMessage('La contraseña debe incluir al menos una letra mayúscula, una minúscula, un número y un carácter especial'),
 ];
-//-------------------- END ------------------- //
+// #endregion ------------------------------------------------------------------------------------------------------------ //

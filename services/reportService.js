@@ -29,7 +29,7 @@ export const generateUniqueFilename = (prefix, extension) => {
   return `${prefix}_${timestamp}.${extension}`;
 };
 
-// Modern color palette
+// #region Para los Colores PDF de Investigadores ************************************** //
 const colors = {
   primary: '#3498db',
   secondary: '#2c3e50',
@@ -38,8 +38,9 @@ const colors = {
   background: '#ecf0f1',
   lightGray: '#bdc3c7'
 };
+// #endregion ************************************************************************** //
 
-// Modern color palette for admin reports
+// #region Para los Colores PDF de Administradores ************************************** //
 const adminColors = {
   primary: '#1a237e',
   secondary: '#0d47a1',
@@ -49,8 +50,9 @@ const adminColors = {
   lightGray: '#e0e0e0',
   white: '#ffffff'
 };
+// #endregion ************************************************************************** //
 
-  // **************************** Estilos para PDF a los Investigadroes ************************************************* //
+  // #region **************************** Estilos para PDF a los Investigadroes ************************************************* //
   const setupDocument = (doc) => {
     doc.registerFont('Roboto-Regular', getFontPath('Roboto-Regular.ttf'));
     doc.registerFont('Roboto-Bold', getFontPath('Roboto-Bold.ttf'));
@@ -149,9 +151,9 @@ const adminColors = {
     doc.rect(tableLeft, tableTop, doc.page.width - 100, rowTop - tableTop).stroke(colors.primary);
     doc.moveDown(2);
   };
-// **************************** END ************************************************ //
+  // #endregion ************************************************************************************************************ //
 
-  // **************************** Estilos para PDF a los Administradores ************************************************* //
+  // #region **************************** Estilos para PDF a los Administradores ************************************************* //
 
   const setupAdminDocument = (doc) => {
     doc.registerFont('Montserrat-Regular', getFontPath('Montserrat-Regular.ttf'));
@@ -270,11 +272,12 @@ const adminColors = {
     doc.moveDown();
   };
 
-  // **************************** END ************************************************ //
+  // #endregion ***************************************************************************************** //
 
 
-// **************************** Administrator functions ************************************************ //
+// #region **************************** Administrator functions ************************************************ //
 
+// #region Obtener detalles de los proyectos ************************************************************************** //
 export const getDetailedProjects = async () => {
   const projects = await Project.find({ isDeleted: false })
     .populate({
@@ -291,6 +294,9 @@ export const getDetailedProjects = async () => {
   return projects;
 };
 
+// #endregion ************************************************************************** //
+
+// #region Obtener detalles de las Evaluaciones ************************************************************************** //
 export const getDetailedEvaluations = async () => {
   const evaluations = await Evaluation.find({ isDeleted: false })
     .populate({
@@ -306,7 +312,9 @@ export const getDetailedEvaluations = async () => {
 
   return evaluations;
 };
+// #endregion ************************************************************************** //
 
+// #region Generar CSV de Proyectos para los Administradores ************************************************************************** //
 export const generateProjectsCSV = async () => {
   const projects = await getDetailedProjects();
 
@@ -327,7 +335,9 @@ export const generateProjectsCSV = async () => {
   const parser = new Parser({ fields });
   return parser.parse(flattenedProjects);
 };
+// #endregion ************************************************************************** //
 
+// #region Generar PDF de los Proyectos para los Administradores ************************************************************************** //
 export const generateProjectsPDF = async () => {
   const projects = await getDetailedProjects();
   const doc = new PDFDocument({ margin: 50, size: 'A4' });
@@ -385,6 +395,9 @@ export const generateProjectsPDF = async () => {
   });
 };
 
+// #endregion ************************************************************************** //
+
+// #region Generar CSV de las Evaluaciones para los Admnistradores ************************************************************************** //
 export const generateEvaluationsCSV = async () => {
   const evaluations = await getDetailedEvaluations();
 
@@ -418,7 +431,9 @@ export const generateEvaluationsCSV = async () => {
   const parser = new Parser({ fields });
   return parser.parse(flattenedEvaluations);
 };
+// #endregion ************************************************************************** //
 
+// #region Generar PDF de las Evaluaciones para los Administradores ************************************************************************** //
 export const generateEvaluationsPDF = async () => {
   const evaluations = await getDetailedEvaluations();
   const doc = new PDFDocument({ margin: 50, size: 'A4' });
@@ -455,11 +470,13 @@ export const generateEvaluationsPDF = async () => {
     stream.on('error', reject);
   });
 };
+// #endregion ************************************************************************** //
 
-// **************************** END ************************************************ //
+// #endregion Administrator Functions ***************************************************************************************** //
 
-// **************************** Investigator functions ************************************************ //
+// #region **************************** Investigator functions ********************************************************* //
 
+// #region Obtener detalles de tus Proyectos (Investigador) ************************************************************************** //
 export const getDetailedProjectsForInvestigator = async (userId) => {
   const projects = await Project.find({ 
     investigadores: userId,
@@ -478,7 +495,9 @@ export const getDetailedProjectsForInvestigator = async (userId) => {
 
   return projects;
 };
+// #endregion ************************************************************************** // 
 
+// #region Obtener detalles de tus Evaluaciones (Investigador) ************************************************************************** //
 export const getDetailedEvaluationsForInvestigator = async (userId) => {
   const projects = await Project.find({ investigadores: userId }).select('_id');
   const projectIds = projects.map(project => project._id);
@@ -500,7 +519,9 @@ export const getDetailedEvaluationsForInvestigator = async (userId) => {
 
   return evaluations;
 };
+// #endregion ************************************************************************** //
 
+// #region Generar CSV de Proyectos Investigador ************************************************************************** //
 export const generateProjectsCSVForInvestigator = async (userId) => {
   const projects = await getDetailedProjectsForInvestigator(userId);
 
@@ -520,7 +541,9 @@ export const generateProjectsCSVForInvestigator = async (userId) => {
   const parser = new Parser({ fields });
   return parser.parse(flattenedProjects);
 };
+// #endregion ************************************************************************** //
 
+// #region Generar PDF de tus Proyectos Investigador ************************************************************************** //
 export const generateProjectsPDFForInvestigator = async (userId) => {
   const projects = await getDetailedProjectsForInvestigator(userId);
   const doc = new PDFDocument({ margin: 50, size: 'A4' });
@@ -578,7 +601,9 @@ export const generateProjectsPDFForInvestigator = async (userId) => {
     stream.on('error', reject);
   });
 };
+// #endregion ************************************************************************** //
 
+// #region Generar CSV de tus Evaluaciones Investigador ************************************************************************** //
 export const generateEvaluationsCSVForInvestigator = async (userId) => {
   const evaluations = await getDetailedEvaluationsForInvestigator(userId);
 
@@ -602,7 +627,9 @@ export const generateEvaluationsCSVForInvestigator = async (userId) => {
   const parser = new Parser({ fields });
   return parser.parse(flattenedEvaluations);
 };
+// #endregion ************************************************************************** //
 
+// #region Generar PDF de tus Evaluaciones Investigador ************************************************************************** //
 export const generateEvaluationsPDFForInvestigator = async (userId) => {
   const evaluations = await getDetailedEvaluationsForInvestigator(userId);
   const doc = new PDFDocument({ margin: 50, size: 'A4' });
@@ -649,3 +676,6 @@ export const generateEvaluationsPDFForInvestigator = async (userId) => {
     stream.on('error', reject);
   });
 };
+// #endregion ************************************************************************** //
+
+// #endregion Investigators Functions ******************************************************************************************* //

@@ -3,7 +3,7 @@ import User from '../models/User.js';
 import { BadRequestError, ConflictError, NotFoundError } from '../utils/errors.js';
 
 class RoleService {
-  // ***********************  Creamos un nuevo roles ******************* //
+  // #region ***********************  Creamos un nuevo roles ******************* //
   static async createRole(roleData) {
     const existingRole = await Role.findOne({ roleName: roleData.roleName });
     if (existingRole) {
@@ -20,9 +20,9 @@ class RoleService {
     await role.save();
     return role;
   }
-  // ***********************  END ******************* //
+  // #endregion ****************************************************************** //
 
-  // *********************** Actualizar los Roles ******************* //
+  // #region*********************** Actualizar los Roles ******************* //
   static async updateRole(id, roleData) {
     // Verificar si el rol existe y no está eliminado
     const role = await Role.findById(id);
@@ -46,15 +46,15 @@ class RoleService {
     return role;
   }
 
-  // *********************** END ******************* //
+  // #endregion ****************************************************************** //
 
-  // *********************** Obtener todos los roles ******************* //
+  // #region *********************** Obtener todos los roles ******************* //
   static async getRoles() {
     return Role.find().select('-__v');
   }
-  // *********************** END ******************* //
+  // #endregion ****************************************************************** //
 
-  // ********************************* Eliminar un Rol ****************************************///
+  // #region ********************************* Eliminar un Rol ******************//
   static async deleteRole(id) {
     // Buscar el rol por ID
     const role = await Role.findById(id);
@@ -72,9 +72,9 @@ class RoleService {
     role.isDeleted = true;
     await role.save();
   }
-  // ********************************* END ****************************************///
+  // #endregion ****************************************************************** //
 
-  // ********************************* Restaurar un Rol ****************************************///
+  // #region ********************************* Restaurar un Rol ****************//
   static async restoreRole(id) {
     const role = await Role.findById(id);
     if (!role) {
@@ -92,7 +92,7 @@ class RoleService {
 
     return role;
   }
-  // ********************************* END ****************************************///
+  // #endregion ****************************************************************** //
 }
 
 export default RoleService;

@@ -49,6 +49,7 @@ class EmailService {
     }
   }
 
+  // #region De logica de envio de Email ****************************************//
   async sendMail(email, subject, templateName, context) {
     if (!this.transporter) {
       throw new Error("Email service not initialized");
@@ -93,7 +94,9 @@ class EmailService {
     }
   }
 
-  // *********************** Envio de Notificaciones de Login ******************* //
+  // #endregion *************************************************************** //
+
+  // #region *********************** Envio de Notificaciones de Login ******************* //
 
   async sendLoginNotification(user, loginInfo) {
     const context = {
@@ -112,9 +115,9 @@ class EmailService {
     );
   }
 
-  // *********************** END ******************* //
+  // #endregion *************************************************************************** //
 
-  // *********************** Envio de Verificacion de Email ******************* //
+  // #region *********************** Envio de Verificacion de Email ******************* //
   async sendVerificationEmail(user, verificationLink) {
     const context = {
       userName: `${user.nombre} ${user.apellido}`,
@@ -129,9 +132,10 @@ class EmailService {
       context
     );
   }
-  // *********************** END ******************* //
+  
+  // #endregion *************************************************************** //
 
-  // *********************** Envio de Notificaciones de Registro ******************* //
+  // #region *********************** Envio de Notificaciones de Registro ******************* //
   async sendRegistrationConfirmation(user) {
     const context = {
       userName: `${user.nombre} ${user.apellido}`,
@@ -147,9 +151,9 @@ class EmailService {
     );
   }
 
-  // *********************** END ******************* //
+  // #endregion *************************************************************** //
 
-  // *********************** Envio de Notificaciones de Olvide Contraseña ******************* //
+  // #region *********************** Envio de Notificaciones de Olvide Contraseña ******************* //
   async sendForgotPasswordEmail(user, resetLink) {
     const context = {
       userName: `${user.nombre} ${user.apellido}`,
@@ -164,9 +168,10 @@ class EmailService {
       context
     );
   }
-  // *********************** END ******************* //
 
-  // *********************** Envio de Notificaciones de Confirmar Reseteo de Contraseña ******************* //
+  // #endregion *************************************************************** //
+
+  // #region *********************** Envio de Notificaciones de Confirmar Reseteo de Contraseña ******************* //
   async sendResetPasswordConfirmationEmail(user) {
     const context = {
       userName: `${user.nombre} ${user.apellido}`,
@@ -180,7 +185,8 @@ class EmailService {
       context
     );
   }
-    // *********************** END ******************* //
+
+  // #endregion *************************************************************** //
 }
 
 export default new EmailService();

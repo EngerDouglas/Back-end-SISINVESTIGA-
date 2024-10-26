@@ -1,7 +1,6 @@
 import RequestService from '../services/requestService.js';
-import { BadRequestError } from '../utils/errors.js';
 
-// **************************** Crear Solicitud ************************************************* //
+// #region Crear Solicitud ************************************************* //
 export const createRequest = async (req, res, next) => {
   try {
     const request = await RequestService.createRequest(req.body, req.user._id);
@@ -10,9 +9,9 @@ export const createRequest = async (req, res, next) => {
     next(error);
   }
 };
-// **************************** END ************************************************ //
+// #endregion *************************************************************** //
 
-// **************************** Actualizar Solicitud ************************************************* //
+// #region Actualizar Solicitud ************************************************* //
 export const updateRequest = async (req, res, next) => {
   try {
     const { id } = req.params;
@@ -22,9 +21,9 @@ export const updateRequest = async (req, res, next) => {
     next(error);
   }
 };
-// **************************** END ************************************************ //
+// #endregion *************************************************************** //
 
-// **************************** Eliminar Solicitud ************************************************* //
+// #region Eliminar Solicitud ************************************************* //
 export const deleteRequest = async (req, res, next) => {
   try {
     const { id } = req.params;
@@ -34,9 +33,9 @@ export const deleteRequest = async (req, res, next) => {
     next(error);
   }
 };
-// **************************** END ************************************************ //
+// #endregion *************************************************************** //
 
-// **************************** Restaurar Solicitud ************************************************* //
+// #region Restaurar Solicitud ************************************************* //
 export const restoreRequest = async (req, res, next) => {
   try {
     const { id } = req.params;
@@ -46,10 +45,13 @@ export const restoreRequest = async (req, res, next) => {
     next(error);
   }
 };
-// **************************** END ************************************************ //
+// #endregion *************************************************************** //
 
 
-// **************************** Obtener todas las Solicitudes con Paginación y Filtrado ************************************************* //
+// #region ***************** Seccion de busquedas ************************************************* //
+
+
+// #region Obtener todas las Solicitudes con Paginación y Filtrado ************************************************* //
 export const getAllRequests = async (req, res, next) => {
   try {
     const { page = 1, limit = 10, estado, tipoSolicitud } = req.query;
@@ -63,9 +65,9 @@ export const getAllRequests = async (req, res, next) => {
     next(error);
   }
 };
-// **************************** END ************************************************ //
+// #endregion *************************************************************** //
 
-// **************************** Obtener Solicitud por ID ************************************************* //
+// #region Obtener Solicitud por ID ************************************************* //
 export const getRequestById = async (req, res, next) => {
   try {
     const { id } = req.params;
@@ -75,9 +77,9 @@ export const getRequestById = async (req, res, next) => {
     next(error);
   }
 };
-// **************************** END ************************************************ //
+// #endregion *************************************************************** //
 
-// **************************** Obtener Propia Solicitud ************************************************* //
+// #region Obtener Propia Solicitud ************************************************* //
 export const getUserRequests = async (req, res, next) => {
   try {
     const { page = 1, limit = 10, estado, tipoSolicitud } = req.query;
@@ -91,4 +93,6 @@ export const getUserRequests = async (req, res, next) => {
     next(error);
   }
 };
-// **************************** END ************************************************ //
+// #endregion *************************************************************** //
+
+// #endregion *************************************************************** //

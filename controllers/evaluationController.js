@@ -1,7 +1,7 @@
 import EvaluationService from '../services/evaluationService.js';
 import { BadRequestError } from '../utils/errors.js';
 
-  // ***********************  Creamos la Evaluacion ******************* //
+// #region Crear Evaluaciones //
   export const createEvaluation = async (req, res, next) => {
     try {
       const { projectId } = req.params;
@@ -17,9 +17,9 @@ import { BadRequestError } from '../utils/errors.js';
       next(error);
     }
 };
-  // ***********************  END ******************* //
+  // #endregion ***************************************** //
 
-  // ***********************  Actualizamos la Evaluacion ******************* //
+  // #region Actualizar Evaluaciones ******************* //
   export const updateEvaluation = async (req, res, next) => {
     try {
       const { evaluationId } = req.params;
@@ -31,9 +31,9 @@ import { BadRequestError } from '../utils/errors.js';
       next(error);
     }
   }
-  // ***********************  END ******************* //
+   // #endregion ***************************************** //
 
-  // ***********************  Obtenemos todas las Evaluaciones ******************* //
+  // #region Obtener Evaluaciones ******************* //
 
   export const getAllEvaluations = async (req, res, next) => {
     try {
@@ -54,9 +54,9 @@ import { BadRequestError } from '../utils/errors.js';
     }
   };
 
-  // ***********************  END ******************* //
+  // #endregion ***************************************** //
 
-  // ***********************  Obtenemos la Evaluacion por Proyecto ******************* //
+  // #region Obtener Evaluaciones por Proyecto ******************* //
   export const getEvaluationsByProject = async (req, res, next) => {
     try {
       const { projectId } = req.params;
@@ -66,9 +66,9 @@ import { BadRequestError } from '../utils/errors.js';
       next(error);
     }
   };
-  // ***********************  END ******************* //
+  // #endregion ***************************************** //
 
-  // ***********************  Eliminamos la Evaluacion ******************* //
+  // #region Eliminar Evaluaciones *********************** //
   export const deleteEvaluation = async (req, res, next) => {
     try {
       const { evaluationId } = req.params;
@@ -78,9 +78,9 @@ import { BadRequestError } from '../utils/errors.js';
       next(error);
     }
   };
-  // ***********************  END ******************* //
+  // #endregion ***************************************** //
 
-  // ***********************  Restauramos la Evaluacion ******************* //
+  // #region Restaurar Evaluaciones *********************** //
   export const restoreEvaluation = async (req, res, next) => {
     try {
       const { evaluationId } = req.params;
@@ -90,4 +90,6 @@ import { BadRequestError } from '../utils/errors.js';
       next(error);
     }
   };
+
+  // #endregion ***************************************** //
 

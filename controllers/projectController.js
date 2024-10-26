@@ -2,7 +2,7 @@ import { validationResult } from 'express-validator';
 import ProjectService from '../services/projectService.js';
 import { BadRequestError } from '../utils/errors.js';
 
-// **************************** Crear Proyecto ************************************************* //
+// #region Crear Proyecto ************************************************* //
 export const createProyecto = async (req, res, next) => {
   try {
     const errors = validationResult(req);
@@ -23,10 +23,9 @@ export const createProyecto = async (req, res, next) => {
     next(error);
   }
 };
-// **************************** END ************************************************ //
+// #endregion *************************************************************** //
 
-
-// **************************** Actualizar Proyecto ************************************************* //
+// #region Actualizar Proyecto ************************************************* //
 export const updateProyecto = async (req, res, next) => {
   try {
     const errors = validationResult(req);
@@ -49,10 +48,9 @@ export const updateProyecto = async (req, res, next) => {
     next(error);
   }
 };
-// **************************** END ************************************************ //
+// #endregion *************************************************************** //
 
-
-// **************************** Eliminar Proyecto (Soft Delete) ************************************************* //
+// #region Actualizar Proyecto (Soft Delete) ************************************************* //
 
 export const deleteProyecto = async (req, res, next) => {
   try {
@@ -64,9 +62,9 @@ export const deleteProyecto = async (req, res, next) => {
   }
 };
 
-// **************************** END ************************************************ //
+// #endregion *************************************************************** //
 
-// **************************** Restaurar Proyecto (Revertir Soft Delete) ************************************************* //
+// #region Restaurar Proyecto (Soft Delete) ************************************************* //
 export const restoreProyecto = async (req, res, next) => {
   try {
     const { id } = req.params;
@@ -77,11 +75,11 @@ export const restoreProyecto = async (req, res, next) => {
   }
 };
 
-// **************************** END ************************************************ //
+// #endregion *************************************************************** //
 
-// **************************** Seccion de busquedas ************************************************* //
+// #region ***************** Seccion de busquedas ************************************************* //
 
-// **************************** Obtener todos los Proyectos con Paginación y Filtrado ************************************************* //
+// #region Obtener todos los Proyectos por Paginación y Filtrado ************************************************* //
 export const getAllProyectos = async (req, res, next) => {
   try {
     const { page = 1, limit = 10, estado, nombre } = req.query;
@@ -95,10 +93,9 @@ export const getAllProyectos = async (req, res, next) => {
     next(error);
   }
 };
-// **************************** END ************************************************ //
+// #endregion *************************************************************** //
 
-
-// **************************** Obtener Proyecto por ID ************************************************* //
+// #region Obtener Proyecto por ID ************************************************* //
 export const getProyectoById = async (req, res, next) => {
   try {
     const { id } = req.params;
@@ -108,9 +105,9 @@ export const getProyectoById = async (req, res, next) => {
     next(error);
   }
 };
-// **************************** END ************************************************ //
+// #endregion *************************************************************** //
 
-// **************************** Obtener Proyectos propios ************************************************* //
+// #region Obtener Proyectos propios ************************************************* //
 export const getUserProyectos = async (req, res, next) => {
   try {
     const { page = 1, limit = 10, search = '' } = req.query;
@@ -125,9 +122,9 @@ export const getUserProyectos = async (req, res, next) => {
     next(error);
   }
 };
-// **************************** END ************************************************ //
+// #endregion *************************************************************** //
 
-// **************************** Búsqueda avanzada por texto completo ************************************************* //
+// #region Búsqueda avanzada por texto completo ************************************************* //
 export const searchProyectos = async (req, res, next) => {
   try {
     const { query } = req.query;
@@ -137,4 +134,6 @@ export const searchProyectos = async (req, res, next) => {
     next(error);
   }
 };
-// **************************** END ************************************************ //
+// #endregion *************************************************************** //
+
+// #endregion *************************************************************** //

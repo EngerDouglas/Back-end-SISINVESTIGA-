@@ -2,8 +2,7 @@ import { validationResult } from 'express-validator';
 import RoleService from '../services/roleService.js';
 import { BadRequestError } from '../utils/errors.js';
 
-// ***********************  Creamos un nuevo roles ******************* //
-
+// #region Creamos un nuevo roles ******************* //
 export const createRole = async (req, res, next) => {
   try {
     const errors = validationResult(req);
@@ -17,11 +16,10 @@ export const createRole = async (req, res, next) => {
     next(error);
   }
 };
-// *********************** END ******************* //
+// #endregion *************************************************************** //
 
 
-// *********************** Actualizar los Roles ******************* //
-
+// #region Actualizar los Roles ***************************** //
 export const updateRole = async (req, res, next) => {
   try {
     const errors = validationResult(req);
@@ -37,23 +35,9 @@ export const updateRole = async (req, res, next) => {
   }
 };
 
-// *********************** END ******************* //
+// #endregion *************************************************************** //
 
-
-// *********************** Obtener todos los roles ******************* //
-
-export const getRoles = async (req, res, next) => {
-  try {
-    const roles = await RoleService.getRoles();
-    res.status(200).json(roles);
-  } catch (error) {
-    next(error);
-  }
-};
-
-// *********************** END ******************* //
-
-// ********************************* Eliminar un Rol ****************************************///
+// #region Eliminar un Rol ****************************************//
 export const deleteRole = async (req, res, next) => {
   try {
     const { id } = req.params;
@@ -64,9 +48,9 @@ export const deleteRole = async (req, res, next) => {
   }
 };
 
-// ********************************* END ****************************************///
+// #endregion *************************************************************** //
 
-// ********************************* Restauramos un Rol ****************************************///
+// #region Restauramos un Rol ****************************************//
 export const restoreRole = async (req, res, next) => {
   try {
     const { id } = req.params;
@@ -77,4 +61,22 @@ export const restoreRole = async (req, res, next) => {
   }
 };
 
-// ********************************* END ****************************************///
+// #endregion *************************************************************** //
+
+
+// #region ***************** Seccion de busquedas ************************************************* //
+
+
+//#region Obtener todos los roles ************************************** //
+export const getRoles = async (req, res, next) => {
+  try {
+    const roles = await RoleService.getRoles();
+    res.status(200).json(roles);
+  } catch (error) {
+    next(error);
+  }
+};
+
+// #endregion *************************************************************** //
+
+// #endregion Seccion de Busqueda *************************************************************** //

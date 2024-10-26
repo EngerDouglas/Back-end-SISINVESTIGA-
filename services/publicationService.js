@@ -4,7 +4,7 @@ import { BadRequestError, NotFoundError, ForbiddenError } from '../utils/errors.
 import { PUBLICATION_TYPES, PUBLICATION_STATES } from '../utils/constants.js';
 
 class PublicationService {
-  // **************************** Crear Publicacion ************************************************* //
+  // #region **************************** Crear Publicacion ************************************************* //
   static async createPublication(publicationData, userId, userRole) {
     const { titulo, fecha, proyecto, revista, resumen, palabrasClave, tipoPublicacion, estado, idioma, imagen, anexos } = publicationData;
 
@@ -53,9 +53,9 @@ class PublicationService {
     await newPublication.save();
     return newPublication;
   }
-  // **************************** END************************************************* //
+  // #endregion *************************************************************************************************************** //
 
-  // **************************** Actualizar Publicacion ************************************************* //
+  // #region **************************** Actualizar Publicacion ************************************************* //
 
   static async updatePublication(id, updates, userId, userRole) {
     const publication = await Publication.findOne({ _id: id, isDeleted: false });
@@ -129,9 +129,9 @@ class PublicationService {
     return publication;
   }
 
-  // **************************** END ************************************************* //
+  // #endregion *************************************************************************************************************** //
 
-  // **************************** Actualizar Publicacion Admins ************************************************* //
+  // #region **************************** Actualizar Publicacion Admins ************************************************* //
 
   static async updateAdmPublication(id, updates) {
     const publication = await Publication.findById(id);
@@ -168,9 +168,9 @@ class PublicationService {
     return publication;
   }
 
-  // **************************** END ************************************************* //
+  // #endregion *************************************************************************************************************** //
 
-  // **************************** Eliminar Publicacion ************************************************* //
+  // #region **************************** Eliminar Publicacion ************************************************* //
 
   static async deletePublication(id, userId, userRole) {
     const publication = await Publication.findOne({ _id: id, isDeleted: false });
@@ -194,10 +194,10 @@ class PublicationService {
     return { message: 'Publicación eliminada (soft delete).' };
   }
 
-  // **************************** END ************************************************* //
+  // #endregion *************************************************************************************************************** //
 
   
-  // **************************** Restaurar Publicacion ************************************************* //
+  // #region **************************** Restaurar Publicacion ************************************************* //
 
   static async restorePublication(id, userRole) {
     const publication = await Publication.findOne({ _id: id, isDeleted: true });
@@ -231,12 +231,11 @@ class PublicationService {
     };
   }
 
-    // **************************** END ************************************************* //
+  // #endregion *************************************************************************************************************** //
 
-    
-  // ********************************  Seccion de busqueda ************************************************* //
+  // #region ********************************  Seccion de busqueda ************************************************* //
 
-  // ******************************** Obtener todas las publicaciones ************************************************* //
+  // #region ******************************** Obtener todas las publicaciones ************************************************* //
 
   static async getAllPublications(filters, page = 1, limit = 10, userRole) {
     const query = { };
@@ -244,8 +243,6 @@ class PublicationService {
     if (userRole === 'Administrador') {
       if (filters.isDeleted !== undefined) {
         query.isDeleted = filters.isDeleted;
-      } else {
-        // No establecer query.isDeleted para mostrar todas las publicaciones
       }
     } else {
       query.isDeleted = false; // Los no administradores solo ven publicaciones no eliminadas
@@ -288,9 +285,9 @@ class PublicationService {
       totalPages: Math.ceil(total / limit)
     };
   }
-  // **************************** END ************************************************* //
+  // #endregion *************************************************************************************************************** //
 
-  // ******************************** Obtener tus propias publicaciones ************************************************* //
+  // #region ******************************** Obtener tus propias publicaciones ************************************************* //
 
   static async getUserPublications(userId, page = 1, limit = 10, search) {
     let query = { autores: userId, isDeleted: false };
@@ -331,9 +328,9 @@ class PublicationService {
       tiposPublicacion
     };
   }
-  // **************************** END ************************************************ //
+  // #endregion *************************************************************************************************************** //
 
-  // ******************************** Obtener publicaciones por ID ************************************************* //
+  // #region ******************************** Obtener publicaciones por ID ************************************************* //
 
   static async getPubById(id, userRole) {
     const query = { _id: id };
@@ -363,10 +360,10 @@ class PublicationService {
 
     return publication;
   }
-  // **************************** END ************************************************ //
+  // #endregion *************************************************************************************************************** //
 
 
-// ******************************** Obtener publicaciones por el titulo ************************************************* //
+// #region ******************************** Obtener publicaciones por el titulo ************************************************* //
   static async searchPublications(query, page = 1, limit = 10) {
     const searchQuery = {
       $or: [
@@ -403,7 +400,9 @@ class PublicationService {
       totalPages: Math.ceil(total / limit)
     };
   }
-  // **************************** END ************************************************ //
+  // #endregion *************************************************************************************************************** //
+
+  // #endregion Seccion de Busqueda *************************************************************************************************************** //
 }
 
 export default PublicationService;

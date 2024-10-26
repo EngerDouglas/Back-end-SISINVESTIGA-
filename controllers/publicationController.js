@@ -2,8 +2,7 @@ import { validationResult } from 'express-validator';
 import PublicationService from '../services/publicationService.js';
 import { BadRequestError } from '../utils/errors.js';
 
-// **************************** Crear Publicacion ************************************************* //
-
+// #region Crear Publicacion ************************************************* //
 export const createPublication = async (req, res, next) => {
   try {
     const errors = validationResult(req);
@@ -22,11 +21,10 @@ export const createPublication = async (req, res, next) => {
   }
 };
 
-// **************************** END ************************************************ //
+// #endregion *************************************************************** //
 
 
-// **************************** Actualizar Publicacion ************************************************* //
-
+// #region Actualizar Publicacion ************************************************* //
 export const updatePublication = async (req, res, next) => {
   try {
     const errors = validationResult(req);
@@ -70,10 +68,9 @@ export const updatePublication = async (req, res, next) => {
   }
 };
 
-// **************************** END ************************************************ //
+// #endregion *************************************************************** //
 
-// **************************** Actualizar Publicacion Admins ************************************************* //
-
+// #region Actualizar Publicacion Para Admins ************************************************* //
 export const updateAdmPublication = async (req, res, next) => {
   try {
     const errors = validationResult(req);
@@ -102,10 +99,10 @@ export const updateAdmPublication = async (req, res, next) => {
   }
 };
 
-// **************************** END ************************************************ //
+// #endregion *************************************************************** //
 
 
-// ******************************** Eliminar publicaciones ************************************************* //
+// #region Eliminar publicaciones ************************************************* //
 
 export const deletePublication = async (req, res, next) => {
   try {
@@ -117,11 +114,10 @@ export const deletePublication = async (req, res, next) => {
   }
 };
 
-// **************************** END ************************************************ //
+// #endregion **************************** END ************************************************ //
 
 
-// **************************** Restaurar Publicación (Soft Restore) ************************************************* //
-
+// #region Restaurar Publicación (Soft Restore) ************************************************* //
 export const restorePublication = async (req, res, next) => {
   try {
     const { id } = req.params;
@@ -132,13 +128,12 @@ export const restorePublication = async (req, res, next) => {
   }
 };
 
-// **************************** END ************************************************* //
+// #endregion ************************************************************************************ //
 
 
-// ********************************  Seccion de busqueda ************************************************* //
+// #region ********************************  Seccion de busqueda ************************************************* //
 
-// ******************************** Obtener todas las publicaciones ************************************************* //
-
+// #region Obtener todas las publicaciones ************************************************* //
 export const getAllPublications = async (req, res, next) => {
   try {
     const { page = 1, limit = 10, tipoPublicacion, estado, titulo, isDeleted } = req.query;
@@ -157,11 +152,10 @@ export const getAllPublications = async (req, res, next) => {
   }
 };
 
-// **************************** END ************************************************ //
+// #endregion **************************** END ************************************************ //
 
 
-// ******************************** Obtener tus propias publicaciones ************************************************* //
-
+// #region Obtener tus propias publicaciones ************************************************* //
 export const getUserPublications = async (req, res, next) => {
   try {
     const { page = 1, limit = 10, search = '' } = req.query;
@@ -172,12 +166,9 @@ export const getUserPublications = async (req, res, next) => {
   }
 };
 
-// **************************** END ************************************************ //
+// #endregion **************************** END ************************************************ //
 
-
-
-// ******************************** Obtener publicaciones por ID ************************************************* //
-
+// #region Obtener publicaciones por ID ************************************************* //
 export const getPubById = async (req, res, next) => {
   try {
     const { id } = req.params;
@@ -190,10 +181,10 @@ export const getPubById = async (req, res, next) => {
   }
 }
 
-// **************************** END ************************************************ //
+//  #endregion **************************** END ************************************************ //
 
 
-// ******************************** Obtener publicaciones por el titulo ************************************************* //
+// #region Obtener publicaciones por el titulo ************************************************* //
 
 export const getPubByTitle = async (req, res, next) => {
   try {
@@ -208,4 +199,6 @@ export const getPubByTitle = async (req, res, next) => {
   }
 }
 
-// **************************** END ************************************************ //
+// #endregion **************************** END ************************************************ //
+
+//#endregion **************************** END ************************************************ //

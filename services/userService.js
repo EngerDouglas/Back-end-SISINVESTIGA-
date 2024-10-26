@@ -7,7 +7,7 @@ import rateLimit from 'express-rate-limit';
 
 class UserService {
 
-  // *********************** Creando el Usuario ******************* //
+  // #region *********************** Creando el Usuario ******************* //
   static async createUser(userData) {
     const existUser = await User.findOne({ email: userData.email })
 
@@ -29,10 +29,9 @@ class UserService {
     await newUser.save()
     return newUser
   }
-  // *********************** END ******************* //
+  // #endregion ****************************************************************** //
 
-  // *********************** Verificar Token para Validacion de Usuario ******************* //
-
+  // #region *********************** Verificar Token para Validacion de Usuario ******************* //
   static async verifyUser(token) {
     let decoded;
     try {
@@ -68,9 +67,9 @@ class UserService {
     return { alreadyVerified: false, user };
   }
 
-  // *********************** END ******************* //
+  // #endregion ****************************************************************** //
 
-  // *********************** Iniciando Sesion ******************* //
+  // #region *********************** Iniciando Sesion ******************* //
   static loginLimiter = rateLimit({
     windowMs: 15 * 60 * 1000, // 15 minutos
     max: 5, // Limita cada usuario a 5 intentos de inicio de sesión por ventana
@@ -110,27 +109,26 @@ class UserService {
     const token = await user.generateAuthToken();
     return { user, token };
   }
-  // *********************** END ******************* //
+  // #endregion ****************************************************************** //
 
-  // *********************** Cerrando Sesion ******************* //
+  // #region *********************** Cerrando Sesion ******************* //
 
   static async logoutUser(user, token) {
     user.tokens = user.tokens.filter((userToken) => userToken.token !== token);
     await user.save();
   }
 
-  // *********************** END ******************* //
+  // #endregion ****************************************************************** //
 
-  // *********************** Cerrando todas las Sesiones ******************* //
+  // #region *********************** Cerrando todas las Sesiones ******************* //
   static async logoutAllUser(user) {
     user.tokens = [];
     await user.save();
   }
 
-  // *********************** END ******************* //
+  // #endregion ****************************************************************** //
 
-  // *********************** Actualizando el Usuario ******************* //
-
+  // #region *********************** Actualizando el Usuario ******************* //
   static async updateUser(id, updates) {
     const user = await User.findById(id);
     if (!user) {
@@ -168,8 +166,9 @@ class UserService {
     return user;
   }
 
-  // *********************** END ******************* //
+  // #endregion ****************************************************************** //
 
+  // #region *********************** Actualizar Rol del Usuario***************** //
   static async updateUserRole(userId, roleId) {
     const user = await User.findById(userId);
     if (!user) {
@@ -187,9 +186,9 @@ class UserService {
 
     return user;
   }
+  // #endregion ****************************************************************** //
 
-  // *********************** Actualizando tu propio Usuario ******************* //
-
+  // #region *********************** Actualizando tu propio Usuario ******************* //
   static async updateSelfUser(user, updates) {
     if (updates.currentPassword && updates.newPassword) {
       const isMatch = await bcrypt.compare(updates.currentPassword, user.password);
@@ -223,52 +222,9 @@ class UserService {
     return user;
   }
 
-  // *********************** END ******************* //
+  // #endregion ****************************************************************** //
 
-  // *********************** Filtros para las busquedas ******************* //
-
-  // *********************** Buscando tu propio usuario ******************* //
-  static async getUser(id) {
-    return User.findById(id)
-      .select('-password -tokens')
-      .populate('role', 'roleName')
-      .populate('proyectos')
-      .populate('publicaciones')
-      .populate('requests');
-  }
-  // ***********************END ******************* //
-
-  // *********************** Buscando todos los usuarios ******************* //
-  static async getAllUsers() {
-    return User.find()
-      .select('-__v')
-      .populate('role', 'roleName')
-      .populate('proyectos')
-      .populate('publicaciones')
-      .populate('requests');
-  }
-  // *********************** END ******************* //
-
-  // *********************** Buscando usuario por ID ******************* //
-
-  static async getUserById(id) {
-    const user = await User.findById(id)
-      .select('-__v')
-      .populate('role', 'roleName')
-      .populate('proyectos')
-      .populate('publicaciones')
-      .populate('requests');
-
-    if (!user) {
-      throw new NotFoundError('Usuario no encontrado');
-    }
-
-    return user;
-  }
-
-  // *********************** END ******************* //
-
-  // *********************** Deshabilitando el Usuario ******************* //
+  // #region *********************** Deshabilitando el Usuario ******************* //
   static async disableUser(id, userRole) {
     if (userRole !== 'Administrador') {
       throw new ForbiddenError('No tienes permisos para deshabilitar este usuario.');
@@ -286,9 +242,9 @@ class UserService {
     user.isDisabled = true;
     await user.save();
   }
-  // *********************** END ******************* //
+  // #endregion ****************************************************************** //
 
-  // *********************** Habilitando el Usuario ******************* //
+  // #region *********************** Habilitando el Usuario ******************* //
   static async enableUser(id, userRole) {
     if (userRole !== 'Administrador') {
       throw new ForbiddenError('No tienes permisos para habilitar este usuario.');
@@ -306,48 +262,91 @@ class UserService {
     user.isDisabled = false;
     await user.save();
   }
-  // *********************** END ******************* //
+  // #endregion ****************************************************************** //
 
-    // *********************** Creamos el token para resetear la clave ******************* //
-    static async createPasswordResetToken(email) {
-      const user = await User.findOne({ email });
+  // #region *********************** Creamos el token para resetear la clave ******************* //
+  static async createPasswordResetToken(email) {
+    const user = await User.findOne({ email });
+    if (!user) {
+      throw new NotFoundError('Usuario no encontrado');
+    }
+    user.generatePasswordResetToken();
+    await user.save();
+    return user;
+  }
+  // #endregion ****************************************************************** //
+
+  // #region *********************** Resetamos la clave del usuario ******************* //
+  static async resetPassword(token, newPassword) {
+    try {
+      const decoded = jwt.verify(token, process.env.JWT_SEC_KEY);
+      const user = await User.findOne({
+        _id: decoded._id,
+        resetPasswordToken: token,
+        resetPasswordExpires: { $gt: Date.now() }
+      });
+  
       if (!user) {
-        throw new NotFoundError('Usuario no encontrado');
+        throw new BadRequestError('Token inválido o expirado');
       }
-      user.generatePasswordResetToken();
+  
+      user.password = newPassword;
+      user.resetPasswordToken = undefined;
+      user.resetPasswordExpires = undefined;
       await user.save();
       return user;
-    }
-    // *********************** END ******************* //
-
-    // *********************** Resetamos la clave del usuario ******************* //
-    static async resetPassword(token, newPassword) {
-      try {
-        const decoded = jwt.verify(token, process.env.JWT_SEC_KEY);
-        const user = await User.findOne({
-          _id: decoded._id,
-          resetPasswordToken: token,
-          resetPasswordExpires: { $gt: Date.now() }
-        });
-  
-        if (!user) {
-          throw new BadRequestError('Token inválido o expirado');
-        }
-  
-        user.password = newPassword;
-        user.resetPasswordToken = undefined;
-        user.resetPasswordExpires = undefined;
-        await user.save();
-        return user;
-      } catch (error) {
-        if (error instanceof jwt.JsonWebTokenError) {
-          throw new BadRequestError('Token inválido');
-        }
-        throw error;
+    } catch (error) {
+      if (error instanceof jwt.JsonWebTokenError) {
+        throw new BadRequestError('Token inválido');
       }
+      throw error;
     }
-    // *********************** END ******************* //
+  }
+  // #endregion ****************************************************************** //
 
+  // #region *********************** Filtros para las busquedas ************************************************ //
+
+  // #region *********************** Buscando tu propio usuario ******************* //
+  static async getUser(id) {
+    return User.findById(id)
+      .select('-password -tokens')
+      .populate('role', 'roleName')
+      .populate('proyectos')
+      .populate('publicaciones')
+      .populate('requests');
+  }
+  // #endregion ****************************************************************** //
+
+  // #region *********************** Buscando todos los usuarios ******************* //
+  static async getAllUsers() {
+    return User.find()
+      .select('-__v')
+      .populate('role', 'roleName')
+      .populate('proyectos')
+      .populate('publicaciones')
+      .populate('requests');
+  }
+  // #endregion ****************************************************************** //
+
+  // #region *********************** Buscando usuario por ID ******************* //
+  static async getUserById(id) {
+    const user = await User.findById(id)
+      .select('-__v')
+      .populate('role', 'roleName')
+      .populate('proyectos')
+      .populate('publicaciones')
+      .populate('requests');
+
+    if (!user) {
+      throw new NotFoundError('Usuario no encontrado');
+    }
+
+    return user;
+  }
+
+  // #endregion ****************************************************************** //
+
+  // #endregion Filtro Busqueda ****************************************************************** //
 }
 
 export default UserService

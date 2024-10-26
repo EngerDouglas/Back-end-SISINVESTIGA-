@@ -3,7 +3,7 @@ import Project from '../models/Project.js';
 import { BadRequestError, NotFoundError, ForbiddenError } from '../utils/errors.js';
 
 class RequestService {
-  // **************************** Crear Solicitud ************************************************* //
+  // #region **************************** Crear Solicitud ************************************************* //
   static async createRequest(requestData, userId) {
     const { tipoSolicitud, descripcion, proyecto } = requestData;
 
@@ -33,9 +33,9 @@ class RequestService {
     return newRequest;
   }
 
-  // **************************** END ************************************************* //
+  // #endregion ******************************************************************************************* //
 
-  // **************************** Actualizar Solicitud  ************************************************* //
+  // #region **************************** Actualizar Solicitud  ************************************************* //
   static async updateRequest(id, updateData, userId, userRole) {
     const { estado, comentarios } = updateData;
     const solicitud = await Request.findOne({ _id: id, isDeleted: false });
@@ -65,9 +65,9 @@ class RequestService {
     return solicitud;
   }
 
-  // **************************** END ************************************************* //
+  // #endregion *************************************************************************************** //
 
-  // **************************** Eliminar Solicitud ************************************************* //
+  // #region **************************** Eliminar Solicitud ************************************************* //
   static async deleteRequest(id, userId, userRole) {
     const solicitud = await Request.findOne({ _id: id, isDeleted: false });
 
@@ -84,10 +84,10 @@ class RequestService {
     return { message: 'Solicitud eliminada exitosamente (soft delete).' };
   }
 
-  // **************************** END ************************************************* //
+  // #endregion ********************************************************************************************* //
 
 
-  // **************************** Restaurar Solicitud ************************************************* //
+  // #region **************************** Restaurar Solicitud ************************************************* //
   static async restoreRequest(id, userRole) {
     const solicitud = await Request.findOne({ _id: id, isDeleted: true });
 
@@ -104,10 +104,11 @@ class RequestService {
     return solicitud;
   }
 
-  // **************************** END ************************************************* //
+  // #endregion ********************************************************************************************* //
 
+  // #region Seccion de Busqueda ********************************************************************************************* //
 
-  // **************************** Obtener todas las Solicitudes con Paginación y Filtrado ************************************************* //
+  // #region **************************** Obtener todas las Solicitudes con Paginación y Filtrado ************************************************* //
   static async getAllRequests(filters, page = 1, limit = 10, userId, userRole) {
     const query = { ...filters };
 
@@ -133,10 +134,9 @@ class RequestService {
     };
   }
 
-  // **************************** END ************************************************* //
+  // #endregion ********************************************************************************************* //
 
-
-  // **************************** Obtener Solicitud por ID ************************************************* //
+  // #region **************************** Obtener Solicitud por ID ************************************************* //
   static async getRequestById(id, userId, userRole) {
     const solicitud = await Request.findOne({ _id: id, isDeleted: false })
       .populate('solicitante', 'nombre apellido email')
@@ -156,9 +156,9 @@ class RequestService {
     return solicitud;
   }
 
-  // **************************** END ************************************************* //
+  // #endregion ********************************************************************************************* //
 
-  // **************************** Obtener Propia Solicitud ************************************************* //
+  // #region **************************** Obtener Propia Solicitud ************************************************* //
   static async getUserRequests(userId, filters, page = 1, limit = 10) {
     const query = { solicitante: userId, isDeleted: false, ...filters };
 
@@ -179,8 +179,9 @@ class RequestService {
       totalPages: Math.ceil(total / limit)
     };
   }
+  // #endregion ********************************************************************************************* //
 
-// **************************** END ************************************************* //
+  // #endregion Seccion de Busqueda ************************************************************************************************************* //
 }
 
 export default RequestService
