@@ -12,6 +12,7 @@ class EmailService {
     this.transporter = null;
   }
 
+  // #region De logica de envio de Email ****************************************//
   initialize() {
     try {
       this.transporter = nodemailer.createTransport({
@@ -48,6 +49,7 @@ class EmailService {
       throw error;
     }
   }
+  // #endregion Inicializar el servicio *****************************************//
 
   // #region De logica de envio de Email ****************************************//
   async sendMail(email, subject, templateName, context) {
@@ -68,6 +70,7 @@ class EmailService {
       __dirname,
       "../templates/assets/img/LogoWebUCSD.png"
     );
+    // #endregion *************************************************************** //
 
     const mailOptions = {
       from: process.env.MAIL_USERNAME,
@@ -182,6 +185,28 @@ class EmailService {
       user.email,
       "Confirmación de Restablecimiento de Contraseña - SISINVESTIGA",
       "reset_password",
+      context
+    );
+  }
+
+  // #endregion *************************************************************** //
+
+  // #region *********************** Envio de Notificaciones de Crear Proyecto ******************* //
+  async sendProjectCreationEmail(user, project) {
+    const context = {
+      userName: `${user.nombre} ${user.apellido}`,
+      projectName: project.nombre,
+      projectBudget: `${project.presupuesto.toLocaleString()}`,
+      projectStartDate: project.cronograma.fechaInicio.toLocaleDateString(),
+      projectEndDate: project.cronograma.fechaFin.toLocaleDateString(),
+      projectImage: project.imagen,
+      year: new Date().getFullYear(),
+    };
+  
+    return this.sendMail(
+      user.email,
+      'Nuevo Proyecto Creado - SISINVESTIGA',
+      'project_created',
       context
     );
   }

@@ -1,5 +1,6 @@
 import { validationResult } from 'express-validator';
 import ProjectService from '../services/projectService.js';
+import emailService from '../services/emailService.js';
 import { BadRequestError } from '../utils/errors.js';
 
 // #region Crear Proyecto ************************************************* //
@@ -14,11 +15,17 @@ export const createProyecto = async (req, res, next) => {
       req.body.imagen = req.body.imagen;
     }
 
+    const user = req.user;
+
     const project = await ProjectService.createProject(req.body, req.user._id);
+
+    await emailService.sendProjectCreationEmail(user, project)
+
     res.status(201).json({
       message: 'Proyecto creado exitosamente',
       proyecto: project,
     });
+
   } catch (error) {
     next(error);
   }
