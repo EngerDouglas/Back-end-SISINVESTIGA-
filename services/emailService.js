@@ -12,7 +12,7 @@ class EmailService {
     this.transporter = null;
   }
 
-  // #region De logica de envio de Email ****************************************//
+  // #region De logica de Inicializacion del Servicio ****************************************//
   initialize() {
     try {
       this.transporter = nodemailer.createTransport({
@@ -187,6 +187,42 @@ class EmailService {
       "reset_password",
       context
     );
+  }
+
+  // #endregion *************************************************************** //
+
+  // #region *********************** Envio de Notificaciones de Cambio de Contraseña por los Usuarios******************* //
+  async sendPasswordChangeNotification(user) {
+    const context = {
+      userName: `${user.nombre} ${user.apellido}`,
+      year: new Date().getFullYear(),
+    };
+    const subject = "Confirmación de Cambio de Contraseña - SISINVESTIGA";
+    return this.sendMail(user.email, subject, "passwordchanged_notification", context);
+  }
+
+  // #endregion *************************************************************** //
+
+  // #region *********************** Envio de Notificaciones de Habilitacion de Usuarios ******************* //
+  async sendAccountEnabledNotification(user) {
+    const context = {
+      userName: `${user.nombre} ${user.apellido}`,
+      year: new Date().getFullYear(),
+    };
+    const subject = "Notificación de Habilitación de Cuenta - SISINVESTIGA";
+    return this.sendMail(user.email, subject, "account_enabled", context);
+  }
+
+  // #endregion *************************************************************** //
+
+  // #region *********************** Envio de Notificaciones de Deshabilitacion de Usuarios ******************* //
+  async sendAccountDisabledNotification(user) {
+    const context = {
+      userName: `${user.nombre} ${user.apellido}`,
+      year: new Date().getFullYear(),
+    };
+    const subject = "Notificación de Deshabilitación de Cuenta - SISINVESTIGA";
+    return this.sendMail(user.email, subject, "account_disabled", context);
   }
 
   // #endregion *************************************************************** //

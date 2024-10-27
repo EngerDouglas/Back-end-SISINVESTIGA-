@@ -162,6 +162,12 @@ export const updateSelfUser = async (req, res, next) => {
   try {
     const updates = req.body;
     const user = await UserService.updateSelfUser(req.user, updates);
+
+    // Si se incluye una nueva contraseña, enviamos el correo de notificación
+    if (updates.newPassword) {
+      await emailService.sendPasswordChangeNotification(req.user);
+    }
+
     res.status(200).json({ message: 'Información actualizada correctamente', user });
   } catch (error) {
     next(error);
@@ -219,7 +225,11 @@ export const getUserById = async (req, res, next) => {
 export const disableUser = async (req, res, next) => {
   try {
     const { id } = req.params;
-    await UserService.disableUser(id, req.userRole);
+    const user = await UserService.disableUser(id, req.userRole);
+    
+    // Enviar notificación de deshabilitación
+    await emailService.sendAccountDisabledNotification(user);
+    
     res.status(200).json({ message: 'Usuario deshabilitado exitosamente.' });
   } catch (error) {
     next(error);
@@ -234,7 +244,11 @@ export const disableUser = async (req, res, next) => {
 export const enableUser = async (req, res, next) => {
   try {
     const { id } = req.params;
-    await UserService.enableUser(id, req.userRole);
+    const user = await UserService.enableUser(id, req.userRole);
+
+    // Enviar notificación de habilitación
+    await emailService.sendAccountEnabledNotification(user);
+
     res.status(200).json({ message: 'Usuario habilitado exitosamente.' });
   } catch (error) {
     next(error);

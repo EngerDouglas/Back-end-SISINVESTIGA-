@@ -240,7 +240,10 @@ class UserService {
     }
 
     user.isDisabled = true;
+
     await user.save();
+
+    return user;
   }
   // #endregion ****************************************************************** //
 
@@ -260,7 +263,10 @@ class UserService {
     }
 
     user.isDisabled = false;
+
     await user.save();
+
+    return user;
   }
   // #endregion ****************************************************************** //
 
