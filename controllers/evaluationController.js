@@ -68,6 +68,18 @@ import { BadRequestError } from '../utils/errors.js';
   };
   // #endregion ***************************************** //
 
+  // #region Obtener Evaluaciones por Proyecto Por el Administrador ******************* //
+  export const getEvaluationsByAdmin = async (req, res, next) => {
+    try {
+      const { projectId } = req.params;
+      const evaluations = await EvaluationService.getEvaluationsByAdmin(projectId);
+      res.status(200).json(evaluations);
+    } catch (error) {
+      next(error);
+    }
+  };
+  // #endregion ***************************************** //
+
   // #region Eliminar Evaluaciones *********************** //
   export const deleteEvaluation = async (req, res, next) => {
     try {

@@ -4,6 +4,7 @@ import {
   updateEvaluation,
   getAllEvaluations,
   getEvaluationsByProject,
+  getEvaluationsByAdmin,
   deleteEvaluation,
   restoreEvaluation,
 } from '../controllers/evaluationController.js';
@@ -18,6 +19,6 @@ EvaluationRouter.put('/:evaluationId/restore', auth, authRole(['Administrador'])
 EvaluationRouter.delete('/:evaluationId', auth, authRole(['Administrador']), deleteEvaluation);
 
 EvaluationRouter.get('/all', auth, authRole(['Administrador']), getAllEvaluations);
+EvaluationRouter.get('/projects/Admin/:projectId', auth, authRole(['Administrador']), getEvaluationsByAdmin);
 EvaluationRouter.get('/projects/:projectId', auth, getEvaluationsByProject);
-
 export default EvaluationRouter;

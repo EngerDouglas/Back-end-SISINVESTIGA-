@@ -142,6 +142,22 @@ class EvaluationService {
   }
   // #endregion **************************************************************** //
 
+  // #region ***********************  Obtenemos la Evaluacion por Proyecto por El Administrador ******************* //
+  static async getEvaluationsByAdmin(projectId) {
+    const project = await Project.findOne({ _id: projectId })
+
+    if (!project) {
+      throw new NotFoundError('Proyecto no encontrado.');
+    }
+
+    const evaluations = await Evaluation.find({ project: projectId })
+      .populate('evaluator', 'nombre apellido email')
+      .populate({ path: 'project', select: 'nombre descripcion objetivos presupuesto' });
+
+    return evaluations;
+  }
+  // #endregion **************************************************************** //
+
   // #endregion Seccion de Busqueda *************************************************************** //
 }
 

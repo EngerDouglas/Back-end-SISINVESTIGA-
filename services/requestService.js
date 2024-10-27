@@ -158,6 +158,24 @@ class RequestService {
 
   // #endregion ********************************************************************************************* //
 
+    // #region **************************** Obtener Solicitud por ID Administradores ************************************************* //
+    static async getRequestIdByAdmin(id) {
+      const solicitud = await Request.findOne({ _id: id })
+        .populate('solicitante', 'nombre apellido email')
+        .populate('proyecto', 'nombre descripcion')
+        .populate('revisadoPor', 'nombre apellido email')
+        .populate('comentarios.usuario', 'nombre apellido email')
+        .lean();
+  
+      if (!solicitud) {
+        throw new NotFoundError('Solicitud no encontrada');
+      }
+  
+      return solicitud;
+    }
+  
+    // #endregion ********************************************************************************************* //
+
   // #region **************************** Obtener Propia Solicitud ************************************************* //
   static async getUserRequests(userId, filters, page = 1, limit = 10) {
     const query = { solicitante: userId, isDeleted: false, ...filters };

@@ -79,6 +79,18 @@ export const getRequestById = async (req, res, next) => {
 };
 // #endregion *************************************************************** //
 
+// #region Obtener Solicitud por ID Administradores ************************************************* //
+export const getRequestIdByAdmin = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const request = await RequestService.getRequestIdByAdmin(id);
+    res.status(200).json(request);
+  } catch (error) {
+    next(error);
+  }
+};
+// #endregion *************************************************************** //
+
 // #region Obtener Propia Solicitud ************************************************* //
 export const getUserRequests = async (req, res, next) => {
   try {
