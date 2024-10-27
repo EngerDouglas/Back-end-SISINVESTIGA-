@@ -1,5 +1,6 @@
 import { validationResult } from 'express-validator';
 import ProjectService from '../services/projectService.js';
+import User from '../models/User.js';
 import emailService from '../services/emailService.js';
 import { BadRequestError } from '../utils/errors.js';
 
@@ -57,12 +58,20 @@ export const updateProyecto = async (req, res, next) => {
 };
 // #endregion *************************************************************** //
 
-// #region Actualizar Proyecto (Soft Delete) ************************************************* //
+// #region Eliminar Proyecto (Soft Delete) ************************************************* //
 
 export const deleteProyecto = async (req, res, next) => {
   try {
     const { id } = req.params;
-    await ProjectService.deleteProject(id, req.user._id, req.userRole);
+    const project = await ProjectService.deleteProject(id, req.user._id, req.userRole);
+
+    // Obtener el investigador principal o "creador"
+    const projectOwner = await User.findById(project.investigadores[0]);
+    const isAdmin = req.userRole === "Administrador";
+
+    // Enviar el correo de eliminación
+    await emailService.sendProjectDeletedEmail(projectOwner, project, isAdmin);
+
     res.status(200).json({ message: 'Proyecto eliminado (soft delete).' });
   } catch (error) {
     next(error);
@@ -75,7 +84,14 @@ export const deleteProyecto = async (req, res, next) => {
 export const restoreProyecto = async (req, res, next) => {
   try {
     const { id } = req.params;
-    await ProjectService.restoreProject(id, req.userRole);
+    const project = await ProjectService.restoreProject(id, req.userRole);
+
+    // Obtener el investigador principal o "creador"
+    const projectOwner = await User.findById(project.investigadores[0]);
+
+    // Enviar el correo de restauración
+    await emailService.sendProjectRestoredEmail(projectOwner, project);
+
     res.status(200).json({ message: 'Proyecto restaurado exitosamente.' });
   } catch (error) {
     next(error);

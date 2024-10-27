@@ -1,5 +1,7 @@
 import { validationResult } from 'express-validator';
 import PublicationService from '../services/publicationService.js';
+import User from '../models/User.js';
+import emailService from '../services/emailService.js';
 import { BadRequestError } from '../utils/errors.js';
 
 // #region Crear Publicacion ************************************************* //
@@ -15,6 +17,13 @@ export const createPublication = async (req, res, next) => {
     }
 
     const publication = await PublicationService.createPublication(req.body, req.user._id, req.userRole);
+
+    // Obtener el autor principal
+    const mainAuthor = await User.findById(publication.autores[0]);
+
+    // Enviar email de notificación de creación
+    await emailService.sendPublicationCreationEmail(mainAuthor, publication);
+
     res.status(201).json({ message: 'Publicación creada exitosamente', publication });
   } catch (error) {
     next(error);
@@ -107,8 +116,16 @@ export const updateAdmPublication = async (req, res, next) => {
 export const deletePublication = async (req, res, next) => {
   try {
     const { id } = req.params;
-    const result = await PublicationService.deletePublication(id, req.user._id, req.userRole);
-    res.status(200).json(result);
+    const publication = await PublicationService.deletePublication(id, req.user._id, req.userRole);
+
+    // Obtener el autor principal
+    const mainAuthor = await User.findById(publication.autores[0]);
+    const isAdmin = req.userRole === 'Administrador';
+
+    // Enviar email de notificación de eliminación
+    await emailService.sendPublicationDeletionEmail(mainAuthor, publication, isAdmin);
+
+    res.status(200).json(publication);
   } catch (error) {
     next(error);
   }
@@ -121,8 +138,15 @@ export const deletePublication = async (req, res, next) => {
 export const restorePublication = async (req, res, next) => {
   try {
     const { id } = req.params;
-    const result = await PublicationService.restorePublication(id, req.userRole);
-    res.status(200).json(result);
+    const publication = await PublicationService.restorePublication(id, req.userRole);
+
+    // Obtener el autor principal
+    const mainAuthor = await User.findById(publication.autores[0]);
+
+    // Enviar email de notificación de restauración
+    await emailService.sendPublicationRestorationEmail(mainAuthor, publication);
+
+    res.status(200).json(publication);
   } catch (error) {
     next(error);
   }

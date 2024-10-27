@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Publicación Eliminada - SISINVESTIGA</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    {{{css}}}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <img src="cid:logo@ucsd" alt="UCSD Logo" class="logo">
+      <h1>Publicación Eliminada</h1>
+    </header>
+    <main class="content">
+      <p class="greeting">Estimado/a <strong>{{userName}}</strong>,</p>
+      <p class="info">
+        {{#if isAdmin}}
+          La publicación <strong>{{publicationTitle}}</strong> ha sido eliminada por el administrador.
+        {{else}}
+          Su publicación <strong>{{publicationTitle}}</strong> ha sido eliminada.
+        {{/if}}
+      </p>
+      <div class="default-details">
+        <h2>Detalles de la Publicación</h2>
+        <div class="detail-item">
+          <span class="label">Título:</span>
+          <span class="value">{{publicationTitle}}</span>
+        </div>
+        <div class="detail-item">
+          <span class="label">Revista:</span>
+          <span class="value">{{publicationRevista}}</span>
+        </div>
+        <div class="detail-item">
+          <span class="label">Tipo de Publicación:</span>
+          <span class="value">{{publicationTipoPublicacion}}</span>
+        </div>
+        <div class="default-image">
+          <img src={{publicationImage}} alt="Imagen de la Publicacion" class="default-img">
+        </div>
+      </div>
+    </main>
+    <footer class="footer">
+      <p>&copy; {{year}} SISINVESTIGA - Universidad Católica Santo Domingo. Todos los derechos reservados.</p>
+    </footer>
+  </div>
+</body>
+</html>

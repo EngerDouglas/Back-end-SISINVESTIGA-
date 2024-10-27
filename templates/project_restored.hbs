@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proyecto Restaurado - SISINVESTIGA</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    {{{css}}}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <img src="cid:logo@ucsd" alt="UCSD Logo" class="logo">
+      <h1>Proyecto Restaurado</h1>
+    </header>
+    <main class="content">
+      <p class="greeting">Estimado/a <strong>{{userName}}</strong>,</p>
+      <p class="info">Nos complace informarle que el proyecto <strong>{{projectName}}</strong> ha sido restaurado por el administrador de SISINVESTIGA.</p>
+
+      <div class="default-details">
+        <h2>Detalles del Proyecto Restaurado</h2>
+        <div class="detail-item">
+          <span class="label">Nombre:</span>
+          <span class="value">{{projectName}}</span>
+        </div>
+        <div class="default-image">
+          <img src={{projectImage}} alt="Imagen del Proyecto" class="default-img">
+        </div>
+      </div>
+
+      <p class="info">Para cualquier consulta adicional, no dude en contactar a nuestro soporte.</p>
+    </main>
+    <footer class="footer">
+      <p>&copy; {{year}} SISINVESTIGA - Universidad Católica Santo Domingo. Todos los derechos reservados.</p>
+      <p>
+        Si tiene alguna pregunta, por favor <a href="mailto:support@sisinvestiga.ucsd.edu.do">Contáctenos</a>.
+      </p>
+    </footer>
+  </div>
+</body>
+</html>

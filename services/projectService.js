@@ -162,25 +162,11 @@ class ProjectService {
     }
 
     project.isDeleted = true;
+
     await project.save();
+
+    return project;
   }
-
-  static async restoreProject(id, userRole) {
-    const project = await Project.findById(id);
-    if (!project || !project.isDeleted) {
-      throw new NotFoundError("Proyecto no encontrado o no está eliminado.");
-    }
-
-    if (userRole !== "Administrador") {
-      throw new ForbiddenError(
-        "No tienes permisos para restaurar este proyecto."
-      );
-    }
-
-    project.isDeleted = false;
-    await project.save();
-  }
-
   // #endregion **************************************************************************************** //
 
   // #region **************************** Restaurar Proyecto (Revertir Soft Delete) ************************************************* //
@@ -197,7 +183,9 @@ class ProjectService {
     }
 
     project.isDeleted = false;
+
     await project.save();
+    
     return project;
   }
   // #endregion *************************************************************************************************************** //

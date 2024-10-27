@@ -191,7 +191,7 @@ class PublicationService {
 
     publication.isDeleted = true;
     await publication.save();
-    return { message: 'Publicación eliminada (soft delete).' };
+    return publication;
   }
 
   // #endregion *************************************************************************************************************** //
@@ -212,23 +212,7 @@ class PublicationService {
     publication.isDeleted = false;
     await publication.save();
   
-    return {
-      message: 'Publicación restaurada exitosamente.',
-      publication: await publication.populate([
-        {
-          path: 'autores',
-          select: 'nombre apellido especializacion responsabilidades',
-          populate: {
-            path: 'role',
-            select: 'roleName',
-          }
-        },
-        {
-          path: 'proyecto',
-          select: 'nombre descripcion'
-        }
-      ])
-    };
+    return publication;
   }
 
   // #endregion *************************************************************************************************************** //

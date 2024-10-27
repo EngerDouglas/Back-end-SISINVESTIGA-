@@ -212,6 +212,88 @@ class EmailService {
   }
 
   // #endregion *************************************************************** //
+
+  // #region *********************** Envio de Notificaciones de Eliminación de Proyecto ******************* //
+async sendProjectDeletedEmail(user, project, isAdmin) {
+  const context = {
+    userName: `${user.nombre} ${user.apellido}`,
+    projectName: project.nombre,
+    projectImage: project.imagen,
+    isAdmin,
+    year: new Date().getFullYear(),
+  };
+
+  const subject = isAdmin
+    ? "Proyecto eliminado por un administrador - SISINVESTIGA"
+    : "Proyecto eliminado - SISINVESTIGA";
+
+  return this.sendMail(user.email, subject, "project_deleted", context);
+}
+
+// #endregion *************************************************************** //
+
+// #region *********************** Envio de Notificaciones de Restauración de Proyecto ******************* //
+async sendProjectRestoredEmail(user, project) {
+  const context = {
+    userName: `${user.nombre} ${user.apellido}`,
+    projectName: project.nombre,
+    projectImage: project.imagen,
+    year: new Date().getFullYear()
+  };
+  const subject = "Proyecto Restaurado - SISINVESTIGA";
+  return this.sendMail(user.email, subject, "project_restored", context);
+}
+
+// #endregion *************************************************************** //
+
+// #region *********************** Envio de Notificaciones de Crear Publicacion ******************* //
+async sendPublicationCreationEmail(user, publication) {
+  const context = {
+    userName: `${user.nombre} ${user.apellido}`,
+    publicationTitle: publication.titulo,
+    publicationImage: publication.imagen,
+    publicationRevista: publication.revista,
+    publicationTipoPublicacion: publication.tipoPublicacion,
+    year: new Date().getFullYear(),
+  };
+  const subject = "Nueva Publicación Creada - SISINVESTIGA";
+  return this.sendMail(user.email, subject, "publication_created", context);
+}
+
+// #endregion *************************************************************** //
+
+// #region *********************** Envio de Notificaciones para Eliminar Publicacion ******************* //
+async sendPublicationDeletionEmail(user, publication, isAdmin) {
+  const context = {
+    userName: `${user.nombre} ${user.apellido}`,
+    publicationTitle: publication.titulo,
+    publicationImage: publication.imagen,
+    publicationRevista: publication.revista,
+    publicationTipoPublicacion: publication.tipoPublicacion,
+    year: new Date().getFullYear(),
+    isAdmin,
+  };
+  const subject = "Publicación Eliminada - SISINVESTIGA";
+  return this.sendMail(user.email, subject, "publication_deleted", context);
+}
+
+// #endregion *************************************************************** //
+
+// #region *********************** Envio de Notificaciones para Restaurar Publicacion ******************* //
+async sendPublicationRestorationEmail(user, publication) {
+  const context = {
+    userName: `${user.nombre} ${user.apellido}`,
+    publicationTitle: publication.titulo,
+    publicationImage: publication.imagen,
+    publicationRevista: publication.revista,
+    publicationTipoPublicacion: publication.tipoPublicacion,
+    year: new Date().getFullYear(),
+  };
+  const subject = "Publicación Restaurada - SISINVESTIGA";
+  return this.sendMail(user.email, subject, "publication_restored", context);
+}
+
+// #endregion *************************************************************** //
 }
 
 export default new EmailService();
