@@ -84,7 +84,7 @@ export const deleteProyecto = async (req, res, next) => {
 export const restoreProyecto = async (req, res, next) => {
   try {
     const { id } = req.params;
-    const project = await ProjectService.restoreProject(id, req.userRole);
+    const project = await ProjectService.restoreProject(id, req.user._id, req.userRole);
 
     // Obtener el investigador principal o "creador"
     const projectOwner = await User.findById(project.investigadores[0]);

@@ -1,4 +1,6 @@
 import Project from "../models/Project.js";
+import NotificationService from "../services/notificationService.js";
+import User from "../models/User.js";
 import {
   BadRequestError,
   ConflictError,
@@ -60,6 +62,21 @@ class ProjectService {
     });
 
     await newProject.save();
+
+    // Notificar a los administradores
+    const adminUsers = await User.find().populate('role', 'roleName');
+    const admins = adminUsers.filter(user => user.role.roleName === 'Administrador');
+
+    admins.forEach(async (admin) => {
+      await NotificationService.createNotification({
+        recipientId: admin._id,
+        senderId: userId,
+        type: 'Proyecto',
+        message: `Se ha creado un nuevo proyecto "${newProject.nombre}" que requiere su evaluación.`,
+        data: { projectId: newProject._id },
+      });
+    });
+
     return newProject;
   }
   // #endregion **************************************************************************************** //
@@ -71,10 +88,10 @@ class ProjectService {
       throw new NotFoundError("Proyecto no encontrado o eliminado");
     }
 
-    if (
-      userRole !== "Administrador" &&
-      !project.investigadores.includes(userId)
-    ) {
+    const isAdmin = userRole === "Administrador";
+    const isInvestigador = project.investigadores.includes(userId);
+
+    if (!isAdmin && !isInvestigador) {
       throw new ForbiddenError(
         "No tienes permisos para actualizar este proyecto"
       );
@@ -130,6 +147,22 @@ class ProjectService {
     });
 
     await project.save();
+
+    // Enviar notificaciones a los demás investigadores
+    const otherInvestigators = project.investigadores.filter(
+      (investigadorId) => !investigadorId.equals(userId)
+    );
+
+    for (const investigatorId of otherInvestigators) {
+      await NotificationService.createNotification({
+        recipientId: investigatorId,
+        senderId: userId,
+        type: 'Proyecto',
+        message: `El proyecto "${project.nombre}" ha sido actualizado.`,
+        data: { projectId: project._id },
+      });
+    }
+
     return project;
   }
   // #endregion **************************************************************************************** //
@@ -165,12 +198,40 @@ class ProjectService {
 
     await project.save();
 
+    // Obtener todos los administradores
+    const adminUsers = await User.find().populate('role', 'roleName');
+    const admins = adminUsers.filter(user => user.role.roleName === 'Administrador');
+
+    // Enviar notificación a cada administrador
+    for (const admin of admins) {
+      await NotificationService.createNotification({
+        recipientId: admin._id,
+        senderId: userId,
+        type: 'Proyecto',
+        message: `El proyecto "${project.nombre}" ha sido eliminado/restaurado.`,
+        data: { projectId: project._id },
+      });
+    }
+
+    // Enviar notificaciones a los investigadores
+    for (const investigatorId of project.investigadores) {
+      if (!investigatorId.equals(userId)) {
+        await NotificationService.createNotification({
+          recipientId: investigatorId,
+          senderId: userId,
+          type: 'Proyecto',
+          message: `El proyecto "${project.nombre}" ha sido eliminado.`,
+          data: { projectId: project._id },
+        });
+      }
+    }
+
     return project;
   }
   // #endregion **************************************************************************************** //
 
   // #region **************************** Restaurar Proyecto (Revertir Soft Delete) ************************************************* //
-  static async restoreProject(id, userRole) {
+  static async restoreProject(id, userId, userRole) {
     const project = await Project.findById(id);
     if (!project || !project.isDeleted) {
       throw new NotFoundError("Proyecto no encontrado o no está eliminado.");
@@ -185,6 +246,17 @@ class ProjectService {
     project.isDeleted = false;
 
     await project.save();
+
+    // Enviar notificaciones a los investigadores
+    for (const investigatorId of project.investigadores) {
+      await NotificationService.createNotification({
+        recipientId: investigatorId,
+        senderId: userId, // ID del administrador que restauró el proyecto
+        type: 'Proyecto',
+        message: `El proyecto "${project.nombre}" ha sido restaurado.`,
+        data: { projectId: project._id },
+      });
+    }
     
     return project;
   }

@@ -1,6 +1,8 @@
 import Publication from '../models/Publication.js';
 import Project from '../models/Project.js';
-import { BadRequestError, NotFoundError, ForbiddenError } from '../utils/errors.js';
+import NotificationService from './notificationService.js';
+import User from '../models/User.js';
+import { BadRequestError, NotFoundError, ForbiddenError, ConflictError } from '../utils/errors.js';
 import { PUBLICATION_TYPES, PUBLICATION_STATES } from '../utils/constants.js';
 
 class PublicationService {
@@ -51,6 +53,20 @@ class PublicationService {
     });
 
     await newPublication.save();
+
+    // Enviar notificaciones a los otros autores (investigadores del proyecto)
+    const otherAuthors = autores.filter((autorId) => !autorId.equals(userId));
+
+    for (const authorId of otherAuthors) {
+      await NotificationService.createNotification({
+        recipientId: authorId,
+        senderId: userId,
+        type: 'Publicación',
+        message: `Se ha creado una nueva publicación titulada "${newPublication.titulo}" en el proyecto "${project.nombre}".`,
+        data: { publicationId: newPublication._id },
+      });
+    }
+
     return newPublication;
   }
   // #endregion *************************************************************************************************************** //
@@ -126,6 +142,20 @@ class PublicationService {
     }
 
     await publication.save();
+
+    // Enviar notificaciones a los otros autores
+    const otherAuthors = publication.autores.filter((autorId) => !autorId.equals(userId));
+
+    for (const authorId of otherAuthors) {
+      await NotificationService.createNotification({
+        recipientId: authorId,
+        senderId: userId,
+        type: 'Publicación',
+        message: `La publicación "${publication.titulo}" ha sido actualizada.`,
+        data: { publicationId: publication._id },
+      });
+    }
+
     return publication;
   }
 
@@ -191,6 +221,20 @@ class PublicationService {
 
     publication.isDeleted = true;
     await publication.save();
+
+    // Enviar notificaciones a los autores
+    const otherAuthors = publication.autores.filter((autorId) => !autorId.equals(userId));
+
+    for (const authorId of otherAuthors) {
+      await NotificationService.createNotification({
+        recipientId: authorId,
+        senderId: userId,
+        type: 'Publicación',
+        message: `La publicación "${publication.titulo}" ha sido eliminada.`,
+        data: { publicationId: publication._id },
+      });
+    }
+
     return publication;
   }
 
@@ -199,7 +243,7 @@ class PublicationService {
   
   // #region **************************** Restaurar Publicacion ************************************************* //
 
-  static async restorePublication(id, userRole) {
+  static async restorePublication(id, userId, userRole) {
     const publication = await Publication.findOne({ _id: id, isDeleted: true });
     if (!publication) {
       throw new NotFoundError('Publicación no encontrada o no está eliminada.');
@@ -211,6 +255,17 @@ class PublicationService {
   
     publication.isDeleted = false;
     await publication.save();
+
+    // Enviar notificaciones a los autores
+    for (const authorId of publication.autores) {
+      await NotificationService.createNotification({
+        recipientId: authorId,
+        senderId: userId, // Administrador que restauró la publicación
+        type: 'Publicación',
+        message: `La publicación "${publication.titulo}" ha sido restaurada.`,
+        data: { publicationId: publication._id },
+      });
+    }
   
     return publication;
   }

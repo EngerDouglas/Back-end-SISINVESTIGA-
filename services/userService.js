@@ -1,5 +1,6 @@
 import User from "../models/User.js";
 import Role from "../models/Role.js";
+import Session from "../models/Session.js";
 import bcrypt from "bcryptjs";
 import jwt from 'jsonwebtoken';
 import { BadRequestError, ConflictError, NotFoundError, UnauthorizedError, ForbiddenError, ManyRequest } from "../utils/errors.js";
@@ -116,6 +117,16 @@ class UserService {
   static async logoutUser(user, token) {
     user.tokens = user.tokens.filter((userToken) => userToken.token !== token);
     await user.save();
+
+    // Actualizar el estado `isActive` de la sesión correspondiente
+    const sessionUpdated = await Session.updateOne(
+      { user: user._id, token: token, isActive: true },
+      { $set: { isActive: false } }
+    );
+
+    if (sessionUpdated.modifiedCount === 0) {
+      console.warn("La sesión no se actualizó. Verifica los datos de entrada.");
+    }
   }
 
   // #endregion ****************************************************************** //
@@ -124,6 +135,16 @@ class UserService {
   static async logoutAllUser(user) {
     user.tokens = [];
     await user.save();
+
+    // Actualizar todas las sesiones activas del usuario en la colección `Session` a `isActive: false`
+    const sessionsUpdated = await Session.updateMany(
+      { user: user._id, isActive: true },
+      { $set: { isActive: false } }
+    );
+
+    if (sessionsUpdated.modifiedCount === 0) {
+      console.warn("No se encontraron sesiones activas para actualizar.");
+    }
   }
 
   // #endregion ****************************************************************** //
@@ -325,12 +346,22 @@ class UserService {
 
   // #region *********************** Buscando todos los usuarios ******************* //
   static async getAllUsers() {
-    return User.find()
+    const users = await User.find()
       .select('-__v')
       .populate('role', 'roleName')
       .populate('proyectos')
       .populate('publicaciones')
       .populate('requests');
+
+      const usersWithSessions = await Promise.all(users.map(async (user) => {
+        const sessions = await Session.find({ user: user._id, isActive: true });
+        return {
+          ...user.toObject(),
+          sessions,
+        };
+      }));
+
+      return usersWithSessions;
   }
   // #endregion ****************************************************************** //
 

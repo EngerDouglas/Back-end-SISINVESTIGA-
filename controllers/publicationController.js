@@ -138,7 +138,7 @@ export const deletePublication = async (req, res, next) => {
 export const restorePublication = async (req, res, next) => {
   try {
     const { id } = req.params;
-    const publication = await PublicationService.restorePublication(id, req.userRole);
+    const publication = await PublicationService.restorePublication(id, req.user._id, req.userRole);
 
     // Obtener el autor principal
     const mainAuthor = await User.findById(publication.autores[0]);

@@ -1,4 +1,5 @@
 import UserService from '../services/userService.js'
+import Session from '../models/Session.js';
 import emailService from '../services/emailService.js';
 import { BadRequestError } from '../utils/errors.js';
 import geoip from 'geoip-lite';
@@ -81,6 +82,16 @@ export const logInUser = async (req, res, next) => {
       ipAddress: ip,
       device: `${ua.browser} on ${ua.os}`,
     };
+
+    // Guardar la sesión activa en la base de datos
+    await Session.create({
+      user: user._id,
+      ipAddress: loginInfo.ipAddress,
+      location: loginInfo.location,
+      device: loginInfo.device,
+      isActive: true,
+      token
+    });
     
     await emailService.sendLoginNotification(user, loginInfo);
 
@@ -229,7 +240,7 @@ export const disableUser = async (req, res, next) => {
     
     // Enviar notificación de deshabilitación
     await emailService.sendAccountDisabledNotification(user);
-    
+
     res.status(200).json({ message: 'Usuario deshabilitado exitosamente.' });
   } catch (error) {
     next(error);

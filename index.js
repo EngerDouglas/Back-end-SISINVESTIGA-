@@ -13,6 +13,7 @@ import EvaluationRouter from './routes/evaluationRoute.js'
 import RequestRouter from './routes/requestRoute.js'
 import ReportRouter from './routes/reportRoute.js'
 import AuditRouter from './routes/auditRoute.js'
+import NotificationRouter from './routes/notificationRoute.js'
 import errorHandler from './middlewares/errorHandler.js'
 import logger from './utils/logger.js'
 import { connectDB } from './config/db.js'
@@ -48,6 +49,7 @@ app.use('/api/evaluations', EvaluationRouter)
 app.use('/api/requests', RequestRouter)
 app.use('/api/reports', ReportRouter)
 app.use('/api/audits', AuditRouter)
+app.use('/api/notifications', NotificationRouter)
 
 app.get('/', (req, res) => {
   res.json({
