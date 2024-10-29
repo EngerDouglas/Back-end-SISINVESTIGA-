@@ -60,6 +60,41 @@ class NotificationService {
   }
   // #endregion ********************************************************************//
 
+  // #region Obtener notificaciones del usuario autenticado  ********************************************** //
+  static async getUserNotifications(userId, filters = {}, page = 1, limit = 10) {
+    const query = { recipient: userId, isDeleted: false };
+
+    // Aplicar filtros
+    if (filters.type) {
+      query.type = new RegExp(`^${filters.type}$`, 'i');
+    }
+
+    if (filters.isRead !== undefined) {
+      query.isRead = filters.isRead;
+    }
+
+    // Calcular el total de documentos que coinciden con los filtros
+    const total = await Notification.countDocuments(query);
+
+    // Obtener notificaciones con paginación y filtros
+    const notifications = await Notification.find(query)
+      .populate('recipient', 'nombre apellido email')
+      .populate('sender', 'nombre apellido email')
+      .sort({ createdAt: -1 })
+      .skip((page - 1) * limit)
+      .limit(Number(limit))
+      .lean();
+
+    return {
+      notifications,
+      total,
+      page: Number(page),
+      limit: Number(limit),
+      totalPages: Math.ceil(total / limit),
+    };
+  }
+  // #endregion ********************************************************************//
+
   // #region Obtener notificaciones de un usuario ********************************************** //
   static async getNotifications(userId) {
     const notifications = await Notification.find({ recipient: userId })

@@ -1,6 +1,6 @@
 import express from 'express';
 import { auth, authRole } from '../middlewares/auth.js';
-import { getAllNotifications, getNotifications, markAsRead, markAllAsRead, deleteNotification, restoreNotification } from '../controllers/notificationController.js';
+import { getAllNotifications, getUserNotifications, getNotifications, markAsRead, markAllAsRead, deleteNotification, restoreNotification } from '../controllers/notificationController.js';
 
 const NotificationRouter = express.Router();
 
@@ -10,6 +10,7 @@ NotificationRouter.put('/:id/restore', auth, authRole(['Administrador']), restor
 NotificationRouter.delete('/:id', auth, deleteNotification);
 
 NotificationRouter.get('/admin/all', auth, authRole(['Administrador']), getAllNotifications);
+NotificationRouter.get('/me', auth, getUserNotifications);
 NotificationRouter.get('/', auth, getNotifications);
 
 export default NotificationRouter;

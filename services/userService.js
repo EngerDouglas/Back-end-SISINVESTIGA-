@@ -1,6 +1,7 @@
 import User from "../models/User.js";
 import Role from "../models/Role.js";
 import Session from "../models/Session.js";
+import NotificationService from "../services/notificationService.js";
 import bcrypt from "bcryptjs";
 import jwt from 'jsonwebtoken';
 import { BadRequestError, ConflictError, NotFoundError, UnauthorizedError, ForbiddenError, ManyRequest } from "../utils/errors.js";
@@ -28,6 +29,22 @@ class UserService {
 
     newUser.generateVerificationToken();
     await newUser.save()
+
+    // Obtener los administradores
+    const adminRole = await Role.findOne({ roleName: 'Administrador' });
+    const admins = await User.find({ role: adminRole._id }).select('_id');
+
+    // Crear notificaciones para los administradores
+    for (const admin of admins) {
+      await NotificationService.createNotification({
+        recipientId: admin._id,
+        senderId: newUser._id,
+        type: 'Usuario',
+        message: `Se ha creado una nueva cuenta para el usuario ${newUser.nombre} ${newUser.apellido}.`,
+        data: { userId: newUser._id },
+      });
+    }
+
     return newUser
   }
   // #endregion ****************************************************************** //
@@ -65,6 +82,31 @@ class UserService {
     user.verificationToken = undefined;
     user.verificationTokenExpires = undefined;
     await user.save();
+
+    // Crear notificación para el usuario
+    await NotificationService.createNotification({
+      recipientId: user._id,
+      senderId: user._id,
+      type: 'Usuario',
+      message: 'Tu correo electrónico ha sido verificado exitosamente.',
+      data: { userId: user._id },
+    });
+
+    // Obtener los administradores
+    const adminRole = await Role.findOne({ roleName: 'Administrador' });
+    const admins = await User.find({ role: adminRole._id }).select('_id');
+
+    // Crear notificaciones para los administradores
+    for (const admin of admins) {
+      await NotificationService.createNotification({
+        recipientId: admin._id,
+        senderId: user._id,
+        type: 'Usuario',
+        message: `El usuario ${user.nombre} ${user.apellido} ha verificado su cuenta.`,
+        data: { userId: user._id },
+      });
+    }
+
     return { alreadyVerified: false, user };
   }
 
@@ -190,7 +232,7 @@ class UserService {
   // #endregion ****************************************************************** //
 
   // #region *********************** Actualizar Rol del Usuario***************** //
-  static async updateUserRole(userId, roleId) {
+  static async updateUserRole(userId, roleId, adminUserId) {
     const user = await User.findById(userId);
     if (!user) {
       throw new NotFoundError('Usuario no encontrado');
@@ -204,6 +246,15 @@ class UserService {
     user.role = roleId;
     await user.save();
     await user.populate('role');
+
+    // Crear notificación para el usuario
+    await NotificationService.createNotification({
+      recipientId: user._id,
+      senderId: adminUserId,
+      type: 'Rol',
+      message: `Tu rol ha sido actualizado a "${user.role.roleName}".`,
+      data: { userId: user._id },
+    });
 
     return user;
   }
@@ -240,13 +291,23 @@ class UserService {
 
     await user.save();
     await user.populate('role', 'roleName');
+
+    // Crear notificación para el usuario
+    await NotificationService.createNotification({
+      recipientId: user._id,
+      senderId: user._id,
+      type: 'Usuario',
+      message: 'Has actualizado tu información de usuario.',
+      data: { userId: user._id },
+    });
+
     return user;
   }
 
   // #endregion ****************************************************************** //
 
   // #region *********************** Deshabilitando el Usuario ******************* //
-  static async disableUser(id, userRole) {
+  static async disableUser(id, adminUserId, userRole) {
     if (userRole !== 'Administrador') {
       throw new ForbiddenError('No tienes permisos para deshabilitar este usuario.');
     }
@@ -264,12 +325,21 @@ class UserService {
 
     await user.save();
 
+    // Crear notificación para el usuario
+    await NotificationService.createNotification({
+      recipientId: user._id,
+      senderId: adminUserId,
+      type: 'Usuario',
+      message: 'Tu cuenta ha sido deshabilitada.',
+      data: { userId: user._id },
+    });
+
     return user;
   }
   // #endregion ****************************************************************** //
 
   // #region *********************** Habilitando el Usuario ******************* //
-  static async enableUser(id, userRole) {
+  static async enableUser(id, adminUserId, userRole) {
     if (userRole !== 'Administrador') {
       throw new ForbiddenError('No tienes permisos para habilitar este usuario.');
     }
@@ -286,6 +356,15 @@ class UserService {
     user.isDisabled = false;
 
     await user.save();
+
+    // Crear notificación para el usuario
+    await NotificationService.createNotification({
+      recipientId: user._id,
+      senderId: adminUserId,
+      type: 'Usuario',
+      message: 'Tu cuenta ha sido habilitada.',
+      data: { userId: user._id },
+    });
 
     return user;
   }
@@ -321,6 +400,31 @@ class UserService {
       user.resetPasswordToken = undefined;
       user.resetPasswordExpires = undefined;
       await user.save();
+
+      // Crear notificación para el usuario
+      await NotificationService.createNotification({
+        recipientId: user._id,
+        senderId: user._id,
+        type: 'Usuario',
+        message: 'Tu contraseña ha sido restablecida exitosamente.',
+        data: { userId: user._id },
+      });
+
+      // Obtener los administradores
+      const adminRole = await Role.findOne({ roleName: 'Administrador' });
+      const admins = await User.find({ role: adminRole._id }).select('_id');
+
+      // Crear notificaciones para los administradores
+      for (const admin of admins) {
+        await NotificationService.createNotification({
+          recipientId: admin._id,
+          senderId: user._id,
+          type: 'Usuario',
+          message: `El usuario ${user.nombre} ${user.apellido} ha restablecido su contraseña.`,
+          data: { userId: user._id },
+        });
+      }
+
       return user;
     } catch (error) {
       if (error instanceof jwt.JsonWebTokenError) {

@@ -149,11 +149,7 @@ class ProjectService {
     await project.save();
 
     // Enviar notificaciones a los demás investigadores
-    const otherInvestigators = project.investigadores.filter(
-      (investigadorId) => !investigadorId.equals(userId)
-    );
-
-    for (const investigatorId of otherInvestigators) {
+    for (const investigatorId of project.investigadores) {
       await NotificationService.createNotification({
         recipientId: investigatorId,
         senderId: userId,
@@ -162,7 +158,7 @@ class ProjectService {
         data: { projectId: project._id },
       });
     }
-
+  
     return project;
   }
   // #endregion **************************************************************************************** //
