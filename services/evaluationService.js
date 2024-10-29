@@ -1,5 +1,7 @@
 import Evaluation from '../models/Evaluation.js';
 import Project from '../models/Project.js';
+import User from '../models/User.js';
+import NotificationService from './notificationService.js';
 import { BadRequestError, ConflictError, NotFoundError, ForbiddenError } from '../utils/errors.js';
 
 class EvaluationService {
@@ -9,7 +11,7 @@ class EvaluationService {
       throw new ForbiddenError('No tienes permisos para evaluar proyectos.');
     }
 
-    const project = await Project.findOne({ _id: projectId, isDeleted: false });
+    const project = await Project.findOne({ _id: projectId, isDeleted: false }).populate('investigadores', '_id nombre apellido');
     if (!project) {
       throw new NotFoundError('Proyecto no encontrado.');
     }
@@ -30,6 +32,17 @@ class EvaluationService {
 
     project.isEvaluated = true;
     await project.save();
+
+    // Notificar a los investigadores del proyecto
+    for (const investigator of project.investigadores) {
+      await NotificationService.createNotification({
+        recipientId: investigator._id,
+        senderId: evaluatorId,
+        type: 'Evaluacion',
+        message: `Tu proyecto "${project.nombre}" ha sido evaluado.`,
+        data: { projectId: project._id, evaluationId: evaluation._id },
+      });
+    }
 
     return evaluation;
   }
@@ -54,6 +67,22 @@ class EvaluationService {
     if (updateData.comentarios !== undefined) evaluation.comentarios = updateData.comentarios;
 
     await evaluation.save();
+
+     // Obtener el proyecto y sus investigadores
+      const project = await Project.findOne({ _id: evaluation.project, isDeleted: false }).populate('investigadores', '_id nombre apellido');
+      if (project) {
+        // Notificar a los investigadores del proyecto
+        for (const investigator of project.investigadores) {
+          await NotificationService.createNotification({
+            recipientId: investigator._id,
+            senderId: evaluatorId,
+            type: 'Evaluacion',
+            message: `La evaluación de tu proyecto "${project.nombre}" ha sido actualizada.`,
+            data: { projectId: project._id, evaluationId: evaluation._id },
+          });
+        }
+      }
+
     return evaluation;
   }
   // #endregion **************************************************************** //

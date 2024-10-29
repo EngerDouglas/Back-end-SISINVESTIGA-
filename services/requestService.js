@@ -1,5 +1,8 @@
 import Request from '../models/Request.js';
 import Project from '../models/Project.js';
+import NotificationService from './notificationService.js';
+import Role from '../models/Role.js';
+import User from '../models/User.js';
 import { BadRequestError, NotFoundError, ForbiddenError } from '../utils/errors.js';
 
 class RequestService {
@@ -30,6 +33,25 @@ class RequestService {
     });
 
     await newRequest.save();
+    
+    // Obtener los administradores
+    const adminRole = await Role.findOne({ roleName: 'Administrador' });
+    const admins = await User.find({ role: adminRole._id }).select('_id');
+
+    // Obtener el solicitante
+    const user = await User.findById(userId).select('nombre apellido');
+
+    // Crear notificaciones para los administradores
+    for (const admin of admins) {
+      await NotificationService.createNotification({
+        recipientId: admin._id,
+        senderId: userId,
+        type: 'Solicitud',
+        message: `Nueva solicitud creada por ${user.nombre} ${user.apellido}: ${tipoSolicitud}.`,
+        data: { requestId: newRequest._id },
+      });
+    }
+
     return newRequest;
   }
 
@@ -52,8 +74,17 @@ class RequestService {
       solicitud.estado = estado;
       solicitud.revisadoPor = userId;
       solicitud.fechaResolucion = new Date();
+  
+      // Crear notificación para el solicitante
+      await NotificationService.createNotification({
+        recipientId: solicitud.solicitante._id,
+        senderId: userId,
+        type: 'Solicitud',
+        message: `Tu solicitud ha sido actualizada a estado: ${estado}.`,
+        data: { requestId: solicitud._id },
+      });
     }
-
+  
     if (comentarios) {
       solicitud.comentarios.push({
         usuario: userId,

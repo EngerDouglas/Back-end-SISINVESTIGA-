@@ -34,6 +34,28 @@ export const getAllNotifications = async (req, res, next) => {
 };
 // #endregion ********************************************************************//
 
+// #region Obtener notificaciones del usuario autenticado ********************************************** //
+export const getUserNotifications = async (req, res, next) => {
+  try {
+    const { page = 1, limit = 10, type, isRead } = req.query;
+    const filters = {};
+
+    if (type) {
+      filters.type = type;
+    }
+
+    if (isRead !== undefined) {
+      filters.isRead = isRead === 'true';
+    }
+
+    const result = await NotificationService.getUserNotifications(req.user._id, filters, page, limit);
+    res.status(200).json(result);
+  } catch (error) {
+    next(error);
+  }
+};
+// #endregion ********************************************************************//
+
 // #region Marcar notificación como leída ********************************************** //
 export const markAsRead = async (req, res, next) => {
   try {

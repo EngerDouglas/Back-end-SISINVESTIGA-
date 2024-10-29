@@ -159,7 +159,7 @@ export const updateUserRole = async (req, res, next) => {
   try {
     const { id } = req.params;
     const { roleId } = req.body;
-    const user = await UserService.updateUserRole(id, roleId);
+    const user = await UserService.updateUserRole(id, roleId, req.user._id);
     res.status(200).json({ message: 'Rol del usuario actualizado correctamente', user });
   } catch (error) {
     next(error);
@@ -236,7 +236,7 @@ export const getUserById = async (req, res, next) => {
 export const disableUser = async (req, res, next) => {
   try {
     const { id } = req.params;
-    const user = await UserService.disableUser(id, req.userRole);
+    const user = await UserService.disableUser(id, req.user._id, req.userRole);
     
     // Enviar notificación de deshabilitación
     await emailService.sendAccountDisabledNotification(user);
@@ -255,7 +255,7 @@ export const disableUser = async (req, res, next) => {
 export const enableUser = async (req, res, next) => {
   try {
     const { id } = req.params;
-    const user = await UserService.enableUser(id, req.userRole);
+    const user = await UserService.enableUser(id, req.user._id, req.userRole);
 
     // Enviar notificación de habilitación
     await emailService.sendAccountEnabledNotification(user);

@@ -142,11 +142,9 @@ class PublicationService {
     }
 
     await publication.save();
-
+    
     // Enviar notificaciones a los otros autores
-    const otherAuthors = publication.autores.filter((autorId) => !autorId.equals(userId));
-
-    for (const authorId of otherAuthors) {
+    for (const authorId of publication.autores) {
       await NotificationService.createNotification({
         recipientId: authorId,
         senderId: userId,
@@ -155,7 +153,6 @@ class PublicationService {
         data: { publicationId: publication._id },
       });
     }
-
     return publication;
   }
 
