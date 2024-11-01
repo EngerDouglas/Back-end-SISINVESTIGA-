@@ -79,6 +79,29 @@ export const markAllAsRead = async (req, res, next) => {
 };
 // #endregion ********************************************************************//
 
+// #region Marcar notificación como no leída ********************************************** //
+export const unMarkAsRead = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const notification = await NotificationService.unMarkAsRead(id, req.user._id);
+    res.status(200).json(notification);
+  } catch (error) {
+    next(error);
+  }
+};
+// #endregion ********************************************************************//
+
+// #region  Marcar todas las notificaciones como no leídas ********************************************** //
+export const unMarkAllAsRead = async (req, res, next) => {
+  try {
+    await NotificationService.unMarkAllAsRead(req.user._id);
+    res.status(200).json({ message: 'Todas las notificaciones han sido marcadas como no leídas' });
+  } catch (error) {
+    next(error);
+  }
+};
+// #endregion ********************************************************************//
+
 // #region Eliminar Solicitud ************************************************* //
 export const deleteNotification = async (req, res, next) => {
   try {

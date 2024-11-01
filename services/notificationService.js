@@ -97,17 +97,17 @@ class NotificationService {
 
   // #region Obtener notificaciones de un usuario ********************************************** //
   static async getNotifications(userId) {
-    const notifications = await Notification.find({ recipient: userId })
+    const notifications = await Notification.find({ recipient: userId, isDeleted: false })
       .sort({ createdAt: -1 })
       .populate('sender', 'nombre apellido email')
-      .exec();
+      .lean();
     return notifications;
   }
   // #endregion ********************************************************************//
 
   // #region Marcar notificación como leída ********************************************** //
   static async markAsRead(id, userId) {
-    const notification = await Notification.findOne({ _id: id, recipient: userId });
+    const notification = await Notification.findOne({ _id: id, recipient: userId, isDeleted: false });
     if (!notification) {
       throw new NotFoundError('Notificación no encontrada');
     }
@@ -124,7 +124,30 @@ class NotificationService {
 
   // #region  Marcar todas las notificaciones como leídas ********************************************** //
   static async markAllAsRead(userId) {
-    await Notification.updateMany({ recipient: userId, isRead: false }, { isRead: true });
+    await Notification.updateMany({ recipient: userId, isRead: false, isDeleted: false }, { isRead: true });
+  }
+  // #endregion ********************************************************************//
+
+  // #region  Marcar las notificaciones como no leídas ********************************************** //
+  static async unMarkAsRead(id, userId) {
+    const notification = await Notification.findOne({ _id: id, recipient: userId, isDeleted: false });
+    if (!notification) {
+      throw new NotFoundError('Notificacion no encontrada');
+    }
+
+    if (notification.isRead === false) {
+      throw new ConflictError('Esta ya fue marcada como no leida.');
+    }
+
+    notification.isRead = false;
+    await notification.save();
+    return notification;
+  }
+  // #endregion ********************************************************************//
+
+  // #region  Marcar todas las notificaciones como no leídas ********************************************** //
+  static async unMarkAllAsRead(userId) {
+    await Notification.updateMany({ recipient: userId, isRead: true, isDeleted: false }, { isRead: false });
   }
   // #endregion ********************************************************************//
 
