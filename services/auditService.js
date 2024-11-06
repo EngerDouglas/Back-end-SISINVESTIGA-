@@ -14,7 +14,8 @@ class AuditService {
       const users = await User.find({
         $or: [
           { nombre: userRegex },
-          { apellido: userRegex }
+          { apellido: userRegex },
+          { email: userRegex }
         ]
       }).select('_id');
       const userIds = users.map(user => user._id);
@@ -53,7 +54,7 @@ class AuditService {
       .limit(limit)
       .populate({
         path: 'user',
-        select: 'nombre apellido role',
+        select: 'nombre apellido email role',
         populate: {
           path: 'role',
           select: 'roleName' 
