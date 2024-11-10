@@ -1,0 +1,17 @@
+[{
+  "_id": {
+    "$oid": "6730b990670f99e41f3ac5f2"
+  },
+  "user": {
+    "$oid": "66d7d4bca6f6b3707d261b33"
+  },
+  "ipAddress": "::1",
+  "location": "Ubicación desconocida",
+  "device": "Edge on Windows 10.0",
+  "isActive": true,
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ3ZDRiY2E2ZjZiMzcwN2QyNjFiMzMiLCJpYXQiOjE3MzEyNDY0ODAsImV4cCI6MTczMTMzMjg4MH0.NDiPXT8UkRD7nwMmuupvCxcfpqFJqYdHkE-uD5rHZBM",
+  "createdAt": {
+    "$date": "2024-11-10T13:48:00.954Z"
+  },
+  "__v": 0
+}]

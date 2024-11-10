@@ -109,7 +109,7 @@
     "$date": "2024-09-06T14:57:59.920Z"
   },
   "updatedAt": {
-    "$date": "2024-10-14T00:18:02.638Z"
+    "$date": "2024-10-27T15:41:46.524Z"
   },
   "__v": 3,
   "isDeleted": false,
@@ -131,29 +131,38 @@
       "$oid": "66d9a3d28811e44aea8b1dd6"
     }
   ],
-  "revista": "Revista Académica de APIs",
+  "revista": "Revista Académica de APIs.",
   "resumen": "Estamos probando la API para ver su funcionalidad.",
   "palabrasClave": [
-    "Software, Sistemas, Talendig"
+    "Software",
+    "Sistemas",
+    "Talendig"
   ],
-  "tipoPublicacion": "Articulo",
+  "tipoPublicacion": "Informe",
   "estado": "Borrador",
   "anexos": [
-    "http://example.com/publicacion.pdf",
-    "http://example2.com/publicacion.img"
+    {
+      "nombre": "projects_report.pdf",
+      "url": "https://firebasestorage.googleapis.com/v0/b/sisinvestiga.appspot.com/o/attachments%2F24282f09-0991-435a-9070-ba434cbe2d99-projects_report.pdf?alt=media",
+      "tipo": "application/pdf",
+      "_id": {
+        "$oid": "67203aab4e159705f661549e"
+      }
+    }
   ],
   "idioma": "Español",
   "createdAt": {
     "$date": "2024-09-06T15:03:51.604Z"
   },
   "updatedAt": {
-    "$date": "2024-10-01T02:24:52.834Z"
+    "$date": "2024-10-29T01:30:19.614Z"
   },
-  "__v": 2,
+  "__v": 3,
   "isDeleted": false,
   "proyecto": {
     "$oid": "66db19d7ac4e6e65b64c921d"
-  }
+  },
+  "imagen": "https://firebasestorage.googleapis.com/v0/b/sisinvestiga.appspot.com/o/publications%2Ff9ac2572-9b78-40d9-be1e-7f5c5c844f3a-deletes.jpg?alt=media"
 },
 {
   "_id": {
@@ -330,7 +339,7 @@
     "$oid": "66fcdc26a8e8a1295a153194"
   },
   "revista": "Revista Internacional de IA",
-  "resumen": "Esta publicación analiza las últimas tendencias en machine learning...",
+  "resumen": "Esta publicación analiza las últimas tendencias en machine learning.",
   "palabrasClave": [
     "Machine Learning",
     "Inteligencia Artificial",
@@ -354,7 +363,7 @@
     "$date": "2024-10-02T05:38:08.749Z"
   },
   "updatedAt": {
-    "$date": "2024-10-13T23:56:42.886Z"
+    "$date": "2024-10-29T01:18:13.582Z"
   },
   "__v": 1,
   "imagen": "https://firebasestorage.googleapis.com/v0/b/sisinvestiga.appspot.com/o/publications%2Fe743be66-8e3a-4588-878c-465b4533c1f2-IAXXI.jpg?alt=media"
@@ -448,7 +457,7 @@
   "_id": {
     "$oid": "670c56e17f2af20d56aef453"
   },
-  "titulo": "Haciendo Niños Felices.",
+  "titulo": "Haciendo Niños Felices",
   "fecha": {
     "$date": "2024-10-13T23:24:32.594Z"
   },
@@ -486,7 +495,99 @@
     "$date": "2024-10-13T23:25:21.433Z"
   },
   "updatedAt": {
-    "$date": "2024-10-13T23:25:21.433Z"
+    "$date": "2024-10-29T01:37:14.895Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "671e60d315961f43367a8f53"
+  },
+  "titulo": "Frutas para una Salud Equilibrada.",
+  "fecha": {
+    "$date": "2024-10-27T15:47:05.874Z"
+  },
+  "autores": [
+    {
+      "$oid": "66d9a3d28811e44aea8b1dd6"
+    }
+  ],
+  "proyecto": {
+    "$oid": "671daf1885815d1382c65e01"
+  },
+  "revista": "Revista de Nutricion",
+  "resumen": "Nuestra intervencion es para enseñarles a los jovenes los beneficios que puede traer estos alimentos para las salud y el bienestar del cuerpo.",
+  "palabrasClave": [
+    "Salud",
+    "Nutricion",
+    "Alimentacion"
+  ],
+  "tipoPublicacion": "Articulo",
+  "estado": "Borrador",
+  "imagen": "https://firebasestorage.googleapis.com/v0/b/sisinvestiga.appspot.com/o/publications%2F43107b53-d631-4e40-bbbc-569c53ca3b3c-frutas.jpg?alt=media",
+  "anexos": [
+    {
+      "nombre": "Frutoterapia-los-frutos.pdf",
+      "url": "https://firebasestorage.googleapis.com/v0/b/sisinvestiga.appspot.com/o/attachments%2F1414ca38-369a-491c-99e7-a49e636399c4-Frutoterapia-los-frutos.pdf?alt=media",
+      "tipo": "application/pdf",
+      "_id": {
+        "$oid": "671e60d315961f43367a8f54"
+      }
+    }
+  ],
+  "idioma": "Español",
+  "isDeleted": false,
+  "createdAt": {
+    "$date": "2024-10-27T15:48:35.157Z"
+  },
+  "updatedAt": {
+    "$date": "2024-10-29T01:38:27.493Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "671ebf4e0d80574a489f7ec2"
+  },
+  "titulo": "Notificaciones en un proyecto Web",
+  "fecha": {
+    "$date": "2024-10-27T22:29:17.297Z"
+  },
+  "autores": [
+    {
+      "$oid": "66d9a3d28811e44aea8b1dd6"
+    }
+  ],
+  "proyecto": {
+    "$oid": "671eb52f46d0b71110f71928"
+  },
+  "revista": "Revista de Programacion",
+  "resumen": "Maneras de como implementar en el proyecto las notificaciones de las acciones que ocurren en el mismo.",
+  "palabrasClave": [
+    "Notificaciones",
+    "Dev",
+    "NodeJS."
+  ],
+  "tipoPublicacion": "Informe",
+  "estado": "Borrador",
+  "imagen": "https://firebasestorage.googleapis.com/v0/b/sisinvestiga.appspot.com/o/publications%2Fdc9468f6-5ab5-4d08-97cd-0436054d42a4-notifications2.jpg?alt=media",
+  "anexos": [
+    {
+      "nombre": "TD_07231_14.pdf",
+      "url": "https://firebasestorage.googleapis.com/v0/b/sisinvestiga.appspot.com/o/attachments%2F77d9d8f3-7694-4710-a6aa-77a5f9192048-TD_07231_14.pdf?alt=media",
+      "tipo": "application/pdf",
+      "_id": {
+        "$oid": "671ebf4e0d80574a489f7ec3"
+      }
+    }
+  ],
+  "idioma": "Español",
+  "isDeleted": false,
+  "createdAt": {
+    "$date": "2024-10-27T22:31:42.192Z"
+  },
+  "updatedAt": {
+    "$date": "2024-10-29T01:33:12.829Z"
   },
   "__v": 0
 }]

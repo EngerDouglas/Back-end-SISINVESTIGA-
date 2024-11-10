@@ -109,7 +109,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ3ZDRiY2E2ZjZiMzcwN2QyNjFiMzMiLCJpYXQiOjE3MjkzODU0MDYsImV4cCI6MTcyOTQ3MTgwNn0.UPOtob6aKddTj3py2U20oTIVNmcwNC9PGIlCP7k0N94",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ3ZDRiY2E2ZjZiMzcwN2QyNjFiMzMiLCJpYXQiOjE3Mjk0NzM4MTMsImV4cCI6MTcyOTU2MDIxM30.lNVTvRknaHAus4JVKVg24Jt0UNTFM-RyZJL-s3HhQmg",
 							"type": "string"
 						}
 					]
@@ -130,6 +130,73 @@
 					]
 				},
 				"description": "Cierra la sesion de todos los dispositivos del usuario en el sistema.\n\nRequerimiento: Estar logeado en el sistema."
+			},
+			"response": []
+		},
+		{
+			"name": "Verificar Email",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3005/api/users/verify-email",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"api",
+						"users",
+						"verify-email"
+					]
+				},
+				"description": "Endpoint que permite verificar el correo electronico de un usuario que se ha registrado por primera vez."
+			},
+			"response": []
+		},
+		{
+			"name": "Olvide Password",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3005/api/users/forgot-password",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"api",
+						"users",
+						"forgot-password"
+					]
+				},
+				"description": "Endpoint que permite enviar email de olvide contraseña al usuario."
+			},
+			"response": []
+		},
+		{
+			"name": "Resetear Password",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3005/api/users/reset-password/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ3ZDRiY2E2ZjZiMzcwN2QyNjFiMzMiLCJpYXQiOjE3MzEyNDY0ODAsImV4cCI6MTczMTMzMjg4MH0.NDiPXT8UkRD7nwMmuupvCxcfpqFJqYdHkE-uD5rHZBM",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"api",
+						"users",
+						"reset-password",
+						"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ3ZDRiY2E2ZjZiMzcwN2QyNjFiMzMiLCJpYXQiOjE3MzEyNDY0ODAsImV4cCI6MTczMTMzMjg4MH0.NDiPXT8UkRD7nwMmuupvCxcfpqFJqYdHkE-uD5rHZBM"
+					]
+				},
+				"description": "Endpoint que permite al usuario resetear su contraseña si fue olvidada.\r\n\r\nRequisito: Haber recibido en el email el correo de restablecimiento de contraseña."
 			},
 			"response": []
 		},
@@ -202,6 +269,39 @@
 					]
 				},
 				"description": "Actualiza los usuarios del sistema.\n\nRequerimiento: Estar logeado en el sistema y ser administrador para hacer el cambio a cualquier usuario.\n\nSe pueden actualizar campos especificos."
+			},
+			"response": []
+		},
+		{
+			"name": "Actualizar Rol de Un Usuario",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ3ZDRiY2E2ZjZiMzcwN2QyNjFiMzMiLCJpYXQiOjE3MzEyNDY0ODAsImV4cCI6MTczMTMzMjg4MH0.NDiPXT8UkRD7nwMmuupvCxcfpqFJqYdHkE-uD5rHZBM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3005/api/users/670176bd89d0720ebc333d00/role",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"api",
+						"users",
+						"670176bd89d0720ebc333d00",
+						"role"
+					]
+				},
+				"description": "Endpoint que permite solo actualizar el rol del usuario.\r\n\r\nRequisito: Ser Administrador y tener una sesion iniciada."
 			},
 			"response": []
 		},
@@ -553,7 +653,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ3ZDRiY2E2ZjZiMzcwN2QyNjFiMzMiLCJpYXQiOjE3MjgxNTEwMzMsImV4cCI6MTcyODIzNzQzM30.jK-Vr1utdIsUeWFf60VIPf69N8Ttej8Pj2I24yzbbnY",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ3ZDRiY2E2ZjZiMzcwN2QyNjFiMzMiLCJpYXQiOjE3Mjk2Mzk5MjMsImV4cCI6MTcyOTcyNjMyM30.xhI-Nlcu-6zP0nJVXioT67d6ozsnvcljV207aTXV8zU",
 							"type": "string"
 						}
 					]
@@ -561,7 +661,7 @@
 				"method": "PUT",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3005/api/publications/restore/66e59c936ccc55df8408d5f3",
+					"raw": "http://localhost:3005/api/publications/restore/66fcdc40a8e8a1295a1531a3",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -571,7 +671,7 @@
 						"api",
 						"publications",
 						"restore",
-						"66e59c936ccc55df8408d5f3"
+						"66fcdc40a8e8a1295a1531a3"
 					]
 				},
 				"description": "Endpoint para la restauracion de Publicaciones que han sido eliminadas.\r\n\r\nRequisito: Ser Administrador."
@@ -1136,7 +1236,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ3ZDRiY2E2ZjZiMzcwN2QyNjFiMzMiLCJpYXQiOjE3MjgxNTEwMzMsImV4cCI6MTcyODIzNzQzM30.jK-Vr1utdIsUeWFf60VIPf69N8Ttej8Pj2I24yzbbnY",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ3ZDRiY2E2ZjZiMzcwN2QyNjFiMzMiLCJpYXQiOjE3Mjk5ODAwOTksImV4cCI6MTczMDA2NjQ5OX0.AkmH9yyKsyKZWGDLe68BRnqmwMp5zm_BJqpbmYDSsr0",
 							"type": "string"
 						}
 					]
@@ -1144,7 +1244,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3005/api/evaluations/projects/67018428a540d912a0fd537e",
+					"raw": "http://localhost:3005/api/evaluations/projects/67198cdde95e328f5daf7fc7",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -1154,7 +1254,7 @@
 						"api",
 						"evaluations",
 						"projects",
-						"67018428a540d912a0fd537e"
+						"67198cdde95e328f5daf7fc7"
 					]
 				},
 				"description": "Endpoint que permite obtener las evaluaciones por proyectos.\r\n\r\nRequisito: Estar logeado en el sistema."
@@ -1667,6 +1767,328 @@
 						"pdf"
 					]
 				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener Auditoria Sistema",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ3ZDRiY2E2ZjZiMzcwN2QyNjFiMzMiLCJpYXQiOjE3MzEyNDY0ODAsImV4cCI6MTczMTMzMjg4MH0.NDiPXT8UkRD7nwMmuupvCxcfpqFJqYdHkE-uD5rHZBM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3005/api/audits",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"api",
+						"audits"
+					]
+				},
+				"description": "Endpoint que permite mostrar las acciones de todos los usuarios del sistema, los CRUD que ellos realizan, ubicacion, maquina de origen etc.\r\n\r\nRequisito: Ser Administrador."
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener Todas Las Notifiaciones Administrador",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ3ZDRiY2E2ZjZiMzcwN2QyNjFiMzMiLCJpYXQiOjE3MzEyNDY0ODAsImV4cCI6MTczMTMzMjg4MH0.NDiPXT8UkRD7nwMmuupvCxcfpqFJqYdHkE-uD5rHZBM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3005/api/notifications/admin/all",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"api",
+						"notifications",
+						"admin",
+						"all"
+					]
+				},
+				"description": "Endpoint que permite obtner todas las notificaciones del sistema.\r\n\r\nRequisito Ser Administrador."
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener Propias Notificaciones",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ3ZDRiY2E2ZjZiMzcwN2QyNjFiMzMiLCJpYXQiOjE3MzEyNDY0ODAsImV4cCI6MTczMTMzMjg4MH0.NDiPXT8UkRD7nwMmuupvCxcfpqFJqYdHkE-uD5rHZBM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3005/api/notifications/me",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"api",
+						"notifications",
+						"me"
+					]
+				},
+				"description": "Endpoint que permite traer las notificaciones del usuario con la sesion iniciada, lo usamos para el centro de notificaciones.\r\n\r\nRequisito: Estar logeado en el sistema."
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener Notificaciones",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ3ZDRiY2E2ZjZiMzcwN2QyNjFiMzMiLCJpYXQiOjE3MzEyNDY0ODAsImV4cCI6MTczMTMzMjg4MH0.NDiPXT8UkRD7nwMmuupvCxcfpqFJqYdHkE-uD5rHZBM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3005/api/notifications",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"api",
+						"notifications"
+					]
+				},
+				"description": "Endpoint que permite traer las notificaciones en tiempo real para el sistema.\r\n\r\nRequisito: Tener una sesion iniciada."
+			},
+			"response": []
+		},
+		{
+			"name": "Marcar Todas Las Notificaciones Como Leidas",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ3ZDRiY2E2ZjZiMzcwN2QyNjFiMzMiLCJpYXQiOjE3MzEyNDY0ODAsImV4cCI6MTczMTMzMjg4MH0.NDiPXT8UkRD7nwMmuupvCxcfpqFJqYdHkE-uD5rHZBM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3005/api/notifications/readall",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"api",
+						"notifications",
+						"readall"
+					]
+				},
+				"description": "Endpoint que permite al usuario marcar todas sus notificaciones como leidas.\r\n\r\nRequisito: Tener una sesion iniciada."
+			},
+			"response": []
+		},
+		{
+			"name": "Marcar Todas Las Notificaciones Como No Leidas.",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ3ZDRiY2E2ZjZiMzcwN2QyNjFiMzMiLCJpYXQiOjE3MzEyNDY0ODAsImV4cCI6MTczMTMzMjg4MH0.NDiPXT8UkRD7nwMmuupvCxcfpqFJqYdHkE-uD5rHZBM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3005/api/notifications/unreadall",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"api",
+						"notifications",
+						"unreadall"
+					]
+				},
+				"description": "Endpoint que permite al usuario marcar todas sus notificaciones como no leidas.\r\n\r\nRequisito: Tener una sesion iniciada."
+			},
+			"response": []
+		},
+		{
+			"name": "Marcar Notificacion Como Leida",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ3ZDRiY2E2ZjZiMzcwN2QyNjFiMzMiLCJpYXQiOjE3MzEyNDY0ODAsImV4cCI6MTczMTMzMjg4MH0.NDiPXT8UkRD7nwMmuupvCxcfpqFJqYdHkE-uD5rHZBM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3005/api/notifications/67243f54d02320c967a5a9b1/read",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"api",
+						"notifications",
+						"67243f54d02320c967a5a9b1",
+						"read"
+					]
+				},
+				"description": "Endpoint que permite al usuario marcar una notificacion leida.\r\n\r\nRequisito: Tener una sesion iniciada."
+			},
+			"response": []
+		},
+		{
+			"name": "Marcar Notificacion Como No Leida",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ3ZDRiY2E2ZjZiMzcwN2QyNjFiMzMiLCJpYXQiOjE3MzEyNDY0ODAsImV4cCI6MTczMTMzMjg4MH0.NDiPXT8UkRD7nwMmuupvCxcfpqFJqYdHkE-uD5rHZBM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3005/api/notifications/67243f54d02320c967a5a9b1/unread",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"api",
+						"notifications",
+						"67243f54d02320c967a5a9b1",
+						"unread"
+					]
+				},
+				"description": "Endpoint que permite al usuario marcar una notificacion como no leida.\r\n\r\nRequisito: Tener una sesion iniciada."
+			},
+			"response": []
+		},
+		{
+			"name": "Restaurar Notificaciones",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ3ZDRiY2E2ZjZiMzcwN2QyNjFiMzMiLCJpYXQiOjE3MzEyNDY0ODAsImV4cCI6MTczMTMzMjg4MH0.NDiPXT8UkRD7nwMmuupvCxcfpqFJqYdHkE-uD5rHZBM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3005/api/notifications/67243f54d02320c967a5a9b1/restore",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"api",
+						"notifications",
+						"67243f54d02320c967a5a9b1",
+						"restore"
+					]
+				},
+				"description": "Endpoint que permite restaurar una Notificacion que ha sido eliminada en el sistema o marcada como true en isDeleted en la base de datos de MongoDB.\r\n\r\nRequisito: Tener una sesion iniciada y ser Administrador."
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar Notificaciones",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ3ZDRiY2E2ZjZiMzcwN2QyNjFiMzMiLCJpYXQiOjE3MzEyNDY0ODAsImV4cCI6MTczMTMzMjg4MH0.NDiPXT8UkRD7nwMmuupvCxcfpqFJqYdHkE-uD5rHZBM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3005/api/notifications/67243f54d02320c967a5a9b1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"api",
+						"notifications",
+						"67243f54d02320c967a5a9b1"
+					]
+				},
+				"description": "Endpoint que permite eliminar una Notificacion.\n\nRequisito: Tener una sesion iniciada."
 			},
 			"response": []
 		}

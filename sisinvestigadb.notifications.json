@@ -1,0 +1,324 @@
+[{
+  "_id": {
+    "$oid": "67243f54d02320c967a5a9af"
+  },
+  "recipient": {
+    "$oid": "66d7d4bca6f6b3707d261b33"
+  },
+  "sender": {
+    "$oid": "66d7d4bca6f6b3707d261b33"
+  },
+  "type": "Proyecto",
+  "message": "El proyecto \"Notificaciones en NodeJS\" ha sido eliminado/restaurado.",
+  "data": {
+    "projectId": {
+      "$oid": "671eb52f46d0b71110f71928"
+    }
+  },
+  "isRead": true,
+  "isDeleted": true,
+  "createdAt": {
+    "$date": "2024-11-01T02:39:16.940Z"
+  },
+  "updatedAt": {
+    "$date": "2024-11-01T02:41:10.880Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67243f54d02320c967a5a9b1"
+  },
+  "recipient": {
+    "$oid": "66d9a3d28811e44aea8b1dd6"
+  },
+  "sender": {
+    "$oid": "66d7d4bca6f6b3707d261b33"
+  },
+  "type": "Proyecto",
+  "message": "El proyecto \"Notificaciones en NodeJS\" ha sido eliminado.",
+  "data": {
+    "projectId": {
+      "$oid": "671eb52f46d0b71110f71928"
+    }
+  },
+  "isRead": true,
+  "isDeleted": true,
+  "createdAt": {
+    "$date": "2024-11-01T02:39:16.951Z"
+  },
+  "updatedAt": {
+    "$date": "2024-11-01T02:45:57.663Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "672958c8c540c6ce6bddd3ef"
+  },
+  "recipient": {
+    "$oid": "66d9a3d28811e44aea8b1dd6"
+  },
+  "sender": {
+    "$oid": "66d7d4bca6f6b3707d261b33"
+  },
+  "type": "Proyecto",
+  "message": "El proyecto \"Notificaciones en NodeJS\" ha sido restaurado.",
+  "data": {
+    "projectId": {
+      "$oid": "671eb52f46d0b71110f71928"
+    }
+  },
+  "isRead": true,
+  "isDeleted": true,
+  "createdAt": {
+    "$date": "2024-11-04T23:29:12.513Z"
+  },
+  "updatedAt": {
+    "$date": "2024-11-04T23:30:33.297Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "672d692d0b75c84478cb581b"
+  },
+  "recipient": {
+    "$oid": "66d7d4bca6f6b3707d261b33"
+  },
+  "sender": {
+    "$oid": "66d9a3d28811e44aea8b1dd6"
+  },
+  "type": "Proyecto",
+  "message": "El proyecto \"Tren Metropolitano\" ha sido eliminado/restaurado.",
+  "data": {
+    "projectId": {
+      "$oid": "66fddabd599b3cbe57f3bb05"
+    }
+  },
+  "isRead": true,
+  "isDeleted": true,
+  "createdAt": {
+    "$date": "2024-11-08T01:28:13.694Z"
+  },
+  "updatedAt": {
+    "$date": "2024-11-08T01:34:21.215Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "672d6aa70b75c84478cb5ce8"
+  },
+  "recipient": {
+    "$oid": "66d9a3d28811e44aea8b1dd6"
+  },
+  "sender": {
+    "$oid": "66d7d4bca6f6b3707d261b33"
+  },
+  "type": "Proyecto",
+  "message": "El proyecto \"Tren Metropolitano\" ha sido restaurado.",
+  "data": {
+    "projectId": {
+      "$oid": "66fddabd599b3cbe57f3bb05"
+    }
+  },
+  "isRead": true,
+  "isDeleted": true,
+  "createdAt": {
+    "$date": "2024-11-08T01:34:31.416Z"
+  },
+  "updatedAt": {
+    "$date": "2024-11-08T01:36:29.039Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "672d6adf0b75c84478cb5df0"
+  },
+  "recipient": {
+    "$oid": "66d9a3d28811e44aea8b1dd6"
+  },
+  "sender": {
+    "$oid": "66d7d4bca6f6b3707d261b33"
+  },
+  "type": "Usuario",
+  "message": "Tu cuenta ha sido deshabilitada.",
+  "data": {
+    "userId": {
+      "$oid": "66d9a3d28811e44aea8b1dd6"
+    }
+  },
+  "isRead": true,
+  "isDeleted": true,
+  "createdAt": {
+    "$date": "2024-11-08T01:35:27.778Z"
+  },
+  "updatedAt": {
+    "$date": "2024-11-08T01:36:29.558Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "672d6b000b75c84478cb5e5c"
+  },
+  "recipient": {
+    "$oid": "66d9a3d28811e44aea8b1dd6"
+  },
+  "sender": {
+    "$oid": "66d7d4bca6f6b3707d261b33"
+  },
+  "type": "Usuario",
+  "message": "Tu cuenta ha sido habilitada.",
+  "data": {
+    "userId": {
+      "$oid": "66d9a3d28811e44aea8b1dd6"
+    }
+  },
+  "isRead": true,
+  "isDeleted": true,
+  "createdAt": {
+    "$date": "2024-11-08T01:36:00.627Z"
+  },
+  "updatedAt": {
+    "$date": "2024-11-08T01:36:31.236Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "672d6b2d0b75c84478cb6051"
+  },
+  "recipient": {
+    "$oid": "66d7d4bca6f6b3707d261b33"
+  },
+  "sender": {
+    "$oid": "66d7d4bca6f6b3707d261b33"
+  },
+  "type": "Proyecto",
+  "message": "El proyecto \"Tren Metropolitano\" ha sido eliminado/restaurado.",
+  "data": {
+    "projectId": {
+      "$oid": "66fddabd599b3cbe57f3bb05"
+    }
+  },
+  "isRead": true,
+  "isDeleted": true,
+  "createdAt": {
+    "$date": "2024-11-08T01:36:45.513Z"
+  },
+  "updatedAt": {
+    "$date": "2024-11-08T01:38:15.097Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "672d6b2d0b75c84478cb6053"
+  },
+  "recipient": {
+    "$oid": "66d9a3d28811e44aea8b1dd6"
+  },
+  "sender": {
+    "$oid": "66d7d4bca6f6b3707d261b33"
+  },
+  "type": "Proyecto",
+  "message": "El proyecto \"Tren Metropolitano\" ha sido eliminado.",
+  "data": {
+    "projectId": {
+      "$oid": "66fddabd599b3cbe57f3bb05"
+    }
+  },
+  "isRead": true,
+  "isDeleted": true,
+  "createdAt": {
+    "$date": "2024-11-08T01:36:45.519Z"
+  },
+  "updatedAt": {
+    "$date": "2024-11-08T01:37:05.739Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "672d6b500b75c84478cb614f"
+  },
+  "recipient": {
+    "$oid": "66d9a3d28811e44aea8b1dd6"
+  },
+  "sender": {
+    "$oid": "66d7d4bca6f6b3707d261b33"
+  },
+  "type": "Proyecto",
+  "message": "El proyecto \"Tren Metropolitano\" ha sido restaurado.",
+  "data": {
+    "projectId": {
+      "$oid": "66fddabd599b3cbe57f3bb05"
+    }
+  },
+  "isRead": false,
+  "isDeleted": false,
+  "createdAt": {
+    "$date": "2024-11-08T01:37:20.492Z"
+  },
+  "updatedAt": {
+    "$date": "2024-11-08T01:37:20.492Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "672d6c720b75c84478cb668a"
+  },
+  "recipient": {
+    "$oid": "66d9a3d28811e44aea8b1dd6"
+  },
+  "sender": {
+    "$oid": "66d9a3d28811e44aea8b1dd6"
+  },
+  "type": "Usuario",
+  "message": "Tu contraseña ha sido restablecida exitosamente.",
+  "data": {
+    "userId": {
+      "$oid": "66d9a3d28811e44aea8b1dd6"
+    }
+  },
+  "isRead": true,
+  "isDeleted": true,
+  "createdAt": {
+    "$date": "2024-11-08T01:42:10.048Z"
+  },
+  "updatedAt": {
+    "$date": "2024-11-08T01:42:35.258Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "672d6c720b75c84478cb668e"
+  },
+  "recipient": {
+    "$oid": "66d7d4bca6f6b3707d261b33"
+  },
+  "sender": {
+    "$oid": "66d9a3d28811e44aea8b1dd6"
+  },
+  "type": "Usuario",
+  "message": "El usuario Carlos Alberto Castillo Garcia ha restablecido su contraseña.",
+  "data": {
+    "userId": {
+      "$oid": "66d9a3d28811e44aea8b1dd6"
+    }
+  },
+  "isRead": true,
+  "isDeleted": true,
+  "createdAt": {
+    "$date": "2024-11-08T01:42:10.055Z"
+  },
+  "updatedAt": {
+    "$date": "2024-11-10T13:49:08.067Z"
+  },
+  "__v": 0
+}]

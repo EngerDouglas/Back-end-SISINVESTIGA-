@@ -30,7 +30,7 @@
     "$date": "2024-10-01T03:19:45.557Z"
   },
   "updatedAt": {
-    "$date": "2024-10-01T03:28:16.787Z"
+    "$date": "2024-10-27T01:27:38.526Z"
   },
   "__v": 1,
   "fechaResolucion": {
@@ -72,7 +72,7 @@
     "$date": "2024-10-01T03:20:43.944Z"
   },
   "updatedAt": {
-    "$date": "2024-10-01T03:24:46.583Z"
+    "$date": "2024-10-27T01:27:36.766Z"
   },
   "__v": 1,
   "fechaResolucion": {
@@ -108,17 +108,155 @@
       "fecha": {
         "$date": "2024-10-05T20:48:54.419Z"
       }
+    },
+    {
+      "usuario": {
+        "$oid": "66d7d4bca6f6b3707d261b33"
+      },
+      "comentario": "Probando",
+      "_id": {
+        "$oid": "671d98f708fb0a8aa1bfcc6e"
+      },
+      "fecha": {
+        "$date": "2024-10-27T01:35:51.082Z"
+      }
     }
   ],
   "createdAt": {
     "$date": "2024-10-05T20:47:25.607Z"
   },
   "updatedAt": {
-    "$date": "2024-10-05T20:50:23.451Z"
+    "$date": "2024-10-27T01:35:51.084Z"
+  },
+  "__v": 2,
+  "fechaResolucion": {
+    "$date": "2024-10-27T01:35:51.080Z"
+  },
+  "revisadoPor": {
+    "$oid": "66d7d4bca6f6b3707d261b33"
+  }
+},
+{
+  "_id": {
+    "$oid": "670717138ed3328ca37f0179"
+  },
+  "solicitante": {
+    "$oid": "66d9a3d28811e44aea8b1dd6"
+  },
+  "tipoSolicitud": "Unirse a Proyecto",
+  "descripcion": "Me gustaría unirme al proyecto por mi experiencia en IA.",
+  "proyecto": {
+    "$oid": "66d9f71976c4141cb4812abe"
+  },
+  "estado": "Aprobada",
+  "isDeleted": false,
+  "comentarios": [
+    {
+      "usuario": {
+        "$oid": "66d7d4bca6f6b3707d261b33"
+      },
+      "comentario": "Ya puedes unirte al proyecto.",
+      "_id": {
+        "$oid": "671991c5e95e328f5daf8844"
+      },
+      "fecha": {
+        "$date": "2024-10-24T00:16:05.678Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2024-10-09T23:51:47.216Z"
+  },
+  "updatedAt": {
+    "$date": "2024-10-24T00:49:35.204Z"
   },
   "__v": 1,
   "fechaResolucion": {
-    "$date": "2024-10-05T20:48:54.417Z"
+    "$date": "2024-10-24T00:16:05.676Z"
+  },
+  "revisadoPor": {
+    "$oid": "66d7d4bca6f6b3707d261b33"
+  }
+},
+{
+  "_id": {
+    "$oid": "67204de73f989692ff5c814b"
+  },
+  "solicitante": {
+    "$oid": "66d9a3d28811e44aea8b1dd6"
+  },
+  "tipoSolicitud": "Recursos",
+  "descripcion": "Necesitamos aumentar los recursos del proyecto.",
+  "proyecto": {
+    "$oid": "6701ba84e179d82e4ca5f8ed"
+  },
+  "estado": "Aprobada",
+  "isDeleted": false,
+  "comentarios": [
+    {
+      "usuario": {
+        "$oid": "66d7d4bca6f6b3707d261b33"
+      },
+      "comentario": "Probando notificaciones.",
+      "_id": {
+        "$oid": "6720516319c54057971034e8"
+      },
+      "fecha": {
+        "$date": "2024-10-29T03:07:15.761Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2024-10-29T02:52:23.536Z"
+  },
+  "updatedAt": {
+    "$date": "2024-10-29T03:07:15.764Z"
+  },
+  "__v": 1,
+  "fechaResolucion": {
+    "$date": "2024-10-29T03:07:15.750Z"
+  },
+  "revisadoPor": {
+    "$oid": "66d7d4bca6f6b3707d261b33"
+  }
+},
+{
+  "_id": {
+    "$oid": "6720524b58544db79f55662f"
+  },
+  "solicitante": {
+    "$oid": "66d9a3d28811e44aea8b1dd6"
+  },
+  "tipoSolicitud": "Recursos",
+  "descripcion": "Asigname mas recursos.",
+  "proyecto": {
+    "$oid": "671daf1885815d1382c65e01"
+  },
+  "estado": "Aprobada",
+  "isDeleted": false,
+  "comentarios": [
+    {
+      "usuario": {
+        "$oid": "66d7d4bca6f6b3707d261b33"
+      },
+      "comentario": "Entendido ya han sido asignados.",
+      "_id": {
+        "$oid": "6720527158544db79f556676"
+      },
+      "fecha": {
+        "$date": "2024-10-29T03:11:45.960Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2024-10-29T03:11:07.350Z"
+  },
+  "updatedAt": {
+    "$date": "2024-10-29T03:11:45.963Z"
+  },
+  "__v": 1,
+  "fechaResolucion": {
+    "$date": "2024-10-29T03:11:45.956Z"
   },
   "revisadoPor": {
     "$oid": "66d7d4bca6f6b3707d261b33"

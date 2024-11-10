@@ -32,7 +32,7 @@
   "evaluator": {
     "$oid": "66d7d4bca6f6b3707d261b33"
   },
-  "puntuacion": 90,
+  "puntuacion": 91,
   "comentarios": "Después de una revisión adicional, considero que el proyecto supera las expectativas.",
   "isDeleted": false,
   "fechaEvaluacion": {
@@ -42,7 +42,247 @@
     "$date": "2024-10-05T20:19:25.568Z"
   },
   "updatedAt": {
-    "$date": "2024-10-05T20:28:38.966Z"
+    "$date": "2024-10-24T00:45:22.274Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67142a44b6d7d47ce5f52528"
+  },
+  "project": {
+    "$oid": "66db19d7ac4e6e65b64c921d"
+  },
+  "evaluator": {
+    "$oid": "66d7d4bca6f6b3707d261b33"
+  },
+  "puntuacion": 94,
+  "comentarios": "El proyecto presenta un enfoque innovador y un plan de trabajo bien estructurado.",
+  "isDeleted": false,
+  "fechaEvaluacion": {
+    "$date": "2024-10-19T21:53:08.867Z"
+  },
+  "createdAt": {
+    "$date": "2024-10-19T21:53:08.869Z"
+  },
+  "updatedAt": {
+    "$date": "2024-10-23T23:52:30.743Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67198c90e95e328f5daf7ed8"
+  },
+  "project": {
+    "$oid": "670c41ed711133584a5b9b5d"
+  },
+  "evaluator": {
+    "$oid": "66d7d4bca6f6b3707d261b33"
+  },
+  "puntuacion": 96,
+  "comentarios": "El proyecto presenta un enfoque innovador y un plan de trabajo bien estructurado.",
+  "isDeleted": false,
+  "fechaEvaluacion": {
+    "$date": "2024-10-23T23:53:52.961Z"
+  },
+  "createdAt": {
+    "$date": "2024-10-23T23:53:52.962Z"
+  },
+  "updatedAt": {
+    "$date": "2024-10-23T23:53:52.962Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67198c9ae95e328f5daf7ee8"
+  },
+  "project": {
+    "$oid": "670b18955ec380d47c96359b"
+  },
+  "evaluator": {
+    "$oid": "66d7d4bca6f6b3707d261b33"
+  },
+  "puntuacion": 97,
+  "comentarios": "Después de una revisión adicional, considero que el proyecto supera las expectativas.",
+  "isDeleted": false,
+  "fechaEvaluacion": {
+    "$date": "2024-10-23T23:54:02.315Z"
+  },
+  "createdAt": {
+    "$date": "2024-10-23T23:54:02.316Z"
+  },
+  "updatedAt": {
+    "$date": "2024-10-27T00:55:09.736Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67198ca3e95e328f5daf7ef8"
+  },
+  "project": {
+    "$oid": "6701ba84e179d82e4ca5f8ed"
+  },
+  "evaluator": {
+    "$oid": "66d7d4bca6f6b3707d261b33"
+  },
+  "puntuacion": 96,
+  "comentarios": "Después de una revisión adicional, considero que el proyecto supera las expectativas.",
+  "isDeleted": false,
+  "fechaEvaluacion": {
+    "$date": "2024-10-23T23:54:11.421Z"
+  },
+  "createdAt": {
+    "$date": "2024-10-23T23:54:11.422Z"
+  },
+  "updatedAt": {
+    "$date": "2024-10-29T04:08:23.372Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67198cafe95e328f5daf7f0a"
+  },
+  "project": {
+    "$oid": "66fddabd599b3cbe57f3bb05"
+  },
+  "evaluator": {
+    "$oid": "66d7d4bca6f6b3707d261b33"
+  },
+  "puntuacion": 93,
+  "comentarios": "El proyecto presenta un enfoque innovador y un plan de trabajo bien estructurado.",
+  "isDeleted": false,
+  "fechaEvaluacion": {
+    "$date": "2024-10-23T23:54:23.220Z"
+  },
+  "createdAt": {
+    "$date": "2024-10-23T23:54:23.220Z"
+  },
+  "updatedAt": {
+    "$date": "2024-10-27T01:08:34.528Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67198cc3e95e328f5daf7f1b"
+  },
+  "project": {
+    "$oid": "66fcdc26a8e8a1295a153194"
+  },
+  "evaluator": {
+    "$oid": "66d7d4bca6f6b3707d261b33"
+  },
+  "puntuacion": 95,
+  "comentarios": "Después de una revisión adicional, considero que el proyecto supera las expectativas.",
+  "isDeleted": false,
+  "fechaEvaluacion": {
+    "$date": "2024-10-23T23:54:43.213Z"
+  },
+  "createdAt": {
+    "$date": "2024-10-23T23:54:43.213Z"
+  },
+  "updatedAt": {
+    "$date": "2024-10-23T23:54:43.213Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67198cdde95e328f5daf7fc7"
+  },
+  "project": {
+    "$oid": "66fcdbefa8e8a1295a15317a"
+  },
+  "evaluator": {
+    "$oid": "66d7d4bca6f6b3707d261b33"
+  },
+  "puntuacion": 98,
+  "comentarios": "El proyecto presenta un enfoque innovador y un plan de trabajo bien estructurado.",
+  "isDeleted": false,
+  "fechaEvaluacion": {
+    "$date": "2024-10-23T23:55:09.426Z"
+  },
+  "createdAt": {
+    "$date": "2024-10-23T23:55:09.427Z"
+  },
+  "updatedAt": {
+    "$date": "2024-10-23T23:55:09.427Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67198ce9e95e328f5daf7fd7"
+  },
+  "project": {
+    "$oid": "66ff2b42fe36d570139eeffd"
+  },
+  "evaluator": {
+    "$oid": "66d7d4bca6f6b3707d261b33"
+  },
+  "puntuacion": 95,
+  "comentarios": "Después de una revisión adicional, considero que el proyecto supera las expectativas.",
+  "isDeleted": false,
+  "fechaEvaluacion": {
+    "$date": "2024-10-23T23:55:21.768Z"
+  },
+  "createdAt": {
+    "$date": "2024-10-23T23:55:21.768Z"
+  },
+  "updatedAt": {
+    "$date": "2024-10-27T01:08:48.795Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67205482142d5bb489c1c4d9"
+  },
+  "project": {
+    "$oid": "671eb52f46d0b71110f71928"
+  },
+  "evaluator": {
+    "$oid": "66d7d4bca6f6b3707d261b33"
+  },
+  "puntuacion": 92,
+  "comentarios": "Proyecto cumple con todas las expectativas marcadas.",
+  "isDeleted": false,
+  "fechaEvaluacion": {
+    "$date": "2024-10-29T03:20:34.578Z"
+  },
+  "createdAt": {
+    "$date": "2024-10-29T03:20:34.583Z"
+  },
+  "updatedAt": {
+    "$date": "2024-10-29T03:23:25.858Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "672054e46d84260e26885b74"
+  },
+  "project": {
+    "$oid": "671daf1885815d1382c65e01"
+  },
+  "evaluator": {
+    "$oid": "66d7d4bca6f6b3707d261b33"
+  },
+  "puntuacion": 93,
+  "comentarios": "Proyecto cumple con todas las expectativas marcadas.",
+  "isDeleted": false,
+  "fechaEvaluacion": {
+    "$date": "2024-10-29T03:22:12.821Z"
+  },
+  "createdAt": {
+    "$date": "2024-10-29T03:22:12.826Z"
+  },
+  "updatedAt": {
+    "$date": "2024-10-29T03:22:12.826Z"
   },
   "__v": 0
 }]

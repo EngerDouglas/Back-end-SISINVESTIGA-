@@ -150,11 +150,11 @@
     "$date": "2024-09-06T15:03:51.604Z"
   },
   "updatedAt": {
-    "$date": "2024-10-13T22:04:48.465Z"
+    "$date": "2024-10-27T14:57:07.482Z"
   },
   "__v": 8,
-  "isDeleted": false,
-  "isEvaluated": false,
+  "isDeleted": true,
+  "isEvaluated": true,
   "imagen": "https://firebasestorage.googleapis.com/v0/b/sisinvestiga.appspot.com/o/projects%2F03f54e2c-61f9-422a-81b9-8b376de4bd55-what-is-software.png?alt=media"
 },
 {
@@ -194,13 +194,13 @@
     }
   ],
   "estado": "Planeado",
-  "isEvaluated": false,
+  "isEvaluated": true,
   "isDeleted": false,
   "createdAt": {
     "$date": "2024-10-02T05:36:47.778Z"
   },
   "updatedAt": {
-    "$date": "2024-10-02T05:36:47.778Z"
+    "$date": "2024-10-23T23:55:09.431Z"
   },
   "__v": 0
 },
@@ -250,13 +250,13 @@
     }
   ],
   "estado": "Finalizado",
-  "isEvaluated": false,
+  "isEvaluated": true,
   "isDeleted": false,
   "createdAt": {
     "$date": "2024-10-02T05:37:42.986Z"
   },
   "updatedAt": {
-    "$date": "2024-10-13T22:05:49.524Z"
+    "$date": "2024-10-23T23:54:43.218Z"
   },
   "__v": 4,
   "imagen": "https://firebasestorage.googleapis.com/v0/b/sisinvestiga.appspot.com/o/projects%2F86f4001b-fc5a-44b7-a76b-1fbfb0c093cb-IA.jpg?alt=media"
@@ -266,7 +266,7 @@
     "$oid": "66fddabd599b3cbe57f3bb05"
   },
   "nombre": "Tren Metropolitano",
-  "descripcion": "Proyecto de Estacion de trenes en la Ecologica",
+  "descripcion": "Proyecto de Estacion de trenes en la Ecologica.",
   "objetivos": "Mejorar el transporte y reducir los tapones.",
   "presupuesto": 150000,
   "cronograma": {
@@ -292,7 +292,7 @@
         "$date": "2024-10-02T23:42:31.678Z"
       },
       "_id": {
-        "$oid": "670c445c711133584a5b9d42"
+        "$oid": "67203a414e159705f66153ea"
       }
     },
     {
@@ -301,7 +301,7 @@
         "$date": "2025-03-06T23:43:32.000Z"
       },
       "_id": {
-        "$oid": "670c445c711133584a5b9d43"
+        "$oid": "67203a414e159705f66153eb"
       }
     },
     {
@@ -310,20 +310,20 @@
         "$date": "2024-10-03T00:10:58.166Z"
       },
       "_id": {
-        "$oid": "670c445c711133584a5b9d44"
+        "$oid": "67203a414e159705f66153ec"
       }
     }
   ],
   "estado": "En Proceso",
-  "isEvaluated": false,
+  "isEvaluated": true,
   "isDeleted": false,
   "createdAt": {
     "$date": "2024-10-02T23:43:57.245Z"
   },
   "updatedAt": {
-    "$date": "2024-10-13T22:06:20.597Z"
+    "$date": "2024-11-08T01:37:20.489Z"
   },
-  "__v": 5,
+  "__v": 7,
   "imagen": "https://firebasestorage.googleapis.com/v0/b/sisinvestiga.appspot.com/o/projects%2F2759810b-20ac-4107-a851-0af938b43bf0-tren.jpeg?alt=media"
 },
 {
@@ -362,13 +362,13 @@
     }
   ],
   "estado": "Planeado",
-  "isEvaluated": false,
+  "isEvaluated": true,
   "isDeleted": false,
   "createdAt": {
     "$date": "2024-10-03T23:39:46.455Z"
   },
   "updatedAt": {
-    "$date": "2024-10-13T22:07:22.203Z"
+    "$date": "2024-10-28T02:38:04.603Z"
   },
   "__v": 1,
   "imagen": "https://firebasestorage.googleapis.com/v0/b/sisinvestiga.appspot.com/o/projects%2F2075d7f7-2b76-43e9-a3ed-ccc717238042-semIA.webp?alt=media"
@@ -456,13 +456,13 @@
     }
   ],
   "estado": "Planeado",
-  "isEvaluated": false,
+  "isEvaluated": true,
   "isDeleted": false,
   "createdAt": {
     "$date": "2024-10-05T22:15:32.932Z"
   },
   "updatedAt": {
-    "$date": "2024-10-13T22:08:06.677Z"
+    "$date": "2024-10-28T02:20:48.367Z"
   },
   "__v": 2,
   "imagen": "https://firebasestorage.googleapis.com/v0/b/sisinvestiga.appspot.com/o/projects%2Fcf90fce5-999a-4da3-9b37-217894757788-machinelearning.png?alt=media"
@@ -519,7 +519,7 @@
     "$date": "2024-10-11T23:59:27.158Z"
   },
   "updatedAt": {
-    "$date": "2024-10-13T22:08:42.722Z"
+    "$date": "2024-10-28T02:20:44.610Z"
   },
   "__v": 1,
   "imagen": "https://firebasestorage.googleapis.com/v0/b/sisinvestiga.appspot.com/o/projects%2Fe5a0e890-5aae-4970-846d-625b55d37b00-IRA.jpg?alt=media"
@@ -561,13 +561,13 @@
     }
   ],
   "estado": "Planeado",
-  "isEvaluated": false,
+  "isEvaluated": true,
   "isDeleted": false,
   "createdAt": {
     "$date": "2024-10-13T00:47:17.915Z"
   },
   "updatedAt": {
-    "$date": "2024-10-13T22:03:34.003Z"
+    "$date": "2024-10-28T01:52:02.823Z"
   },
   "__v": 1,
   "imagen": "https://firebasestorage.googleapis.com/v0/b/sisinvestiga.appspot.com/o/projects%2F1238dbb7-1b0b-4a76-a70c-615b82c64406-budget.jpeg?alt=media"
@@ -619,13 +619,107 @@
     }
   ],
   "estado": "Planeado",
-  "isEvaluated": false,
+  "isEvaluated": true,
   "isDeleted": false,
   "createdAt": {
     "$date": "2024-10-13T21:55:57.554Z"
   },
   "updatedAt": {
-    "$date": "2024-10-13T21:55:57.554Z"
+    "$date": "2024-10-27T14:52:05.986Z"
   },
   "__v": 0
+},
+{
+  "_id": {
+    "$oid": "671daf1885815d1382c65e01"
+  },
+  "nombre": "Las Frutas para la Salud.",
+  "descripcion": "En este proyecto mostraremos lo recomendable que es el consumo de las frutas en nuestros alimentos el dia a dia.",
+  "imagen": "https://firebasestorage.googleapis.com/v0/b/sisinvestiga.appspot.com/o/projects%2Fc8fc93f5-f665-40c9-9d13-611ef57a5dfe-fruits.webp?alt=media",
+  "objetivos": "Educar a las personas sobre el consumos de las frutas.",
+  "presupuesto": 50000,
+  "cronograma": {
+    "fechaInicio": {
+      "$date": "2024-10-27T03:09:41.307Z"
+    },
+    "fechaFin": {
+      "$date": "2025-01-01T03:09:41.000Z"
+    }
+  },
+  "investigadores": [
+    {
+      "$oid": "66d9a3d28811e44aea8b1dd6"
+    }
+  ],
+  "recursos": [
+    "Frutas"
+  ],
+  "hitos": [
+    {
+      "nombre": "Inicio de Proyecto",
+      "fecha": {
+        "$date": "2024-10-27T03:09:41.307Z"
+      },
+      "_id": {
+        "$oid": "671daf1885815d1382c65e02"
+      }
+    }
+  ],
+  "estado": "Planeado",
+  "isEvaluated": true,
+  "isDeleted": false,
+  "createdAt": {
+    "$date": "2024-10-27T03:10:16.697Z"
+  },
+  "updatedAt": {
+    "$date": "2024-10-29T03:21:29.022Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "671eb52f46d0b71110f71928"
+  },
+  "nombre": "Notificaciones en NodeJS",
+  "descripcion": "Abarcamos como podemos crear notificaciones en nuestro proyecto con la arquitectura MERN.",
+  "imagen": "https://firebasestorage.googleapis.com/v0/b/sisinvestiga.appspot.com/o/projects%2F4e779646-ae1c-4bfc-bc9d-69d23162c121-notifications.jpg?alt=media",
+  "objetivos": "Aprender a incorporar notificaciones en los proyectos.",
+  "presupuesto": 300000,
+  "cronograma": {
+    "fechaInicio": {
+      "$date": "2024-10-27T21:46:48.728Z"
+    },
+    "fechaFin": {
+      "$date": "2024-10-28T21:46:48.000Z"
+    }
+  },
+  "investigadores": [
+    {
+      "$oid": "66d9a3d28811e44aea8b1dd6"
+    }
+  ],
+  "recursos": [
+    "Google"
+  ],
+  "hitos": [
+    {
+      "nombre": "Inicio de Proyecto.",
+      "fecha": {
+        "$date": "2024-10-27T21:46:48.728Z"
+      },
+      "_id": {
+        "$oid": "671ebcae0c9cf65b20e072fc"
+      }
+    }
+  ],
+  "estado": "Planeado",
+  "isEvaluated": true,
+  "isDeleted": false,
+  "createdAt": {
+    "$date": "2024-10-27T21:48:31.903Z"
+  },
+  "updatedAt": {
+    "$date": "2024-11-04T23:29:12.497Z"
+  },
+  "__v": 2
 }]
