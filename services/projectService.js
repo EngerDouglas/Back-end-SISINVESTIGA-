@@ -275,7 +275,7 @@ class ProjectService {
         match: { isDeleted: false },
         populate: { path: "evaluator", select: "nombre apellido email" },
       });
-
+  
     return {
       projects,
       page: Number(page),

@@ -82,26 +82,34 @@ export const updatePublication = async (req, res, next) => {
 // #region Actualizar Publicacion Para Admins ************************************************* //
 export const updateAdmPublication = async (req, res, next) => {
   try {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      throw new BadRequestError('Error de validación', errors.array());
-    }
-
     const { id } = req.params;
-    const updates = req.body;
 
-    // Si estos campos son enviados como string, los procesamos
-    if (updates.palabrasClave && typeof updates.palabrasClave === 'string') {
-      updates.palabrasClave = JSON.parse(updates.palabrasClave);
+    // Parsear 'existingAnexos' si viene como cadena JSON
+    if (typeof req.body.existingAnexos === 'string') {
+      req.body.existingAnexos = JSON.parse(req.body.existingAnexos);
     }
-    if (updates.anexos && typeof updates.anexos === 'string') {
-      updates.anexos = JSON.parse(updates.anexos);
+    // Combinar 'existingAnexos' y 'anexos' (nuevos anexos subidos)
+    const combinedAnexos = [];
+    // Añadir anexos existentes
+    if (Array.isArray(req.body.existingAnexos)) {
+      combinedAnexos.push(...req.body.existingAnexos);
     }
-    if (updates.autores && typeof updates.autores === 'string') {
-      updates.autores = JSON.parse(updates.autores);
+    // Añadir nuevos anexos (si los hay)
+    if (Array.isArray(req.body.anexos)) {
+      combinedAnexos.push(...req.body.anexos);
+    } else if (req.body.anexos) {
+      // Si 'anexos' es un solo objeto
+      combinedAnexos.push(req.body.anexos);
     }
+    // Asignar el arreglo combinado de anexos a 'req.body.anexos'
+    req.body.anexos = combinedAnexos;
 
-    const publication = await PublicationService.updateAdmPublication(id, updates);
+    // Eliminar 'existingAnexos' de 'req.body' para que no interfiera con la validación
+    delete req.body.existingAnexos;
+
+    // Pasar los datos al servicio
+    const publication = await PublicationService.updateAdmPublication(id, req.body);
+
     res.status(200).json({ message: 'Publicación actualizada correctamente', publication });
   } catch (error) {
     next(error);

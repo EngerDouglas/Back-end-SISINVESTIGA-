@@ -161,36 +161,31 @@ class PublicationService {
   // #region **************************** Actualizar Publicacion Admins ************************************************* //
 
   static async updateAdmPublication(id, updates) {
-    const publication = await Publication.findById(id);
+    const publication = await Publication.findOne({ _id: id, isDeleted: false });
     if (!publication) {
       throw new NotFoundError('Publicación no encontrada.');
     }
-
-    // Validar si se está actualizando el proyecto
-    if (updates.proyecto) {
-      const project = await Project.findById(updates.proyecto);
-      if (!project) {
-        throw new BadRequestError('El proyecto especificado no existe.');
-      }
+  
+    const allowedUpdates = [
+      'titulo', 'fecha', 'proyecto', 'revista', 'resumen', 'palabrasClave',
+      'tipoPublicacion', 'estado', 'anexos', 'idioma', 'autores', 'imagen'
+    ];
+  
+    const updateKeys = Object.keys(updates);
+    const isValidOperation = updateKeys.every((update) => allowedUpdates.includes(update));
+  
+    if (!isValidOperation) {
+      throw new BadRequestError('Intento de actualización no válido.');
     }
-
-    // Solo actualizamos los campos si están presentes en la solicitud
-    for (const key of Object.keys(updates)) {
-      // Validar tipos de datos específicos
-      if (key === 'palabrasClave' && typeof updates[key] === 'string') {
-        updates[key] = JSON.parse(updates[key]);
-      }
-      if (key === 'anexos' && typeof updates[key] === 'string') {
-        updates[key] = JSON.parse(updates[key]);
-      }
-      if (key === 'autores' && typeof updates[key] === 'string') {
-        updates[key] = JSON.parse(updates[key]);
-      }
-
-      // Asignar la actualización a la publicación
+  
+    updateKeys.forEach((key) => {
       publication[key] = updates[key];
-    }
+    });
 
+    if (updates.anexos) {
+      publication.anexos = updates.anexos;
+    }
+  
     await publication.save();
     return publication;
   }

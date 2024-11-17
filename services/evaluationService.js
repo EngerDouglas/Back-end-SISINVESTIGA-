@@ -143,7 +143,14 @@ class EvaluationService {
       .limit(Number(limit))
       .lean()
       .populate('evaluator', 'nombre apellido email')
-      .populate('project', 'nombre descripcion');
+      .populate({
+        path: 'project',
+        select: 'nombre descripcion objetivos presupuesto cronograma investigadores',
+        populate: {
+          path: "investigadores", 
+          select: "nombre apellido"
+        }
+      });
   
     return {
       evaluations,

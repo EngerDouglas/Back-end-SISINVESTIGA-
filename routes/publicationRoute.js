@@ -38,6 +38,8 @@ PublicationsRouter.put(
   '/admin/:id', 
   auth, 
   authRole(['Administrador']), 
+  uploadFiles(uploadFields),
+  handleMultipleFileUploads(uploadConfigs),
   validateUpdatePublication, 
   updateAdmPublication)
 PublicationsRouter.delete('/:id', auth, authRole(['Administrador', 'Investigador']), deletePublication)
