@@ -84,30 +84,25 @@ export const updateAdmPublication = async (req, res, next) => {
   try {
     const { id } = req.params;
 
-    // Parsear 'existingAnexos' si viene como cadena JSON
-    if (typeof req.body.existingAnexos === 'string') {
-      req.body.existingAnexos = JSON.parse(req.body.existingAnexos);
-    }
-    // Combinar 'existingAnexos' y 'anexos' (nuevos anexos subidos)
-    const combinedAnexos = [];
-    // Añadir anexos existentes
-    if (Array.isArray(req.body.existingAnexos)) {
-      combinedAnexos.push(...req.body.existingAnexos);
-    }
-    // Añadir nuevos anexos (si los hay)
-    if (Array.isArray(req.body.anexos)) {
-      combinedAnexos.push(...req.body.anexos);
-    } else if (req.body.anexos) {
-      // Si 'anexos' es un solo objeto
-      combinedAnexos.push(req.body.anexos);
-    }
-    // Asignar el arreglo combinado de anexos a 'req.body.anexos'
+    // Parse JSON strings
+    ['palabrasClave', 'existingAnexos', 'autores'].forEach(field => {
+      if (typeof req.body[field] === 'string') {
+        req.body[field] = JSON.parse(req.body[field]);
+      }
+    });
+
+    // Combine existing and new anexos
+    const combinedAnexos = [
+      ...(Array.isArray(req.body.existingAnexos) ? req.body.existingAnexos : []),
+      ...(Array.isArray(req.body.anexos) ? req.body.anexos : [req.body.anexos].filter(Boolean))
+    ];
+
+    // Assign combined anexos to req.body.anexos
     req.body.anexos = combinedAnexos;
 
-    // Eliminar 'existingAnexos' de 'req.body' para que no interfiera con la validación
+    // Remove existingAnexos from req.body
     delete req.body.existingAnexos;
 
-    // Pasar los datos al servicio
     const publication = await PublicationService.updateAdmPublication(id, req.body);
 
     res.status(200).json({ message: 'Publicación actualizada correctamente', publication });

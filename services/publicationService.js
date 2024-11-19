@@ -179,12 +179,17 @@ class PublicationService {
     }
   
     updateKeys.forEach((key) => {
-      publication[key] = updates[key];
+      if (key === 'anexos') {
+        publication[key] = updates[key].map(anexo => {
+          if (!anexo.url && anexo.path) {
+            anexo.url = anexo.path;
+          }
+          return anexo;
+        });
+      } else {
+        publication[key] = updates[key];
+      }
     });
-
-    if (updates.anexos) {
-      publication.anexos = updates.anexos;
-    }
   
     await publication.save();
     return publication;
