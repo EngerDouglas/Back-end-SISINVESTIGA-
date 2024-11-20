@@ -19,17 +19,17 @@
   },
   "tokens": [
     {
-      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ3ZDRiY2E2ZjZiMzcwN2QyNjFiMzMiLCJpYXQiOjE3MzEyNDY0ODAsImV4cCI6MTczMTMzMjg4MH0.NDiPXT8UkRD7nwMmuupvCxcfpqFJqYdHkE-uD5rHZBM",
+      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ3ZDRiY2E2ZjZiMzcwN2QyNjFiMzMiLCJpYXQiOjE3MzIwNTkwNTYsImV4cCI6MTczMjE0NTQ1Nn0.6NTQ91u3THQ8vLxwm-3PK_FT6P2ss6Y_Cuc5leHoxss",
       "_id": {
-        "$oid": "6730b990670f99e41f3ac5f0"
+        "$oid": "673d1fb0f5c33c3844d93854"
       }
     }
   ],
-  "__v": 249,
+  "__v": 257,
   "proyectos": [],
   "isDisabled": false,
   "updatedAt": {
-    "$date": "2024-11-10T13:48:00.940Z"
+    "$date": "2024-11-19T23:57:34.050Z"
   },
   "isVerified": true,
   "fotoPerfil": "https://firebasestorage.googleapis.com/v0/b/sisinvestiga.appspot.com/o/profile%2Fabd6225a-8a1b-4110-921c-b61707d5f6f0-41.jpeg?alt=media"
@@ -41,12 +41,12 @@
   "nombre": "Carlos Alberto",
   "apellido": "Castillo Garcia",
   "email": "castilloz671@gmail.com",
-  "password": "$2a$08$y3uxBsUUFTJOUKIq.PBdKOqyiSfNN2p/jYCySEz6vyXe5GLXA1FuO",
+  "password": "$2a$08$QOLzy0RZSpe65ncem47E1u/ylAyq9lWIJn1weniVLrQH3epR9Z872",
   "especializacion": "Ingenieria Quimica",
   "responsabilidades": [
     "Desarrollador de Materiales",
     "Probar Productos",
-    "Crear Formulas."
+    "Crear Formúlas."
   ],
   "role": {
     "$oid": "66d77649d458301a4aba678c"
@@ -138,12 +138,18 @@
       "_id": {
         "$oid": "6721a68b17e1279198191674"
       }
+    },
+    {
+      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ5YTNkMjg4MTFlNDRhZWE4YjFkZDYiLCJpYXQiOjE3MzIwNTkzNzQsImV4cCI6MTczMjE0NTc3NH0.YeKH15AGlMOfCxu9JnAk52W6lAu-Y2G32X4q8kQ-rP8",
+      "_id": {
+        "$oid": "673d20eed4871da19ea34197"
+      }
     }
   ],
-  "__v": 181,
+  "__v": 185,
   "isDisabled": false,
   "updatedAt": {
-    "$date": "2024-11-08T01:42:36.385Z"
+    "$date": "2024-11-19T23:53:35.578Z"
   },
   "fotoPerfil": "https://firebasestorage.googleapis.com/v0/b/sisinvestiga.appspot.com/o/profile%2F7ce8c0b0-3f87-4187-a9fc-830ab0f57644-5.jpeg?alt=media",
   "isVerified": true
@@ -225,7 +231,7 @@
   "tokens": [],
   "__v": 5,
   "updatedAt": {
-    "$date": "2024-10-26T01:22:11.034Z"
+    "$date": "2024-11-10T14:17:00.324Z"
   },
   "isVerified": true
 },
@@ -280,7 +286,7 @@
     "$date": "2024-10-05T17:26:21.060Z"
   },
   "updatedAt": {
-    "$date": "2024-10-26T00:30:02.333Z"
+    "$date": "2024-11-10T14:44:42.272Z"
   },
   "__v": 8,
   "isVerified": true

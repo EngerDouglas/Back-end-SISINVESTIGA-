@@ -42,7 +42,7 @@
     "$date": "2024-10-05T20:19:25.568Z"
   },
   "updatedAt": {
-    "$date": "2024-10-24T00:45:22.274Z"
+    "$date": "2024-11-17T15:22:16.016Z"
   },
   "__v": 0
 },
@@ -90,7 +90,7 @@
     "$date": "2024-10-23T23:53:52.962Z"
   },
   "updatedAt": {
-    "$date": "2024-10-23T23:53:52.962Z"
+    "$date": "2024-11-17T14:57:20.241Z"
   },
   "__v": 0
 },
@@ -186,7 +186,7 @@
     "$date": "2024-10-23T23:54:43.213Z"
   },
   "updatedAt": {
-    "$date": "2024-10-23T23:54:43.213Z"
+    "$date": "2024-11-17T16:21:16.145Z"
   },
   "__v": 0
 },
@@ -264,7 +264,31 @@
 },
 {
   "_id": {
-    "$oid": "672054e46d84260e26885b74"
+    "$oid": "6730c0927c4d05d5c10da407"
+  },
+  "project": {
+    "$oid": "6709bbdf1c400205daed34be"
+  },
+  "evaluator": {
+    "$oid": "66d7d4bca6f6b3707d261b33"
+  },
+  "puntuacion": 96,
+  "comentarios": "Probando.",
+  "isDeleted": false,
+  "fechaEvaluacion": {
+    "$date": "2024-11-10T14:17:54.384Z"
+  },
+  "createdAt": {
+    "$date": "2024-11-10T14:17:54.385Z"
+  },
+  "updatedAt": {
+    "$date": "2024-11-17T15:50:12.248Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "673a1733ec534bb5ddac39f4"
   },
   "project": {
     "$oid": "671daf1885815d1382c65e01"
@@ -272,17 +296,17 @@
   "evaluator": {
     "$oid": "66d7d4bca6f6b3707d261b33"
   },
-  "puntuacion": 93,
-  "comentarios": "Proyecto cumple con todas las expectativas marcadas.",
+  "puntuacion": 95,
+  "comentarios": "Probando diseños.",
   "isDeleted": false,
   "fechaEvaluacion": {
-    "$date": "2024-10-29T03:22:12.821Z"
+    "$date": "2024-11-17T16:17:55.295Z"
   },
   "createdAt": {
-    "$date": "2024-10-29T03:22:12.826Z"
+    "$date": "2024-11-17T16:17:55.296Z"
   },
   "updatedAt": {
-    "$date": "2024-10-29T03:22:12.826Z"
+    "$date": "2024-11-17T16:17:55.296Z"
   },
   "__v": 0
 }]

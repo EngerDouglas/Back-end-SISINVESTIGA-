@@ -52,57 +52,6 @@
 },
 {
   "_id": {
-    "$oid": "66db143269069f5a5b76ff4f"
-  },
-  "nombre": "Investigación sobre APIs",
-  "descripcion": "Un estudio detallado sobre las mejores prácticas en el diseño de APIs.",
-  "objetivos": "Desarrollar un marco de trabajo para construir APIs eficientes.",
-  "presupuesto": 15000,
-  "cronograma": {
-    "fechaInicio": {
-      "$date": "2024-09-10T00:00:00.000Z"
-    },
-    "fechaFin": {
-      "$date": "2024-11-30T00:00:00.000Z"
-    }
-  },
-  "investigadores": [
-    {
-      "$oid": "66db13d669069f5a5b76ff44"
-    }
-  ],
-  "recursos": [
-    "Software de pruebas",
-    "Biblioteca de APIs"
-  ],
-  "hitos": [
-    {
-      "nombre": "Definición de arquitectura",
-      "fecha": {
-        "$date": "2024-09-20T00:00:00.000Z"
-      },
-      "entregable": "Documento de arquitectura"
-    },
-    {
-      "nombre": "Pruebas iniciales",
-      "fecha": {
-        "$date": "2024-10-20T00:00:00.000Z"
-      },
-      "entregable": "Informe de pruebas"
-    }
-  ],
-  "estado": "Planeado",
-  "createdAt": {
-    "$date": "2024-09-06T14:39:46.608Z"
-  },
-  "updatedAt": {
-    "$date": "2024-09-06T14:39:46.608Z"
-  },
-  "__v": 1,
-  "isDeleted": false
-},
-{
-  "_id": {
     "$oid": "66db19d7ac4e6e65b64c921d"
   },
   "nombre": "Investigación sobre Software",
@@ -150,10 +99,10 @@
     "$date": "2024-09-06T15:03:51.604Z"
   },
   "updatedAt": {
-    "$date": "2024-10-27T14:57:07.482Z"
+    "$date": "2024-11-17T18:21:34.285Z"
   },
   "__v": 8,
-  "isDeleted": true,
+  "isDeleted": false,
   "isEvaluated": true,
   "imagen": "https://firebasestorage.googleapis.com/v0/b/sisinvestiga.appspot.com/o/projects%2F03f54e2c-61f9-422a-81b9-8b376de4bd55-what-is-software.png?alt=media"
 },
@@ -451,7 +400,7 @@
         "$date": "2024-10-05T22:14:48.715Z"
       },
       "_id": {
-        "$oid": "670c44c68b1217e86422285d"
+        "$oid": "673a4231adb375796ac012ca"
       }
     }
   ],
@@ -462,10 +411,10 @@
     "$date": "2024-10-05T22:15:32.932Z"
   },
   "updatedAt": {
-    "$date": "2024-10-28T02:20:48.367Z"
+    "$date": "2024-11-17T19:21:21.690Z"
   },
-  "__v": 2,
-  "imagen": "https://firebasestorage.googleapis.com/v0/b/sisinvestiga.appspot.com/o/projects%2Fcf90fce5-999a-4da3-9b37-217894757788-machinelearning.png?alt=media"
+  "__v": 6,
+  "imagen": "https://firebasestorage.googleapis.com/v0/b/sisinvestiga.appspot.com/o/projects%2F5c50cac0-f653-4032-9484-13d1e0ccaa55-machinelearning.png?alt=media"
 },
 {
   "_id": {
@@ -513,13 +462,13 @@
     }
   ],
   "estado": "Planeado",
-  "isEvaluated": false,
+  "isEvaluated": true,
   "isDeleted": false,
   "createdAt": {
     "$date": "2024-10-11T23:59:27.158Z"
   },
   "updatedAt": {
-    "$date": "2024-10-28T02:20:44.610Z"
+    "$date": "2024-11-10T14:17:54.392Z"
   },
   "__v": 1,
   "imagen": "https://firebasestorage.googleapis.com/v0/b/sisinvestiga.appspot.com/o/projects%2Fe5a0e890-5aae-4970-846d-625b55d37b00-IRA.jpg?alt=media"
@@ -661,7 +610,7 @@
         "$date": "2024-10-27T03:09:41.307Z"
       },
       "_id": {
-        "$oid": "671daf1885815d1382c65e02"
+        "$oid": "673a4063adb375796ac01038"
       }
     }
   ],
@@ -672,9 +621,9 @@
     "$date": "2024-10-27T03:10:16.697Z"
   },
   "updatedAt": {
-    "$date": "2024-10-29T03:21:29.022Z"
+    "$date": "2024-11-17T21:05:12.211Z"
   },
-  "__v": 0
+  "__v": 4
 },
 {
   "_id": {

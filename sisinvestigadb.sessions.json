@@ -1,6 +1,6 @@
 [{
   "_id": {
-    "$oid": "6730b990670f99e41f3ac5f2"
+    "$oid": "673be8a39464a3dc7c59b27c"
   },
   "user": {
     "$oid": "66d7d4bca6f6b3707d261b33"
@@ -8,10 +8,61 @@
   "ipAddress": "::1",
   "location": "Ubicación desconocida",
   "device": "Edge on Windows 10.0",
-  "isActive": true,
-  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ3ZDRiY2E2ZjZiMzcwN2QyNjFiMzMiLCJpYXQiOjE3MzEyNDY0ODAsImV4cCI6MTczMTMzMjg4MH0.NDiPXT8UkRD7nwMmuupvCxcfpqFJqYdHkE-uD5rHZBM",
+  "isActive": false,
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ3ZDRiY2E2ZjZiMzcwN2QyNjFiMzMiLCJpYXQiOjE3MzE5Nzk0MjcsImV4cCI6MTczMjA2NTgyN30.ijRqOoSCQlGOqGcdb7kSgNszP4AArk_V0bOIRNO4jao",
   "createdAt": {
-    "$date": "2024-11-10T13:48:00.954Z"
+    "$date": "2024-11-19T01:23:47.653Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "673d1d90f5c33c3844d93620"
+  },
+  "user": {
+    "$oid": "66d7d4bca6f6b3707d261b33"
+  },
+  "ipAddress": "::1",
+  "location": "Ubicación desconocida",
+  "device": "Edge on Windows 10.0",
+  "isActive": false,
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ3ZDRiY2E2ZjZiMzcwN2QyNjFiMzMiLCJpYXQiOjE3MzIwNTg1MTIsImV4cCI6MTczMjE0NDkxMn0.fI9YjwaRqYdVQGCcN7Y20nynEYSiY2JD-kIfRN8Ks3s",
+  "createdAt": {
+    "$date": "2024-11-19T23:21:52.430Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "673d1fb0f5c33c3844d93856"
+  },
+  "user": {
+    "$oid": "66d7d4bca6f6b3707d261b33"
+  },
+  "ipAddress": "::1",
+  "location": "Ubicación desconocida",
+  "device": "Edge on Windows 10.0",
+  "isActive": false,
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ3ZDRiY2E2ZjZiMzcwN2QyNjFiMzMiLCJpYXQiOjE3MzIwNTkwNTYsImV4cCI6MTczMjE0NTQ1Nn0.6NTQ91u3THQ8vLxwm-3PK_FT6P2ss6Y_Cuc5leHoxss",
+  "createdAt": {
+    "$date": "2024-11-19T23:30:56.261Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "673d20eed4871da19ea34199"
+  },
+  "user": {
+    "$oid": "66d9a3d28811e44aea8b1dd6"
+  },
+  "ipAddress": "::1",
+  "location": "Ubicación desconocida",
+  "device": "Chrome on Windows 10.0",
+  "isActive": false,
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmQ5YTNkMjg4MTFlNDRhZWE4YjFkZDYiLCJpYXQiOjE3MzIwNTkzNzQsImV4cCI6MTczMjE0NTc3NH0.YeKH15AGlMOfCxu9JnAk52W6lAu-Y2G32X4q8kQ-rP8",
+  "createdAt": {
+    "$date": "2024-11-19T23:36:14.215Z"
   },
   "__v": 0
 }]

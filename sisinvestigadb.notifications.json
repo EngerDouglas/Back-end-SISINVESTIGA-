@@ -48,7 +48,7 @@
     "$date": "2024-11-01T02:39:16.951Z"
   },
   "updatedAt": {
-    "$date": "2024-11-01T02:45:57.663Z"
+    "$date": "2024-11-10T14:34:26.619Z"
   },
   "__v": 0
 },
@@ -258,13 +258,13 @@
       "$oid": "66fddabd599b3cbe57f3bb05"
     }
   },
-  "isRead": false,
-  "isDeleted": false,
+  "isRead": true,
+  "isDeleted": true,
   "createdAt": {
     "$date": "2024-11-08T01:37:20.492Z"
   },
   "updatedAt": {
-    "$date": "2024-11-08T01:37:20.492Z"
+    "$date": "2024-11-17T21:11:00.365Z"
   },
   "__v": 0
 },
@@ -319,6 +319,774 @@
   },
   "updatedAt": {
     "$date": "2024-11-10T13:49:08.067Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6730c01e7c4d05d5c10da05a"
+  },
+  "recipient": {
+    "$oid": "66f9cafd2e0c839a01c64791"
+  },
+  "sender": {
+    "$oid": "66d7d4bca6f6b3707d261b33"
+  },
+  "type": "Usuario",
+  "message": "Tu cuenta ha sido deshabilitada.",
+  "data": {
+    "userId": {
+      "$oid": "66f9cafd2e0c839a01c64791"
+    }
+  },
+  "isRead": false,
+  "isDeleted": true,
+  "createdAt": {
+    "$date": "2024-11-10T14:15:58.193Z"
+  },
+  "updatedAt": {
+    "$date": "2024-11-17T21:12:29.245Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6730c05c7c4d05d5c10da20b"
+  },
+  "recipient": {
+    "$oid": "66f9cafd2e0c839a01c64791"
+  },
+  "sender": {
+    "$oid": "66d7d4bca6f6b3707d261b33"
+  },
+  "type": "Usuario",
+  "message": "Tu cuenta ha sido habilitada.",
+  "data": {
+    "userId": {
+      "$oid": "66f9cafd2e0c839a01c64791"
+    }
+  },
+  "isRead": false,
+  "isDeleted": true,
+  "createdAt": {
+    "$date": "2024-11-10T14:17:00.327Z"
+  },
+  "updatedAt": {
+    "$date": "2024-11-17T21:12:28.756Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6730c0927c4d05d5c10da40a"
+  },
+  "recipient": {
+    "$oid": "66d9a3d28811e44aea8b1dd6"
+  },
+  "sender": {
+    "$oid": "66d7d4bca6f6b3707d261b33"
+  },
+  "type": "Evaluacion",
+  "message": "Tu proyecto \"Como Manejar la Ira\" ha sido evaluado.",
+  "data": {
+    "projectId": {
+      "$oid": "6709bbdf1c400205daed34be"
+    },
+    "evaluationId": {
+      "$oid": "6730c0927c4d05d5c10da407"
+    }
+  },
+  "isRead": true,
+  "isDeleted": true,
+  "createdAt": {
+    "$date": "2024-11-10T14:17:54.396Z"
+  },
+  "updatedAt": {
+    "$date": "2024-11-17T21:11:00.197Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6730c67e7c4d05d5c10da6f0"
+  },
+  "recipient": {
+    "$oid": "670176bd89d0720ebc333d00"
+  },
+  "sender": {
+    "$oid": "66d7d4bca6f6b3707d261b33"
+  },
+  "type": "Rol",
+  "message": "Tu rol ha sido actualizado a \"Colaborador\".",
+  "data": {
+    "userId": {
+      "$oid": "670176bd89d0720ebc333d00"
+    }
+  },
+  "isRead": false,
+  "isDeleted": true,
+  "createdAt": {
+    "$date": "2024-11-10T14:43:10.259Z"
+  },
+  "updatedAt": {
+    "$date": "2024-11-17T21:12:26.701Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6730c6da7c4d05d5c10da707"
+  },
+  "recipient": {
+    "$oid": "670176bd89d0720ebc333d00"
+  },
+  "sender": {
+    "$oid": "66d7d4bca6f6b3707d261b33"
+  },
+  "type": "Rol",
+  "message": "Tu rol ha sido actualizado a \"Investigador\".",
+  "data": {
+    "userId": {
+      "$oid": "670176bd89d0720ebc333d00"
+    }
+  },
+  "isRead": false,
+  "isDeleted": true,
+  "createdAt": {
+    "$date": "2024-11-10T14:44:42.276Z"
+  },
+  "updatedAt": {
+    "$date": "2024-11-17T21:12:27.901Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "673a10adec534bb5ddac3251"
+  },
+  "recipient": {
+    "$oid": "66d9a3d28811e44aea8b1dd6"
+  },
+  "sender": {
+    "$oid": "66d7d4bca6f6b3707d261b33"
+  },
+  "type": "Evaluacion",
+  "message": "Tu proyecto \"Las Frutas para la Salud.\" ha sido evaluado.",
+  "data": {
+    "projectId": {
+      "$oid": "671daf1885815d1382c65e01"
+    },
+    "evaluationId": {
+      "$oid": "673a10adec534bb5ddac324e"
+    }
+  },
+  "isRead": true,
+  "isDeleted": true,
+  "createdAt": {
+    "$date": "2024-11-17T15:50:05.445Z"
+  },
+  "updatedAt": {
+    "$date": "2024-11-17T21:11:00.045Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "673a10b4ec534bb5ddac3276"
+  },
+  "recipient": {
+    "$oid": "66d9a3d28811e44aea8b1dd6"
+  },
+  "sender": {
+    "$oid": "66d7d4bca6f6b3707d261b33"
+  },
+  "type": "Evaluacion",
+  "message": "La evaluación de tu proyecto \"Como Manejar la Ira\" ha sido actualizada.",
+  "data": {
+    "projectId": {
+      "$oid": "6709bbdf1c400205daed34be"
+    },
+    "evaluationId": {
+      "$oid": "6730c0927c4d05d5c10da407"
+    }
+  },
+  "isRead": true,
+  "isDeleted": true,
+  "createdAt": {
+    "$date": "2024-11-17T15:50:12.256Z"
+  },
+  "updatedAt": {
+    "$date": "2024-11-17T21:10:59.884Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "673a1733ec534bb5ddac39f7"
+  },
+  "recipient": {
+    "$oid": "66d9a3d28811e44aea8b1dd6"
+  },
+  "sender": {
+    "$oid": "66d7d4bca6f6b3707d261b33"
+  },
+  "type": "Evaluacion",
+  "message": "Tu proyecto \"Las Frutas para la Salud.\" ha sido evaluado.",
+  "data": {
+    "projectId": {
+      "$oid": "671daf1885815d1382c65e01"
+    },
+    "evaluationId": {
+      "$oid": "673a1733ec534bb5ddac39f4"
+    }
+  },
+  "isRead": true,
+  "isDeleted": true,
+  "createdAt": {
+    "$date": "2024-11-17T16:17:55.303Z"
+  },
+  "updatedAt": {
+    "$date": "2024-11-17T21:10:59.716Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "673a342eadb375796ac00b83"
+  },
+  "recipient": {
+    "$oid": "66d9a3d28811e44aea8b1dd6"
+  },
+  "sender": {
+    "$oid": "66d7d4bca6f6b3707d261b33"
+  },
+  "type": "Proyecto",
+  "message": "El proyecto \"Investigación sobre Software\" ha sido restaurado.",
+  "data": {
+    "projectId": {
+      "$oid": "66db19d7ac4e6e65b64c921d"
+    }
+  },
+  "isRead": true,
+  "isDeleted": true,
+  "createdAt": {
+    "$date": "2024-11-17T18:21:34.294Z"
+  },
+  "updatedAt": {
+    "$date": "2024-11-17T21:10:59.573Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "673a3b8fadb375796ac00dd1"
+  },
+  "recipient": {
+    "$oid": "66d9a3d28811e44aea8b1dd6"
+  },
+  "sender": {
+    "$oid": "66d7d4bca6f6b3707d261b33"
+  },
+  "type": "Proyecto",
+  "message": "El proyecto \"Semaforos con Machine Learning.\" ha sido actualizado.",
+  "data": {
+    "projectId": {
+      "$oid": "6701ba84e179d82e4ca5f8ed"
+    }
+  },
+  "isRead": true,
+  "isDeleted": true,
+  "createdAt": {
+    "$date": "2024-11-17T18:53:03.308Z"
+  },
+  "updatedAt": {
+    "$date": "2024-11-17T21:10:59.316Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "673a3dbbadb375796ac00f47"
+  },
+  "recipient": {
+    "$oid": "66d9a3d28811e44aea8b1dd6"
+  },
+  "sender": {
+    "$oid": "66d7d4bca6f6b3707d261b33"
+  },
+  "type": "Proyecto",
+  "message": "El proyecto \"Semaforos con Machine Learning.\" ha sido actualizado.",
+  "data": {
+    "projectId": {
+      "$oid": "6701ba84e179d82e4ca5f8ed"
+    }
+  },
+  "isRead": true,
+  "isDeleted": true,
+  "createdAt": {
+    "$date": "2024-11-17T19:02:19.017Z"
+  },
+  "updatedAt": {
+    "$date": "2024-11-17T21:10:59.060Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "673a3e42adb375796ac00f7a"
+  },
+  "recipient": {
+    "$oid": "66d9a3d28811e44aea8b1dd6"
+  },
+  "sender": {
+    "$oid": "66d7d4bca6f6b3707d261b33"
+  },
+  "type": "Proyecto",
+  "message": "El proyecto \"Semaforos con Machine Learning.\" ha sido actualizado.",
+  "data": {
+    "projectId": {
+      "$oid": "6701ba84e179d82e4ca5f8ed"
+    }
+  },
+  "isRead": true,
+  "isDeleted": true,
+  "createdAt": {
+    "$date": "2024-11-17T19:04:34.079Z"
+  },
+  "updatedAt": {
+    "$date": "2024-11-17T21:10:58.166Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "673a3f71adb375796ac00fc2"
+  },
+  "recipient": {
+    "$oid": "66d9a3d28811e44aea8b1dd6"
+  },
+  "sender": {
+    "$oid": "66d7d4bca6f6b3707d261b33"
+  },
+  "type": "Proyecto",
+  "message": "El proyecto \"Las Frutas para la Salud.\" ha sido actualizado.",
+  "data": {
+    "projectId": {
+      "$oid": "671daf1885815d1382c65e01"
+    }
+  },
+  "isRead": true,
+  "isDeleted": true,
+  "createdAt": {
+    "$date": "2024-11-17T19:09:37.226Z"
+  },
+  "updatedAt": {
+    "$date": "2024-11-17T21:10:58.045Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "673a3f93adb375796ac00fe6"
+  },
+  "recipient": {
+    "$oid": "66d9a3d28811e44aea8b1dd6"
+  },
+  "sender": {
+    "$oid": "66d7d4bca6f6b3707d261b33"
+  },
+  "type": "Proyecto",
+  "message": "El proyecto \"Las Frutas para la Salud.\" ha sido actualizado.",
+  "data": {
+    "projectId": {
+      "$oid": "671daf1885815d1382c65e01"
+    }
+  },
+  "isRead": true,
+  "isDeleted": true,
+  "createdAt": {
+    "$date": "2024-11-17T19:10:11.650Z"
+  },
+  "updatedAt": {
+    "$date": "2024-11-17T21:10:57.899Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "673a4048adb375796ac01016"
+  },
+  "recipient": {
+    "$oid": "66d9a3d28811e44aea8b1dd6"
+  },
+  "sender": {
+    "$oid": "66d7d4bca6f6b3707d261b33"
+  },
+  "type": "Proyecto",
+  "message": "El proyecto \"Las Frutas para la Salud.\" ha sido actualizado.",
+  "data": {
+    "projectId": {
+      "$oid": "671daf1885815d1382c65e01"
+    }
+  },
+  "isRead": true,
+  "isDeleted": true,
+  "createdAt": {
+    "$date": "2024-11-17T19:13:12.688Z"
+  },
+  "updatedAt": {
+    "$date": "2024-11-17T21:10:57.775Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "673a4063adb375796ac0103a"
+  },
+  "recipient": {
+    "$oid": "66d9a3d28811e44aea8b1dd6"
+  },
+  "sender": {
+    "$oid": "66d7d4bca6f6b3707d261b33"
+  },
+  "type": "Proyecto",
+  "message": "El proyecto \"Las Frutas para la Salud.\" ha sido actualizado.",
+  "data": {
+    "projectId": {
+      "$oid": "671daf1885815d1382c65e01"
+    }
+  },
+  "isRead": true,
+  "isDeleted": true,
+  "createdAt": {
+    "$date": "2024-11-17T19:13:39.067Z"
+  },
+  "updatedAt": {
+    "$date": "2024-11-17T21:10:57.630Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "673a4231adb375796ac012cc"
+  },
+  "recipient": {
+    "$oid": "66d9a3d28811e44aea8b1dd6"
+  },
+  "sender": {
+    "$oid": "66d7d4bca6f6b3707d261b33"
+  },
+  "type": "Proyecto",
+  "message": "El proyecto \"Semaforos con Machine Learning.\" ha sido actualizado.",
+  "data": {
+    "projectId": {
+      "$oid": "6701ba84e179d82e4ca5f8ed"
+    }
+  },
+  "isRead": true,
+  "isDeleted": true,
+  "createdAt": {
+    "$date": "2024-11-17T19:21:21.694Z"
+  },
+  "updatedAt": {
+    "$date": "2024-11-17T21:10:57.500Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "673a578fadb375796ac0406e"
+  },
+  "recipient": {
+    "$oid": "66d9a3d28811e44aea8b1dd6"
+  },
+  "sender": {
+    "$oid": "66d7d4bca6f6b3707d261b33"
+  },
+  "type": "Publicación",
+  "message": "La publicación \"Frutas para una Salud Equilibrada.\" ha sido eliminada.",
+  "data": {
+    "publicationId": {
+      "$oid": "671e60d315961f43367a8f53"
+    }
+  },
+  "isRead": true,
+  "isDeleted": true,
+  "createdAt": {
+    "$date": "2024-11-17T20:52:31.148Z"
+  },
+  "updatedAt": {
+    "$date": "2024-11-17T21:10:57.358Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "673a59b7adb375796ac042a7"
+  },
+  "recipient": {
+    "$oid": "66d9a3d28811e44aea8b1dd6"
+  },
+  "sender": {
+    "$oid": "66d7d4bca6f6b3707d261b33"
+  },
+  "type": "Publicación",
+  "message": "La publicación \"Frutas para una Salud Equilibrada.\" ha sido restaurada.",
+  "data": {
+    "publicationId": {
+      "$oid": "671e60d315961f43367a8f53"
+    }
+  },
+  "isRead": true,
+  "isDeleted": true,
+  "createdAt": {
+    "$date": "2024-11-17T21:01:43.917Z"
+  },
+  "updatedAt": {
+    "$date": "2024-11-17T21:10:57.222Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "673a5a48adb375796ac0431b"
+  },
+  "recipient": {
+    "$oid": "66d9a3d28811e44aea8b1dd6"
+  },
+  "sender": {
+    "$oid": "66d7d4bca6f6b3707d261b33"
+  },
+  "type": "Publicación",
+  "message": "La publicación \"Frutas para una Salud Equilibrada.\" ha sido eliminada.",
+  "data": {
+    "publicationId": {
+      "$oid": "671e60d315961f43367a8f53"
+    }
+  },
+  "isRead": true,
+  "isDeleted": true,
+  "createdAt": {
+    "$date": "2024-11-17T21:04:08.568Z"
+  },
+  "updatedAt": {
+    "$date": "2024-11-17T21:10:57.077Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "673a5a4cadb375796ac04341"
+  },
+  "recipient": {
+    "$oid": "66d9a3d28811e44aea8b1dd6"
+  },
+  "sender": {
+    "$oid": "66d7d4bca6f6b3707d261b33"
+  },
+  "type": "Publicación",
+  "message": "La publicación \"Frutas para una Salud Equilibrada.\" ha sido restaurada.",
+  "data": {
+    "publicationId": {
+      "$oid": "671e60d315961f43367a8f53"
+    }
+  },
+  "isRead": true,
+  "isDeleted": true,
+  "createdAt": {
+    "$date": "2024-11-17T21:04:12.971Z"
+  },
+  "updatedAt": {
+    "$date": "2024-11-17T21:10:56.933Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "673a5a7fadb375796ac04396"
+  },
+  "recipient": {
+    "$oid": "66d7d4bca6f6b3707d261b33"
+  },
+  "sender": {
+    "$oid": "66d7d4bca6f6b3707d261b33"
+  },
+  "type": "Proyecto",
+  "message": "El proyecto \"Las Frutas para la Salud.\" ha sido eliminado/restaurado.",
+  "data": {
+    "projectId": {
+      "$oid": "671daf1885815d1382c65e01"
+    }
+  },
+  "isRead": true,
+  "isDeleted": true,
+  "createdAt": {
+    "$date": "2024-11-17T21:05:03.698Z"
+  },
+  "updatedAt": {
+    "$date": "2024-11-17T21:12:30.107Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "673a5a7fadb375796ac04398"
+  },
+  "recipient": {
+    "$oid": "66d9a3d28811e44aea8b1dd6"
+  },
+  "sender": {
+    "$oid": "66d7d4bca6f6b3707d261b33"
+  },
+  "type": "Proyecto",
+  "message": "El proyecto \"Las Frutas para la Salud.\" ha sido eliminado.",
+  "data": {
+    "projectId": {
+      "$oid": "671daf1885815d1382c65e01"
+    }
+  },
+  "isRead": true,
+  "isDeleted": true,
+  "createdAt": {
+    "$date": "2024-11-17T21:05:03.700Z"
+  },
+  "updatedAt": {
+    "$date": "2024-11-17T21:10:56.742Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "673a5a88adb375796ac043c1"
+  },
+  "recipient": {
+    "$oid": "66d9a3d28811e44aea8b1dd6"
+  },
+  "sender": {
+    "$oid": "66d7d4bca6f6b3707d261b33"
+  },
+  "type": "Proyecto",
+  "message": "El proyecto \"Las Frutas para la Salud.\" ha sido restaurado.",
+  "data": {
+    "projectId": {
+      "$oid": "671daf1885815d1382c65e01"
+    }
+  },
+  "isRead": true,
+  "isDeleted": true,
+  "createdAt": {
+    "$date": "2024-11-17T21:05:12.213Z"
+  },
+  "updatedAt": {
+    "$date": "2024-11-17T21:10:56.325Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "673a6a041569fc8764d8693b"
+  },
+  "recipient": {
+    "$oid": "66d9a3d28811e44aea8b1dd6"
+  },
+  "sender": {
+    "$oid": "66d9a3d28811e44aea8b1dd6"
+  },
+  "type": "Publicación",
+  "message": "La publicación \"Prueba de Delete 2\" ha sido actualizada.",
+  "data": {
+    "publicationId": {
+      "$oid": "66db19d7ac4e6e65b64c921d"
+    }
+  },
+  "isRead": true,
+  "isDeleted": true,
+  "createdAt": {
+    "$date": "2024-11-17T22:11:16.057Z"
+  },
+  "updatedAt": {
+    "$date": "2024-11-17T22:35:10.609Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "673d24d0d4871da19ea34cbb"
+  },
+  "recipient": {
+    "$oid": "66d9a3d28811e44aea8b1dd6"
+  },
+  "sender": {
+    "$oid": "66d9a3d28811e44aea8b1dd6"
+  },
+  "type": "Usuario",
+  "message": "Has actualizado tu información de usuario.",
+  "data": {
+    "userId": {
+      "$oid": "66d9a3d28811e44aea8b1dd6"
+    }
+  },
+  "isRead": true,
+  "isDeleted": false,
+  "createdAt": {
+    "$date": "2024-11-19T23:52:48.887Z"
+  },
+  "updatedAt": {
+    "$date": "2024-11-19T23:55:43.496Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "673d24ffd4871da19ea34dbd"
+  },
+  "recipient": {
+    "$oid": "66d9a3d28811e44aea8b1dd6"
+  },
+  "sender": {
+    "$oid": "66d9a3d28811e44aea8b1dd6"
+  },
+  "type": "Usuario",
+  "message": "Has actualizado tu información de usuario.",
+  "data": {
+    "userId": {
+      "$oid": "66d9a3d28811e44aea8b1dd6"
+    }
+  },
+  "isRead": true,
+  "isDeleted": false,
+  "createdAt": {
+    "$date": "2024-11-19T23:53:35.584Z"
+  },
+  "updatedAt": {
+    "$date": "2024-11-19T23:55:42.920Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "673d25eed4871da19ea354a1"
+  },
+  "recipient": {
+    "$oid": "66d7d4bca6f6b3707d261b33"
+  },
+  "sender": {
+    "$oid": "66d7d4bca6f6b3707d261b33"
+  },
+  "type": "Usuario",
+  "message": "Tu cuenta ha sido deshabilitada.",
+  "data": {
+    "userId": {
+      "$oid": "66d7d4bca6f6b3707d261b33"
+    }
+  },
+  "isRead": true,
+  "isDeleted": false,
+  "createdAt": {
+    "$date": "2024-11-19T23:57:34.053Z"
+  },
+  "updatedAt": {
+    "$date": "2024-11-19T23:57:57.854Z"
   },
   "__v": 0
 }]

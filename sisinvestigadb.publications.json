@@ -19,54 +19,31 @@
   "tipoPublicacion": "Articulo",
   "estado": "Borrador",
   "anexos": [
-    "http://example.com/publicacion.pdf",
-    "http://example2.com/publicacion.img"
+    {
+      "nombre": "Sissadasd.pdf",
+      "url": "https://kdjfbgkjdsfbkjds.com",
+      "tipo": "application/pdf",
+      "_id": {
+        "$oid": "673bf1638e17e956ce7824f4"
+      }
+    },
+    {
+      "nombre": "Frutoterapia-los-frutos.pdf",
+      "url": "https://firebasestorage.googleapis.com/v0/b/sisinvestiga.appspot.com/o/attachments%2F4a374f90-1024-455e-b9c8-36ee6b1dd9d5-Frutoterapia-los-frutos.pdf?alt=media",
+      "tipo": "application/pdf",
+      "_id": {
+        "$oid": "673bf195d783bea9df031421"
+      }
+    }
   ],
-  "idioma": "Español",
+  "idioma": "[object Object]",
   "createdAt": {
     "$date": "2024-09-05T18:23:21.340Z"
   },
   "updatedAt": {
-    "$date": "2024-10-01T02:26:16.381Z"
+    "$date": "2024-11-19T02:01:57.544Z"
   },
-  "__v": 2,
-  "isDeleted": false,
-  "proyecto": {
-    "$oid": "66d9f71976c4141cb4812abe"
-  }
-},
-{
-  "_id": {
-    "$oid": "66db143269069f5a5b76ff4f"
-  },
-  "titulo": "Prueba de Delete",
-  "fecha": {
-    "$date": "2024-09-06T00:00:00.000Z"
-  },
-  "autores": [
-    {
-      "$oid": "66db13d669069f5a5b76ff44"
-    }
-  ],
-  "revista": "Revista Académica de APIs",
-  "resumen": "Estamos probando la API para ver su funcionalidad.",
-  "palabrasClave": [
-    "Software, Sistemas, Talendig"
-  ],
-  "tipoPublicacion": "Articulo",
-  "estado": "Borrador",
-  "anexos": [
-    "http://example.com/publicacion.pdf",
-    "http://example2.com/publicacion.img"
-  ],
-  "idioma": "Español",
-  "createdAt": {
-    "$date": "2024-09-06T14:39:46.608Z"
-  },
-  "updatedAt": {
-    "$date": "2024-10-01T02:25:59.344Z"
-  },
-  "__v": 2,
+  "__v": 3,
   "isDeleted": false,
   "proyecto": {
     "$oid": "66d9f71976c4141cb4812abe"
@@ -132,7 +109,7 @@
     }
   ],
   "revista": "Revista Académica de APIs.",
-  "resumen": "Estamos probando la API para ver su funcionalidad.",
+  "resumen": "Estamos probando la API para ver su funcionalidad..",
   "palabrasClave": [
     "Software",
     "Sistemas",
@@ -148,6 +125,14 @@
       "_id": {
         "$oid": "67203aab4e159705f661549e"
       }
+    },
+    {
+      "nombre": "Frutoterapia-los-frutos.pdf",
+      "url": "https://firebasestorage.googleapis.com/v0/b/sisinvestiga.appspot.com/o/attachments%2Fca3ca579-0ab9-44b3-8807-799272b63923-Frutoterapia-los-frutos.pdf?alt=media",
+      "tipo": "application/pdf",
+      "_id": {
+        "$oid": "673a6a041569fc8764d86939"
+      }
     }
   ],
   "idioma": "Español",
@@ -155,9 +140,9 @@
     "$date": "2024-09-06T15:03:51.604Z"
   },
   "updatedAt": {
-    "$date": "2024-10-29T01:30:19.614Z"
+    "$date": "2024-11-19T01:40:33.953Z"
   },
-  "__v": 3,
+  "__v": 4,
   "isDeleted": false,
   "proyecto": {
     "$oid": "66db19d7ac4e6e65b64c921d"
@@ -166,58 +151,18 @@
 },
 {
   "_id": {
-    "$oid": "66e35095a8c45ab613a20231"
-  },
-  "titulo": "Prueba de Delete 3",
-  "fecha": {
-    "$date": "2024-09-06T00:00:00.000Z"
-  },
-  "autores": [
-    {
-      "$oid": "66db13d669069f5a5b76ff44"
-    },
-    {
-      "$oid": "66d9a3d28811e44aea8b1dd6"
-    },
-    {
-      "$oid": "66d7d4bca6f6b3707d261b33"
-    }
-  ],
-  "revista": "Revista Académica de APIs",
-  "resumen": "Estamos probando la API para ver su funcionalidad.",
-  "palabrasClave": [
-    "Software, Sistemas, Talendig"
-  ],
-  "tipoPublicacion": "Articulo",
-  "estado": "Borrador",
-  "anexos": [
-    "https://example.com/file1.pdf",
-    "https://example.com/file2.pdf"
-  ],
-  "idioma": "Español",
-  "createdAt": {
-    "$date": "2024-09-12T20:35:33.147Z"
-  },
-  "updatedAt": {
-    "$date": "2024-10-01T02:24:11.810Z"
-  },
-  "__v": 2,
-  "isDeleted": false,
-  "proyecto": {
-    "$oid": "66db143269069f5a5b76ff4f"
-  }
-},
-{
-  "_id": {
     "$oid": "66e59c936ccc55df8408d5f3"
   },
   "titulo": "Prueba De Proyecto",
   "fecha": {
-    "$date": "2024-09-14T00:00:00.000Z"
+    "$date": "2024-09-16T00:00:00.000Z"
   },
   "autores": [
     {
       "$oid": "66db13d669069f5a5b76ff44"
+    },
+    {
+      "$oid": "670176bd89d0720ebc333d00"
     }
   ],
   "proyecto": [
@@ -228,99 +173,40 @@
   "revista": "Revista Académica de APIs",
   "resumen": "Estamos probando la API para ver su funcionalidad.",
   "palabrasClave": [
-    "Software, Sistemas, Talendig"
+    "Software",
+    "Sistemas",
+    "Talendig",
+    "Pruebas."
   ],
-  "tipoPublicacion": "Articulo",
+  "tipoPublicacion": "Informe",
   "estado": "Publicado",
   "anexos": [
-    "https://example.com/file1.pdf",
-    "https://example.com/file2.pdf"
+    {
+      "nombre": "SisInvestiga (1).pdf",
+      "url": "https://firebasestorage.googleapis.com/v0/b/sisinvestiga.appspot.com/o/attachments%2F7262d852-335e-4b70-8d11-75b3897653d6-SisInvestiga%20(1).pdf?alt=media",
+      "tipo": "application/pdf",
+      "_id": {
+        "$oid": "673a60397fe12d7c289e11de"
+      }
+    },
+    {
+      "nombre": "Frutoterapia-los-frutos.pdf",
+      "url": "https://firebasestorage.googleapis.com/v0/b/sisinvestiga.appspot.com/o/attachments%2Faa30db43-1808-4980-9679-9f71a28756bd-Frutoterapia-los-frutos.pdf?alt=media",
+      "tipo": "application/pdf",
+      "_id": {
+        "$oid": "673beb5c4af9880fcc8b8183"
+      }
+    }
   ],
   "idioma": "Español",
   "createdAt": {
     "$date": "2024-09-14T14:24:19.137Z"
   },
   "updatedAt": {
-    "$date": "2024-10-05T20:02:03.632Z"
+    "$date": "2024-11-19T01:36:33.498Z"
   },
-  "__v": 2,
+  "__v": 7,
   "isDeleted": false
-},
-{
-  "_id": {
-    "$oid": "66fb5beba43a77cd0b762cd1"
-  },
-  "titulo": "Nuevas Tendencias en Machine Learning",
-  "fecha": {
-    "$date": "2023-10-01T00:00:00.000Z"
-  },
-  "autores": [
-    {
-      "$oid": "66db13d669069f5a5b76ff44"
-    }
-  ],
-  "proyecto": {
-    "$oid": "66db143269069f5a5b76ff4f"
-  },
-  "revista": "Revista Internacional de IA",
-  "resumen": "Esta publicación analiza las últimas tendencias en machine learning...",
-  "palabrasClave": [
-    "Machine Learning",
-    "Inteligencia Artificial"
-  ],
-  "tipoPublicacion": "Articulo",
-  "estado": "Borrador",
-  "anexos": [
-    "https://ejemplo.com/anexo1.pdf",
-    "https://ejemplo.com/anexo2.pdf"
-  ],
-  "idioma": "Español",
-  "isDeleted": false,
-  "createdAt": {
-    "$date": "2024-10-01T02:18:19.901Z"
-  },
-  "updatedAt": {
-    "$date": "2024-10-01T02:18:19.901Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "66fb5c02a43a77cd0b762cda"
-  },
-  "titulo": "Nuevas Tendencias en Machine Learning",
-  "fecha": {
-    "$date": "2024-01-01T00:00:00.000Z"
-  },
-  "autores": [
-    {
-      "$oid": "66db13d669069f5a5b76ff44"
-    }
-  ],
-  "proyecto": {
-    "$oid": "66db143269069f5a5b76ff4f"
-  },
-  "revista": "Revista Internacional de IA",
-  "resumen": "Esta publicación analiza las últimas tendencias en machine learning...",
-  "palabrasClave": [
-    "Machine Learning",
-    "Inteligencia Artificial"
-  ],
-  "tipoPublicacion": "Articulo",
-  "estado": "Borrador",
-  "anexos": [
-    "https://ejemplo.com/anexo1.pdf",
-    "https://ejemplo.com/anexo2.pdf"
-  ],
-  "idioma": "Español",
-  "isDeleted": false,
-  "createdAt": {
-    "$date": "2024-10-01T02:18:42.681Z"
-  },
-  "updatedAt": {
-    "$date": "2024-10-01T02:18:42.681Z"
-  },
-  "__v": 0
 },
 {
   "_id": {
@@ -392,8 +278,22 @@
   "tipoPublicacion": "Articulo",
   "estado": "Revisado",
   "anexos": [
-    "https://ejemplo.com/anexo1.pdf",
-    "https://ejemplo.com/anexo2.pdf"
+    {
+      "nombre": "prbanc.pdf",
+      "url": "https://dsnmbfvhjdsbfdjsh.com",
+      "tipo": "application/pdf",
+      "_id": {
+        "$oid": "673bf1f78e17e956ce7824f5"
+      }
+    },
+    {
+      "nombre": "projects_report (2).pdf",
+      "url": "https://firebasestorage.googleapis.com/v0/b/sisinvestiga.appspot.com/o/attachments%2F579d46ab-3475-4ac4-8dd4-e6adfcf4e099-projects_report%20(2).pdf?alt=media",
+      "tipo": "application/pdf",
+      "_id": {
+        "$oid": "673bf20bd783bea9df0315b5"
+      }
+    }
   ],
   "idioma": "Español",
   "isDeleted": false,
@@ -401,9 +301,9 @@
     "$date": "2024-10-05T19:41:56.291Z"
   },
   "updatedAt": {
-    "$date": "2024-10-05T19:45:59.497Z"
+    "$date": "2024-11-19T02:03:55.164Z"
   },
-  "__v": 1
+  "__v": 2
 },
 {
   "_id": {
@@ -440,6 +340,14 @@
       "_id": {
         "$oid": "670c5f46a7dea1eff9669231"
       }
+    },
+    {
+      "nombre": "Frutoterapia-los-frutos.pdf",
+      "url": "https://firebasestorage.googleapis.com/v0/b/sisinvestiga.appspot.com/o/attachments%2F0f7bbdbe-9fa3-48b4-8b6d-8c5201095f94-Frutoterapia-los-frutos.pdf?alt=media",
+      "tipo": "application/pdf",
+      "_id": {
+        "$oid": "673befe9d783bea9df030f2d"
+      }
     }
   ],
   "idioma": "Español",
@@ -448,9 +356,9 @@
     "$date": "2024-10-12T00:46:16.234Z"
   },
   "updatedAt": {
-    "$date": "2024-10-14T00:01:10.436Z"
+    "$date": "2024-11-19T01:54:49.967Z"
   },
-  "__v": 2,
+  "__v": 3,
   "imagen": "https://firebasestorage.googleapis.com/v0/b/sisinvestiga.appspot.com/o/publications%2F92d4a615-e96c-480a-b458-3191e6761215-la%20ira.jpg?alt=media"
 },
 {
@@ -541,7 +449,7 @@
     "$date": "2024-10-27T15:48:35.157Z"
   },
   "updatedAt": {
-    "$date": "2024-10-29T01:38:27.493Z"
+    "$date": "2024-11-17T21:04:12.970Z"
   },
   "__v": 0
 },
@@ -556,6 +464,9 @@
   "autores": [
     {
       "$oid": "66d9a3d28811e44aea8b1dd6"
+    },
+    {
+      "$oid": "66e8c2ca50682593adb5d0bb"
     }
   ],
   "proyecto": {
@@ -587,7 +498,7 @@
     "$date": "2024-10-27T22:31:42.192Z"
   },
   "updatedAt": {
-    "$date": "2024-10-29T01:33:12.829Z"
+    "$date": "2024-11-19T01:37:53.522Z"
   },
-  "__v": 0
+  "__v": 1
 }]

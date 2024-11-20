@@ -439,12 +439,27 @@ class UserService {
 
   // #region *********************** Buscando tu propio usuario ******************* //
   static async getUser(id) {
-    return User.findById(id)
-      .select('-password -tokens')
-      .populate('role', 'roleName')
-      .populate('proyectos')
-      .populate('publicaciones')
-      .populate('requests');
+    const user = await User.findById(id)
+    .select('-password -tokens')
+    .populate('role', 'roleName')
+    .populate('proyectos')
+    .populate('publicaciones')
+    .populate('requests');
+
+    if (!user) {
+      throw new NotFoundError('Usuario no encontrado.');
+    }
+
+    // Obtener la última sesión activa del usuario
+    const lastSession = await Session.findOne({ user: id })
+      .sort({ createdAt: -1 })
+      .select('createdAt');
+
+    // Convertir el documento de usuario a objeto y agregar lastLogin
+    const userObject = user.toObject();
+    userObject.lastLogin = lastSession ? lastSession.createdAt : null;
+
+    return userObject;
   }
   // #endregion ****************************************************************** //
 
