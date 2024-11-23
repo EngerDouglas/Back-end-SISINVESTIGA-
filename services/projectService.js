@@ -1,6 +1,7 @@
 import Project from "../models/Project.js";
 import NotificationService from "../services/notificationService.js";
 import User from "../models/User.js";
+import Role from '../models/Role.js';
 import {
   BadRequestError,
   ConflictError,
@@ -120,7 +121,7 @@ class ProjectService {
       "imagen",
     ];
 
-    allowedUpdates.forEach((field) => {
+    for (const field of allowedUpdates) {
       if (updates[field] !== undefined) {
         switch (field) {
           case "hitos":
@@ -139,12 +140,33 @@ class ProjectService {
           case "imagen":
             project.imagen = updates.imagen;
             break;
+          case "investigadores":
+            // Validar que los investigadores existen
+            const investigadoresIds = updates.investigadores;
+           // Obtener el ObjectId del rol "Investigador"
+          const roleInvestigador = await Role.findOne({ roleName: 'Investigador' });
+          if (!roleInvestigador) {
+            throw new Error('El rol Investigador no existe');
+          }
+
+          // Buscar los usuarios que sean investigadores
+          const investigadoresExistentes = await User.find({
+            _id: { $in: investigadoresIds },
+            role: roleInvestigador._id,
+          });
+
+          if (investigadoresExistentes.length !== investigadoresIds.length) {
+            throw new BadRequestError('Algunos investigadores no existen o no tienen el rol de Investigador');
+          }
+
+          project.investigadores = investigadoresIds;
+          break;
           default:
             project[field] = updates[field];
             break;
         }
       }
-    });
+    }
 
     await project.save();
 
