@@ -278,16 +278,38 @@ const adminColors = {
 // #region **************************** Administrator functions ************************************************ //
 
 // #region Obtener detalles de los proyectos ************************************************************************** //
-export const getDetailedProjects = async () => {
-  const projects = await Project.find({ isDeleted: false })
+export const getDetailedProjects = async (filters = {}) => {
+  const query = { isDeleted: false };
+
+  if (filters.projectIds) {
+    query._id = { $in: filters.projectIds };
+  }
+
+  if (filters.researcherIds) {
+    query.investigadores = { $in: filters.researcherIds };
+  }
+
+  if (filters.startDate) {
+    query['cronograma.fechaInicio'] = { $gte: new Date(filters.startDate) };
+  }
+
+  if (filters.endDate) {
+    query['cronograma.fechaFin'] = { $lte: new Date(filters.endDate) };
+  }
+
+  if (filters.search) {
+    query.$text = { $search: filters.search };
+  }
+
+  const projects = await Project.find(query)
     .populate({
       path: 'investigadores',
       select: 'nombre apellido email especializacion',
-      populate: { path: 'role', select: 'roleName' }
+      populate: { path: 'role', select: 'roleName' },
     })
     .populate({
       path: 'evaluaciones',
-      populate: { path: 'evaluator', select: 'nombre apellido' }
+      populate: { path: 'evaluator', select: 'nombre apellido' },
     })
     .lean();
 
@@ -297,16 +319,42 @@ export const getDetailedProjects = async () => {
 // #endregion ************************************************************************** //
 
 // #region Obtener detalles de las Evaluaciones ************************************************************************** //
-export const getDetailedEvaluations = async () => {
-  const evaluations = await Evaluation.find({ isDeleted: false })
+export const getDetailedEvaluations = async (filters = {}) => {
+  const query = { isDeleted: false };
+
+  if (filters.evaluationIds) {
+    query._id = { $in: filters.evaluationIds };
+  }
+
+  if (filters.projectIds) {
+    query.project = { $in: filters.projectIds };
+  }
+
+  if (filters.researcherIds) {
+    query.evaluator = { $in: filters.researcherIds };
+  }
+
+  if (filters.startDate) {
+    query.fechaEvaluacion = { $gte: new Date(filters.startDate) };
+  }
+
+  if (filters.endDate) {
+    query.fechaEvaluacion = { $lte: new Date(filters.endDate) };
+  }
+
+  if (filters.search) {
+    query.$text = { $search: filters.search };
+  }
+
+  const evaluations = await Evaluation.find(query)
     .populate({
       path: 'evaluator',
       select: 'nombre apellido email especializacion',
-      populate: { path: 'role', select: 'roleName' }
+      populate: { path: 'role', select: 'roleName' },
     })
     .populate({
       path: 'project',
-      select: 'nombre descripcion estado'
+      select: 'nombre descripcion estado',
     })
     .lean();
 
@@ -315,8 +363,8 @@ export const getDetailedEvaluations = async () => {
 // #endregion ************************************************************************** //
 
 // #region Generar CSV de Proyectos para los Administradores ************************************************************************** //
-export const generateProjectsCSV = async () => {
-  const projects = await getDetailedProjects();
+export const generateProjectsCSV = async (filters) => {
+  const projects = await getDetailedProjects(filters);
 
   const flattenedProjects = projects.map(project => ({
     nombre: project.nombre,
@@ -338,8 +386,8 @@ export const generateProjectsCSV = async () => {
 // #endregion ************************************************************************** //
 
 // #region Generar PDF de los Proyectos para los Administradores ************************************************************************** //
-export const generateProjectsPDF = async () => {
-  const projects = await getDetailedProjects();
+export const generateProjectsPDF = async (filters) => {
+  const projects = await getDetailedProjects(filters);
   const doc = new PDFDocument({ margin: 50, size: 'A4' });
   const filename = generateUniqueFilename('Admin_Project_Reports', 'pdf');
   const filePath = path.join(await ensureExportDirExists(), filename);
@@ -398,8 +446,8 @@ export const generateProjectsPDF = async () => {
 // #endregion ************************************************************************** //
 
 // #region Generar CSV de las Evaluaciones para los Admnistradores ************************************************************************** //
-export const generateEvaluationsCSV = async () => {
-  const evaluations = await getDetailedEvaluations();
+export const generateEvaluationsCSV = async (filters) => {
+  const evaluations = await getDetailedEvaluations(filters);
 
   const flattenedEvaluations = evaluations.map(evaluation => ({
     evaluadorNombre: evaluation.evaluator.nombre,
@@ -434,8 +482,8 @@ export const generateEvaluationsCSV = async () => {
 // #endregion ************************************************************************** //
 
 // #region Generar PDF de las Evaluaciones para los Administradores ************************************************************************** //
-export const generateEvaluationsPDF = async () => {
-  const evaluations = await getDetailedEvaluations();
+export const generateEvaluationsPDF = async (filters) => {
+  const evaluations = await getDetailedEvaluations(filters);
   const doc = new PDFDocument({ margin: 50, size: 'A4' });
   const filename = generateUniqueFilename('Admin_Evaluations_Report', 'pdf');
   const filePath = path.join(await ensureExportDirExists(), filename);

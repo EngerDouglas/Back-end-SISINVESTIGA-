@@ -285,8 +285,43 @@ class ProjectService {
   // #region **************************** Obtener todos los Proyectos con Paginación y Filtrado ************************************************* //
 
   static async getAllProjects(filters, page = 1, limit = 10) {
-    const total = await Project.countDocuments(filters);
-    const projects = await Project.find(filters)
+    const query = {};
+
+    if (filters.search) {
+      query.$or = [
+        { nombre: new RegExp(filters.search, 'i') },
+        { descripcion: new RegExp(filters.search, 'i') },
+        { 'investigadores.nombre': new RegExp(filters.search, 'i') },
+        { 'investigadores.apellido': new RegExp(filters.search, 'i') }
+      ];
+    }
+
+    if (filters.estado) {
+      query.estado = filters.estado;
+    }
+
+    if (filters.selectedProjects && filters.selectedProjects.length > 0) {
+      query._id = { $in: filters.selectedProjects };
+    }
+
+    if (filters.selectedResearchers && filters.selectedResearchers.length > 0) {
+      query['investigadores'] = { $in: filters.selectedResearchers };
+    }
+
+    if (filters.startDate) {
+      query['cronograma.fechaInicio'] = { $gte: new Date(filters.startDate) };
+    }
+
+    if (filters.endDate) {
+      query['cronograma.fechaFin'] = { $lte: new Date(filters.endDate) };
+    }
+
+    if (filters.isDeleted !== undefined) {
+      query.isDeleted = filters.isDeleted === 'true';
+    }
+
+    const total = await Project.countDocuments(query);
+    const projects = await Project.find(query)
       .sort({ createdAt: -1 })
       .skip((page - 1) * limit)
       .limit(Number(limit))
@@ -297,7 +332,7 @@ class ProjectService {
         match: { isDeleted: false },
         populate: { path: "evaluator", select: "nombre apellido email" },
       });
-  
+
     return {
       projects,
       page: Number(page),

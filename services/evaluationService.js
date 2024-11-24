@@ -136,8 +136,35 @@ class EvaluationService {
   // #region ***********************  Obtenemos todas las Evaluaciones ******************* //
 
   static async getAllEvaluations(filters, page = 1, limit = 10) {
-    const total = await Evaluation.countDocuments(filters);
-    const evaluations = await Evaluation.find(filters)
+    const query = {};
+
+    if (filters.search) {
+      query.$or = [
+        { 'project.nombre': new RegExp(filters.search, 'i') },
+        { 'evaluator.nombre': new RegExp(filters.search, 'i') },
+        { 'evaluator.apellido': new RegExp(filters.search, 'i') },
+        { 'comentarios': new RegExp(filters.search, 'i') }
+      ];
+    }
+
+    if (filters.selectedProjects && filters.selectedProjects.length > 0) {
+      query['project._id'] = { $in: filters.selectedProjects };
+    }
+
+    if (filters.selectedResearchers && filters.selectedResearchers.length > 0) {
+      query['evaluator._id'] = { $in: filters.selectedResearchers };
+    }
+
+    if (filters.startDate) {
+      query.fechaEvaluacion = { $gte: new Date(filters.startDate) };
+    }
+
+    if (filters.endDate) {
+      query.fechaEvaluacion = { ...query.fechaEvaluacion, $lte: new Date(filters.endDate) };
+    }
+
+    const total = await Evaluation.countDocuments(query);
+    const evaluations = await Evaluation.find(query)
       .sort({ createdAt: -1 })
       .skip((page - 1) * limit)
       .limit(Number(limit))
@@ -151,7 +178,7 @@ class EvaluationService {
           select: "nombre apellido"
         }
       });
-  
+
     return {
       evaluations,
       page: Number(page),

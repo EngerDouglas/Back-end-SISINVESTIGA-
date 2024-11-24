@@ -37,17 +37,16 @@ import { BadRequestError } from '../utils/errors.js';
 
   export const getAllEvaluations = async (req, res, next) => {
     try {
-      const { page = 1, limit = 10, search } = req.query;
-      const filter = {};
-      if (search) {
-        filter.$or = [
-          { 'project.nombre': new RegExp(search, 'i') },
-          { 'evaluator.nombre': new RegExp(search, 'i') },
-          { 'evaluator.apellido': new RegExp(search, 'i') }
-        ];
-      }
+      const { page = 1, limit = 10, search, selectedProjects, selectedResearchers, startDate, endDate } = req.query;
+      const filters = {
+        search,
+        selectedProjects: selectedProjects ? selectedProjects.split(',') : [],
+        selectedResearchers: selectedResearchers ? selectedResearchers.split(',') : [],
+        startDate,
+        endDate
+      };
   
-      const evaluations = await EvaluationService.getAllEvaluations(filter, parseInt(page), parseInt(limit));
+      const evaluations = await EvaluationService.getAllEvaluations(filters, parseInt(page), parseInt(limit));
       res.status(200).json(evaluations);
     } catch (error) {
       next(error);

@@ -2,11 +2,36 @@ import * as ReportService from "../services/reportService.js";
 import { BadRequestError } from "../utils/errors.js";
 import fs from "fs";
 import { promises as fsPromises } from "fs";
+import { parseISO, isValid } from 'date-fns';
 
 // #region Exportar CSV de Proyectos por el Administrador ************************************************* //
 export const exportReportCSV = async (req, res, next) => {
   try {
-    const csv = await ReportService.generateProjectsCSV();
+    const filters = {};
+
+    if (req.query.search) {
+      filters.search = req.query.search;
+    }
+    if (req.query.selectedProjects) {
+      filters.projectIds = req.query.selectedProjects.split(',');
+    }
+    if (req.query.selectedResearchers) {
+      filters.researcherIds = req.query.selectedResearchers.split(',');
+    }
+    if (req.query.startDate) {
+      const startDate = parseISO(req.query.startDate);
+      if (isValid(startDate)) {
+        filters.startDate = startDate;
+      }
+    }
+    if (req.query.endDate) {
+      const endDate = parseISO(req.query.endDate);
+      if (isValid(endDate)) {
+        filters.endDate = endDate;
+      }
+    }
+
+    const csv = await ReportService.generateProjectsCSV(filters);
     res.header("Content-Type", "text/csv");
     res.attachment(
       ReportService.generateUniqueFilename("Project_Reports", "csv")
@@ -24,7 +49,31 @@ export const exportReportCSV = async (req, res, next) => {
 // #region Exportar PDF de Proyectos por el Administrador ************************************************* //
 export const exportReportPDF = async (req, res, next) => {
   try {
-    const { filePath, filename } = await ReportService.generateProjectsPDF();
+    const filters = {};
+
+    if (req.query.search) {
+      filters.search = req.query.search;
+    }
+    if (req.query.selectedProjects) {
+      filters.projectIds = req.query.selectedProjects.split(',');
+    }
+    if (req.query.selectedResearchers) {
+      filters.researcherIds = req.query.selectedResearchers.split(',');
+    }
+    if (req.query.startDate) {
+      const startDate = parseISO(req.query.startDate);
+      if (isValid(startDate)) {
+        filters.startDate = startDate;
+      }
+    }
+    if (req.query.endDate) {
+      const endDate = parseISO(req.query.endDate);
+      if (isValid(endDate)) {
+        filters.endDate = endDate;
+      }
+    }
+
+    const { filePath, filename } = await ReportService.generateProjectsPDF(filters);
 
     res.setHeader("Content-Type", "application/pdf");
     res.setHeader("Content-Disposition", `attachment; filename=${filename}`);
@@ -57,7 +106,31 @@ export const exportReportPDF = async (req, res, next) => {
 // #region Exportar CSV de Evaluaciones por el Administrador ************************************************* //
 export const exportReportInvestigatorsCSV = async (req, res, next) => {
   try {
-    const csv = await ReportService.generateEvaluationsCSV();
+    const filters = {};
+
+    if (req.query.search) {
+      filters.search = req.query.search;
+    }
+    if (req.query.selectedProjects) {
+      filters.projectIds = req.query.selectedProjects.split(',');
+    }
+    if (req.query.selectedResearchers) {
+      filters.researcherIds = req.query.selectedResearchers.split(',');
+    }
+    if (req.query.startDate) {
+      const startDate = parseISO(req.query.startDate);
+      if (isValid(startDate)) {
+        filters.startDate = startDate;
+      }
+    }
+    if (req.query.endDate) {
+      const endDate = parseISO(req.query.endDate);
+      if (isValid(endDate)) {
+        filters.endDate = endDate;
+      }
+    }
+
+    const csv = await ReportService.generateEvaluationsCSV(filters);
     res.header("Content-Type", "text/csv");
     res.attachment(
       ReportService.generateUniqueFilename("Evaluations_Report", "csv")
@@ -78,8 +151,32 @@ export const exportReportInvestigatorsCSV = async (req, res, next) => {
 // #region Exportar PDF de Evaluaciones por el Administrador ************************************************* //
 export const exportReportInvestigatorsPDF = async (req, res, next) => {
   try {
-    const { filePath, filename } = await ReportService.generateEvaluationsPDF();
-    console.log("Investigators PDF generated successfully:", filePath);
+    const filters = {};
+
+    if (req.query.search) {
+      filters.search = req.query.search;
+    }
+    if (req.query.selectedProjects) {
+      filters.projectIds = req.query.selectedProjects.split(',');
+    }
+    if (req.query.selectedResearchers) {
+      filters.researcherIds = req.query.selectedResearchers.split(',');
+    }
+    if (req.query.startDate) {
+      const startDate = parseISO(req.query.startDate);
+      if (isValid(startDate)) {
+        filters.startDate = startDate;
+      }
+    }
+    if (req.query.endDate) {
+      const endDate = parseISO(req.query.endDate);
+      if (isValid(endDate)) {
+        filters.endDate = endDate;
+      }
+    }
+
+    const { filePath, filename } = await ReportService.generateEvaluationsPDF(filters);
+    console.log("Evaluations PDF generated successfully:", filePath);
 
     res.setHeader("Content-Type", "application/pdf");
     res.setHeader("Content-Disposition", `attachment; filename=${filename}`);

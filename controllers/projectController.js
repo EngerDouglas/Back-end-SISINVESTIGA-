@@ -105,14 +105,18 @@ export const restoreProyecto = async (req, res, next) => {
 // #region Obtener todos los Proyectos por Paginación y Filtrado ************************************************* //
 export const getAllProyectos = async (req, res, next) => {
   try {
-    const { page = 1, limit = 10, estado, nombre, isDeleted } = req.query;
-    const filter = {};
+    const { page = 1, limit = 10, estado, search, selectedProjects, selectedResearchers, startDate, endDate, isDeleted } = req.query;
+    const filters = {
+      estado,
+      search,
+      selectedProjects: selectedProjects ? selectedProjects.split(',') : [],
+      selectedResearchers: selectedResearchers ? selectedResearchers.split(',') : [],
+      startDate,
+      endDate,
+      isDeleted
+    };
 
-    if (estado) filter.estado = estado;
-    if (nombre) filter.nombre = new RegExp(nombre, 'i');
-    if (isDeleted !== undefined) filter.isDeleted = isDeleted === 'true';
-
-    const projects = await ProjectService.getAllProjects(filter, parseInt(page), parseInt(limit));
+    const projects = await ProjectService.getAllProjects(filters, parseInt(page), parseInt(limit));
     res.status(200).json(projects);
   } catch (error) {
     next(error);
