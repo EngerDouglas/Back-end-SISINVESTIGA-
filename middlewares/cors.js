@@ -2,6 +2,8 @@ import cors from 'cors'
 
 const ACCEPTED_ORIGINS = [ 
   'http://localhost:3000',
+  'https://54.211.7.33/',
+  'https://54.211.7.33:3005/',
   'https://frontend-sisinvestiga.onrender.com/',
   'https://www.google.com/'
 ]
