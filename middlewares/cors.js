@@ -2,9 +2,8 @@ import cors from 'cors'
 
 const ACCEPTED_ORIGINS = [ 
   'http://localhost:3000',
-  'apisisi.duckdns.org',
-  'https://www.google.com/',
-  'https://frontend-sisinvestiga.vercel.app/'
+  'https://frontend-sisinvestiga.onrender.com/',
+  'https://www.google.com/'
 ]
 
 export const corsMiddleware = ({ acceptedOrigins = ACCEPTED_ORIGINS } = {}) => cors({
