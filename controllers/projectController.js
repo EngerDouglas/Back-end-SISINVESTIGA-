@@ -33,7 +33,7 @@ export const createProyecto = async (req, res, next) => {
 };
 // #endregion *************************************************************** //
 
-// #region Actualizar Proyecto ************************************************* //
+// #region Actualizar Proyecto Por Admins ************************************************* //
 export const updateProyecto = async (req, res, next) => {
   try {
     const errors = validationResult(req);
@@ -47,7 +47,7 @@ export const updateProyecto = async (req, res, next) => {
       req.body.imagen = req.body.imagen;
     }
     
-    const project = await ProjectService.updateProject(id, req.body, req.user._id, req.userRole);
+    const project = await ProjectService.updateProject(id, req.body, req.user._id);
     res.status(200).json({
       message: 'Proyecto actualizado correctamente',
       proyecto: project
@@ -58,26 +58,30 @@ export const updateProyecto = async (req, res, next) => {
 };
 // #endregion *************************************************************** //
 
-// #region Eliminar Proyecto (Soft Delete) ************************************************* //
-
-export const deleteProyecto = async (req, res, next) => {
+// #region Actualizar Proyecto por Investigadores ************************************************* //
+export const updateProyectoByInvestigator = async (req, res, next) => {
   try {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      throw new BadRequestError('Error de validación', errors.array());
+    }
+
     const { id } = req.params;
-    const project = await ProjectService.deleteProject(id, req.user._id, req.userRole);
 
-    // Obtener el investigador principal o "creador"
-    const projectOwner = await User.findById(project.investigadores[0]);
-    const isAdmin = req.userRole === "Administrador";
+    if (req.body.imagen) {
+      req.body.imagen = req.body.imagen;
+    }
 
-    // Enviar el correo de eliminación
-    await emailService.sendProjectDeletedEmail(projectOwner, project, isAdmin);
+    const project = await ProjectService.updateProjectByInvestigator(id, req.body, req.user._id);
 
-    res.status(200).json({ message: 'Proyecto eliminado (soft delete).' });
+    res.status(200).json({
+      message: 'Proyecto actualizado correctamente por el investigador',
+      proyecto: project
+    });
   } catch (error) {
     next(error);
   }
 };
-
 // #endregion *************************************************************** //
 
 // #region Restaurar Proyecto (Soft Delete) ************************************************* //

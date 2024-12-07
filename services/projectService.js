@@ -82,20 +82,11 @@ class ProjectService {
   }
   // #endregion **************************************************************************************** //
 
-  // #region **************************** Actualizar Proyecto ************************************************* //
-  static async updateProject(id, updates, userId, userRole) {
+  // #region **************************** Actualizar Proyecto Por Administradores ************************************************* //
+  static async updateProject(id, updates, userId) {
     const project = await Project.findById(id);
     if (!project || project.isDeleted) {
       throw new NotFoundError("Proyecto no encontrado o eliminado");
-    }
-
-    const isAdmin = userRole === "Administrador";
-    const isInvestigador = project.investigadores.includes(userId);
-
-    if (!isAdmin && !isInvestigador) {
-      throw new ForbiddenError(
-        "No tienes permisos para actualizar este proyecto"
-      );
     }
 
     if (updates.nombre) {
@@ -128,7 +119,7 @@ class ProjectService {
             project.hitos = updates.hitos.map((hito) => ({
               nombre: hito.nombre,
               fecha: hito.fecha,
-              entregables: hito.entregable ? [hito.entregable] : [],
+              entregable: hito.entregable || "",
             }));
             break;
           case "cronograma":
@@ -142,25 +133,114 @@ class ProjectService {
             break;
           case "investigadores":
             // Validar que los investigadores existen
-            const investigadoresIds = updates.investigadores;
-           // Obtener el ObjectId del rol "Investigador"
-          const roleInvestigador = await Role.findOne({ roleName: 'Investigador' });
-          if (!roleInvestigador) {
-            throw new Error('El rol Investigador no existe');
-          }
+            let investigadoresIds = updates.investigadores || [];
 
-          // Buscar los usuarios que sean investigadores
-          const investigadoresExistentes = await User.find({
-            _id: { $in: investigadoresIds },
-            role: roleInvestigador._id,
-          });
+            // Convertir a array si es un valor único
+            if (!Array.isArray(investigadoresIds)) {
+              investigadoresIds = [investigadoresIds];
+            }
 
-          if (investigadoresExistentes.length !== investigadoresIds.length) {
-            throw new BadRequestError('Algunos investigadores no existen o no tienen el rol de Investigador');
-          }
+            // Obtener el ObjectId del rol "Investigador"
+            const roleInvestigador = await Role.findOne({ roleName: 'Investigador' });
+            if (!roleInvestigador) {
+              throw new Error('El rol Investigador no existe');
+            }
 
-          project.investigadores = investigadoresIds;
-          break;
+            // Buscar los usuarios que sean investigadores
+            const investigadoresExistentes = await User.find({
+              _id: { $in: investigadoresIds },
+              role: roleInvestigador._id,
+            });
+
+            if (investigadoresExistentes.length !== investigadoresIds.length) {
+              throw new BadRequestError('Algunos investigadores no existen o no tienen el rol de Investigador');
+            }
+
+            project.investigadores = investigadoresIds;
+            break;
+          default:
+            project[field] = updates[field];
+            break;
+        }
+      }
+    }
+
+    await project.save();
+
+    // Enviar notificaciones a los investigadores
+  for (const investigatorId of project.investigadores) {
+    if (investigatorId.toString() !== userId.toString()) {
+      await NotificationService.createNotification({
+        recipientId: investigatorId,
+        senderId: userId,
+        type: 'Proyecto',
+        message: `El proyecto "${project.nombre}" ha sido actualizado por el administrador.`,
+        data: { projectId: project._id },
+      });
+    }
+  }
+
+    return project;
+  }
+  // #endregion **************************************************************************************** //
+
+  // #region **************************** Actualizar Proyecto Por Investigadores ************************************************* //
+
+  static async updateProjectByInvestigator(id, updates, userId) {
+    const project = await Project.findById(id);
+    if (!project || project.isDeleted) {
+      throw new NotFoundError("Proyecto no encontrado o eliminado");
+    }
+
+    const isInvestigador = project.investigadores.includes(userId);
+
+    if (!isInvestigador) {
+      throw new ForbiddenError(
+        "No tienes permisos para actualizar este proyecto"
+      );
+    }
+
+    if (updates.nombre) {
+      const existingProject = await Project.findOne({
+        nombre: updates.nombre,
+        _id: { $ne: id },
+      });
+      if (existingProject) {
+        throw new ConflictError("Ya existe un proyecto con ese nombre");
+      }
+    }
+
+    const allowedUpdates = [
+      "nombre",
+      "descripcion",
+      "objetivos",
+      "presupuesto",
+      "cronograma",
+      "hitos",
+      "recursos",
+      "estado",
+      "imagen",
+    ];
+
+    for (const field of allowedUpdates) {
+      if (updates[field] !== undefined) {
+        switch (field) {
+          case "hitos":
+            project.hitos = updates.hitos.map((hito) => ({
+              nombre: hito.nombre,
+              fecha: hito.fecha,
+              entregable: hito.entregable || "",
+            }));
+            break;
+          case "cronograma":
+            project.cronograma = {
+              fechaInicio: updates.cronograma.fechaInicio,
+              fechaFin: updates.cronograma.fechaFin,
+            };
+            break;
+          case "imagen":
+            project.imagen = updates.imagen;
+            break;
           default:
             project[field] = updates[field];
             break;
@@ -171,18 +251,21 @@ class ProjectService {
     await project.save();
 
     // Enviar notificaciones a los demás investigadores
-    for (const investigatorId of project.investigadores) {
+  for (const investigatorId of project.investigadores) {
+    if (investigatorId.toString() !== userId.toString()) {
       await NotificationService.createNotification({
         recipientId: investigatorId,
         senderId: userId,
         type: 'Proyecto',
-        message: `El proyecto "${project.nombre}" ha sido actualizado.`,
+        message: `El proyecto "${project.nombre}" ha sido actualizado por ${req.user.nombre} ${req.user.apellido}.`,
         data: { projectId: project._id },
       });
     }
-  
+  }
+
     return project;
   }
+
   // #endregion **************************************************************************************** //
 
   // #region **************************** Eliminar Proyecto (Soft Delete) ************************************************* //
