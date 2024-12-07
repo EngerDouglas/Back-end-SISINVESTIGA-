@@ -2,6 +2,7 @@ import cors from 'cors'
 
 const ACCEPTED_ORIGINS = [ 
   'http://localhost:3000',
+  'apisisi.duckdns.org',
   'https://www.google.com/',
   'https://frontend-sisinvestiga.vercel.app/'
 ]
