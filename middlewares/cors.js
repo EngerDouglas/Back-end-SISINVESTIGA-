@@ -2,8 +2,9 @@ import cors from 'cors'
 
 const ACCEPTED_ORIGINS = [ 
   'http://localhost:3000',
-  'https://www.google.com/',
-  'https://sisinvestiga.netlify.app/'
+  'http://18.118.252.96/',
+  'http://18.118.252.96:3000/',
+  'https://www.google.com/'
 ]
 
 export const corsMiddleware = ({ acceptedOrigins = ACCEPTED_ORIGINS } = {}) => cors({
