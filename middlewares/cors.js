@@ -2,6 +2,8 @@ import cors from 'cors'
 
 const ACCEPTED_ORIGINS = [ 
   'http://localhost:3000',
+  'http://18.118.252.96/',
+  'http://18.118.252.96:3000/',
   'https://www.google.com/'
 ]
 

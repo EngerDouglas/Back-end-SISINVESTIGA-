@@ -2,6 +2,7 @@ import express from 'express';
 import { 
   createProyecto, 
   updateProyecto, 
+  updateProyectoByInvestigator,
   deleteProyecto, 
   restoreProyecto,
   getAllProyectos, 
@@ -27,11 +28,21 @@ ProjectRouter.post(
 ProjectRouter.put(
   '/:id', 
   auth, 
-  authRole(['Administrador', 'Investigador']), 
+  authRole(['Administrador']), 
   uploadImages('imagen', 1),
   handleFileUpload('projects', 'imagen'),
   validateUpdateProject, 
-  updateProyecto); 
+  updateProyecto
+); 
+ProjectRouter.put(
+  '/investigator/:id',
+  auth,
+  authRole(['Investigador']),
+  uploadImages('imagen', 1),
+  handleFileUpload('projects', 'imagen'),
+  validateUpdateProject,
+  updateProyectoByInvestigator
+);
 ProjectRouter.delete('/:id', auth, authRole(['Administrador', 'Investigador']), deleteProyecto); 
 ProjectRouter.put('/restore/:id', auth, authRole(['Administrador']), restoreProyecto); 
 

@@ -33,7 +33,7 @@ export const createProyecto = async (req, res, next) => {
 };
 // #endregion *************************************************************** //
 
-// #region Actualizar Proyecto ************************************************* //
+// #region Actualizar Proyecto Por Admins ************************************************* //
 export const updateProyecto = async (req, res, next) => {
   try {
     const errors = validationResult(req);
@@ -47,9 +47,35 @@ export const updateProyecto = async (req, res, next) => {
       req.body.imagen = req.body.imagen;
     }
     
-    const project = await ProjectService.updateProject(id, req.body, req.user._id, req.userRole);
+    const project = await ProjectService.updateProject(id, req.body, req.user._id);
     res.status(200).json({
       message: 'Proyecto actualizado correctamente',
+      proyecto: project
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+// #endregion *************************************************************** //
+
+// #region Actualizar Proyecto por Investigadores ************************************************* //
+export const updateProyectoByInvestigator = async (req, res, next) => {
+  try {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      throw new BadRequestError('Error de validación', errors.array());
+    }
+
+    const { id } = req.params;
+
+    if (req.body.imagen) {
+      req.body.imagen = req.body.imagen;
+    }
+
+    const project = await ProjectService.updateProjectByInvestigator(id, req.body, req.user._id);
+
+    res.status(200).json({
+      message: 'Proyecto actualizado correctamente por el investigador',
       proyecto: project
     });
   } catch (error) {
